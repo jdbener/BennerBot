@@ -1,8 +1,0 @@
-Welcome to BennerBot
-Version 0.7
-[16:02] Sucessfully Connected to Twitch
-[16:02] Sucessfully Connected to Hitbox
-twitch [16:02] jdbener: was this ever about human justice?
-twitch [16:02] jdbener: FUCK YA
-[16:02] Jdbener has sent a message that has an excessive amount of capitalazation!
-[16:02] Jdbener you have: 4 warnings left!
