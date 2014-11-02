@@ -1,0 +1,43 @@
+BennerBot Version 0.7
+Author: Jdbener
+11/1/14
+
+========================================================================================================
+
+Hello, my name is Jdbener and today i am going to give you a basic walkthrough of how to use my twitch/hitbox chatbot, BennerBot! Bennerbot has been designed differently than other chatbots, it is designed by streamers for streamers, it has been designed to manage both twitch and hitbox simoltaniously, it has also been writen in java so it can be used from anywhere! If you have any bug reports or feature requests feal free to email me: jdbener@gmail.com and will try my best to include your input.
+
+There are 3 steps to runing BennerBot:
+1) Configuration: in the config folder is a file called config.yml. Open this folder in notepad or whatever you use, and edit it to your liking it is well commented
+ and you should have no problem figuring out what things do.
+There is also a file called commands.yml. Use this file to decide what commands you want
+Dont touch any of the other files unless you know what you are doing
+
+2) Jar: in the mainfolder there will a file, bennerbot.jar, this file will run the bot, in no GUI mode. If you want to run bennerbot using a GUI you will have to use the
+run.bat file. (There might be an annoying beeping noise, to fix this mute your system sounds.)
+
+3) WebDisplay: in the main folder is a file called index.html, if you have bennerbot.jar runing you will be able to view the chat in this file instead of the included GUI.
+If you want to embead the chat into something you can acsess a raw feed in resource/output-dirty.txt or a cleaned up version at output.txt, for all you people who want to do cool stuff!
+
+3.5) Extensions: there is a folder called plugins, you can add pluggins to this folder if you want to exend bennerbots abilities. 
+There is a file called BasicCommands.java that file contains a simple example plugin.
+
+(Let me know by email if i should add anything else to this file)
+
+========================================================================================================
+
+Changelog:
+Alpha Versions:
+
+- Mk1: This is the original version including basic chat commands !hello and !time as well as join messages, a chat relay, and basic chat output. Designed to work with both Twitch.tv and Hitbox.tv.
+
+- Mk2: Compressed the bot into 1 file from two, updated README
+
+- MK3: Cleaner right! Did alot of under the hood work to clean up the file system, make the bot faster, add emoticon support, add a color system. Oh and did i mention the GUI? No? Well we have a GUI now!
+
+- MK4: The Plugin Update! Added the plugin system, as well as alot of underthehood changes.
+
+- MK5: The Realise Update! This is the first update that was officially realised to the public, as well as a custom command system and varibles. I also did a few changes to the GUI to make it more usable and/or chroma-able.
+
+- MK6: (mk5.5) This update simply adds the ability to send messages in chat
+
+- MK7: The GUI Update! This update completely redesigned the GUI that the bot uses, it fixes many issues that the old gui had, as well as allowing the bot to be run through the terminal!
