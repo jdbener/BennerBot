@@ -1,0 +1,23 @@
+#=======================
+#Connection Settings
+#=======================
+#the name of the twitch account to moderate
+twitchChannel: bennerbot
+#the name of the hitbox account to moderate
+hitboxChannel: bennerbot
+#weather or not bennerbot should announce his presence
+incognitoMode: false
+
+#=======================
+#Relay Settings
+#=======================
+#weather or not the Chat Relay is activated
+activateRelay: true
+ 
+#=======================
+#Output Settings
+#=======================
+#weather or not to display the cleaning class 
+enableOutput: true
+#Weather or not to display the included GUI
+OutputGUI: true
