@@ -1,7 +1,7 @@
 #=======================
 #General Settings
 #=======================
-#The name of the bot changing this has no effect
+#The name of the bot changing this only affects how the bot is displayed locally and what the bot refers to itself as
 botName: BennerBot
 #The username of the the twitch account you want the bot to use
 #Leave this to "default" if you dont want a custom account
@@ -29,13 +29,13 @@ hitboxChannel: bennerbot
 #A very simple tutorial on how to get this value can be found here: http://discuss.dev.twitch.tv/t/how-to-set-title/390/2
 #If left blank you wont be able to change your stream title with the bot
 twitchAccessToken:
-#weather or not bennerbot should announce his presence
+#Weather or not bennerbot should announce his presence
 incognitoMode: false
  
 #=======================
 #Output Settings
 #=======================
-#weather or not to enable sending output to a file or a GUI
+#Weather or not to enable sending output to a file or a GUI
 enableOutput: true
 #Weather or not to display the included GUI
 OutputGUI: true
@@ -58,7 +58,6 @@ enableJoinMessages: false
 #Weather or not user leave messages will be displayed
 enableLeaveMessages: false
 #Weather or not messages that plugins create will be displayed
-#I recommend leaving this off, some of these messages could get kinda "spammy"
 enablePluginMessages: true
 
 #=======================
@@ -66,12 +65,12 @@ enablePluginMessages: true
 #=======================
 #weather or not bennerbot should moderate your chat
 #only set this to true if bennerbot has been modded on your channel
-enableModeration: true
+enableModeration: false
 #How many warnings a user gets before being timed out
 kickWarnings: 5
 #How many warnings a user gets before being banned
 banWarnings: 20
-#Active Capitalazation Filter?
+#Active Capitalization Filter?
 CapsFilter: true
 #Activate URL Filtering
 UrlFilter: true
