@@ -1,7 +1,7 @@
 #=======================
 #General Settings
 #=======================
-#The name of the bot changing this only affects how the bot is displayed locally and what the bot refers to itself as
+#The name of the bot changing this has no effect
 botName: BennerBot
 #The username of the the twitch account you want the bot to use
 #Leave this to "default" if you dont want a custom account
@@ -28,29 +28,28 @@ hitboxChannel: bennerbot
 #This is used to do things such as change the stream title
 #A very simple tutorial on how to get this value can be found here: http://discuss.dev.twitch.tv/t/how-to-set-title/390/2
 #If left blank you wont be able to change your stream title with the bot
-twitchAccessToken:
-#Weather or not bennerbot should announce his presence
+twitchAccessToken: 
+#weather or not bennerbot should announce his presence
 incognitoMode: false
  
 #=======================
 #Output Settings
 #=======================
-#Weather or not to enable sending output to a file or a GUI
+#weather or not to enable sending output to a file or a GUI
 enableOutput: true
-#Weather or not to display the included GUI
-OutputGUI: true
-#Weather our not the output GUI allows you to send messages to your channels
-#This GUI is not resizeable, turn this off if you want to resize your bot
-enableUserMessages: true
+#weather or not to be able to send messages to your users
+enableUserOutput: true
 #weather or not to shorten usernames, 
 #long names can cause issues and users names longer than 32 characters will be trimed no matter what
 #I recommend leaving this on
-nameShortener: true
+nameShortener: false
 #Write the output to a clean file
 #if output GUI is true this has to be true
 WriteClean: true
 #Write the output to a file that can be imported into obs
 WriteDirty: true
+#Weather or not to highlight messages that include your name in them
+HighlighMessages: true
 #Weather or not to display messages from "bennerbot"
 enableBotMessages: true
 #Weather or not user join messages will be displayed
@@ -58,6 +57,7 @@ enableJoinMessages: false
 #Weather or not user leave messages will be displayed
 enableLeaveMessages: false
 #Weather or not messages that plugins create will be displayed
+#I recommend leaving this off, some of these messages could get kinda "spammy"
 enablePluginMessages: true
 
 #=======================
@@ -70,7 +70,7 @@ enableModeration: false
 kickWarnings: 5
 #How many warnings a user gets before being banned
 banWarnings: 20
-#Active Capitalization Filter?
+#Active Capitalazation Filter?
 CapsFilter: true
 #Activate URL Filtering
 UrlFilter: true

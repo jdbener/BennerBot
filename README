@@ -38,6 +38,8 @@ Alpha Versions:
 
 - MK5: The Realise Update! This is the first update that was officially realised to the public, as well as a custom command system and varibles. I also did a few changes to the GUI to make it more usable and/or chroma-able.
 
-- MK6: (mk5.5) This update simply adds the ability to send messages in chat
+- MK6: (mk5.1) This update simply adds the ability to send messages in chat
 
 - MK7: The GUI Update! This update completely redesigned the GUI that the bot uses, it fixes many issues that the old gui had, as well as allowing the bot to be run through the terminal!
+
+- MK8: (mk7.1) This update simplifies the GUI and fixes some of the bugs from previous version, we are also taking our first steps twards being open source

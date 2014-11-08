@@ -17,6 +17,7 @@
 # <botversion>: returns the version of the bot currently being used
 # <twitchhost>: the name of the twitch channel this bot is managing
 # <hitboxhost>: the name of the hitbox channel this bot is managing
+# <username>: the name of the user who sent the command
 #=========================================================================
 #LEAVE THIS COMMAND
 dummycommand: n/a

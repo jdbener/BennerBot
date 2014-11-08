@@ -5,7 +5,7 @@ body {
     font-size: 16px;
     color: #777777;
     word-wrap: break-word;
-    overflow-y: scroll;
+    overflow-y: shown;
     overflow-x: hidden;
 }
     body * {
