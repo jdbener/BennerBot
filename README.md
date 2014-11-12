@@ -15,11 +15,9 @@ If you want to embead the chat into something you can acsess a raw feed in resou
 4. Extensions: there is a folder called plugins, you can add pluggins to this folder if you want to exend bennerbots abilities. 
 There is a file called BasicCommands.java that file contains a simple example plugin.
 
-**If you ever find a bug or have and idea for a feature please post a comment (here)[https://github.com/jdbener/BennerBot/issues]**
+**If you ever find a bug or have and idea for a feature please post a comment [here](https://github.com/jdbener/BennerBot/issues)**
 
 (Post an Issue if i should add anything else to this file)
-
-=================================================================================
 
 ##Changelog:##
 **Alpha Versions:**
@@ -39,9 +37,6 @@ There is a file called BasicCommands.java that file contains a simple example pl
 - MK7: The GUI Update! This update completely redesigned the GUI that the bot uses, it fixes many issues that the old gui had, as well as allowing the bot to be run through the terminal!
 
 - MK8: (mk7.1) This update simplifies the GUI and fixes some of the bugs from previous version, we are also taking our first steps twards being open source
-
-
-=================================================================================
 
 ##Licence:##
 Copyright © 2014 Joshua Dahl (jdbener@gmail.com)
