@@ -1,19 +1,21 @@
-Hello, my name is Jdbener and today i am going to give you a basic walkthrough of how to use my twitch/hitbox chatbot, BennerBot! Bennerbot has been designed differently than other chatbots, it is designed by streamers for streamers, it has been designed to manage both twitch and hitbox simoltaniously, it has also been writen in java so it can be used from anywhere! If you have any bug reports or feature requests feal free to email me: jdbener@gmail.com and will try my best to include your input.
+Hello, my name is Jdbener and today I am going to give you a basic walk through of how to use my twitch/hitbox chatbot, BennerBot! Bennerbot has been designed differently than other chatbots, it is designed by streamers for streamers, it has been designed to manage both twitch and hitbox simultaneously, it has also been written in java so it can be used from anywhere! If you have any bug reports or feature requests feel free to post an issue on the GitHub page and will try my best to include your input.
 
-There are 4 steps to runing BennerBot:
+There are 4 steps to running BennerBot:
 
 1. Configuration: in the config folder is a file called config.yml. Open this folder in notepad or whatever you use, and edit it to your liking it is well commented
  and you should have no problem figuring out what things do.
 There is also a file called commands.yml. Use this file to decide what commands you want
-Dont touch any of the other files unless you know what you are doing
+(Dont touch any of the other files unless you know what you are doing)
 
-2. Jar: in the mainfolder there will a file, bennerbot.jar, this file will run the bot.
+2. Jar: in the main folder there will a file, bennerbot.jar, this file will run the bot.
 
-3. WebDisplay: in the main folder is a file called index.html, if you have bennerbot.jar runing you will be able to view the chat in this file instead of the included GUI.
+3. WebDisplay: in the main folder is a file called index.html, if you have bennerbot.jar running you will be able to view the chat in this file instead of the included GUI.
 If you want to embead the chat into something you can acsess a raw feed in resource/output-dirty.txt or a cleaned up version at output.txt, for all you people who want to do cool stuff!
 
 4. Extensions: there is a folder called plugins, you can add pluggins to this folder if you want to exend bennerbots abilities. 
 There is a file called BasicCommands.java that file contains a simple example plugin.
+
+**If you ever find a bug or have and idea for a feature please post a comment (here)[https://github.com/jdbener/BennerBot/issues]**
 
 (Post an Issue if i should add anything else to this file)
 
