@@ -1,6 +1,7 @@
 Hello, my name is Jdbener and today i am going to give you a basic walkthrough of how to use my twitch/hitbox chatbot, BennerBot! Bennerbot has been designed differently than other chatbots, it is designed by streamers for streamers, it has been designed to manage both twitch and hitbox simoltaniously, it has also been writen in java so it can be used from anywhere! If you have any bug reports or feature requests feal free to email me: jdbener@gmail.com and will try my best to include your input.
 
 There are 4 steps to runing BennerBot:
+
 1. Configuration: in the config folder is a file called config.yml. Open this folder in notepad or whatever you use, and edit it to your liking it is well commented
  and you should have no problem figuring out what things do.
 There is also a file called commands.yml. Use this file to decide what commands you want
@@ -11,15 +12,15 @@ Dont touch any of the other files unless you know what you are doing
 3. WebDisplay: in the main folder is a file called index.html, if you have bennerbot.jar runing you will be able to view the chat in this file instead of the included GUI.
 If you want to embead the chat into something you can acsess a raw feed in resource/output-dirty.txt or a cleaned up version at output.txt, for all you people who want to do cool stuff!
 
-3.5. Extensions: there is a folder called plugins, you can add pluggins to this folder if you want to exend bennerbots abilities. 
+4. Extensions: there is a folder called plugins, you can add pluggins to this folder if you want to exend bennerbots abilities. 
 There is a file called BasicCommands.java that file contains a simple example plugin.
 
 (Post an Issue if i should add anything else to this file)
 
 =================================================================================
 
-*Changelog:*
-Alpha Versions:
+##Changelog:##
+**Alpha Versions:**
 
 - Mk1: This is the original version including basic chat commands !hello and !time as well as join messages, a chat relay, and basic chat output. Designed to work with both Twitch.tv and Hitbox.tv.
 
@@ -40,7 +41,7 @@ Alpha Versions:
 
 =================================================================================
 
-*Licence:*
+##Licence:##
 Copyright © 2014 Joshua Dahl (jdbener@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
