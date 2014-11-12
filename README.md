@@ -1,9 +1,3 @@
-BennerBot Version 0.7
-Author: Jdbener
-11/1/14
-
-=================================================================================
-
 Hello, my name is Jdbener and today i am going to give you a basic walkthrough of how to use my twitch/hitbox chatbot, BennerBot! Bennerbot has been designed differently than other chatbots, it is designed by streamers for streamers, it has been designed to manage both twitch and hitbox simoltaniously, it has also been writen in java so it can be used from anywhere! If you have any bug reports or feature requests feal free to email me: jdbener@gmail.com and will try my best to include your input.
 
 There are 3 steps to runing BennerBot:
