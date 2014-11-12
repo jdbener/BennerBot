@@ -6,8 +6,7 @@ There are 3 steps to runing BennerBot:
 There is also a file called commands.yml. Use this file to decide what commands you want
 Dont touch any of the other files unless you know what you are doing
 
-2) Jar: in the mainfolder there will a file, bennerbot.jar, this file will run the bot, in no GUI mode. If you want to run bennerbot using a GUI you will have to use the
-run.bat file. (There might be an annoying beeping noise, to fix this mute your system sounds.)
+2) Jar: in the mainfolder there will a file, bennerbot.jar, this file will run the bot.
 
 3) WebDisplay: in the main folder is a file called index.html, if you have bennerbot.jar runing you will be able to view the chat in this file instead of the included GUI.
 If you want to embead the chat into something you can acsess a raw feed in resource/output-dirty.txt or a cleaned up version at output.txt, for all you people who want to do cool stuff!
