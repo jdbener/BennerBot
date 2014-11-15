@@ -44,23 +44,23 @@ There is a file called BasicCommands.java that file contains a simple example pl
 
 ##Libraries Used:##
 
-- [PIRCBotX](http://code.google.com/p/pircbotx/) License: This software product is OSI Certified Open Source Software, available under the GNU General Public License (GPL). Since the GPL may be too restrictive for use in proprietary applications, a commercial license is also provided.
+- [PIRCBotX](http://code.google.com/p/pircbotx/) ~ License: This software product is OSI Certified Open Source Software, available under the GNU General Public License (GPL). Since the GPL may be too restrictive for use in proprietary applications, a commercial license is also provided.
 
-- [Apache Commons Lang](https://commons.apache.org/proper/commons-lang/)/[Apache Commons Codec](https://commons.apache.org/proper/commons-codec/) [License](http://www.apache.org/licenses/)
+- [Apache Commons Lang](https://commons.apache.org/proper/commons-lang/)/[Apache Commons Codec](https://commons.apache.org/proper/commons-codec/) ~ [License](http://www.apache.org/licenses/)
 
-- [Google Guava](https://github.com/google/guava)[License](https://github.com/google/guava/blob/master/COPYING)
+- [Google Guava](https://github.com/google/guava) ~ [License](https://github.com/google/guava/blob/master/COPYING)
 
-- [slf4j](http://www.slf4j.org/) [License](http://www.slf4j.org/license.html)
+- [slf4j](http://www.slf4j.org/) ~ [License](http://www.slf4j.org/license.html)
 
-- [JSON-Simple](http://code.google.com/p/json-simple/) [License](http://www.apache.org/licenses/LICENSE-2.0)
+- [JSON-Simple](http://code.google.com/p/json-simple/) ~ [License](http://www.apache.org/licenses/LICENSE-2.0)
 
-- [Java Simple Plugin System](http://code.google.com/p/jspf/) [License](http://opensource.org/licenses/BSD-3-Clause)
+- [Java Simple Plugin System](http://code.google.com/p/jspf/) ~ [License](http://opensource.org/licenses/BSD-3-Clause)
 
-- [JYAML](http://jyaml.sourceforge.net/) [License: JYaml has a BSD style open-source license.](http://opensource.org/licenses/BSD-3-Clause)
+- [JYAML](http://jyaml.sourceforge.net/) ~ [License: JYaml has a BSD style open-source license.](http://opensource.org/licenses/BSD-3-Clause)
 
-- [LogBack](http://logback.qos.ch/) [License](http://logback.qos.ch/license.html)
+- [LogBack](http://logback.qos.ch/) ~ [License](http://logback.qos.ch/license.html)
 
-- [SQLite-JDBC](https://bitbucket.org/xerial/sqlite-jdbc) [License](http://www.apache.org/licenses/)
+- [SQLite-JDBC](https://bitbucket.org/xerial/sqlite-jdbc) ~ [License](http://www.apache.org/licenses/)
 
 ##Licence:##
 Copyright © 2014 Joshua Dahl (jdbener@gmail.com)
