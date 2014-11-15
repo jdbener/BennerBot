@@ -1,2 +1,0 @@
-java bennerbot.jar
-pause
