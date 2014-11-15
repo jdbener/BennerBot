@@ -12,6 +12,8 @@ twitchUsername: default
 #Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
 twitchOAuth: default
+#the name of the twitch account to moderate
+twitchChannel: bennerbot
 #The username of the the hitbox account you want the bot to use
 #Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
@@ -21,8 +23,6 @@ hitboxUsername: default
 #Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
 hitboxPassword: default
-#the name of the twitch account to moderate
-twitchChannel: bennerbot
 #the name of the hitbox account to moderate
 hitboxChannel: bennerbot
 #This is used to do things such as change the stream title
@@ -30,7 +30,7 @@ hitboxChannel: bennerbot
 #If left blank you wont be able to change your stream title with the bot
 twitchAccessToken: 
 #weather or not bennerbot should announce his presence
-incognitoMode: false
+incognitoMode: true
  
 #=======================
 #Output Settings
@@ -88,6 +88,16 @@ URLWhiteORBlackList: -1
 MaxMessageLength: 150
 
 #=======================
+#API Integration Settings
+#=======================
+#weather or not to display a notification when someone follows
+enableFollowerNotifications: true
+#This allows you to use the !title and !game commands
+enableStatusandGameUpdateing: true
+#Enable this if you want the emoticons loading to be displayed on the console (disable this if submiting a bug report i dont need an extra 20 thousand lines :p)
+ShowEmoticonLoading: true
+
+#=======================
 #Relay Settings
 #=======================
 #weather or not the Chat Relay is activated
@@ -102,3 +112,8 @@ showSendName: false
 #======================
 #weather or not to enable the Plugin System
 enablePluginSystem: true
+
+#=======================
+#Output Settings
+#=======================
+USERMESSAGE: "<server> <mod><date> <span style=\'color:<color>\'><user></span> <message><br>\n"

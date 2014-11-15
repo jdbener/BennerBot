@@ -17,6 +17,8 @@ There is a file called BasicCommands.java that file contains a simple example pl
 
 **If you ever find a bug or have and idea for a feature please post a comment [here](https://github.com/jdbener/BennerBot/issues)**
 
+**Legacy Builds can be found [here](https://github.com/jdbener/BennerBot-Legacy)**
+
 (Post an Issue if i should add anything else to this file)
 
 ##Changelog:##
@@ -30,13 +32,15 @@ There is a file called BasicCommands.java that file contains a simple example pl
 
 - MK4: The Plugin Update! Added the plugin system, as well as alot of underthehood changes.
 
-- MK5: The Realise Update! This is the first update that was officially realised to the public, as well as a custom command system and varibles. I also did a few changes to the GUI to make it more usable and/or chroma-able.
+- MK5: The Realise Update! This is the first update that was officially realised to the public, as well as a custom command system and variables. I also did a few changes to the GUI to make it more usable and/or chroma-able.
 
 - MK6: (mk5.1) This update simply adds the ability to send messages in chat
 
 - MK7: The GUI Update! This update completely redesigned the GUI that the bot uses, it fixes many issues that the old gui had, as well as allowing the bot to be run through the terminal!
 
-- MK8: (mk7.1) This update simplifies the GUI and fixes some of the bugs from previous version, we are also taking our first steps twards being open source
+- MK8: (mk7.1) This update simplifies the GUI and fixes some of the bugs from previous version, we are also taking our first steps towards being open source
+
+- MK9: This update involves alot of new changes, mainly: GUI Updates, Twitch Emoticon Support, More API Work, and source!!! Yes you can finally look at my ugly source.
 
 ##Licence:##
 Copyright © 2014 Joshua Dahl (jdbener@gmail.com)
