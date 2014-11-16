@@ -39,6 +39,8 @@ incognitoMode: true
 enableOutput: true
 #weather or not to be able to send messages to your users
 enableUserOutput: true
+#enable the button to resize your GUI display to its original size
+enableResizeButon: true
 #weather or not to shorten usernames, 
 #long names can cause issues and users names longer than 32 characters will be trimed no matter what
 #I recommend leaving this on
@@ -59,6 +61,8 @@ enableLeaveMessages: false
 #Weather or not messages that plugins create will be displayed
 #I recommend leaving this off, some of these messages could get kinda "spammy"
 enablePluginMessages: true
+#the size of the GUI display in the format: x,y
+defaultGUIDisplaySize: "400,800"
 
 #=======================
 #Chat Moderation Settings
@@ -96,6 +100,8 @@ enableFollowerNotifications: true
 enableStatusandGameUpdateing: true
 #Enable this if you want the emoticons loading to be displayed on the console (disable this if submiting a bug report i dont need an extra 20 thousand lines :p)
 ShowEmoticonLoading: true
+#Enable this if you want the most current emotion data (i recommend leaving this off, the ones included with your download are very upto date. This also creates alot of lag on your system)
+enableAutoEmotes: false
 
 #=======================
 #Relay Settings
@@ -112,8 +118,3 @@ showSendName: false
 #======================
 #weather or not to enable the Plugin System
 enablePluginSystem: true
-
-#=======================
-#Output Settings
-#=======================
-USERMESSAGE: "<server> <mod><date> <span style=\'color:<color>\'><user></span> <message><br>\n"

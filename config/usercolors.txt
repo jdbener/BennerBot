@@ -75,3 +75,6 @@ battlefield4battlebeta:#5fc25f
 veeveechan:#7bbe6f
 jonasun:#87f394
 girlsgethordeytoo:#2d3cde
+sorajin1:#c30c2b
+chaos1536:#046ab8
+reinert95:#f31ac7
