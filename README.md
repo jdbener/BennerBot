@@ -19,9 +19,9 @@ There is a file called BasicCommands.java that file contains a simple example pl
 
 **Legacy Builds can be found [here](https://github.com/jdbener/BennerBot-Legacy)**
 
-(Post an Issue if i should add anything else to this file)
+**If you like what im doing feel free to: [![alt text](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "Title")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XF5ZN3N5ULFAE)**
 
-If you like what im doing feel free to donate: [![alt text](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "Title")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XF5ZN3N5ULFAE)
+(Post an Issue if i should add anything else to this file)
 
 ##Features:##
 
@@ -57,6 +57,8 @@ If you like what im doing feel free to donate: [![alt text](https://www.paypalob
 - MK9: This update involves alot of new changes, mainly: GUI Updates, Twitch Emoticon Support, More API Work, and source!!! Yes you can finally look at my ugly source.
 
 - MK10: (mk9.1) This update fixes the huge amount of memory used by the emoticon system in the last update
+
+- MK11: The Quality of Life Update! A bunch of general fixes to improve the quality of life for you the user!
 
 ##Libraries Used:##
 

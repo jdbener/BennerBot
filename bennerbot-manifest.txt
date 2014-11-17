@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: swt.jar commons-codec-1.9.jar commons-lang3-3.3.2.jar core-renderer.jar guava-18.0.jar json-simple-1.1.1.jar jspf.core-1.0.2.jar jyaml-1.3.jar logback-classic-1.1.1.jar logback-core-1.1.1.jar pircbotx-2.0.1.jar slf4j-api-1.7.5.jar sqlite-jdbc-3.7.2.jar
+Main-Class: me.jdbener.Bennerbot
