@@ -21,6 +21,8 @@ There is a file called BasicCommands.java that file contains a simple example pl
 
 (Post an Issue if i should add anything else to this file)
 
+If you like what im doing feel free to donate: [![alt text](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "Title")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XF5ZN3N5ULFAE)
+
 ##Features:##
 
 1. Accessible, Bennerbot is written in java so it can be used anywhere. We also dont have limitations who can use it.
