@@ -1,0 +1,8 @@
+<updates>
+    <revision>
+        <version>11.0</version>
+        <changelog>Original Realise of the update system</changelog>
+        <link>https://github.com/jdbener/BennerBot/releases/download/a0.11/BennerBot.MK11.zip</link>
+        <revID>0</rev>
+    </revision>
+</updates>
