@@ -41,7 +41,8 @@ public class GUIContainer{
 			open = new JButton("Open Display");
 			//makes sure that clicking the button will do something
 			open.addActionListener(new ActionListener() {
-				 public void actionPerformed(ActionEvent arg0) {
+				 @Override
+				public void actionPerformed(ActionEvent arg0) {
 					//if the display is visible
 					 if(display.d.isVisible()){
 						//hide the display
@@ -59,7 +60,8 @@ public class GUIContainer{
 	        }); 
 			rsz = new JButton("Resize Display");
 			rsz.addActionListener(new ActionListener() {
-				 public void actionPerformed(ActionEvent arg0) {
+				 @Override
+				public void actionPerformed(ActionEvent arg0) {
 					 display.d.setSize(Integer.parseInt(Bennerbot.conf.get("defaultGUIDisplaySize").toString().split(",")[0]), Integer.parseInt(Bennerbot.conf.get("defaultGUIDisplaySize").toString().split(",")[1]));
 				 }
 			});
@@ -95,7 +97,8 @@ public class GUIContainer{
 
 			//this will update the button every tenth of a second
 			Runnable runnable = new Runnable() {
-			    public void run() {
+			    @Override
+				public void run() {
 					if(display.d.isVisible()){
 						open.setText("Hide Display");
 					} else {

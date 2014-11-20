@@ -2,7 +2,7 @@
 #General Settings
 #=======================
 #The name of the bot changing this has no effect
-botName: BEnnerBot
+botName: BennerBot
 #The username of the the twitch account you want the bot to use
 #Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
@@ -37,7 +37,7 @@ incognitoMode: true
 #Output Settings
 #=======================
 #weather or not to enable sending output to a file or a GUI
-enableOutput: false
+enableOutput: true
 #weather or not to be able to send messages to your users
 enableUserOutput: true
 #enable the button to resize your GUI display to its original size
@@ -66,6 +66,33 @@ enablePluginMessages: true
 defaultGUIDisplaySize: "400,600"
 #set this to true to clear the database of colors when the system starts?
 resetColorDatabase: false
+
+#=======================
+#Chat Moderation Settings
+#=======================
+#weather or not bennerbot should moderate your chat
+#only set this to true if bennerbot has been modded on your channel
+enableModeration: true
+#How many warnings a user gets before being timed out
+kickWarnings: 5
+#How many warnings a user gets before being banned
+banWarnings: 20
+#Active Capitalazation Filter?
+CapsFilter: true
+#Activate URL Filtering
+UrlFilter: true
+#Activate message length Filtering
+LengthFilter: true
+
+#How what percentage of a message is required to be capitalized in order to activate the filter
+#This is a decimal number where 1 = 100%
+MaxCapsPercentage: .8
+#Weather to filter out all the URLS in the file or all other URLS
+#Setting this to 1 will filter out all other URLS
+#Setting this to -1 will filter out all URLS in the file
+URLWhiteORBlackList: -1
+#The maximum length of a message
+MaxMessageLength: 150
 
 #=======================
 #API Integration Settings
@@ -98,4 +125,4 @@ enablePluginSystem: true
 #=======================
 #Output Settings
 #=======================
-USERMESSAGE: "<server> <mod><date> <span style=\'color:<color>\'><user></span> <message><br>\n"
+USERMESSAGE: "<server> <mod><date> <span style='color:<color>'><user></span> <message>"

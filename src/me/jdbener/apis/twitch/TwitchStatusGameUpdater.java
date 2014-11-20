@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import me.jdbener.Bennerbot;
+import me.jdbener.moderataion.FilterManager;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
@@ -49,6 +50,7 @@ public class TwitchStatusGameUpdater extends ListenerAdapter<PircBotX>{
 				}
 				} else {
 					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" has just tried to use a command they dont have permision to", 0);
+					FilterManager.punish(e.getUser().getNick());
 				}
 			if(e.getMessage().startsWith("!title"))
 				if(ismod){
@@ -82,6 +84,7 @@ public class TwitchStatusGameUpdater extends ListenerAdapter<PircBotX>{
 				}
 				} else {
 					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" has just tried to use a command they dont have permision to", 0);
+					FilterManager.punish(e.getUser().getNick());
 				}
 	}
 	}

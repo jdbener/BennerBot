@@ -3,7 +3,7 @@ package me.jdbener.utilities;
 import java.util.HashMap;
 
 import me.jdbener.Bennerbot;
-import me.jdbener.plugins.moderataion.FilterManager;
+import me.jdbener.moderataion.FilterManager;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;

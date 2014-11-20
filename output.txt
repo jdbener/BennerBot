@@ -1,10 +1,4 @@
 Welcome to BennerBot
 Version 0.9
-[18:42] Sucessfully Connected to Twitch
-[18:42] Sucessfully Connected to Hitbox
-twitch [18:43] jdbener: the way BB is set up now
-twitch [18:43] jdbener: you can change things while the bot is runnig
-twitch [18:43] jdbener: but it probably wont do anything
-twitch [18:43] jdbener: most things get info from the config file on startup
-twitch [18:44] jdbener: and then cache that info
-twitch [18:45] jdbener: but stuff like the relay can be turned off at any time
+[17:10] Sucessfully Connected to Twitch
+[17:10] Sucessfully Connected to Hitbox

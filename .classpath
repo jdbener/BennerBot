@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="jspf.core-1.0.2.jar"/>
 	<classpathentry kind="lib" path="json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="guava-18.0.jar"/>
+	<classpathentry kind="lib" path="honcho-api.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -155,7 +155,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		}
 		//support for highlighting messages 
 		if((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true"))
-			clean = "<div id=\'highlight\'>"+server+" "+mod+dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> "+message+"</div><br>\n";		
+			clean = "<div id=\'highlight\'>"+server+" "+mod+dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> "+message+"</div><br>\n";
 		else
 			clean = server+" "+mod+dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> "+message+"<br>\n";
 		

@@ -31,6 +31,7 @@ import javax.swing.JOptionPane;
 
 import me.jdbener.apis.APIManager;
 import me.jdbener.gui.GUIContainer;
+import me.jdbener.moderataion.FilterManager;
 import me.jdbener.utilities.BotJoinHandeler;
 import me.jdbener.utilities.ChatRelayHandeler;
 import me.jdbener.utilities.CustomCommandHandeler;
@@ -128,7 +129,8 @@ public class Bennerbot {
 		    //set up everything
 		    setupConfig();
 		    Runnable runnable = new Runnable() {
-			    public void run() {
+			    @Override
+				public void run() {
 			    	setupConfig();
 			    }
 			};
@@ -193,6 +195,9 @@ public class Bennerbot {
 		//implement the plugin loader
 		if(conf.get("enablePluginSystem").toString().equalsIgnoreCase("true"))
 				pluginLoader();
+		
+		if(conf.get("enableModeration").toString().equalsIgnoreCase("true"))
+			new FilterManager();
 		
 		//this activates !title and !game commands, as well as follower notifications
 		try{
