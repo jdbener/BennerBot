@@ -12,12 +12,18 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 import org.ho.yaml.Yaml;
 
 public class Launcher {
 	@SuppressWarnings("unchecked")
 	public static void main (String[] args){
+		try {
+            UIManager.setLookAndFeel (UIManager.getSystemLookAndFeelClassName ());
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
 		try {
 			boolean load = false, dl = false;
 		
@@ -41,7 +47,7 @@ public class Launcher {
 			
 			//if new info is to be loaded check if the user would like to download the new version
 			if(load == true){
-				int awnser = JOptionPane.showConfirmDialog(null, "<html><body>Would you like to download BennerBot version "+latest.get("Version").toString()+"<p><b>Changes:</b> "+latest.get("Changelog").toString()+"</p></body></html>","BennerBot ~ Update "+latest.get("Version").toString()+" Avaliable", JOptionPane.YES_NO_OPTION);
+				int awnser = JOptionPane.showConfirmDialog(null, "<html><body>Would you like to download BennerBot version "+latest.get("Version").toString()+"<b>THIS WILL OVERRIGHT ANY CONFIG CHANGES/PLUGINS YOU HAVE MAKE SURE TO BACK THOSE UP BEFORE UPDATING</b><p><b>Changes:</b> "+latest.get("Changelog").toString()+"</p></body></html>","BennerBot ~ Update "+latest.get("Version").toString()+" Avaliable", JOptionPane.YES_NO_OPTION);
 				if(awnser == JOptionPane.OK_OPTION){
 					System.out.println("Awnsered yes, begining download");
 					dl = true;
@@ -49,7 +55,7 @@ public class Launcher {
 			}
 			
 			//download the new info
-			if(dl == true){		
+			if(dl == true || !(new File("bot").exists())){		
 			    UnzipUtility unzipper = new UnzipUtility();
 			    try {
 			    	System.out.println("Unziping file");

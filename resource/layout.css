@@ -9,14 +9,33 @@ body {
     overflow-x: hidden;
 }
     body * {
-        /*margin: 10px;
-        padding: 10px;*/
         font-family: helvetica, sans-serif;
     }
+    a {
+        color:#ff0000;
+    }
+    /*Highlighted Messages*/
     #highlight {
         background:#B10000;
         color: white;
     }
-    a {
-        color:#ff0000;
+    /*when something gose wrong*/
+    .error{
+    
+    }
+    /*server image*/
+    .server {
+    
+    }
+    /*timestamp*/
+    .timestamp {
+    
+    }
+    /*the message senders nickname*/
+    .username{
+    
+    }
+    /*the message body*/
+    .message{
+    
     }

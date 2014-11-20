@@ -28,6 +28,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 import me.jdbener.apis.APIManager;
 import me.jdbener.gui.GUIContainer;
@@ -54,7 +55,7 @@ import org.slf4j.LoggerFactory;
 public class Bennerbot {
 	//bot infromation
 	public static String name = "BennerBot";												//the name of the bot
-	public final static String version = "0.9";												//the version ID of the bot
+	public final static String version = "0.13";											//the version ID of the bot
 	public static String twitchu = "BennerBot",												//twitch username used to connect
 			twitchpw = "oauth:hrr2wpqq0knt6sb0spzd3d1mugpdezf",								//twitch OAuth used to connect
 			hitboxu = "bennerbot",															//hitbox username used to connect
@@ -217,6 +218,12 @@ public class Bennerbot {
 		manager.addBot(hitbox.buildConfiguration());
 		manager.start();
 		
+		//set the look and feal
+		try {
+            UIManager.setLookAndFeel (UIManager.getSystemLookAndFeelClassName ());
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
 		//set up the GUI class
 		gui = new GUIContainer();
 		
