@@ -1,0 +1,26 @@
+16:49:58.542 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+16:49:58.628 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+16:49:58.630 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+16:49:58.631 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+16:49:58.633 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+16:49:58.633 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+16:49:58.633 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+16:50:00.131 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+16:50:00.131 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+16:50:00.135 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.249.252
+16:50:00.163 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+16:50:00.169 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS oauth:hrr2wpqq0knt6sb0spzd3d1mugpdezf
+16:50:00.170 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK bennerbot
+16:50:00.170 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+16:50:00.191 [main] INFO  me.jdbener.Bennerbot - Started Loading the GUI
+16:50:00.214 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address irc.glados.tv/192.99.100.37
+16:50:00.230 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 bennerbot :Welcome, GLHF!
+16:50:00.240 [botPool0-bot0] DEBUG org.pircbotx.InputParser - Logged onto server.
+16:50:00.328 [botPool0-bot1] INFO  org.pircbotx.PircBotX - Connected to server.
+16:50:00.328 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - PASS bennerbot
+16:50:00.329 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - NICK bennerbot
+16:50:00.329 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+16:50:01.171 [listenerPool0-thread4] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #biogenx2b :/color #ff0000
+16:50:01.330 [listenerPool0-thread4] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :/color #ff0000
+16:50:01.626 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 001 bennerbot :Welcome to the hitbox-tv IRC Network bennerbot!BennerBot@ip.bennerbot.chat.hitbox.tv (Connection ID: e88b20af-5909-4c4c-a435-1dc65b08d22b)
+16:50:01.626 [botPool0-bot1] DEBUG org.pircbotx.InputParser - Logged onto server.

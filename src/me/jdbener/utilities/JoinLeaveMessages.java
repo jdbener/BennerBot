@@ -13,9 +13,9 @@ public class JoinLeaveMessages extends ListenerAdapter<PircBotX> {
 	
 	public void onJoin(JoinEvent<PircBotX> e){
 		if(Bennerbot.conf.get("enableJoinMessages").toString().equalsIgnoreCase("true"))
-		if(!e.getUser().getNick().equalsIgnoreCase(e.getBot().getNick())){
-			e.getChannel().send().message("Welcome "+e.getUser().getNick()+" to the channel!");
-		}
+			if(!e.getUser().getNick().equalsIgnoreCase(e.getBot().getNick())){
+				e.getChannel().send().message("Welcome "+e.getUser().getNick()+" to the channel!");
+			}
 	}
 	public void onPart(PartEvent<PircBotX> e){
 		if(Bennerbot.conf.get("enableLeaveMessages").toString().equalsIgnoreCase("true"))

@@ -17,10 +17,7 @@ There is a file called BasicCommands.java that file contains a simple example pl
 
 **If you ever find a bug or have and idea for a feature please post a comment [here](https://github.com/jdbener/BennerBot/issues)**
 
-**Auto Installer can be found here:**
-
-- **[Cross Platform Jar](https://github.com/jdbener/BennerBot/releases/download/autoupdater/BennerBot.jar)**
-- **[Windows Executable](https://github.com/jdbener/BennerBot/releases/download/autoupdater/BennerBot.exe)**
+**Auto Installer can be found [here](https://github.com/jdbener/BennerBot/releases/tag/autoupdater)**
 
 **If you like what im doing feel free to: [![alt text](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "Title")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XF5ZN3N5ULFAE)**
 
@@ -62,6 +59,10 @@ There is a file called BasicCommands.java that file contains a simple example pl
 - MK10: (mk9.1) This update fixes the huge amount of memory used by the emoticon system in the last update
 
 - MK11: The Quality of Life Update! A bunch of general fixes to improve the quality of life for you the user!
+
+- MK12: The Automatic Update! Added an auto updater and some more quality of life stuff
+
+- MK13: The Bountiful Update! Added Automatic messages, Better Custom messages and A countdown. As well as more quality of life stuff. Removed herobrine
 
 ##Libraries Used:##
 

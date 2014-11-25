@@ -1,0 +1,11 @@
+#=========================================================================
+# ABOUT THIS FILE
+#=========================================================================
+# This file is for automated messages, automated messages are messages that
+# the bot will send automatic based on a set time frame. To create a message
+# add a new line with the format, Increment: Message
+# the Increment value cant be any value, but the same value cant be used twice,
+# i recommend incrementing the value for example: 1, 2, 3, 4
+1: "Test Message"
+2: "Test Message 2"
+3: "Another Message"

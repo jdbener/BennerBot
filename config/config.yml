@@ -3,6 +3,21 @@
 #=======================
 #The name of the bot changing this has no effect
 botName: BennerBot
+#Weather or not to connect to a twitch channel
+connectToTwitch: true
+#Weather or not to connect to a hitbox channel
+connectToHitbox: true
+#Weather or not commands sent by the bot operator are phrased and responded to
+respondToOperatorCommands: true
+#how dates are displayed by the bot
+#information on what this means can be found here: https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
+dateFormat: "HH:mm"
+#weather or not bennerbot should announce his presence
+incognitoMode: true
+
+#=======================
+#Twitch Settings
+#=======================
 #The username of the the twitch account you want the bot to use
 #Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
@@ -14,6 +29,16 @@ twitchUsername: default
 twitchOAuth: default
 #the name of the twitch account to moderate
 twitchChannel: biogenx2b
+#This is used to do things such as change the stream title
+#A very simple tutorial on how to get this value can be found here: http://discuss.dev.twitch.tv/t/how-to-set-title/390/2
+#If left blank you wont be able to change your stream title with the bot
+#Hitbox dosent need an access token because i can generate one
+#kxq56ehskmckkwop1cxlybt9ggjgsm5
+twitchAccessToken: kxq56ehskmckkwop1cxlybt9ggjgsm5
+
+#=======================
+#Hitbox Settings
+#=======================
 #The username of the the hitbox account you want the bot to use
 #Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
@@ -25,23 +50,29 @@ hitboxUsername: default
 hitboxPassword: default
 #the name of the hitbox account to moderate
 hitboxChannel: jdbener
-#This is used to do things such as change the stream title
-#A very simple tutorial on how to get this value can be found here: http://discuss.dev.twitch.tv/t/how-to-set-title/390/2
-#If left blank you wont be able to change your stream title with the bot
-#kxq56ehskmckkwop1cxlybt9ggjgsm5
-twitchAccessToken: kxq56ehskmckkwop1cxlybt9ggjgsm5
-#weather or not bennerbot should announce his presence
-incognitoMode: true
- 
+
+#=======================
+#Last.fm Settings
+#=======================
+#should last.fm intergation be enabled?
+enableLastfmIntegration: true
+#the username to get last.fm data about (please enclose in quotes, for example: "bennerbot")
+lastfmName: "irish_00"
+#the format for how messages are responded to
+#<user>: the user who sent the command
+#<title>: the title of the song thats currently playing
+#<artist>: the artist who performs said song
+#<album>: the album that the song is realised on
+#<url>: a link to find out more information about the song at
+#add a number in front of these to represent previous tracks (number must be between 1 and 20)
+#for example, <1title> would show the title of the previous song
+songCommandMessageFormat: "hay <user> thats, <title> ~ <artist> on <album> <url>"
+#songCommandMessageFormat: "hay <user> thats, <title> ~ <artist> on <album> <url>, the last song was: <1title> ~ <1artist>"
 #=======================
 #Output Settings
 #=======================
 #weather or not to enable sending output to a file or a GUI
 enableOutput: true
-#weather or not to be able to send messages to your users
-enableUserOutput: true
-#enable the button to resize your GUI display to its original size
-enableResizeButon: true
 #weather or not to shorten usernames, 
 #long names can cause issues and users names longer than 32 characters will be trimed no matter what
 #I recommend leaving this on
@@ -62,35 +93,46 @@ enableLeaveMessages: false
 #Weather or not messages that plugins create will be displayed
 #I recommend leaving this off, some of these messages could get kinda "spammy"
 enablePluginMessages: true
+#weather or not to filter users whos names end in "bot"
+filterBots: true
+#weather or not to filter commands from messages
+filterCommands: true
+#The format for messages that are displayed in the GUI or Written to a file
+#<server>: the server icon that this message is from
+#<badge>: the moderator/streamer badge
+#<timestamp>: the current time
+#<color>: the color for a specific user
+#<user>: the username of the user who sent the message
+#<message>: the message itself
+DisplayMessageFormat: "<span class='server'><server></span> <span class='badge'><badge></span><span class='timestamp'><timestamp></span> <span class='username' style='color:<color>'><user></span> <span class='message'><message></span>"
+
+#=======================
+#Display Settings
+#=======================
+#weather or not to be able to send messages to your users
+enableUserOutput: true
+#enable the button to resize your GUI display to its original size
+enableResizeButon: true
 #the size of the GUI display in the format: x,y
 defaultGUIDisplaySize: "400,600"
-#set this to true to clear the database of colors when the system starts?
-resetColorDatabase: false
 
 #=======================
 #Chat Moderation Settings
 #=======================
 #weather or not bennerbot should moderate your chat
 #only set this to true if bennerbot has been modded on your channel
-enableModeration: true
+enableModeration: false
 #How many warnings a user gets before being timed out
 kickWarnings: 5
 #How many warnings a user gets before being banned
 banWarnings: 20
 #Active Capitalazation Filter?
 CapsFilter: true
-#Activate URL Filtering
-UrlFilter: true
 #Activate message length Filtering
 LengthFilter: true
-
 #How what percentage of a message is required to be capitalized in order to activate the filter
 #This is a decimal number where 1 = 100%
 MaxCapsPercentage: .8
-#Weather to filter out all the URLS in the file or all other URLS
-#Setting this to 1 will filter out all other URLS
-#Setting this to -1 will filter out all URLS in the file
-URLWhiteORBlackList: -1
 #The maximum length of a message
 MaxMessageLength: 150
 
@@ -103,8 +145,6 @@ enableFollowerNotifications: true
 enableStatusandGameUpdateing: true
 #Enable this if you want the emoticons loading to be displayed on the console (disable this if submiting a bug report i dont need an extra 20 thousand lines :p)
 ShowEmoticonLoading: true
-#Enable this if you want the most current emotion data (i recommend leaving this off, the ones included with your download are very upto date. This also creates alot of lag on your system)
-enableAutoEmotes: false
 
 #=======================
 #Relay Settings
@@ -117,12 +157,23 @@ showSource: false
 showSendName: false
 
 #======================
+#Auto Message Settings
+#======================
+#weather or not to enable the automessage system
+enableAutoMessages: false
+#the time in seconds between each method (60 seconds in a minute, 3600 seconds in an hour)
+autoMessageInterval: 300
+
+#======================
 #Plugin System Settings
 #======================
 #weather or not to enable the Plugin System
 enablePluginSystem: true
 
-#=======================
-#Output Settings
-#=======================
-USERMESSAGE: "<server> <mod><date> <span style='color:<color>'><user></span> <message>"
+#======================
+#Database Settings
+#======================
+#set this to true to clear the database of colors when the system starts?
+resetColorDatabase: false
+#Enable this if you want the most current emotion data (i recommend leaving this off, the ones included with your download are very upto date. This also creates alot of lag on your system)
+enableAutoEmotes: false

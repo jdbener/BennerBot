@@ -11,6 +11,9 @@
 # GetUserName: <username>, it will be displayed like so:
 # !GetUserName, JDBenner
 #
+# You can add alternative commands by separating them with a tilde (~).
+# For exampe: message 1~message 2
+#
 # If the bot ever stops working when you add commands try surrounding the command with quotes,
 # some symbols dont work if not inside quotes.
 #
@@ -24,22 +27,8 @@
 # <username>: the name of the user who sent the command
 #=========================================================================
 #LEAVE THIS COMMAND
-dummycommand: n/a
+dummycommand: "n/a"
 #You can add your commands here:
-thisiscommand: cmd
-~thisisvariable: var
-usesvariable: <thisisvariable>
-Commands: "Bot, twitch, hitbox, ffz, moveswap, dupe, crapplemage, noloot, skype, pvp, speedsouls, wr, rank, level, hello, rng, mikuia"
-Bot: "This is bennerbot (version 0.8), made by jdbener. Credits go to twitch.tv/jdbener, it's open source and free to use."
-twitch: "Main site twitch.tv/pinkandorangeandgold this is where I will look at chat, however hitbox chat will port over, so everyone can see, and mikuia experience is twitch only."
-Hitbox: "Stream on hitbox.tv/pinkandorangeandgold will have less delay, and less random loading depending on twitch server stress, and the amount of viewers on the stream."
-ffz: "There are now FrankerfacesZ go to frankerfacez.com to learn more... Such as PinkGargoyleHelm you can preview this at http://frankerfacez.com/emotes.html#pinkandorangeandgold"
-moveswap: "http://speedsouls.com/Moveswap"
-dupe: "http://speedsouls.com/Item_Dupe_(Dark_Souls)"
-crapplemage: "Dark Souls all bosses speedrun route by santzo84 using mainly magic pastebin.com/itcKK9Sv but my run is slightly different."
-noloot: "Use only items that apear in inventory without picking up anything. (exception first key) no merchants, or blacksmiths."
-skype: "Okie! Lads and lasses! Wanna see a man beating Skype & Quelaag simultaneously? twitch.tv/pinkandorangeandgold/c/5182825"
-speedsouls: "speedsouls.com Dark souls speedrun wiki with alot of usefull information, also a team on twitch twitch www.twitch.tv/team/speedsouls"
-wr: "In Game Time Any% 50:32 by Santzo84 All bosses 1:20:46 by Santzo84"
-pvp: "I will be doing some PVP once steam takes over GFWL for dark souls, I am thinking about doing some PVP as well as jolly co-op runs which should be very interesting..."
-rank: "To see the active twitch chat ranking check: mikuia.tv/levels/pinkandorangeandgold"
+thisiscommand: "cmd"
+~thisisvariable: "var"
+usesvariable: "<thisisvariable>~hi mindy!"

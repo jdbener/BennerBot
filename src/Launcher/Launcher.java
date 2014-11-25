@@ -1,10 +1,13 @@
 package Launcher;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Map;
 import java.util.Scanner;
@@ -15,8 +18,11 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import org.ho.yaml.Yaml;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Launcher {
+	public static Logger logger = LoggerFactory.getLogger(Launcher.class);	
 	@SuppressWarnings("unchecked")
 	public static void main (String[] args){
 		try {
@@ -34,12 +40,20 @@ public class Launcher {
 				r.write(StreamToString(new URL("https://raw.githubusercontent.com/jdbener/BennerBot/master/resource/latest.yml").openStream()));
 				r.close();
 			}
-		
+			
+			//this code creates the launch script that will be executed by the  to launch the bot
+			if(!new File(".launch").exists()){
+				load = true;
+				FileWriter r = new FileWriter(new File(".launch"));
+				r.write("java -jar bennerbot.jar");
+				r.close();
+			}
+			
 			//load the latest information
 			Map<String, Object> latest = (Map<String, Object>) Yaml.load(new URL("https://raw.githubusercontent.com/jdbener/BennerBot/master/resource/latest.yml").openStream());
 			//load current information
 			Map<String, Object> current = (Map<String, Object>) Yaml.load(new File("current.yml").toURI().toURL().openStream());
-			System.out.println("Loaded settings");
+			logger.info("Loaded settings");
 			
 			//if the revision ID of the latest build is not the same as the revision ID of the current build
 			if(!latest.get("ID").toString().equalsIgnoreCase(current.get("ID").toString()))
@@ -47,20 +61,19 @@ public class Launcher {
 			
 			//if new info is to be loaded check if the user would like to download the new version
 			if(load == true){
-				int awnser = JOptionPane.showConfirmDialog(null, "<html><body>Would you like to download BennerBot version "+latest.get("Version").toString()+"<b>THIS WILL OVERRIGHT ANY CONFIG CHANGES/PLUGINS YOU HAVE MAKE SURE TO BACK THOSE UP BEFORE UPDATING</b><p><b>Changes:</b> "+latest.get("Changelog").toString()+"</p></body></html>","BennerBot ~ Update "+latest.get("Version").toString()+" Avaliable", JOptionPane.YES_NO_OPTION);
-				if(awnser == JOptionPane.OK_OPTION){
-					System.out.println("Awnsered yes, begining download");
+				int awnser = JOptionPane.showConfirmDialog(null, "<html><body>Would you like to download BennerBot version "+latest.get("Version").toString()+"<br><b>THIS WILL OVERRIGHT ANY CONFIG CHANGES/PLUGINS YOU HAVE MAKE SURE TO BACK THOSE UP BEFORE UPDATING</b><br><p><b>Changes:</b> "+latest.get("Changelog").toString()+"</p></body></html>","BennerBot ~ Update "+latest.get("Version").toString()+" Avaliable", JOptionPane.YES_NO_OPTION);
+				if(awnser == JOptionPane.OK_OPTION)
 					dl = true;
-				}
 			}
 			
 			//download the new info
-			if(dl == true || !(new File("bot").exists())){		
+			if(dl == true || !(new File("bot").exists())){
+				logger.info("begining download");
 			    UnzipUtility unzipper = new UnzipUtility();
 			    try {
-			    	System.out.println("Unziping file");
+			    	logger.info("Unziping file");
 			    	unzipper.unzip(new URL(latest.get("link").toString()), new File("").getAbsolutePath());
-			    	System.out.println("Successfully unziped file");
+			    	logger.info("Successfully unziped file");
 			    } catch (Exception ex) {
 			    	// some errors occurred
 			    	ex.printStackTrace();
@@ -76,7 +89,7 @@ public class Launcher {
 						temp.renameTo(new File("bot"));
 					}
 			    }
-			    System.out.println("Successfully renamed the file");
+			    logger.info("Successfully renamed the file");
 			    
 			    //update the current file
 			    FileWriter r = new FileWriter(new File("current.yml"));
@@ -86,9 +99,17 @@ public class Launcher {
 			}
 			
 			//start the bot
-			System.out.println("Continuing with bot loading sequence");
-			//Runtime.getRuntime().exec("java -jar bot/bennerbot.jar");
-			Runtime.getRuntime().exec("java -jar bennerbot.jar", null, new File("bot/"));
+			logger.info("Continuing with bot loading sequence");
+			ProcessBuilder pb = new ProcessBuilder("java", "-jar", "bennerbot.jar");
+			pb.directory(new File("bot"));
+			try {
+	            Process p = pb.start();
+	            LogStreamReader lsr = new LogStreamReader(p.getInputStream());
+	            Thread thread = new Thread(lsr, "LogStreamReader");
+	            thread.start();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -158,5 +179,26 @@ class UnzipUtility {
             bos.write(bytesIn, 0, read);
         }
         bos.close();
+    }
+}
+class LogStreamReader implements Runnable {
+
+    private BufferedReader reader;
+
+    public LogStreamReader(InputStream is) {
+        this.reader = new BufferedReader(new InputStreamReader(is));
+    }
+
+    public void run() {
+        try {
+            String line = reader.readLine();
+            while (line != null) {
+                System.out.println(line);
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

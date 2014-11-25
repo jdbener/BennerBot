@@ -6,6 +6,8 @@
 
 package me.jdbener;
 
+//TODO add preaty scrolling to the output file
+
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +15,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
@@ -49,13 +49,15 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 				//if the write type is turned on
 				if(Bennerbot.conf.get("WriteClean").toString().equalsIgnoreCase("true"))
 					//write the beggining html
-					Bennerbot.write("<html>\n<head>\n<title>"+Bennerbot.name+" v"+Bennerbot.version+" ~ Chat</title><link rel=\"stylesheet\" type=\"text/css\" href=\"resource/layout.css\" media=\"screen\" />\n</head><body onLoad=\"setInterval('window.scrollTo(0,document.body.scrollHeight);location.reload();', 1000);\">\n<center><h1>Welcome to "+Bennerbot.name+"</h1>Version "+me.jdbener.Bennerbot.version+"</center>\n", new File("output.html"), false);
+					Bennerbot.write("<html>\n<head>\n<title>"+Bennerbot.name+" v"+Bennerbot.version+" ~ Chat</title><link rel=\"stylesheet\" type=\"text/css\" href=\"resource/layout.css\" media=\"screen\" /><script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\" ></script>\n</head><body onLoad=\"setInterval('window.scrollTo(0,document.body.scrollHeight);location.reload();', 1000);\">\n<center><h1>Welcome to "+Bennerbot.name+"</h1>Version "+me.jdbener.Bennerbot.version+"</center>\n", new File("output.html"), false);
 			//if new creation didnt fail
 			if(new File("output.txt").createNewFile())
 				//if the write type is turned on
 				if(Bennerbot.conf.get("WriteDirty").toString().equalsIgnoreCase("true"))
 					//write the welcome message
 					Bennerbot.write("Welcome to "+Bennerbot.name+"\nVersion "+me.jdbener.Bennerbot.version+"\n", new File("output.txt"));
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -80,13 +82,9 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		}
 		//set the color on the server to the color set in the file
 		Bennerbot.sendMessage("/color "+UserColors.rgb2Hex(color), new String());
-		
-		//twitch
-		if(e.getBot().getBotId() == 0)
-			onOutput("Sucessfully Connected to Twitch");
-		//hitbox
-		if(e.getBot().getBotId() == 1)
-			onOutput("Sucessfully Connected to Hitbox");
+	
+		//display connect message
+		onOutput("Sucessfully Connected to "+Bennerbot.servers.get(e.getBot().getBotId()).getName());
 	}
 	
 	/**
@@ -94,22 +92,15 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 	 */
 	public void onMessage(MessageEvent<PircBotX> e){
 		//initialize variables
-		String clean, dirty, server, serverd, mod, user, message;
+		String clean = "", dirty, server, serverd, mod, user, message;
 		Color color = Color.gray;
-		DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+		
 		Date date = new Date();
 		
 		//set the server text/image
-		if (e.getBot().getBotId() == 1){
-			 server = "<img src=\'"+Bennerbot.getPath(new File("resource/HitboxLogo.png"))+"\'>";
-			 serverd = "hitbox";
-		 } else  if (e.getBot().getBotId() == 0){
-			 server = "<img src=\'"+Bennerbot.getPath(new File("resource/TwitchLogo.png"))+"\'>";
-			 serverd = "twitch";
-		 } else {
-			 server = "";
-			 serverd = "";
-		 }
+		Server s = Bennerbot.servers.get(e.getBot().getBotId());
+		server = "<img src=\'"+s.getLogo()+"\'>";
+		serverd = s.getName();
 		
 		//the user is the user who sent the message
 		user = e.getUser().getNick();
@@ -153,20 +144,41 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 				user+=":";
 			}
 		}
+		//weather to write to the file by default
+		boolean write = true;
+		//if the message was sent by a bot dont display it
+		if(user.endsWith("bot") && Bennerbot.conf.get("filterBots").toString().equalsIgnoreCase("true"))
+			write = false;
+		//if the message is a command, dont display it
+		if(message.startsWith("!") && Bennerbot.conf.get("filterCommands").toString().equalsIgnoreCase("true"))
+			write = false;
 		//support for highlighting messages 
-		if((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true"))
-			clean = "<div id=\'highlight\'><span class='server'>"+server+"</span> <span class='badge'>"+mod+"</span><span class='timestamp'>"+dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+message+"</span></div><br>\n";
+		/*if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
+			clean = "<div id=\'highlight\'><span class='server'>"+server+"</span> <span class='badge'>"+mod+"</span><span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+message+"</span></div><br>\n";
 		else
-			clean = "<span class='server'>"+server+"</span> <span class='badge'>"+mod+"</span><span class='timestamp'>"+dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+message+"</span><br>\n";
+			clean = "<span class='server'>"+server+"</span> <span class='badge'>"+mod+"</span><span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+message+"</span><br>\n";
+		*/
+		
+		clean = Bennerbot.conf.get("DisplayMessageFormat").toString()
+					.replace("<server>", server)
+					.replace("<badge>", mod)
+					.replace("<timestamp>", Bennerbot.dateFormat.format(date))
+					.replace("<color>", UserColors.rgb2Hex(color))
+					.replace("<user>", user)
+					.replace("<message>", message)
+					.replace("<br>", "");
+		if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
+			clean = "<div id=\'highlight\'>"+clean+"</div>";
+		clean = clean+"<br>\n";
 		
 		//dirty output
-		dirty = serverd+" ["+dateFormat.format(date)+"] "+e.getUser().getNick()+": "+message+"\n";
+		dirty = serverd+" ["+Bennerbot.dateFormat.format(date)+"] "+e.getUser().getNick()+": "+message+"\n";
 		
 		//write the cleaned file if allowed
-		if(Bennerbot.conf.get("WriteClean").toString().equalsIgnoreCase("true"))
+		if(Bennerbot.conf.get("WriteClean").toString().equalsIgnoreCase("true") && write)
 			Bennerbot.write(clean, new File("output.html"));
 		//write the dirty file if allowed
-		if(Bennerbot.conf.get("WriteDirty").toString().equalsIgnoreCase("true"))
+		if(Bennerbot.conf.get("WriteDirty").toString().equalsIgnoreCase("true") && write)
 			Bennerbot.write(dirty, new File("output.txt"));
 	}
 	/**
@@ -178,7 +190,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			//initialize variables
 			String clean, dirty, server, user, message;
 			Color color = Color.gray;
-			DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+			
 			Date date = new Date();
 			
 			//this information dose not have to be determined
@@ -196,10 +208,22 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			}
 			
 			//the clean format
-			//clean = server+dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span>: "+filterURLS(APIManager.filterEmotes(message))+"<br>\n";
-			clean = "<span class='server'>"+server+"</span> <span class='timestamp'>"+dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+filterURLS(APIManager.filterEmotes(message))+"</span><br>\n";
+			//clean = server+Bennerbot.dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span>: "+filterURLS(APIManager.filterEmotes(message))+"<br>\n";
+			//clean = "<span class='server'>"+server+"</span> <span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+APIManager.filterEmotes(filterURLS(message))+"</span><br>\n";
+			clean = Bennerbot.conf.get("DisplayMessageFormat").toString()
+					.replace("<server>", server)
+					.replace("<badge>", "")
+					.replace("<timestamp>", Bennerbot.dateFormat.format(date))
+					.replace("<color>", UserColors.rgb2Hex(color))
+					.replace("<user>", user)
+					.replace("<message>", message)
+					.replace("<br>", "");
+			if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
+				clean = "<div id=\'highlight\'>"+clean+"</div>";
+			clean = clean+"<br>\n";
+			
 			//the dirty format
-			dirty = "["+dateFormat.format(date)+"] "+message+"\n";
+			dirty = "["+Bennerbot.dateFormat.format(date)+"] "+message+"\n";
 			
 			//write the output to the appropriate files
 			if(Bennerbot.conf.get("WriteClean").toString().equalsIgnoreCase("true") || Bennerbot.conf.get("OutputGUI").toString().equalsIgnoreCase("true"))
@@ -217,7 +241,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			//Initialize variables
 			String clean, dirty, server, user, message;
 			Color color = Color.gray;
-			DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+			
 			Date date = new Date();
 		
 			server = "<img src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"\'>";
@@ -234,8 +258,19 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			}
 			
 			//output
-			clean = server+dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span>: "+filterURLS(APIManager.filterEmotes(message))+"<br>\n";
-			dirty = "["+dateFormat.format(date)+"] "+message+"\n";
+			//clean = server+Bennerbot.dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span>: "+filterURLS(APIManager.filterEmotes(message))+"<br>\n";
+			clean = Bennerbot.conf.get("DisplayMessageFormat").toString()
+					.replace("<server>", server)
+					.replace("<badge>", "")
+					.replace("<timestamp>", Bennerbot.dateFormat.format(date))
+					.replace("<color>", UserColors.rgb2Hex(color))
+					.replace("<user>", user)
+					.replace("<message>", message)
+					.replace("<br>", "");
+			if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
+				clean = "<div id=\'highlight\'>"+clean+"</div>";
+			clean = clean+"<br>\n";
+			dirty = "["+Bennerbot.dateFormat.format(date)+"] "+message+"\n";
 			
 			if(Bennerbot.conf.get("WriteClean").toString().equalsIgnoreCase("true") || Bennerbot.conf.get("OutputGUI").toString().equalsIgnoreCase("true"))
 				Bennerbot.write(clean, new File("output.html"));
@@ -281,7 +316,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			String clean, dirty, server, user, message;
 			boolean display = true;
 			Color color = Color.gray;
-			DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+			
 			Date date = new Date();
 		
 			server = "<img src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"'>";
@@ -296,9 +331,20 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 					color=uc.getColor();
 			}
 		
-			//clean = server+dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span>: "+filterURLS(APIManager.filterEmotes(message))+"<br>\n";
-			clean = "<span class='server'>"+server+"</span> <span class='timestamp'>"+dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+filterURLS(APIManager.filterEmotes(message))+"</span><br>\n";
-			dirty = "["+dateFormat.format(date)+"] "+message+"\n";
+			//clean = server+Bennerbot.dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span>: "+filterURLS(APIManager.filterEmotes(message))+"<br>\n";
+			//clean = "<span class='server'>"+server+"</span> <span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+APIManager.filterEmotes(filterURLS(message))+"</span><br>\n";
+			clean = Bennerbot.conf.get("DisplayMessageFormat").toString()
+					.replace("<server>", server)
+					.replace("<badge>", "")
+					.replace("<timestamp>", Bennerbot.dateFormat.format(date))
+					.replace("<color>", UserColors.rgb2Hex(color))
+					.replace("<user>", user)
+					.replace("<message>", message)
+					.replace("<br>", "");
+			if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
+				clean = "<div id=\'highlight\'>"+clean+"</div>";
+			clean = clean+"<br>\n";
+			dirty = "["+Bennerbot.dateFormat.format(date)+"] "+message+"\n";
 			
 			if((Bennerbot.conf.get("WriteClean").toString().equalsIgnoreCase("true") || Bennerbot.conf.get("OutputGUI").toString().equalsIgnoreCase("true")) && display)
 				Bennerbot.write(clean, new File("output.html"));
@@ -313,20 +359,13 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 	public static void onOutput(String txt, boolean fromuser){
 		//standard
 		String clean, dirty, server, user, message;
-		boolean display = true;
 		Color color = Color.gray;
-		DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+		
 		Date date = new Date();
 		
 		server = "<img src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"\'>";
 		user = Bennerbot.name;
 		message = txt;
-		
-		for(String msg: message.split(" ")){
-			if(msg.length()>15 && Bennerbot.conf.get("OutputGUI").toString().equalsIgnoreCase("true")){
-				display = false;
-			}
-		}
 		
 		if(!UC.inFile(user)){
 			 UC.addUserColor(user, Color.red);
@@ -336,11 +375,22 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 				color=uc.getColor();
 		}
 		
-		//clean = server+dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span>: "+filterURLS(APIManager.filterEmotes(message))+"<br>\n";
-		clean = "<span class='server'>"+server+"</span> <span class='timestamp'>"+dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+filterURLS(APIManager.filterEmotes(message))+"</span><br>\n";
-		dirty = "["+dateFormat.format(date)+"] "+message+"\n";
+		//clean = server+Bennerbot.dateFormat.format(date)+" <span style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span>: "+filterURLS(APIManager.filterEmotes(message))+"<br>\n";
+		//clean = "<span class='server'>"+server+"</span> <span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+APIManager.filterEmotes(filterURLS(message))+"</span><br>\n";
+		clean = Bennerbot.conf.get("DisplayMessageFormat").toString()
+				.replace("<server>", server)
+				.replace("<badge>", "")
+				.replace("<timestamp>", Bennerbot.dateFormat.format(date))
+				.replace("<color>", UserColors.rgb2Hex(color))
+				.replace("<user>", user)
+				.replace("<message>", message)
+				.replace("<br>", "");
+		if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
+			clean = "<div id=\'highlight\'>"+clean+"</div>";
+		clean = clean+"<br>\n";
+		dirty = "["+Bennerbot.dateFormat.format(date)+"] "+message+"\n";
 			
-		if((Bennerbot.conf.get("WriteClean").toString().equalsIgnoreCase("true") || Bennerbot.conf.get("OutputGUI").toString().equalsIgnoreCase("true")) && display)
+		if(Bennerbot.conf.get("WriteClean").toString().equalsIgnoreCase("true"))
 			Bennerbot.write(clean, new File("output.html"));
 		if(Bennerbot.conf.get("WriteDirty").toString().equalsIgnoreCase("true"))
 			Bennerbot.write(dirty, new File("output.txt"));

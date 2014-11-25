@@ -1,12 +1,4 @@
 Welcome to BennerBot
-Version 0.9
-[18:18] Sucessfully Connected to Twitch
-[18:18] ;ome
-[18:18] Sucessfully Connected to Hitbox
-[18:18] line
-[18:18] line
-Your message was not sent because it is identical to the previous one you sent, less than 30 seconds ago.[18:18] linde
-[18:18] line
-[18:18] line
-Your message was not sent because it is identical to the previous one you sent, less than 30 seconds ago.Your message was not sent because it is identical to the previous one you sent, less than 30 seconds ago.[18:18] line
-Your message was not sent because it is identical to the previous one you sent, less than 30 seconds ago.[18:19] line
+Version 0.13
+[07:19] Sucessfully Connected to Twitch
+[07:19] Sucessfully Connected to Hitbox

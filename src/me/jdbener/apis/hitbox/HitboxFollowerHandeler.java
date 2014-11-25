@@ -11,10 +11,8 @@ import me.jdbener.apis.APIManager;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-import org.pircbotx.PircBotX;
-import org.pircbotx.hooks.ListenerAdapter;
 
-public class HitboxFollowerHandeler extends ListenerAdapter<PircBotX>{
+public class HitboxFollowerHandeler{
 	HFollowerTimer f = new HFollowerTimer();
 	public HitboxFollowerHandeler(){
 		
@@ -48,14 +46,20 @@ class HFollowerTimer extends TimerTask {
 	}
 	public void run(){
 		try {
+			String list = "";
 			JSONObject obj = (JSONObject) APIManager.parser.parse(APIManager.StreamToString(path.openStream()));
-			
 			JSONArray followers = (JSONArray) obj.get("followers");
-			JSONObject follower = (JSONObject) followers.get(0);
-			String name = (String) follower.get("user_name");
-			if(!APIManager.followers.contains(name)){
-				Bennerbot.sendMessage(Bennerbot.capitalize(name)+" has just followed");
-				APIManager.followers.add(name);
+			for(int i=0; i<followers.size(); i++){
+				JSONObject follower = (JSONObject) followers.get(i);
+				String name = (String) follower.get("user_name");
+				if(!APIManager.followers.contains(name)){
+					//Bennerbot.sendMessage(Bennerbot.capitalize(name)+" has just followed");
+					list = list+", "+Bennerbot.capitalize(name);
+					APIManager.followers.add(name);
+				}
+			}
+			if(!list.equalsIgnoreCase("")){
+				Bennerbot.sendMessage(list+" have followed on hitbox");
 			}
 		} catch (IOException | ParseException e1) {
 			e1.printStackTrace();

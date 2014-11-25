@@ -31,6 +31,7 @@ import org.json.simple.parser.ParseException;
 
 import me.jdbener.Bennerbot;
 import me.jdbener.apis.hitbox.*;
+import me.jdbener.apis.lastfm.*;
 import me.jdbener.apis.twitch.*;
 
 public class APIManager {
@@ -40,23 +41,21 @@ public class APIManager {
 	/**
 	 * This function loads all of the APIs
 	 */
-	public APIManager(){		
+	public APIManager(){
 		//load follower notifications
 		if(Bennerbot.conf.get("enableFollowerNotifications").toString().equalsIgnoreCase("true")){
-			Bennerbot.twitch.addListener(new TwitchFollowerHandeler());
-			Bennerbot.hitbox.addListener(new HitboxFollowerHandeler());
-			Bennerbot.logger.info("Successfully initiated follower notifications");
+			new TwitchFollowerHandeler();
+			new HitboxFollowerHandeler();
 		}
 		
 		//load the !title and !game commands
 		if(Bennerbot.conf.get("enableStatusandGameUpdateing").toString().equalsIgnoreCase("true")){
-			Bennerbot.twitch.addListener(new TwitchStatusGameUpdater());
-			Bennerbot.hitbox.addListener(new TwitchStatusGameUpdater());
-			Bennerbot.twitch.addListener(new HitboxStatusGameUpdater());
-			Bennerbot.hitbox.addListener(new HitboxStatusGameUpdater());
-			Bennerbot.logger.info("Successfully initiated twitch api connections");
+			Bennerbot.listener.addListener(new TwitchStatusGameUpdater());
+			Bennerbot.listener.addListener(new HitboxStatusGameUpdater());
 		}
 		
+		if(Bennerbot.conf.get("enableLastfmIntegration").toString().equalsIgnoreCase("true"))
+			Bennerbot.listener.addListener(new LastfmNowPlaying());
 		
 		//setupEmotes();
 		if(Bennerbot.conf.get("enableAutoEmotes").toString().equalsIgnoreCase("true")) {
@@ -67,7 +66,11 @@ public class APIManager {
 				public void run() {
 					insertEmotes(setupEmotes());
 					Bennerbot.logger.info("Finished Loading Emoticons");
-					JOptionPane.showMessageDialog(null, "Finished Loading Emoticons");
+					try{
+						JOptionPane.showMessageDialog(null, "Finished Loading Emoticons");
+					} catch (Exception e){
+						e.printStackTrace();
+					}
 				}
 			});
 		}
@@ -113,20 +116,7 @@ public class APIManager {
 	 */
 	private static Map<String, String> setupEmotes(){
 		Map<String, String> temp = new HashMap<String, String>();
-		//TODO reimplement configurable emitcons
 		//TODO implement getting all the hitbox emotions
-		/*//Initializes all the emoteicons
-		String filter = Bennerbot.readFile(new File("config/emotes.txt").getPath());
-		for(String line: filter.split("[\\r\\n]+")){
-			
-			String location = line.split("~")[1];
-			if(Bennerbot.conf.get("ShowEmoticonLoading").toString().equalsIgnoreCase("true"))
-				Bennerbot.logger.info("Adding Emoticon: "+line.split("~")[0]+"~"+location);
-			
-			Bennerbot.emoteMap.put(line.split("~")[0], location);
-			
-			System.out.println(Bennerbot.emoteMap.get(line.split("~")[0]));
-		}*/
 		try {
 			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.twitch.tv/kraken/chat/emoticons").openConnection();
 			

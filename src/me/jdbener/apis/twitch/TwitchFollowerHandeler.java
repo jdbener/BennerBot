@@ -11,10 +11,8 @@ import me.jdbener.apis.APIManager;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-import org.pircbotx.PircBotX;
-import org.pircbotx.hooks.ListenerAdapter;
 
-public class TwitchFollowerHandeler extends ListenerAdapter<PircBotX>{
+public class TwitchFollowerHandeler{
 	TFollowerTimer f = new TFollowerTimer();
 	public TwitchFollowerHandeler(){
 		
@@ -48,15 +46,21 @@ class TFollowerTimer extends TimerTask {
 	}
 	public void run(){
 		try {
+			String list = "";
 			JSONObject obj = (JSONObject) APIManager.parser.parse(APIManager.StreamToString(path.openStream()));
-			
 			JSONArray followers = (JSONArray) obj.get("follows");
-			JSONObject follower = (JSONObject) followers.get(0);
-			JSONObject user = (JSONObject) follower.get("user");
-			String name = (String) user.get("name");
-			if(!APIManager.followers.contains((String) user.get("name"))){
-				Bennerbot.sendMessage(Bennerbot.capitalize(name)+" has just followed");
-				APIManager.followers.add(name);
+			for(int i=0; i<((JSONObject) followers.get(0)).size(); i++){
+				JSONObject follower = (JSONObject) followers.get(i);
+				JSONObject user = (JSONObject) follower.get("user");
+				String name = (String) user.get("name");
+				if(!APIManager.followers.contains((String) user.get("name"))){
+					//Bennerbot.sendMessage(Bennerbot.capitalize(name)+" has just followed");
+					list = list+", "+Bennerbot.capitalize(name);
+					APIManager.followers.add(name);
+				}
+			}
+			if(!list.equalsIgnoreCase("")){
+				Bennerbot.sendMessage(list+" have followed on twitch");
 			}
 		} catch (IOException | ParseException e1) {
 			e1.printStackTrace();

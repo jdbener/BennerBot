@@ -68,14 +68,24 @@ public class BasicCommandsPlugin extends ListenerAdapter<PircBotX> implements Be
 	@Override
 	public void inititate() {
 		//These two lines of code (ignoring the logger) will add
-		Bennerbot.twitch.addListener(this);
-		Bennerbot.logger.info("Added listener to twitch bot");
-		Bennerbot.hitbox.addListener(this);
-		Bennerbot.logger.info("Added listener to hitbox bot");
+		Bennerbot.listener.addListener(this);
+		Bennerbot.logger.info("Added listener");
 		
 		//adds a variable named time and gives it the time value
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		Calendar cal = Calendar.getInstance();
 		Bennerbot.variableMap.put("<time>", dateFormat.format(cal.getTime()));
+	}
+	
+	/**
+	 * We have no need for user output in the file
+	 */
+	@Override
+	public void onOperatorOuput(String txt) {
+		try {
+			onMessage(Bennerbot.GenerateMessageEvent(txt));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
