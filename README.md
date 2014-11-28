@@ -19,6 +19,8 @@ There is a file called BasicCommands.java that file contains a simple example pl
 
 **Auto Installer can be found [here](https://github.com/jdbener/BennerBot/releases/tag/autoupdater)**
 
+**[Check out our Website!!](http://jdbener.github.io/BennerBot)**
+
 **If you like what im doing feel free to: [![alt text](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "Title")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XF5ZN3N5ULFAE)**
 
 (Post an Issue if i should add anything else to this file)
