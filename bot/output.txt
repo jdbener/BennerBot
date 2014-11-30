@@ -1,0 +1,6 @@
+Welcome to BennerBot
+Version 0.13
+[19:13] Sucessfully Connected to Hitbox
+[19:13] Sucessfully Connected to Twitch
+twitch [19:14] jdbener: so...
+twitch [19:14] jdbener: hows it hangin

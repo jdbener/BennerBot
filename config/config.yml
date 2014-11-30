@@ -12,6 +12,8 @@ respondToOperatorCommands: true
 #how dates are displayed by the bot
 #information on what this means can be found here: https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
 dateFormat: "HH:mm"
+#weather or not names should be capitolized
+capitalizeNames: true
 #weather or not bennerbot should announce his presence
 incognitoMode: true
 
@@ -28,13 +30,8 @@ twitchUsername: default
 #I recommend creating a new account for this
 twitchOAuth: default
 #the name of the twitch account to moderate
-twitchChannel: biogenx2b
-#This is used to do things such as change the stream title
-#A very simple tutorial on how to get this value can be found here: http://discuss.dev.twitch.tv/t/how-to-set-title/390/2
-#If left blank you wont be able to change your stream title with the bot
-#Hitbox dosent need an access token because i can generate one
-#kxq56ehskmckkwop1cxlybt9ggjgsm5
-twitchAccessToken: kxq56ehskmckkwop1cxlybt9ggjgsm5
+twitchChannel: irish_00
+
 
 #=======================
 #Hitbox Settings
@@ -68,6 +65,7 @@ lastfmName: "irish_00"
 #for example, <1title> would show the title of the previous song
 songCommandMessageFormat: "hay <user> thats, <title> ~ <artist> on <album> <url>"
 #songCommandMessageFormat: "hay <user> thats, <title> ~ <artist> on <album> <url>, the last song was: <1title> ~ <1artist>"
+
 #=======================
 #Output Settings
 #=======================
@@ -102,9 +100,10 @@ filterCommands: true
 #<badge>: the moderator/streamer badge
 #<timestamp>: the current time
 #<color>: the color for a specific user
-#<user>: the username of the user who sent the message
+#<user>: the username of the user who sent the message, with his color added
+#<noformateuser>: the username of the user who sent the message
 #<message>: the message itself
-DisplayMessageFormat: "<span class='server'><server></span> <span class='badge'><badge></span><span class='timestamp'><timestamp></span> <span class='username' style='color:<color>'><user></span> <span class='message'><message></span>"
+DisplayMessageFormat: "<server> <badge><timestamp> <user>: <message>"
 
 #=======================
 #Display Settings
@@ -140,11 +139,28 @@ MaxMessageLength: 150
 #API Integration Settings
 #=======================
 #weather or not to display a notification when someone follows
-enableFollowerNotifications: true
+enableFollowerNotifications: false
 #This allows you to use the !title and !game commands
 enableStatusandGameUpdateing: true
 #Enable this if you want the emoticons loading to be displayed on the console (disable this if submiting a bug report i dont need an extra 20 thousand lines :p)
 ShowEmoticonLoading: true
+#This is used to do things such as change the stream title
+#A very simple tutorial on how to get this value can be found here: http://discuss.dev.twitch.tv/t/how-to-set-title/390/2
+#If left blank you wont be able to change your stream title with the bot
+#Hitbox dosent need an access token because i can generate one
+#kxq56ehskmckkwop1cxlybt9ggjgsm5
+twitchAccessToken: kxq56ehskmckkwop1cxlybt9ggjgsm5
+
+#=======================
+#Level/BBit Settings
+#=======================
+#set this to false if you dont want to use the level/bit system. This will disable many features. (it is recommended to leave this on)
+optoutoftheBennerBitProgram: true
+#weather or not to enable the command that lets you look up your/another persons level
+allowLevelCommand: true
+#weather or not people can look up other users levels/experience
+allowOtherUserLevels: true
+
 
 #=======================
 #Relay Settings
@@ -155,6 +171,8 @@ activateRelay: true
 showSource: false
 #weather or not to display the username in the message for messages sent with the GUI
 showSendName: false
+#weather or not to update the color of the bot when a user sends a message
+sendColorInfromtation:true
 
 #======================
 #Auto Message Settings
@@ -173,7 +191,7 @@ enablePluginSystem: true
 #======================
 #Database Settings
 #======================
-#set this to true to clear the database of colors when the system starts?
-resetColorDatabase: false
-#Enable this if you want the most current emotion data (i recommend leaving this off, the ones included with your download are very upto date. This also creates alot of lag on your system)
-enableAutoEmotes: false
+#weather or not to use the public data base or a local one
+useRemoteDatabase: true
+#the url of the data base you want to use (dont change this unless you know what you are doing)
+databaseName: default

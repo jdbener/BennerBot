@@ -1,0 +1,170 @@
+13:33:20.215 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+13:33:20.310 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+13:33:20.311 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+13:33:20.313 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+13:33:20.314 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+13:33:20.314 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+13:33:20.315 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+13:33:20.431 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+13:33:20.431 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+13:33:20.442 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.252.28
+13:33:20.443 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address irc.glados.tv/192.99.100.37
+13:33:20.470 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+13:33:20.480 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS oauth:hrr2wpqq0knt6sb0spzd3d1mugpdezf
+13:33:20.480 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK bennerbot
+13:33:20.480 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+13:33:20.518 [main] INFO  me.jdbener.Bennerbot - Started Loading the GUI
+13:33:20.544 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 bennerbot :Welcome, GLHF!
+13:33:20.553 [botPool0-bot0] DEBUG org.pircbotx.InputParser - Logged onto server.
+13:33:20.558 [botPool0-bot1] INFO  org.pircbotx.PircBotX - Connected to server.
+13:33:20.558 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - PASS bennerbot
+13:33:20.559 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - NICK bennerbot
+13:33:20.559 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+13:33:21.481 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - JOIN #irish_00 
+13:33:21.481 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 002 bennerbot :Your host is tmi.twitch.tv
+13:33:21.482 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 003 bennerbot :This server is rather new
+13:33:21.483 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 004 bennerbot :-
+13:33:21.489 [botPool0-bot0] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:33:21.489 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 375 bennerbot :-
+13:33:21.490 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 372 bennerbot :You are in a maze of twisty passages, all alike.
+13:33:21.491 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 376 bennerbot :>
+13:33:21.533 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot!bennerbot@bennerbot.tmi.twitch.tv JOIN #irish_00
+13:33:22.483 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - WHO #irish_00
+13:33:23.484 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - MODE #irish_00
+13:33:23.488 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot.tmi.twitch.tv 353 bennerbot = #irish_00 :bennerbot
+13:33:23.488 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot.tmi.twitch.tv 366 bennerbot #irish_00 :End of /NAMES list
+13:33:23.488 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :USERCOLOR bennerbot #FF0000
+13:33:23.489 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :HISTORYEND irish_00
+13:33:23.490 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 421 bennerbot WHO :Unknown command
+13:33:24.485 [listenerPool0-thread5] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #irish_00 :/color #ff0000
+13:33:24.485 [listenerPool0-thread5] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :/color #ff0000
+13:33:24.543 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :USERCOLOR bennerbot #FF0000
+13:33:24.543 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :Your color has been changed
+13:33:25.486 [listenerPool0-thread5] INFO  org.pircbotx.output.OutputRaw - TWITCHCLIENT 1
+13:33:38.988 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 001 bennerbot :Welcome to the hitbox-tv IRC Network bennerbot!BennerBot@ip.bennerbot.chat.hitbox.tv (Connection ID: c9caca18-7d1a-475d-a574-2a677d471644)
+13:33:38.988 [botPool0-bot1] DEBUG org.pircbotx.InputParser - Logged onto server.
+13:33:38.988 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - JOIN #jdbener 
+13:33:39.103 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 002 bennerbot :Your host is irc.glados.tv, running version IrcD.Net, Version=0.3.5351.28745, Culture=neutral, PublicKeyToken=null
+13:33:39.686 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 003 bennerbot :This server was created 11/13/2014 6:08:51 AM
+13:33:39.723 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 004 bennerbot :irc.glados.tv ircD.Net.0.3.5351.28745 Oiorwx ahovITbceiklmnpst
+13:33:39.724 [botPool0-bot1] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:33:39.724 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 005 bennerbot STD=draft03 PREFIX=(aohv)&@%+ CHANMODES=Ibe,k,l,Tcimnpst CHANTYPES=# CHANLIMIT=#:10 INEVEX=I EXCEPTS=e NETWORK=hitbox-tv CASEMAPPING=ascii CHANNELLEN=40 NICKLEN=32 MAXNICKLEN=32 TOPICLEN=300 KICKLEN=300 AWAYLEN=300 KNOCK LANGUAGE=5,af,sq,am,ar,hy,az,eu,be,bn,bh,bg,my,ca,chr,zh,zh-CN,zh-TW,hr,cs,da,dv,nl,en,eo,et,tl,fi,fr,gl,ka,de,el,gn,gu,iw,hi,hu,is,id,iu,it,ja,kn,kk,km,ko,ku,ky,lo,lv,lt,mk,ms,ml,mt,mr,mn,ne,no,or,ps,fa,pl,pt-PT,pa,ro,ru,sa,sr,sd :are supported by this server
+13:33:39.725 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 005 bennerbot LANGUAGE=5,si,sk,sl,es,sw,sv,tg,ta,te,th,bo,tr,uk,ur,uz,ug,vi SILENCE=25 RFC2812 :are supported by this server
+13:33:39.725 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 375 bennerbot :- irc.glados.tv Message of the day -
+13:33:39.725 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMMMMMMmdho+oddmNMMMMMMMMMMMMM $$\   $$\ $$\   $$\     $$\                                 $$$$$$\ $$$$$$$\   $$$$$$\  
+13:33:39.726 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMMNdoo/::-:///+osymNMMMMMMMMM $$ |  $$ |\__|  $$ |    $$ |                                \_$$  _|$$  __$$\ $$  __$$\ 
+13:33:39.726 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMMh::-----:////////dMMMMMMMMM $$ |  $$ |$$\ $$$$$$\   $$$$$$$\   $$$$$$\  $$\   $$\         $$ |  $$ |  $$ |$$ /  \__|
+13:33:39.727 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMMh:::----:////////dMMMMMMMMM $$$$$$$$ |$$ |\_$$  _|  $$  __$$\ $$  __$$\ \$$\ $$  |        $$ |  $$$$$$$  |$$ |     
+13:33:39.853 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMMh:::----:////////dMMMMMMMMM $$  __$$ |$$ |  $$ |    $$ |  $$ |$$ /  $$ | \$$$$  /         $$ |  $$  __$$< $$ |      
+13:33:40.289 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMMh::::---:////////dMMMMMMMMM $$ |  $$ |$$ |  $$ |$$\ $$ |  $$ |$$ |  $$ | $$  $$<          $$ |  $$ |  $$ |$$ |  $$\ 
+13:33:40.606 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMMh:::://++oo++++/+dMMMMMMMMM $$ |  $$ |$$ |  \$$$$  |$$$$$$$  |\$$$$$$  |$$  /\$$\       $$$$$$\ $$ |  $$ |\$$$$$$  |
+13:33:40.607 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMMmhmmdddddddddmmmmNMMMMMMMMM \__|  \__|\__|   \____/ \_______/  \______/ \__/  \__|      \______|\__|  \__| \______/ 
+13:33:40.607 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +NyssssMyo+///:::::/+++oosyhMyyyhhMM
+13:33:40.608 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +N:::::Mo::::::::::////++++yM+++ooNM $$$$$$$\            $$\                                                                 
+13:33:40.608 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +N:::::Mo::::::::::///+++++yM++oooNM $$$$$$$\            $$\                           
+13:33:40.609 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +N:::::Mo:::::::::://++++++yM+ooooNM $$  __$$\           $$ |                         
+13:33:40.610 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +N:::::Mo:::::::::://++++++yMoooooNM $$ |  $$ | $$$$$$\  $$ | $$$$$$\  $$\   $$\          
+13:33:40.610 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +N:::::Mo::::::::://+++++++yMoooooNM $$$$$$$  |$$  __$$\ $$ | \____$$\ $$ |  $$ |        
+13:33:40.611 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +N/::::Mo:::::::::/++++++++yMoosyhMM $$  __$$< $$$$$$$$ |$$ | $$$$$$$ |$$ |  $$ |      
+13:33:40.611 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +Mho//:Mo:::::::::/+++++++oyMhdNMMMM $$ |  $$ |$$   ____|$$ |$$  __$$ |$$ |  $$ |       
+13:33:40.919 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMNhMy+/:::::::/++++oshmNMMMMMMMM $$ |  $$ |\$$$$$$$\ $$ |\$$$$$$$ |\$$$$$$$ |       
+13:33:40.919 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMhyddhs+/::/+oydmmhyhMMMMMMMM \__|  \__| \_______|\__| \_______| \____$$ |             -Community Driven
+13:33:40.920 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMo::/+shhhhddmdyo+ooyMMMMMMMM                                   $$\   $$ |      
+13:33:40.920 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMo:::::::/dNd+++++ooyMMMMMMMM                                   \$$$$$$  |  
+13:33:40.920 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMs::::::::hNh++++oooyMMMMMMMM                                    \______/  
+13:33:40.921 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMNdso//:::hNh++oosydNMMMMMMMM
+13:33:40.921 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMMMMMmdyo/dNh+shmNMMMMMMMMMMM
+13:33:41.232 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   +MMMMMMMMMMMMMMMNMMMNMMMMMMMMMMMMMMM
+13:33:41.232 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   
+13:33:41.232 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   Join #help for problems/assistance. To join channels, use the lowercase version of the channel name (ex. Danbopes => #danbopes)
+13:33:41.545 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 372 bennerbot :-   
+13:33:41.545 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 376 bennerbot :End of MOTD command
+13:33:41.868 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 251 bennerbot :There are 135 users and 0 services on 1 servers
+13:33:41.868 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 252 bennerbot 0 :operator(s) online
+13:33:41.869 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 253 bennerbot 8 :unknown connection(s)
+13:33:41.869 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 254 bennerbot 1 :channels formed
+13:33:41.870 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 255 bennerbot :I have 135 clients and 1 servers
+13:33:42.504 [listenerPool0-thread11] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #irish_00 :/color #ff0000
+13:33:42.504 [listenerPool0-thread11] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :/color #ff0000
+13:33:42.566 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :USERCOLOR bennerbot #FF0000
+13:33:42.567 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :Your color has been changed
+13:33:47.564 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 404 bennerbot #jdbener :Cannot send to channel
+13:33:56.299 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR jdbener #1E90FF
+13:33:56.303 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #irish_00 :те�?т
+13:33:56.307 [listenerPool0-thread11] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Jdbener: те�?т
+13:34:45.733 [botPool0-bot1] INFO  org.pircbotx.InputParser - :bennerbot!BennerBot@ip.bennerbot.chat.hitbox.tv JOIN #jdbener
+13:34:45.733 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - WHO #jdbener
+13:34:46.734 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - MODE #jdbener
+13:34:46.734 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 332 bennerbot #jdbener :test
+13:34:46.735 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 353 bennerbot = #jdbener :%bennerbot
+13:34:46.735 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 366 bennerbot #jdbener :End of NAMES list
+13:35:15.162 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 315 bennerbot #jdbener :End of /WHO list.
+13:35:15.475 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 324 bennerbot #jdbener +
+13:35:43.956 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR martynoob #FF69B4
+13:35:43.956 [botPool0-bot0] INFO  org.pircbotx.InputParser - :martynoob!martynoob@martynoob.tmi.twitch.tv PRIVMSG #irish_00 :lel, you complain about others being cheap while using rtsr with a mom setup
+13:35:43.957 [listenerPool0-thread13] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Martynoob: lel, you complain about others being cheap while using rtsr with a mom setup
+13:35:58.796 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR oco6ohy6aceh #FF69B4
+13:35:58.799 [botPool0-bot0] INFO  org.pircbotx.InputParser - :oco6ohy6aceh!oco6ohy6aceh@oco6ohy6aceh.tmi.twitch.tv PRIVMSG #irish_00 :хахахах
+13:35:58.799 [listenerPool0-thread13] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Oco6ohy6aceh: хахахах
+13:36:31.654 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR martynoob #FF69B4
+13:36:31.658 [botPool0-bot0] INFO  org.pircbotx.InputParser - :martynoob!martynoob@martynoob.tmi.twitch.tv PRIVMSG #irish_00 :that doesnt give you the right to complain about other peoples playstyle
+13:36:31.666 [listenerPool0-thread19] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Martynoob: that doesnt give you the right to complain about other peoples playstyle
+13:36:42.655 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR oco6ohy6aceh #FF69B4
+13:36:42.662 [botPool0-bot0] INFO  org.pircbotx.InputParser - :oco6ohy6aceh!oco6ohy6aceh@oco6ohy6aceh.tmi.twitch.tv PRIVMSG #irish_00 :в ле�?у пвп попробуй, там полно нубов
+13:36:42.662 [listenerPool0-thread5] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Oco6ohy6aceh: в ле�?у пвп попробуй, там полно нубов
+13:36:48.520 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR martynoob #FF69B4
+13:36:48.520 [botPool0-bot0] INFO  org.pircbotx.InputParser - :martynoob!martynoob@martynoob.tmi.twitch.tv PRIVMSG #irish_00 :rtrs gives you a HUGE buff for doing bad
+13:36:48.523 [listenerPool0-thread8] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Martynoob: rtrs gives you a HUGE buff for doing bad
+13:37:01.471 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR martynoob #FF69B4
+13:37:01.472 [botPool0-bot0] INFO  org.pircbotx.InputParser - :martynoob!martynoob@martynoob.tmi.twitch.tv PRIVMSG #irish_00 :he invested stats to use dark bead and you are too bad to properly dodge
+13:37:01.472 [listenerPool0-thread17] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Martynoob: he invested stats to use dark bead and you are too bad to properly dodge
+13:37:16.780 [botPool0-bot0] INFO  org.pircbotx.InputParser - :aacisuan!aacisuan@aacisuan.tmi.twitch.tv PRIVMSG #irish_00 :if u like block, u can use mask of father instead mask of mother. then change dark hand to a better shield,  in the build of the link i give u.
+13:37:16.781 [listenerPool0-thread14] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Aacisuan: if u like block, u can use mask of father instead mask of mother. then change dark hand to a better shield,  in the build of the link i give u.
+13:37:22.860 [botPool0-bot0] INFO  org.pircbotx.InputParser - :sergeyxxxx!sergeyxxxx@sergeyxxxx.tmi.twitch.tv PRIVMSG #irish_00 :iri curset marty
+13:37:22.860 [listenerPool0-thread13] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Sergeyxxxx: iri curset marty
+13:37:56.147 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+13:37:56.147 [listenerPool0-thread16] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+13:38:46.133 [bot2-shutdownhook] INFO  org.pircbotx.output.OutputRaw - QUIT :
+13:38:46.133 [bot2-shutdownhook] INFO  org.pircbotx.output.OutputRaw - QUIT :
+13:38:46.165 [bot2-shutdownhook] INFO  org.pircbotx.dcc.DccHandler - Terminating all transfers waiting to be accepted
+13:38:46.165 [botPool0-bot1] INFO  org.pircbotx.PircBotX - Shutdown has been called, closing InputParser
+13:38:46.166 [bot2-shutdownhook] DEBUG org.pircbotx.PircBotX - Disconnected.
+13:38:46.166 [bot2-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.levels.LevelManager@6c5cdf95 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@5c92e1b3, disconnectException=null)
+13:38:46.166 [botPool0-bot1] DEBUG o.p.MultiBotManager$BotFutureCallback - Bot #1 finished
+13:38:46.167 [bot2-shutdownhook] INFO  org.pircbotx.dcc.DccHandler - Terminating all transfers waiting to be accepted
+13:38:46.167 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Shutdown has been called, closing InputParser
+13:38:46.167 [botPool0-bot0] DEBUG o.p.MultiBotManager$BotFutureCallback - Bot #0 finished
+13:38:46.167 [bot2-shutdownhook] DEBUG org.pircbotx.PircBotX - Disconnected.
+13:38:46.167 [bot2-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.Infromation@15a4792f to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@791adc49, disconnectException=null)
+13:38:46.167 [bot2-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.apis.lastfm.LastfmNowPlaying@64d11693 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@791adc49, disconnectException=null)
+13:38:46.167 [bot2-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.Countdown@39c07f3a to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@791adc49, disconnectException=null)

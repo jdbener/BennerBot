@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="guava-18.0.jar"/>
 	<classpathentry kind="lib" path="honcho-api.jar"/>
+	<classpathentry kind="lib" path="mysql-connector-java-5.1.34-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -134,7 +134,7 @@ public class HitboxStatusGameUpdater extends ListenerAdapter<PircBotX> {
 			URL obj = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 		
-			return (JSONObject) APIManager.parser.parse(APIManager.StreamToString(conn.getInputStream()));
+			return (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(conn.getInputStream()));
 		}catch(ParseException | IOException e){
 			e.printStackTrace();
 		}

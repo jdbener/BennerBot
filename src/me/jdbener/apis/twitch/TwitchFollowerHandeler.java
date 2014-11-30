@@ -29,7 +29,7 @@ class TFollowerTimer extends TimerTask {
 		try {
 			path = new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel")+"/follows/?limit=10000000000000000000000");
 			
-			JSONObject obj = (JSONObject) APIManager.parser.parse(APIManager.StreamToString(path.openStream()));
+			JSONObject obj = (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(path.openStream()));
 			JSONArray followers = (JSONArray) obj.get("follows");
 			
 			for(int i = 0; i < followers.toArray().length; i++){
@@ -47,7 +47,7 @@ class TFollowerTimer extends TimerTask {
 	public void run(){
 		try {
 			String list = "";
-			JSONObject obj = (JSONObject) APIManager.parser.parse(APIManager.StreamToString(path.openStream()));
+			JSONObject obj = (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(path.openStream()));
 			JSONArray followers = (JSONArray) obj.get("follows");
 			for(int i=0; i<((JSONObject) followers.get(0)).size(); i++){
 				JSONObject follower = (JSONObject) followers.get(i);
@@ -55,12 +55,15 @@ class TFollowerTimer extends TimerTask {
 				String name = (String) user.get("name");
 				if(!APIManager.followers.contains((String) user.get("name"))){
 					//Bennerbot.sendMessage(Bennerbot.capitalize(name)+" has just followed");
-					list = list+", "+Bennerbot.capitalize(name);
+					list = list+Bennerbot.capitalize(name)+", ";
 					APIManager.followers.add(name);
 				}
 			}
 			if(!list.equalsIgnoreCase("")){
-				Bennerbot.sendMessage(list+" have followed on twitch");
+				if(list.split(",").length>1)
+					Bennerbot.sendMessage(list+" have followed on twitch");
+				else
+					Bennerbot.sendMessage(list+" has followed on twitch");
 			}
 		} catch (IOException | ParseException e1) {
 			e1.printStackTrace();

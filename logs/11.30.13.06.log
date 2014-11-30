@@ -1,0 +1,210 @@
+13:06:35.529 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+13:06:35.609 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+13:06:35.610 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+13:06:35.612 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+13:06:35.614 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+13:06:35.614 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+13:06:35.614 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+13:06:35.705 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+13:06:35.705 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+13:06:35.712 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.252.28
+13:06:35.741 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+13:06:35.746 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS oauth:hrr2wpqq0knt6sb0spzd3d1mugpdezf
+13:06:35.746 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK bennerbot
+13:06:35.747 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+13:06:35.748 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address irc.glados.tv/192.99.100.37
+13:06:35.772 [main] INFO  me.jdbener.Bennerbot - Started Loading the GUI
+13:06:35.818 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 bennerbot :Welcome, GLHF!
+13:06:35.828 [botPool0-bot0] DEBUG org.pircbotx.InputParser - Logged onto server.
+13:06:35.867 [botPool0-bot1] INFO  org.pircbotx.PircBotX - Connected to server.
+13:06:35.868 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - PASS bennerbot
+13:06:35.868 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - NICK bennerbot
+13:06:35.868 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+13:06:36.748 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - JOIN #irish_00 
+13:06:36.748 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 002 bennerbot :Your host is tmi.twitch.tv
+13:06:36.749 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 003 bennerbot :This server is rather new
+13:06:36.749 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 004 bennerbot :-
+13:06:36.755 [botPool0-bot0] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:06:36.756 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 375 bennerbot :-
+13:06:36.757 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 372 bennerbot :You are in a maze of twisty passages, all alike.
+13:06:36.757 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 376 bennerbot :>
+13:06:36.810 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot!bennerbot@bennerbot.tmi.twitch.tv JOIN #irish_00
+13:06:37.749 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - WHO #irish_00
+13:06:38.750 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - MODE #irish_00
+13:06:38.753 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot.tmi.twitch.tv 353 bennerbot = #irish_00 :bennerbot
+13:06:38.754 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot.tmi.twitch.tv 366 bennerbot #irish_00 :End of /NAMES list
+13:06:38.754 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :USERCOLOR bennerbot #FF0000
+13:06:38.755 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :HISTORYEND irish_00
+13:06:38.756 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 421 bennerbot WHO :Unknown command
+13:06:39.751 [listenerPool0-thread5] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #irish_00 :/color #ff0000
+13:06:39.751 [listenerPool0-thread5] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :/color #ff0000
+13:06:39.843 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :USERCOLOR bennerbot #FF0000
+13:06:39.845 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :Your color has been changed
+13:06:40.752 [listenerPool0-thread5] INFO  org.pircbotx.output.OutputRaw - TWITCHCLIENT 1
+13:07:00.249 [botPool0-bot0] INFO  org.pircbotx.InputParser - :aacisuan!aacisuan@aacisuan.tmi.twitch.tv PRIVMSG #irish_00 :but dont keep block when use it ...
+13:07:00.249 [listenerPool0-thread9] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Aacisuan: but dont keep block when use it ...
+13:07:04.688 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR oco6ohy6aceh #FF69B4
+13:07:04.690 [botPool0-bot0] INFO  org.pircbotx.InputParser - :oco6ohy6aceh!oco6ohy6aceh@oco6ohy6aceh.tmi.twitch.tv PRIVMSG #irish_00 :�? бы поиграл �? вами ща�?, жаль
+13:07:04.691 [listenerPool0-thread8] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Oco6ohy6aceh: �? бы поиграл �? вами ща�?, жаль
+13:07:10.818 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR jdbener #1E90FF
+13:07:10.821 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #irish_00 :�?ено ОСО хау �?то прои�?ходит ?
+13:07:10.822 [listenerPool0-thread1] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Jdbener: �?ено ОСО хау �?то прои�?ходит ?
+13:07:17.460 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv NOTICE bennerbot :Unable to connect to hitbox chat service at this time. Please try again later.
+13:07:23.039 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 451 - :You have not registered
+13:07:23.040 [botPool0-bot1] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+org.pircbotx.exception.IrcException: CannotLogin: Received error: :irc.glados.tv 451 - :You have not registered
+	at org.pircbotx.InputParser.processConnect(InputParser.java:396) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:322) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:07:23.351 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 451 - :You have not registered
+13:07:23.351 [botPool0-bot1] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+org.pircbotx.exception.IrcException: CannotLogin: Received error: :irc.glados.tv 451 - :You have not registered
+	at org.pircbotx.InputParser.processConnect(InputParser.java:396) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:322) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:07:24.347 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 451 - :You have not registered
+13:07:24.349 [botPool0-bot1] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+org.pircbotx.exception.IrcException: CannotLogin: Received error: :irc.glados.tv 451 - :You have not registered
+	at org.pircbotx.InputParser.processConnect(InputParser.java:396) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:322) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:07:24.349 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 451 - :You have not registered
+13:07:24.349 [botPool0-bot1] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+org.pircbotx.exception.IrcException: CannotLogin: Received error: :irc.glados.tv 451 - :You have not registered
+	at org.pircbotx.InputParser.processConnect(InputParser.java:396) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:322) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:07:34.405 [botPool0-bot0] INFO  org.pircbotx.InputParser - :cscmos!cscmos@cscmos.tmi.twitch.tv JOIN #irish_00
+13:07:34.405 [botPool0-bot0] INFO  org.pircbotx.InputParser - :sergeyxxxx!sergeyxxxx@sergeyxxxx.tmi.twitch.tv JOIN #irish_00
+13:07:34.406 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv JOIN #irish_00
+13:07:34.406 [botPool0-bot0] INFO  org.pircbotx.InputParser - :darthnova86!darthnova86@darthnova86.tmi.twitch.tv JOIN #irish_00
+13:07:34.406 [botPool0-bot0] INFO  org.pircbotx.InputParser - :killerbananabread!killerbananabread@killerbananabread.tmi.twitch.tv JOIN #irish_00
+13:07:34.407 [botPool0-bot0] INFO  org.pircbotx.InputParser - :xxsamperxx!xxsamperxx@xxsamperxx.tmi.twitch.tv JOIN #irish_00
+13:07:34.407 [botPool0-bot0] INFO  org.pircbotx.InputParser - :irish_00!irish_00@irish_00.tmi.twitch.tv JOIN #irish_00
+13:07:34.408 [botPool0-bot0] INFO  org.pircbotx.InputParser - :br3athless9!br3athless9@br3athless9.tmi.twitch.tv JOIN #irish_00
+13:07:34.408 [botPool0-bot0] INFO  org.pircbotx.InputParser - :popchops!popchops@popchops.tmi.twitch.tv JOIN #irish_00
+13:07:34.409 [botPool0-bot0] INFO  org.pircbotx.InputParser - :thorst4n!thorst4n@thorst4n.tmi.twitch.tv JOIN #irish_00
+13:07:34.409 [botPool0-bot0] INFO  org.pircbotx.InputParser - :oco6ohy6aceh!oco6ohy6aceh@oco6ohy6aceh.tmi.twitch.tv JOIN #irish_00
+13:07:34.409 [botPool0-bot0] INFO  org.pircbotx.InputParser - :aacisuan!aacisuan@aacisuan.tmi.twitch.tv JOIN #irish_00
+13:07:34.410 [botPool0-bot0] INFO  org.pircbotx.InputParser - :vorkoz!vorkoz@vorkoz.tmi.twitch.tv JOIN #irish_00
+13:07:34.410 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #irish_00 +o bennerbot
+13:07:34.416 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #irish_00 +o irish_00
+13:07:34.416 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #irish_00 +o jdbener
+13:07:43.887 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR bennerbot #FF0000
+13:07:43.890 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot!bennerbot@bennerbot.tmi.twitch.tv PRIVMSG #irish_00 :, Cscmos have followed on twitch
+13:07:43.891 [listenerPool0-thread11] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Bennerbot: , Cscmos have followed on twitch
+13:07:44.173 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 451 - :You have not registered
+13:07:44.173 [botPool0-bot1] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+org.pircbotx.exception.IrcException: CannotLogin: Received error: :irc.glados.tv 451 - :You have not registered
+	at org.pircbotx.InputParser.processConnect(InputParser.java:396) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:322) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:08:03.131 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR thorst4n #1E90FF
+13:08:03.134 [botPool0-bot0] INFO  org.pircbotx.InputParser - :thorst4n!thorst4n@thorst4n.tmi.twitch.tv PRIVMSG #irish_00 :its hard be precise with that cause of lag
+13:08:03.134 [listenerPool0-thread1] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Thorst4n: its hard be precise with that cause of lag
+13:08:05.328 [botPool0-bot0] INFO  org.pircbotx.InputParser - :aacisuan!aacisuan@aacisuan.tmi.twitch.tv PRIVMSG #irish_00 :yeah.
+13:08:05.329 [listenerPool0-thread7] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Aacisuan: yeah.
+13:08:07.586 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 451 - :You have not registered
+13:08:07.587 [botPool0-bot1] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+org.pircbotx.exception.IrcException: CannotLogin: Received error: :irc.glados.tv 451 - :You have not registered
+	at org.pircbotx.InputParser.processConnect(InputParser.java:396) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:322) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:08:09.983 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 451 - :You have not registered
+13:08:09.983 [botPool0-bot1] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+org.pircbotx.exception.IrcException: CannotLogin: Received error: :irc.glados.tv 451 - :You have not registered
+	at org.pircbotx.InputParser.processConnect(InputParser.java:396) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:322) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:08:17.823 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :irc.glados.tv
+13:08:17.824 [listenerPool0-thread4] INFO  org.pircbotx.output.OutputRaw - PONG irc.glados.tv
+13:09:24.324 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :irc.glados.tv
+13:09:24.325 [listenerPool0-thread13] INFO  org.pircbotx.output.OutputRaw - PONG irc.glados.tv
+13:09:31.372 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR oco6ohy6aceh #FF69B4
+13:09:31.373 [botPool0-bot0] INFO  org.pircbotx.InputParser - :oco6ohy6aceh!oco6ohy6aceh@oco6ohy6aceh.tmi.twitch.tv PRIVMSG #irish_00 :хавел перчатки
+13:09:31.373 [listenerPool0-thread17] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Oco6ohy6aceh: хавел перчатки
+13:09:33.578 [botPool0-bot1] INFO  org.pircbotx.InputParser - :irc.glados.tv 451 - :You have not registered
+13:09:33.578 [botPool0-bot1] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+org.pircbotx.exception.IrcException: CannotLogin: Received error: :irc.glados.tv 451 - :You have not registered
+	at org.pircbotx.InputParser.processConnect(InputParser.java:396) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:322) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+13:09:54.615 [bot2-shutdownhook] INFO  org.pircbotx.output.OutputRaw - QUIT :
+13:09:54.620 [bot2-shutdownhook] WARN  org.pircbotx.Channel - Channel #irish_00 mode '' is stale
+13:09:54.643 [bot2-shutdownhook] WARN  org.pircbotx.Channel - Channel #irish_00 mode '' is stale
+13:09:54.647 [bot2-shutdownhook] INFO  org.pircbotx.dcc.DccHandler - Terminating all transfers waiting to be accepted
+13:09:54.647 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Shutdown has been called, closing InputParser
+13:09:54.648 [bot2-shutdownhook] DEBUG org.pircbotx.PircBotX - Disconnected.
+13:09:54.648 [bot2-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.Countdown@ce0d675 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@523b58e0, disconnectException=null)
+13:09:54.648 [botPool0-bot0] DEBUG o.p.MultiBotManager$BotFutureCallback - Bot #0 finished

@@ -1,4 +1,6 @@
 Welcome to BennerBot
-Version 0.13
-[07:19] Sucessfully Connected to Twitch
-[07:19] Sucessfully Connected to Hitbox
+Version 0.14
+[15:52] Sucessfully Connected to Twitch
+Twitch [15:52] jdbener: this is benenrbot
+Twitch [15:53] jdbener: dun dun dun dun
+[15:53] Sucessfully Connected to Hitbox

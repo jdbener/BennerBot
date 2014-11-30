@@ -36,7 +36,7 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
 import me.jdbener.Bennerbot;
-import me.jdbener.utilities.SmartScroller;
+import me.jdbener.lib.SmartScroller;
 
 @SuppressWarnings("unused")
 public class GUIChatDisplay implements ActionListener{
@@ -179,14 +179,27 @@ public class GUIChatDisplay implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		//gets the text of the text area
-		String out = t.getText();
-		//clear the text area
-		t.setText("");
-		
-		//text?
-		if(!out.equalsIgnoreCase(""))
-			//send the text to the server
-			Bennerbot.sendMessage(out, true);
+		ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+		executor.execute(new Runnable(){
+			@Override
+			public void run() {
+				//gets the text of the text area
+				String out = t.getText();
+				//clear the text area
+				t.setText("");
+				
+				//text?
+				if(!out.equalsIgnoreCase(""))
+					if(out.startsWith("~"))
+						try{
+							Bennerbot.sendMessage(out.replace(out.split(" ")[0], ""), Bennerbot.getBotIDbyName(out.split(" ")[0]), true);
+						} catch(Exception e){
+							Bennerbot.sendMessage(out, true);
+						}
+					else
+						//send the text to the server
+						Bennerbot.sendMessage(out, true);
+			}
+		});
 	}
 }

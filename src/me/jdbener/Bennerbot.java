@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
@@ -35,6 +36,8 @@ import javax.swing.UIManager;
 
 import me.jdbener.apis.APIManager;
 import me.jdbener.gui.GUIContainer;
+import me.jdbener.levels.LevelManager;
+import me.jdbener.lib.Server;
 import me.jdbener.moderataion.FilterManager;
 import me.jdbener.utilities.AutoMessageHandeler;
 import me.jdbener.utilities.ChatRelayHandeler;
@@ -62,7 +65,7 @@ import org.slf4j.LoggerFactory;
 public class Bennerbot {
 	//bot infromation
 	public static String name = "BennerBot",												//the name of the bot
-			version = "0.13", 																//the version ID of the bot
+			version = "0.14", 																//the version ID of the bot
 			twitchu = "bennerbot",															//twitch username used to connect
 			twitchpw = "oauth:hrr2wpqq0knt6sb0spzd3d1mugpdezf",								//twitch OAuth used to connect
 			hitboxu = "bennerbot",															//hitbox username used to connect
@@ -154,7 +157,15 @@ public class Bennerbot {
 							System.out.println("Stoping Bot");
 							System.exit(0);
 						}
-						sendMessage(out, true);
+						if(out.startsWith("~"))
+							try{
+								Bennerbot.sendMessage(out.replace(out.split(" ")[0], ""), Bennerbot.getBotIDbyName(out.split(" ")[0].toLowerCase()), true);
+							} catch(Exception e){
+								Bennerbot.sendMessage(out, true);
+							}
+						else
+							//send the text to the server
+							Bennerbot.sendMessage(out, true);
 					}
 			}
 		} finally {
@@ -178,11 +189,17 @@ public class Bennerbot {
 		if(!conf.get("hitboxPassword").toString().equalsIgnoreCase("default"))
 			hitboxpw = conf.get("hitboxPassword").toString();
 		
+		//output to a file?
+		if(conf.get("enableOutput").toString().equalsIgnoreCase("true")){
+			listener.addListener(new Cleaner());
+		}
+		
 		listener.addListener(new ChatRelayHandeler());
 		listener.addListener(new CustomCommandHandeler());
 		listener.addListener(new Infromation());
 		listener.addListener(new JoinLeaveMessages());
 		listener.addListener(new Countdown());
+		listener.addListener(new LevelManager());
 		
 		//implement the plugin loader
 		if(conf.get("enablePluginSystem").toString().equalsIgnoreCase("true"))
@@ -196,11 +213,6 @@ public class Bennerbot {
 			new APIManager();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-			
-		//output to a file?
-		if(conf.get("enableOutput").toString().equalsIgnoreCase("true")){
-			listener.addListener(new Cleaner());
 		}
 		
 		//Initializes all of the settings for the bots!
@@ -359,12 +371,59 @@ public class Bennerbot {
 		}
 	}
 	/**
+	 * used to send a message to a specific bot form a bot operator
+	 * @param txt ~ the message to be sent
+	 * @param bot ~ the id of the bot, 0) twitch 1) hitbox
+	 */
+	@SuppressWarnings("unchecked")
+	public static void sendMessage(String txt, int bot, boolean fromUser){
+		try{
+			String server = "", user = "";
+			Server s = servers.get(bot);
+			if(Bennerbot.conf.get("showSource").toString().equalsIgnoreCase("true")){server = " ["+s.getChannel().replace("#", "")+"]";}
+			if(Bennerbot.conf.get("showSendName").toString().equalsIgnoreCase("true")){user = Bennerbot.capitalize(s.getChannel().replace("#", ""))+": ";}
+			manager.getBotById(bot).sendRaw().rawLine("PRIVMSG "+s.getChannel()+" :"+user+server+txt);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		//Display the message
+		Cleaner.onOutput(txt, true);
+		//this code deals with message phrasing and responding
+		if(Bennerbot.conf.get("respondToOperatorCommands").toString().equalsIgnoreCase("true")){
+			//creates the event that is sent to the functions
+			MessageEvent<PircBotX> e = GenerateMessageEvent(txt);
+			//this code will cycle through the plugins and run the OnMessage function if it exists
+			for(BennerBotPlugin obj: plugins.toArray(new BennerBotPlugin[0]))
+				obj.onOperatorOuput(txt);
+			//the code for hardcoded functions
+			//bot ones
+			for(Object obj: listener.getListeners().toArray())
+				try{
+					if(!obj.getClass().getName().contains("Cleaner")){
+						((ListenerAdapter<PircBotX>) obj).onMessage(e);
+					}
+				} catch(Exception ex){
+					ex.printStackTrace();
+				}
+		}
+	}
+	/**
 	 * A simple function that capitalizes the first letter of the string pasted to it
 	 * @param line ~ the string to be capitalized
 	 * @return ~ the capitalized string
 	 */
 	public static String capitalize(String line){
-	  return Character.toUpperCase(line.charAt(0)) + line.substring(1);
+		if(conf.get("capitalizeNames").toString().equalsIgnoreCase("true"))
+			return capitalize(line, true);
+		return line;
+	}
+	/**
+	 * A simple function that capitalizes the first letter of the string pasted to it
+	 * @param line ~ the string to be capitalized
+	 * @return ~ the capitalized string
+	 */
+	public static String capitalize(String line, boolean ignore){
+		return Character.toUpperCase(line.charAt(0)) + line.substring(1);
 	}
 	/**
 	 * returns the content of the path specified
@@ -505,7 +564,77 @@ public class Bennerbot {
 	public static String removeLastChar(String str) {
         return str.substring(0,str.length()-1);
     }
-	
+	/**
+	 * This function will convert an input stream into a string
+	 * @param is ~ the input steam
+	 * @return ~ the string
+	 */
+	public static String StreamToString(java.io.InputStream is) {
+	    @SuppressWarnings("resource")
+		Scanner s = new Scanner(is).useDelimiter("\\A");
+	    return s.hasNext() ? s.next() : "";
+	}
+	/**
+	 * This function checks if an item in the config has a specific value
+	 * @param item ~ the item
+	 * @param value ~ the value
+	 * @return ~ is that true or not
+	 */
+	public static boolean configEqualsString(String item, String value){
+		return conf.get(item).toString().equalsIgnoreCase(value);
+	}
+	/**
+	 * This function checks if an item in the config is true
+	 * @param item ~ the item
+	 * @return ~ is that the case
+	 */
+	public static boolean configBoolean(String item){
+		return configEqualsString(item, "true");
+	}
+	public static String configGetString(String item){
+		return conf.get(item).toString();
+	}
+	// convert from UTF-8 -> internal Java String format
+    /*public static String convert2UTF8(String utf) {
+    	// convert the input string to a character array  
+    	char[] chars = utf.toCharArray();  
+    	  
+    	StringBuilder sb = new StringBuilder();  
+    	for (int i = 0; i < chars.length; i++)  
+    	{  
+    	    int unipoint = Character.codePointAt(chars, i);  
+    	    if ((unipoint < 32) || (unipoint > 127))  
+    	    {  
+    	        StringBuilder hexString = new StringBuilder();  
+    	        for (int k = 0; k < 4; k++) // 4 times to build a 4-digit hex  
+    	        {  
+    	            hexString.insert(0, Integer.toHexString(unipoint % 16));  
+    	            unipoint = unipoint / 16;  
+    	        }  
+    	        sb.append("\\u"+hexString);  
+    	        //sb.append("&#"+hexString+";");
+    	    }  
+    	    else  
+    	    {  
+    	        sb.append(chars[i]);  
+    	    }  
+    	}  
+    	return sb.toString();
+    }*/
+	/* public static String convert2UTF8(String utf){
+		return StringEscapeUtils.escapeHtml4(utf);
+		 
+	 }*/
+	public static String convert2UTF8(String utf){
+		try {
+			byte[] ptext = utf.getBytes("ISO-8859-1");
+			return new String(ptext, "UTF-8");  
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} 
+		return utf;
+	}
+
 }
 
 /**

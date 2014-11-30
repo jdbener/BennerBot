@@ -11,17 +11,12 @@ package me.jdbener;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import me.jdbener.apis.APIManager;
+import me.jdbener.lib.*;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
@@ -33,7 +28,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 public class Cleaner extends ListenerAdapter<PircBotX>{
 	//this variable is a reference to some of the color utitlites used by the code
-	static UserColors UC = new UserColors();
+	public static UserColors UC = new UserColors();
 	
 	/**
 	 * this function sets up the beginning of the files
@@ -82,6 +77,9 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		}
 		//set the color on the server to the color set in the file
 		Bennerbot.sendMessage("/color "+UserColors.rgb2Hex(color), new String());
+		
+		if(e.getBot().getBotId() == Bennerbot.getBotIDbyName("Twitch"))
+			e.getBot().sendRaw().rawLine("TWITCHCLIENT 1");
 	
 		//display connect message
 		onOutput("Sucessfully Connected to "+Bennerbot.servers.get(e.getBot().getBotId()).getName());
@@ -99,15 +97,15 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		
 		//set the server text/image
 		Server s = Bennerbot.servers.get(e.getBot().getBotId());
-		server = "<img src=\'"+s.getLogo()+"\'>";
+		server = "<img class='server' src=\'"+s.getLogo()+"\'>";
 		serverd = s.getName();
 		
 		//the user is the user who sent the message
 		user = e.getUser().getNick();
 		//gets the message that was sent
-		message = APIManager.filterEmotes(filterURLS(e.getMessage()));
+		message = APIManager.filterEmotes(filterURLS(Bennerbot.convert2UTF8(e.getMessage())));
 		
-		//is the user in the file?
+		/*//is the user in the file?
 		if(!UC.inFile(user)){
 			//create a new color until the color isent in the file
 			 Color tempC = new Color(new Random().nextFloat(),new Random().nextFloat(),new Random().nextFloat());
@@ -121,15 +119,16 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		 for(user uc: UC.getUserColors()){
 			 if(uc.getUser().equalsIgnoreCase(user))
 				 color=uc.getColor();
-		 }
+		 }*/
+		 color = UC.getColorForUser(user);
 		 //check if the user sending the message is a moderator or not
 		 if(Bennerbot.isMod(e.getUser(), e.getChannel()))
-			 mod = "<img src=\'http://help.twitch.tv/customer/portal/attachments/349943'>";
+			 mod = "<img class='badge' src=\'http://help.twitch.tv/customer/portal/attachments/349943'>";
 		 else 
 			 mod = "";
 		 //check if the user sending the message is a broadcaster or not
 		 if(e.getUser().getNick().equalsIgnoreCase(Bennerbot.conf.get("twitchChannel").toString()) || e.getUser().getNick().equalsIgnoreCase(Bennerbot.conf.get("hitboxChannel").toString()))
-			 mod = "<img src=\'http://help.twitch.tv/customer/portal/attachments/349942'>";
+			 mod = "<img class='badge' src=\'http://help.twitch.tv/customer/portal/attachments/349942' class='badge'>";
 		 //capitalize the user's name
 		 user=Bennerbot.capitalize(user);
 		 //this long block of code will shorten the user's name, or not depending
@@ -152,23 +151,20 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		//if the message is a command, dont display it
 		if(message.startsWith("!") && Bennerbot.conf.get("filterCommands").toString().equalsIgnoreCase("true"))
 			write = false;
-		//support for highlighting messages 
-		/*if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
-			clean = "<div id=\'highlight\'><span class='server'>"+server+"</span> <span class='badge'>"+mod+"</span><span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+message+"</span></div><br>\n";
-		else
-			clean = "<span class='server'>"+server+"</span> <span class='badge'>"+mod+"</span><span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span> <span class='username' style=\'color:"+UserColors.rgb2Hex(color)+"\'>"+user+"</span> <span class='message'>"+message+"</span><br>\n";
-		*/
 		
 		clean = Bennerbot.conf.get("DisplayMessageFormat").toString()
 					.replace("<server>", server)
 					.replace("<badge>", mod)
-					.replace("<timestamp>", Bennerbot.dateFormat.format(date))
-					.replace("<color>", UserColors.rgb2Hex(color))
-					.replace("<user>", user)
-					.replace("<message>", message)
+					.replace("<timestamp>", "<span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span>")
+					.replace("<color>", "<span class='color'>"+UserColors.rgb2Hex(color)+"</span>")
+					.replace("<user>", "<span class='username' style='color:"+UserColors.rgb2Hex(color)+"'>"+user.replace(":", "")+"</span>")
+					.replace("<noformatuser>", "<span class='username'>"+user.replace(":", "")+"</span>")
+					.replace("<message>", "<span class='message'>"+message+"</span>")
 					.replace("<br>", "");
 		if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
-			clean = "<div id=\'highlight\'>"+clean+"</div>";
+			clean = "<span class=\'message highlight\'>"+clean+"</div>";
+		else
+			clean = "<span class=\'message\'>"+clean+"</div>";
 		clean = clean+"<br>\n";
 		
 		//dirty output
@@ -194,7 +190,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			Date date = new Date();
 			
 			//this information dose not have to be determined
-			server = "<img src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"\'>";
+			server = "<img class='server' src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"\'>";
 			user = Bennerbot.name;
 			message = "Welcome "+e.getUser().getNick()+" to the channel!";
 			
@@ -213,13 +209,16 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			clean = Bennerbot.conf.get("DisplayMessageFormat").toString()
 					.replace("<server>", server)
 					.replace("<badge>", "")
-					.replace("<timestamp>", Bennerbot.dateFormat.format(date))
-					.replace("<color>", UserColors.rgb2Hex(color))
-					.replace("<user>", user)
-					.replace("<message>", message)
+					.replace("<timestamp>", "<span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span>")
+					.replace("<color>", "<span class='color'>"+UserColors.rgb2Hex(color)+"</span>")
+					.replace("<user>", "<span class='username' style='color:"+UserColors.rgb2Hex(color)+"'>"+user+"</span>")
+					.replace("<noformatuser>", "<span class='username'>"+user+"</span>")
+					.replace("<message>", "<span class='message'>"+message+"</span>")
 					.replace("<br>", "");
 			if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
-				clean = "<div id=\'highlight\'>"+clean+"</div>";
+				clean = "<span class=\'message highlight\'>"+clean+"</div>";
+			else
+				clean = "<span class=\'message\'>"+clean+"</div>";
 			clean = clean+"<br>\n";
 			
 			//the dirty format
@@ -244,7 +243,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			
 			Date date = new Date();
 		
-			server = "<img src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"\'>";
+			server = "<img class='server' src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"\'>";
 			user = Bennerbot.name;
 			message = e.getUser().getNick()+" has left the channel!";
 			
@@ -262,13 +261,14 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			clean = Bennerbot.conf.get("DisplayMessageFormat").toString()
 					.replace("<server>", server)
 					.replace("<badge>", "")
-					.replace("<timestamp>", Bennerbot.dateFormat.format(date))
-					.replace("<color>", UserColors.rgb2Hex(color))
-					.replace("<user>", user)
-					.replace("<message>", message)
+					.replace("<timestamp>", "<span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span>")
+					.replace("<color>", "<span class='color'>"+UserColors.rgb2Hex(color)+"</span>")
+					.replace("<user>", "<span class='username' style='color:"+UserColors.rgb2Hex(color)+"'>"+user+"</span>")
+					.replace("<noformatuser>", "<span class='username'>"+user+"</span>")
+					.replace("<message>", "<span class='message'>"+message+"</span>")
 					.replace("<br>", "");
 			if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
-				clean = "<div id=\'highlight\'>"+clean+"</div>";
+				clean = "<span id=\'highlight\'>"+clean+"</div>";
 			clean = clean+"<br>\n";
 			dirty = "["+Bennerbot.dateFormat.format(date)+"] "+message+"\n";
 			
@@ -288,19 +288,27 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			boolean trash = (e.getMessage().contains("HISTORYEND") ||
 							e.getMessage().contains("USERCOLOR") || 
 							e.getMessage().contains("Your color has been changed") || 
-							e.getMessage().contains("HOSTTARGET"));
+							e.getMessage().contains("HOSTTARGET")||
+							e.getMessage().contains("EMOTESET"));
 			if(!trash){
 				//Initialize variables
 				String clean, dirty;
 				
 				//display
-				clean = "<span id='error'>"+e.getMessage()+"</span><br>\n";
+				clean = "<span class='message error'>"+e.getMessage()+"</div><br>\n";
 				dirty = e.getMessage();
 			
 				if(Bennerbot.conf.get("WriteClean").toString().equalsIgnoreCase("true") || Bennerbot.conf.get("OutputGUI").toString().equalsIgnoreCase("true"))
 					Bennerbot.write(clean, new File("output.html"));
 				if(Bennerbot.conf.get("WriteDirty").toString().equalsIgnoreCase("true"))
 					Bennerbot.write(dirty, new File("output.txt"));
+			}
+			if(e.getMessage().startsWith("USERCOLOR")){
+				//TODO expanding here
+				String user = e.getMessage().split(" ")[1];
+				String color = e.getMessage().split(" ")[2];
+				
+				UC.UpdateUserColor(user, UserColors.hex2Rgb(color));
 			}
 		} else {
 			e.respond("Please dont private messgae me");
@@ -319,7 +327,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			
 			Date date = new Date();
 		
-			server = "<img src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"'>";
+			server = "<img class='server' src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"'>";
 			user = Bennerbot.name;
 			message = txt;
 			
@@ -336,13 +344,16 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 			clean = Bennerbot.conf.get("DisplayMessageFormat").toString()
 					.replace("<server>", server)
 					.replace("<badge>", "")
-					.replace("<timestamp>", Bennerbot.dateFormat.format(date))
-					.replace("<color>", UserColors.rgb2Hex(color))
-					.replace("<user>", user)
-					.replace("<message>", message)
+					.replace("<timestamp>", "<span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span>")
+					.replace("<color>", "<span class='color'>"+UserColors.rgb2Hex(color)+"</span>")
+					.replace("<user>", "<span class='username' style='color:"+UserColors.rgb2Hex(color)+"'>"+user+"</span>")
+					.replace("<noformatuser>", "<span class='username'>"+user+"</span>")
+					.replace("<message>", "<span class='message'>"+message+"</span>")
 					.replace("<br>", "");
 			if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
-				clean = "<div id=\'highlight\'>"+clean+"</div>";
+				clean = "<span class=\'message highlight\'>"+clean+"</div>";
+			else
+				clean = "<span class=\'message\'>"+clean+"</div>";
 			clean = clean+"<br>\n";
 			dirty = "["+Bennerbot.dateFormat.format(date)+"] "+message+"\n";
 			
@@ -363,7 +374,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		
 		Date date = new Date();
 		
-		server = "<img src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"\'>";
+		server = "<img class='server' src=\'"+Bennerbot.getPath(new File("resource/OutputLogo.png"))+"\'>";
 		user = Bennerbot.name;
 		message = txt;
 		
@@ -380,13 +391,16 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		clean = Bennerbot.conf.get("DisplayMessageFormat").toString()
 				.replace("<server>", server)
 				.replace("<badge>", "")
-				.replace("<timestamp>", Bennerbot.dateFormat.format(date))
-				.replace("<color>", UserColors.rgb2Hex(color))
-				.replace("<user>", user)
-				.replace("<message>", message)
+				.replace("<timestamp>", "<span class='timestamp'>"+Bennerbot.dateFormat.format(date)+"</span>")
+				.replace("<color>", "<span class='color'>"+UserColors.rgb2Hex(color)+"</span>")
+				.replace("<user>", "<span class='username' style='color:"+UserColors.rgb2Hex(color)+"'>"+user+"</span>")
+				.replace("<noformatuser>", "<span class='username'>"+user+"</span>")
+				.replace("<message>", "<span class='message'>"+message+"</span>")
 				.replace("<br>", "");
 		if(((message.contains(Bennerbot.conf.get("twitchChannel").toString()) || message.contains(Bennerbot.conf.get("hitboxChannel").toString())) && Bennerbot.conf.get("HighlighMessages").toString().equalsIgnoreCase("true")))
-			clean = "<div id=\'highlight\'>"+clean+"</div>";
+			clean = "<span class=\'message highlight\'>"+clean+"</div>";
+		else
+			clean = "<span class=\'message\'>"+clean+"</div>";
 		clean = clean+"<br>\n";
 		dirty = "["+Bennerbot.dateFormat.format(date)+"] "+message+"\n";
 			
@@ -449,170 +463,4 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
     }
 	
 }
-/*
- * This class is used in the manegment of user colors.
- */
-class UserColors {
-	//Initialize variables
-	static File f = new File("config/usercolors.txt");
-	//BufferedReader in;
-	
-	public UserColors(){
-		
-		setupUserColorTable();
-		//assign the variables
-		/*try {
-			in = new BufferedReader(new FileReader(f));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
-		
-	}
-	public static void setupUserColorTable(){
-		 try {
-			 Connection c = APIManager.getConnection(); 
-			 Statement stmt = c.createStatement();
-			 String sql;
-			 if(Bennerbot.conf.get("resetColorDatabase").toString().equalsIgnoreCase("true")){
-				 sql = "DROP TABLE IF EXISTS UC;"; 
-				 stmt.executeUpdate(sql);
-			 }
-			  sql = "CREATE TABLE IF NOT EXISTS UC " +
-		                   "(USER          TEXT    NOT NULL, " + 
-		                   " COLOR         TEXT)"; 
-		      stmt.executeUpdate(sql);
-		      stmt.close();
-		      c.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	//this function adds a user's color to the database
-	public void addUserColor(String user, Color color){
-		try{
-			  Connection c = APIManager.getConnection();
-			  Statement stmt = c.createStatement();
-			  String sql = "INSERT INTO UC (USER, COLOR) " +
-	                   "VALUES ('"+user+"','"+rgb2Hex(color)+"');"; 
-			  
-			  stmt.execute(sql);
-		} catch (SQLException e){
-			 e.printStackTrace();
-		}
-			  
-		//write(user+":"+rgb2Hex(color));
-	}
-	//this function returns an array of user objects from the database
-	public user[] getUserColors(){
-		ArrayList<user> temp = new ArrayList<user>();
-		try{
-		  Connection c = APIManager.getConnection();
-		  Statement stmt = c.createStatement();
-		  String sql = "SELECT * FROM UC;"; 
-		  
-		  ResultSet rs = stmt.executeQuery(sql);
-		  
-		  while(rs.next()){
-			  user tempu = new user();
-			  tempu.setUser(rs.getString("USER"));
-			  tempu.setColor(hex2Rgb(rs.getString("COLOR")));
-			  temp.add(tempu);
-		  }
-		  
-		} catch (SQLException e){
-			e.printStackTrace();
-		}
-		/*//reads the file
-		String temp = readFile(f.toString());
-		//splits the string by line
-		String[] tempa = temp.split("[\\r\\n]+");
-		user[] out = new user[tempa.length];
-		//creates the array
-		for(int i = 0; i < out.length; i=i+1){
-			String user = tempa[i].split(":")[0];
-			String color = tempa[i].split(":")[1];
-			out[i] = new user();
-			out[i].user = user;
-			out[i].color = hex2Rgb(color);
-		}
-		//returns the array*/
-		return temp.toArray(new user[0]);
-	}
-	//checks if a user is in the file
-	public boolean inFile(String user){
-		user[] temp = getUserColors();
-		boolean out=false;
-		for(user t: temp){
-			if(t.getUser().equalsIgnoreCase(user))
-				out=true;
-		}
-		return out;
-	}
-	//checks if a color is in the file
-	public boolean inFile(Color color){
-		user[] temp = getUserColors();
-		boolean out=false;
-		for(user t: temp){
-			if(rgb2Hex(t.getColor()).equalsIgnoreCase(rgb2Hex(color)))
-				out=true;
-		}
-		return out;
-	}
-	//converts a color object into a string hexadecimal
-	public final static String rgb2Hex(Color colour) throws NullPointerException {
-		  String hexColour = Integer.toHexString(colour.getRGB() & 0xffffff);
-		  if (hexColour.length() < 6) {
-		    hexColour = "000000".substring(0, 6 - hexColour.length()) + hexColour;
-		  }
-		  return "#" + hexColour;
-		}
-	//converts a string hexadecimal into a color object
-	public static Color hex2Rgb(String colorStr) {
-	    return new Color(
-	            Integer.valueOf( colorStr.substring( 1, 3 ), 16 ),
-	            Integer.valueOf( colorStr.substring( 3, 5 ), 16 ),
-	            Integer.valueOf( colorStr.substring( 5, 7 ), 16 ) );
-	}
-	//reads the file
-	/*static String readFile(String path) {
-		try {
-			//gets all of the bytes in the file
-			byte[] encoded = Files.readAllBytes(Paths.get(path));
-			//turns those bytes into a string
-			return new String(encoded, "UTF-8");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	//writes to the file
-	static void write(String out){
-		try {
-			FileWriter writer = new FileWriter(f, true);
-			writer.append(out+"\n");
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}*/
-}
-/*
- * This class is a simple object that stores a username and a color
- */
-class user{
-	public String user;
-	public Color color;
-	
-	public String getUser(){
-		return user;
-	}
-	public void setUser(String u){
-		user = u;
-	}
-	public Color getColor(){
-		return color;
-	}
-	public void setColor(Color c){
-		color = c;
-	}
-}
+

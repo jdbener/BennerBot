@@ -13,6 +13,7 @@ public class FilterManager extends ListenerAdapter<PircBotX>{
 	public static Map<String, String> userMap = new HashMap<String, String>();
 	public static int warnings = 3, maxWarnings = 20;
 	
+	@SuppressWarnings("unused")
 	public FilterManager(){
 		warnings = Integer.parseInt(Bennerbot.conf.get("kickWarnings").toString());
 		maxWarnings = Integer.parseInt(Bennerbot.conf.get("banWarnings").toString());

@@ -1,6 +1,5 @@
 package me.jdbener.apis.lastfm;
 
-import java.io.IOException;
 import java.net.URL;
 
 import me.jdbener.Bennerbot;
@@ -8,7 +7,6 @@ import me.jdbener.apis.APIManager;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -17,7 +15,7 @@ public class LastfmNowPlaying extends ListenerAdapter<PircBotX>{
 	public void onMessage(MessageEvent<PircBotX> e){
 		if(e.getMessage().equalsIgnoreCase("!song"))
 				try {
-					JSONObject obj = (JSONObject) APIManager.parser.parse(APIManager.StreamToString(new URL("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=20&user="+Bennerbot.conf.get("lastfmName")+"&api_key=f3237219f4b0a18670d59ad9458acb91&format=json").openStream()));
+					JSONObject obj = (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=20&user="+Bennerbot.conf.get("lastfmName")+"&api_key=f3237219f4b0a18670d59ad9458acb91&format=json").openStream()));
 					
 					JSONObject recent = (JSONObject) obj.get("recenttracks");
 					JSONObject track = (JSONObject)((JSONArray) recent.get("track")).get(0);
@@ -39,7 +37,7 @@ public class LastfmNowPlaying extends ListenerAdapter<PircBotX>{
 					}
 				
 					Bennerbot.sendMessage(out);	
-				} catch (ParseException | IOException ex) {
+				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
 		//TODO add previous track support

@@ -29,7 +29,7 @@ class HFollowerTimer extends TimerTask {
 		try {
 			path = new URL("http://api.hitbox.tv/followers/user/"+Bennerbot.conf.get("hitboxChannel")+"/?limit=10000000000000000000000");
 			
-			JSONObject obj = (JSONObject) APIManager.parser.parse(APIManager.StreamToString(path.openStream()));
+			JSONObject obj = (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(path.openStream()));
 			JSONArray followers = (JSONArray) obj.get("followers");
 			
 			for(int i = 0; i < followers.toArray().length; i++){
@@ -47,19 +47,22 @@ class HFollowerTimer extends TimerTask {
 	public void run(){
 		try {
 			String list = "";
-			JSONObject obj = (JSONObject) APIManager.parser.parse(APIManager.StreamToString(path.openStream()));
+			JSONObject obj = (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(path.openStream()));
 			JSONArray followers = (JSONArray) obj.get("followers");
 			for(int i=0; i<followers.size(); i++){
 				JSONObject follower = (JSONObject) followers.get(i);
 				String name = (String) follower.get("user_name");
 				if(!APIManager.followers.contains(name)){
 					//Bennerbot.sendMessage(Bennerbot.capitalize(name)+" has just followed");
-					list = list+", "+Bennerbot.capitalize(name);
+					list = list+Bennerbot.capitalize(name)+", ";
 					APIManager.followers.add(name);
 				}
 			}
 			if(!list.equalsIgnoreCase("")){
-				Bennerbot.sendMessage(list+" have followed on hitbox");
+				if(list.split(",").length>1)
+					Bennerbot.sendMessage(list+" have followed on hitbox");
+				else
+					Bennerbot.sendMessage(list+" has followed on hitbox");
 			}
 		} catch (IOException | ParseException e1) {
 			e1.printStackTrace();

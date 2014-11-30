@@ -1,5 +1,7 @@
 package me.jdbener.utilities;
 
+import java.util.Random;
+
 import me.jdbener.Bennerbot;
 
 import org.pircbotx.PircBotX;
@@ -33,5 +35,16 @@ public class Infromation extends ListenerAdapter<PircBotX> {
 			}
 		}
 		
+		if(e.getMessage().startsWith("!roll")){
+			if(e.getMessage().split(" ").length == 2){
+				Random rng = new Random();
+				int num = rng.nextInt(Integer.parseInt(e.getMessage().split(" ")[1])+1);
+				Bennerbot.sendMessage("You rolled a "+num);
+			} else {
+				Random rng = new Random();
+				int num = rng.nextInt(100);
+				Bennerbot.sendMessage("You rolled a "+num);
+			}
+		}
 	}
 }
