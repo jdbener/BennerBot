@@ -1,3 +1,5 @@
+##Hitbox Integration is currently not functional, due to the fact that hitbox's irc server is changing hosts and will be offline for a few days, integration will be back as soon as possible! I appologize for any inconvinience this might cause ![:(](http://www.chatslang.com/images/shortcuts/twitch/sad.png) ##
+
 Hello, my name is Jdbener and today I am going to give you a basic walk through of how to use my twitch/hitbox chatbot, BennerBot! Bennerbot has been designed differently than other chatbots, it is designed by streamers for streamers, it has been designed to manage both twitch and hitbox simultaneously, it has also been written in java so it can be used from anywhere! If you have any bug reports or feature requests feel free to post an issue on the GitHub page and will try my best to include your input.
 
 There are 4 steps to running BennerBot:
