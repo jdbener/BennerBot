@@ -17,7 +17,11 @@ There is a file called BasicCommands.java that file contains a simple example pl
 
 **If you ever find a bug or have and idea for a feature please post a comment [here](https://github.com/jdbener/BennerBot/issues)**
 
-**Auto Installer can be found [here](https://github.com/jdbener/BennerBot/releases/tag/autoupdater)**
+**Auto Installer can be found [here](https://github.com/jdbener/BennerBot/releases/tag/autoupdater) or as a:**
+
+1. **[Windows Executable](https://github.com/jdbener/BennerBot/releases/download/autoupdater/BennerBot.exe)**
+
+2. **[Cross Platform JAR](https://github.com/jdbener/BennerBot/releases/download/autoupdater/BennerBot.jar)**
 
 **[Check out our Website!!](http://jdbener.github.io/BennerBot)**
 
