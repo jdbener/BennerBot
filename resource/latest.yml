@@ -1,4 +1,4 @@
-ID: 2
-Version: 13.0
-Changelog: "The Bountiful Update! Added Automatic messages, Better Custom messages and A countdown. As well as more quality of life stuff"
-link: "https://github.com/jdbener/BennerBot/releases/download/a0.13/BennerBot.Mk13.zip"
+ID: 3
+Version: 14.0
+Changelog: "This update changed the database system around a little, so that it is based off of a remote database, or a local database depending on the operator's preference!"
+link: "https://github.com/jdbener/BennerBot/releases/download/a0.14/BennerBot.Mk14.zip"
