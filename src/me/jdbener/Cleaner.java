@@ -6,7 +6,8 @@
 
 package me.jdbener;
 
-//TODO add preaty scrolling to the output file
+//TODO add pretty scrolling to the output file
+//TODO change the TTS system so that the speak method is called when a message is displayed, so that there isent a delay between when the message is spoken and when it is displayed.
 
 import java.awt.Color;
 import java.io.File;
@@ -16,7 +17,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import me.jdbener.apis.APIManager;
-import me.jdbener.lib.*;
+import me.jdbener.lib.Server;
+import me.jdbener.lib.UserColors;
+import me.jdbener.lib.user;
+import me.jdbener.speech.TextToSpeachManager;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
@@ -90,7 +94,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 	 */
 	public void onMessage(MessageEvent<PircBotX> e){
 		//initialize variables
-		String clean = "", dirty, server, serverd, mod, user, message;
+		String clean = "", dirty, server, serverd, mod="", user, message;
 		Color color = Color.gray;
 		
 		Date date = new Date();
@@ -103,36 +107,19 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		//the user is the user who sent the message
 		user = e.getUser().getNick();
 		//gets the message that was sent
-		message = APIManager.filterEmotes(filterURLS(Bennerbot.convert2UTF8(e.getMessage())));
-		
-		/*//is the user in the file?
-		if(!UC.inFile(user)){
-			//create a new color until the color isent in the file
-			 Color tempC = new Color(new Random().nextFloat(),new Random().nextFloat(),new Random().nextFloat());
-			 while (UC.inFile(tempC)){
-				 tempC = new Color(new Random().nextFloat(),new Random().nextFloat(),new Random().nextFloat());
-			 }
-			 //add the color to the file
-			 UC.addUserColor(user, tempC);
-		 }
-		 //sets the color from the file
-		 for(user uc: UC.getUserColors()){
-			 if(uc.getUser().equalsIgnoreCase(user))
-				 color=uc.getColor();
-		 }*/
-		 color = UC.getColorForUser(user);
-		 //check if the user sending the message is a moderator or not
-		 if(Bennerbot.isMod(e.getUser(), e.getChannel()))
-			 mod = "<img class='badge' src=\'http://help.twitch.tv/customer/portal/attachments/349943'>";
-		 else 
-			 mod = "";
-		 //check if the user sending the message is a broadcaster or not
-		 if(e.getUser().getNick().equalsIgnoreCase(Bennerbot.conf.get("twitchChannel").toString()) || e.getUser().getNick().equalsIgnoreCase(Bennerbot.conf.get("hitboxChannel").toString()))
-			 mod = "<img class='badge' src=\'http://help.twitch.tv/customer/portal/attachments/349942' class='badge'>";
-		 //capitalize the user's name
-		 user=Bennerbot.capitalize(user);
-		 //this long block of code will shorten the user's name, or not depending
-		 if(Bennerbot.conf.get("nameShortener").toString().equalsIgnoreCase("true")){
+		message = APIManager.filterEmotes(filterURLS(Bennerbot.filterUTF8(e.getMessage())));
+	
+		color = UC.getColorForUser(user);
+		//check if the user sending the message is a moderator or not
+		if(Bennerbot.isMod(e.getUser(), e.getChannel()))
+			mod = "<img class='badge' src=\'http://help.twitch.tv/customer/portal/attachments/349943'>";
+		//check if the user sending the message is a broadcaster or not
+		else if(e.getUser().getNick().equalsIgnoreCase(Bennerbot.conf.get("twitchChannel").toString()) || e.getUser().getNick().equalsIgnoreCase(Bennerbot.conf.get("hitboxChannel").toString()))
+			mod = "<img class='badge' src=\'http://help.twitch.tv/customer/portal/attachments/349942'>";
+		//capitalize the user's name
+		user=Bennerbot.capitalize(user);
+		//this long block of code will shorten the user's name, or not depending
+		if(Bennerbot.conf.get("nameShortener").toString().equalsIgnoreCase("true")){
 			if(e.getUser().getNick().length() > 9){
 				user=user.substring(0,9)+"... :";
 			}
@@ -176,6 +163,9 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		//write the dirty file if allowed
 		if(Bennerbot.conf.get("WriteDirty").toString().equalsIgnoreCase("true") && write)
 			Bennerbot.write(dirty, new File("output.txt"));
+		
+		if(Bennerbot.configBoolean("enableTTS"))
+			TextToSpeachManager.read(e);
 	}
 	/**
 	 * this function is called whenever somebody joins the channel

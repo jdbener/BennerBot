@@ -15,7 +15,7 @@ import me.jdbener.apis.APIManager;
 
 public class UserColors {
 	//twitch api colors
-	user[] defaultcolors = new user[]{
+	public static user[] defaultcolors = new user[]{
 		new user("Red", "#FF0000"),
 		new user("Blue", "#0000FF"),
 		new user("Green", "#00FF00"),

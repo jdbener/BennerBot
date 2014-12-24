@@ -1,0 +1,103 @@
+23:52:18.592 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+23:52:32.009 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+23:52:35.924 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+23:52:36.010 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+23:52:36.011 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+23:52:36.012 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+23:52:36.014 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+23:52:36.014 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+23:52:36.014 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+23:52:36.056 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+23:52:36.060 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.249.253
+23:52:36.089 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+23:52:36.095 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS oauth:hrr2wpqq0knt6sb0spzd3d1mugpdezf
+23:52:36.095 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK bennerbot
+23:52:36.095 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+23:52:36.156 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 bennerbot :Welcome, GLHF!
+23:52:36.164 [botPool0-bot0] DEBUG org.pircbotx.InputParser - Logged onto server.
+23:52:37.096 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - JOIN #mindy29 
+23:52:37.096 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 002 bennerbot :Your host is tmi.twitch.tv
+23:52:37.097 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 003 bennerbot :This server is rather new
+23:52:37.097 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 004 bennerbot :-
+23:52:37.103 [botPool0-bot0] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+23:52:37.103 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 375 bennerbot :-
+23:52:37.104 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 372 bennerbot :You are in a maze of twisty passages, all alike.
+23:52:37.104 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 376 bennerbot :>
+23:52:37.163 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot!bennerbot@bennerbot.tmi.twitch.tv JOIN #mindy29
+23:52:38.097 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - WHO #mindy29
+23:52:39.098 [listenerPool0-thread2] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #mindy29 :/color #ff0000
+23:52:40.099 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - MODE #mindy29
+23:52:40.103 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot.tmi.twitch.tv 353 bennerbot = #mindy29 :bennerbot
+23:52:40.104 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot.tmi.twitch.tv 366 bennerbot #mindy29 :End of /NAMES list
+23:52:40.105 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :USERCOLOR bennerbot #FF0000
+23:52:40.108 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :HISTORYEND mindy29
+23:52:40.109 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 421 bennerbot WHO :Unknown command
+23:52:40.109 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :USERCOLOR bennerbot #FF0000
+23:52:40.110 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :Your color has been changed
+23:52:41.100 [listenerPool0-thread2] INFO  org.pircbotx.output.OutputRaw - TWITCHCLIENT 1
+23:52:58.838 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR jdbener #1E90FF
+23:52:58.843 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #mindy29 :this is too peacefull for attack on titan :p
+23:53:00.514 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR hikarihoroko #8A2BE2
+23:53:00.516 [botPool0-bot0] INFO  org.pircbotx.InputParser - :hikarihoroko!hikarihoroko@hikarihoroko.tmi.twitch.tv PRIVMSG #mindy29 :I have no idea XD
+23:53:25.811 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR lunareia #FF69B4
+23:53:25.812 [botPool0-bot0] INFO  org.pircbotx.InputParser - :lunareia!lunareia@lunareia.tmi.twitch.tv PRIVMSG #mindy29 :It's a LULLABY that's why. it's supposed to be more creepy
+23:53:35.124 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR lunareia #FF69B4
+23:53:35.126 [botPool0-bot0] INFO  org.pircbotx.InputParser - :lunareia!lunareia@lunareia.tmi.twitch.tv PRIVMSG #mindy29 :XD Kari you should play castle crashers
+23:53:41.196 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR hikarihoroko #8A2BE2
+23:53:41.198 [botPool0-bot0] INFO  org.pircbotx.InputParser - :hikarihoroko!hikarihoroko@hikarihoroko.tmi.twitch.tv PRIVMSG #mindy29 :pssttt Kita do you have any idear??? 
+23:53:55.821 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR lunareia #FF69B4
+23:53:55.823 [botPool0-bot0] INFO  org.pircbotx.InputParser - :lunareia!lunareia@lunareia.tmi.twitch.tv PRIVMSG #mindy29 :play SPACE JAM
+23:54:01.843 [Thread-16] INFO  me.jdbener.Bennerbot - Reseting Map
+23:54:16.127 [Thread-18] INFO  me.jdbener.Bennerbot - Reseting Map
+23:54:20.552 [Thread-20] INFO  me.jdbener.Bennerbot - Reseting Map
+23:54:46.587 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR hikarihoroko #8A2BE2
+23:54:46.588 [botPool0-bot0] INFO  org.pircbotx.InputParser - :hikarihoroko!hikarihoroko@hikarihoroko.tmi.twitch.tv PRIVMSG #mindy29 :DOn't worry Bener I have it on mine XD I'll play it tomorrow
+23:55:05.102 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR jdbener #1E90FF
+23:55:05.106 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #mindy29 :YAY
+23:55:09.381 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR jdbener #1E90FF
+23:55:09.382 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #mindy29 :HUS
+23:55:13.965 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR jdbener #1E90FF
+23:55:13.967 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #mindy29 :FailFish
+23:55:18.718 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR jdbener #1E90FF
+23:55:18.720 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #mindy29 :HUGS*
+23:55:29.416 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR jdbener #1E90FF
+23:55:29.417 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #mindy29 :did u say terraria?
+23:55:36.095 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR hikarihoroko #8A2BE2
+23:55:36.098 [botPool0-bot0] INFO  org.pircbotx.InputParser - :hikarihoroko!hikarihoroko@hikarihoroko.tmi.twitch.tv PRIVMSG #mindy29 :Yeah let's do BBT! 
+23:56:06.719 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR jdbener #1E90FF
+23:56:06.720 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #mindy29 :Terraria is cool
+23:56:22.620 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR lunareia #FF69B4
+23:56:22.622 [botPool0-bot0] INFO  org.pircbotx.InputParser - :lunareia!lunareia@lunareia.tmi.twitch.tv PRIVMSG #mindy29 :uuhhhh I have no idea cause i wanna see you guys play BBT XD
+23:56:50.789 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR hikarihoroko #8A2BE2
+23:56:50.790 [botPool0-bot0] INFO  org.pircbotx.InputParser - :hikarihoroko!hikarihoroko@hikarihoroko.tmi.twitch.tv PRIVMSG #mindy29 :fffff foot fell asleep aggghhh
+23:56:51.967 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR hikarihoroko #8A2BE2
+23:56:51.969 [botPool0-bot0] INFO  org.pircbotx.InputParser - :hikarihoroko!hikarihoroko@hikarihoroko.tmi.twitch.tv PRIVMSG #mindy29 :pain
+23:56:58.519 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR lunareia #FF69B4
+23:56:58.523 [botPool0-bot0] INFO  org.pircbotx.InputParser - :lunareia!lunareia@lunareia.tmi.twitch.tv PRIVMSG #mindy29 :yeah pretty much XD
+23:57:12.596 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+23:57:12.597 [listenerPool0-thread16] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+23:57:15.859 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR lunareia #FF69B4
+23:57:15.861 [botPool0-bot0] INFO  org.pircbotx.InputParser - :lunareia!lunareia@lunareia.tmi.twitch.tv PRIVMSG #mindy29 :fight the pain
+23:57:24.287 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR hikarihoroko #8A2BE2
+23:57:24.289 [botPool0-bot0] INFO  org.pircbotx.InputParser - :hikarihoroko!hikarihoroko@hikarihoroko.tmi.twitch.tv PRIVMSG #mindy29 :okay we gotta wait for my foot to wake up so I don't die
+23:57:26.964 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR lunareia #FF69B4
+23:57:26.965 [botPool0-bot0] INFO  org.pircbotx.InputParser - :lunareia!lunareia@lunareia.tmi.twitch.tv PRIVMSG #mindy29 :for FREEEEEEEDDODOOOOM
+23:57:32.700 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR hikarihoroko #8A2BE2
+23:57:32.701 [botPool0-bot0] INFO  org.pircbotx.InputParser - :hikarihoroko!hikarihoroko@hikarihoroko.tmi.twitch.tv PRIVMSG #mindy29 :WAKE UP 
+23:57:35.635 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG bennerbot :USERCOLOR hikarihoroko #8A2BE2
+23:57:35.635 [botPool0-bot0] INFO  org.pircbotx.InputParser - :hikarihoroko!hikarihoroko@hikarihoroko.tmi.twitch.tv PRIVMSG #mindy29 :SIUEFBIUAEBIUGFOAEGESG MAKE UP

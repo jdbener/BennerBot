@@ -14,24 +14,31 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 import me.jdbener.Bennerbot;
 import me.jdbener.apis.APIManager;
+import me.jdbener.lib.botId;
+import me.jdbener.moderataion.FilterManager;
 
 public class BennerBitManager extends ListenerAdapter<PircBotX>{
 	public BennerBitManager(){
 		setupUserBitsTable();
 	}
 	public void onMessage(MessageEvent<PircBotX> e){
-		if(e.getMessage().startsWith("!bits") && !Bennerbot.configBoolean("optoutoftheBennerBitProgram")){
+		if(e.getMessage().startsWith("!bits")){
 			if(e.getMessage().split(" ").length == 1){
 				try{
-					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" you have ฿"+(int)getBits(e.getUser().getNick())+" BennerBits");
+					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" you have \u0E3F"+(int)getBits(e.getUser().getNick())+" BennerBits");
 				} catch (Exception ex){
 					ex.printStackTrace();
 					Bennerbot.sendMessage("Sorry but it seams that something has gone wrong");
 				}
 			} else if(e.getMessage().split(" ").length == 2){
 				try{
-					String user = e.getMessage().split(" ")[1];
-					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" has ฿"+(int)getBits(user)+" BennerBits");
+					if(Bennerbot.isMod(e.getUser(), e.getChannel())){
+						String user = e.getMessage().split(" ")[1];
+						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" has \u0E3F"+(int)getBits(user)+" BennerBits");
+					} else {
+						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" has tried to use a command they dont have permision to");
+						FilterManager.punish(e.getUser().getNick());
+					}
 				} catch(Exception ex){
 					ex.printStackTrace();
 					Bennerbot.sendMessage("Sorry but it seams that something has gone wrong");
@@ -40,21 +47,22 @@ public class BennerBitManager extends ListenerAdapter<PircBotX>{
 				Bennerbot.sendMessage("Sorry wrong format, try: !bits <username>");
 			}
 		}
-		if(e.getMessage().startsWith("!givebits") && !Bennerbot.configBoolean("optoutoftheBennerBitProgram")){
+		if(e.getMessage().startsWith("!givebits")){
 			if(e.getMessage().split(" ").length == 3){
 				try{
-					String user = e.getMessage().split(" ")[1];
+					String user = e.getMessage().split(" ")[1].toLowerCase();
 					double bits = Double.parseDouble(e.getMessage().split(" ")[2]);
 					
 					if(!(getBits(e.getUser().getNick()) < bits)){
-						tradeBits(new String[]{e.getUser().getNick(), user}, new double[]{(-1*bits), bits});
-						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you have successfully transfered ฿"+bits+" BennerBits to: "+Bennerbot.capitalize(user));
+						setBits(e.getUser().getNick(), -1*bits);
+						setBits(user, bits);
+						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you have successfully transfered \u0E3F"+bits+" BennerBits to: "+Bennerbot.capitalize(user));
 					} else {
 						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you dont have enouph bits to compleat this transaction");
 					}
 					
 					
-					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" has ฿"+(int)getBits(user)+" BennerBits");
+					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" now has \u0E3F"+(int)getBits(user)+" BennerBits");
 				} catch(Exception ex){
 					ex.printStackTrace();
 					Bennerbot.sendMessage("Sorry but it seams that something has gone wrong");
@@ -69,7 +77,8 @@ public class BennerBitManager extends ListenerAdapter<PircBotX>{
 			 Connection c = APIManager.getConnection(); 
 			 Statement stmt = c.createStatement();
 			 String sql = "CREATE TABLE IF NOT EXISTS BITS" +
-		                   "(USER          TEXT    NOT NULL, " + 
+		                   "(BOTID		  INT,"
+		                   +"USER         TEXT    NOT NULL, " + 
 		                   " BITS         TEXT)"; 
 		      stmt.executeUpdate(sql);
 		      stmt.close();
@@ -83,7 +92,7 @@ public class BennerBitManager extends ListenerAdapter<PircBotX>{
 		try{
 		  Connection c = APIManager.getConnection();
 		  Statement stmt = c.createStatement();
-		  String sql = "SELECT * FROM BITS;"; 
+		  String sql = "SELECT * FROM BITS WHERE BOTID = "+botId.getBotID()+";"; 
 		  
 		  ResultSet rs = stmt.executeQuery(sql);
 		  
@@ -110,15 +119,29 @@ public class BennerBitManager extends ListenerAdapter<PircBotX>{
 		return 0.0;
 	}
 	public static void setBits(String user, double d){
-		
+		try{
+			  Connection c = APIManager.getConnection();
+			  Statement stmt = c.createStatement();
+			  String sql = "DELETE FROM BITS WHERE USER = '"+user+"' && BOTID = "+botId.getBotID();
+			  stmt.execute(sql);
+			  sql = "INSERT INTO BITS VALUES ("+botId.getBotID()+",'"+user+"','"+d+"');";
+			  
+			  stmt.execute(sql);
+		} catch (SQLException e){
+			 e.printStackTrace();
+		}
 	}
-	public static void tradeBits(String[] user, double[] d){
-		for(int i = 0; i < user.length; i++)
-			try{
-				setBits(user[i], getBits(user[i])+d[i]);
-			} catch (Exception e){
-				e.printStackTrace();
-			}
+	public static void purgeBits(){
+		try {
+			 Connection c = APIManager.getConnection(); 
+			 Statement stmt = c.createStatement();
+			 String sql = "DELETE FROM BITS WHERE BOTID = "+botId.getBotID(); 
+		     stmt.executeUpdate(sql);
+		     stmt.close();
+		     c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	public static int bits2XP(double bits){
 		return (int) bits * 10;

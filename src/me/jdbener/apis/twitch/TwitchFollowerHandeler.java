@@ -60,7 +60,7 @@ class TFollowerTimer extends TimerTask {
 				}
 			}
 			if(!list.equalsIgnoreCase("")){
-				if(list.split(",").length>1)
+				if(list.split(",").length>2)
 					Bennerbot.sendMessage(list+" have followed on twitch");
 				else
 					Bennerbot.sendMessage(list+" has followed on twitch");

@@ -1,0 +1,63 @@
+09:21:42.783 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+09:21:59.683 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+09:22:03.157 [Thread-6] INFO  me.jdbener.Bennerbot - Reseting Map
+09:22:03.165 [Thread-6] INFO  me.jdbener.Bennerbot - Map Reset
+09:22:05.315 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+09:22:05.424 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+09:22:05.426 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+09:22:05.427 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+09:22:05.431 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+09:22:05.431 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+09:22:05.431 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+09:22:05.483 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+09:22:05.515 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.252.28
+09:22:05.543 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+09:22:05.549 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS oauth:hrr2wpqq0knt6sb0spzd3d1mugpdezf
+09:22:05.549 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK bennerbot
+09:22:05.549 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+09:22:05.612 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 bennerbot :Welcome, GLHF!
+09:22:05.620 [botPool0-bot0] DEBUG org.pircbotx.InputParser - Logged onto server.
+09:22:06.550 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - JOIN #mindy29 
+09:22:06.551 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 002 bennerbot :Your host is tmi.twitch.tv
+09:22:06.551 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 003 bennerbot :This server is rather new
+09:22:06.551 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 004 bennerbot :-
+09:22:06.559 [botPool0-bot0] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+09:22:06.559 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 375 bennerbot :-
+09:22:06.559 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 372 bennerbot :You are in a maze of twisty passages, all alike.
+09:22:06.560 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 376 bennerbot :>
+09:22:06.651 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot!bennerbot@bennerbot.tmi.twitch.tv JOIN #mindy29
+09:22:07.551 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - WHO #mindy29
+09:22:08.552 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - MODE #mindy29
+09:22:08.557 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot.tmi.twitch.tv 353 bennerbot = #mindy29 :bennerbot
+09:22:08.558 [botPool0-bot0] INFO  org.pircbotx.InputParser - :bennerbot.tmi.twitch.tv 366 bennerbot #mindy29 :End of /NAMES list
+09:22:08.558 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :USERCOLOR bennerbot #FF0000
+09:22:08.560 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :HISTORYEND mindy29
+09:22:08.561 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 421 bennerbot WHO :Unknown command
+09:22:09.554 [listenerPool0-thread6] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #mindy29 :/color #ff0000
+09:22:09.628 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :USERCOLOR bennerbot #FF0000
+09:22:09.628 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG bennerbot :Your color has been changed
+09:22:10.555 [listenerPool0-thread6] INFO  org.pircbotx.output.OutputRaw - TWITCHCLIENT 1
+09:22:11.556 [bot1-shutdownhook] INFO  org.pircbotx.output.OutputRaw - QUIT :
+09:22:11.582 [bot1-shutdownhook] INFO  org.pircbotx.dcc.DccHandler - Terminating all transfers waiting to be accepted
+09:22:11.583 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Shutdown has been called, closing InputParser
+09:22:11.583 [bot1-shutdownhook] DEBUG org.pircbotx.PircBotX - Disconnected.
+09:22:11.583 [bot1-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.Cleaner@4586e875 to execute event ConnectEvent()
+09:22:11.584 [botPool0-bot0] DEBUG o.p.MultiBotManager$BotFutureCallback - Bot #0 finished
+09:22:12.790 [bot1-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.Infromation@241236f4 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@738e5c64, disconnectException=null)
+09:22:12.791 [bot1-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.ChatRelayHandeler@761d5b3a to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@738e5c64, disconnectException=null)
+09:22:12.791 [bot1-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.Cleaner@4586e875 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@738e5c64, disconnectException=null)

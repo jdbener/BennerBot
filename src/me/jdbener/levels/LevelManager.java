@@ -17,6 +17,7 @@ import org.pircbotx.hooks.events.PartEvent;
 
 import me.jdbener.Bennerbot;
 import me.jdbener.apis.APIManager;
+import me.jdbener.lib.botId;
 
 public class LevelManager extends ListenerAdapter<PircBotX>{
 	public static Map<String, String> timeMap = new HashMap<String, String>();
@@ -30,7 +31,12 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 		timeMap.put(e.getUser().getNick(), new Date().getTime()+"");
 	}
 	public void onPart(PartEvent<PircBotX> e){
-		long old = Long.valueOf(timeMap.get(e.getUser().getNick())).longValue();
+		long old = new Date().getTime();
+		try{
+			old = Long.valueOf(timeMap.get(e.getUser().getNick())).longValue();
+		} catch (Exception ex){
+			ex.printStackTrace();
+		}
 		long now = new Date().getTime();
 		long dif = now - old;
 		int xp = (int) ((dif / 1000)/30);
@@ -47,8 +53,14 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 			BennerBitManager.setBits(e.getUser().getNick(), BennerBitManager.getBits(e.getUser().getNick())+1);
 		} 
 		
-		if(e.getMessage().startsWith("!level") && (Bennerbot.conf.get("allowLevelCommand").toString().equalsIgnoreCase("true") || !Bennerbot.conf.get("optoutoftheBennerBitProgram").toString().equalsIgnoreCase("true"))){
-			long old = Long.valueOf(timeMap.get(e.getUser().getNick())).longValue();
+		if(e.getMessage().startsWith("!level")){
+			long old = new Date().getTime();
+			try{
+				old = Long.valueOf(timeMap.get(e.getUser().getNick())).longValue();
+			} catch (Exception ex){
+				ex.printStackTrace();
+				timeMap.put(e.getUser().getNick(), new Date().getTime()+"");
+			}
 			long now = new Date().getTime();
 			long dif = now - old;
 			int xp = (int) ((dif / 1000)/30);
@@ -65,7 +77,6 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 					Bennerbot.sendMessage("Sorry something went wrong");
 				}
 			} else if(e.getMessage().split(" ").length == 2){
-				if(Bennerbot.conf.get("allowOtherUserLevels").toString().equalsIgnoreCase("true"))
 					try{
 						String name = e.getMessage().split(" ")[1];
 						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(name)+"'s level infromation is: "+format(getXP(name)));
@@ -80,10 +91,11 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 	}
 	public static void setupUserLevelsTable(){
 		 try {
-			 Connection c = APIManager.getLocalConnection(); 
+			 Connection c = APIManager.getConnection(); 
 			 Statement stmt = c.createStatement();
 			 String sql = "CREATE TABLE IF NOT EXISTS LEVELS " +
-		                   "(USER          TEXT    NOT NULL, " + 
+		                   "(BOTID		   INT,"
+		                   +"USER          TEXT    NOT NULL, " + 
 		                   " LEVEL         TEXT)"; 
 		      stmt.executeUpdate(sql);
 		      stmt.close();
@@ -95,9 +107,9 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 	private static Map<String, String> getUserExperience(){
 		Map<String, String> temp = new HashMap<String, String>();
 		try{
-		  Connection c = APIManager.getLocalConnection();
+		  Connection c = APIManager.getConnection();
 		  Statement stmt = c.createStatement();
-		  String sql = "SELECT * FROM LEVELS;"; 
+		  String sql = "SELECT * FROM LEVELS WHERE BOTID = "+botId.getBotID()+";"; 
 		  
 		  ResultSet rs = stmt.executeQuery(sql);
 		  
@@ -125,11 +137,11 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 	}
 	public static void setXP(String user, int xp){
 		try{
-			  Connection c = APIManager.getLocalConnection();
+			  Connection c = APIManager.getConnection();
 			  Statement stmt = c.createStatement();
-			  String sql = "DELETE FROM LEVELS WHERE USER = '"+user+"'";
+			  String sql = "DELETE FROM LEVELS WHERE USER = '"+user+"' && BOTID = "+botId.getBotID()+"";
 			  stmt.execute(sql);
-			  sql = "INSERT INTO LEVELS VALUES ('"+user+"','"+xp+"');";
+			  sql = "INSERT INTO LEVELS VALUES ("+botId.getBotID()+",'"+user+"','"+xp+"');";
 			  
 			  stmt.execute(sql);
 		} catch (SQLException e){

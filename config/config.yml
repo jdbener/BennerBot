@@ -1,25 +1,39 @@
 #=======================
 #General Settings
 #=======================
-#The name of the bot changing this has no effect
+#The name of the bot changing this has only an aesthetic effect
 botName: BennerBot
-#Weather or not to connect to a twitch channel
-connectToTwitch: true
-#Weather or not to connect to a hitbox channel
-connectToHitbox: true
+#This determines the ID of the bot, bots using the same ID share settings
+#set this to something specific to you or write this down somewhere
+#leave this as default to let the bot handle this and use a default value specific to you.
+botID: default
 #Weather or not commands sent by the bot operator are phrased and responded to
 respondToOperatorCommands: true
 #how dates are displayed by the bot
 #information on what this means can be found here: https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
 dateFormat: "HH:mm"
-#weather or not names should be capitolized
-capitalizeNames: true
+#weather or not names should be capitalized
+capitalizeNames: false
 #weather or not bennerbot should announce his presence
 incognitoMode: true
 
 #=======================
+#API Integration Settings
+#=======================
+#weather or not to display a notification when someone follows
+enableFollowerNotifications: true
+#This allows you to use the !title and !game commands
+enableStatusandGameUpdateing: true
+#If you are running bennerbot on a server or a headless operating system set this if you want to use twitch api bassed features!
+#this can be gotten here: "https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=9qxushp3sdeasixpxajz8pqlxdudfs6&redirect_uri=http://localhost&scope=channel_editor+channel_subscriptions"
+#when you authorize the bot it will redirect you to a black page, copy and past the access token from the url and paste it here!
+twitchAccessToken: 
+
+#=======================
 #Twitch Settings
 #=======================
+#Weather or not to connect to a twitch channel
+connectToTwitch: true
 #The username of the the twitch account you want the bot to use
 #Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
@@ -30,12 +44,13 @@ twitchUsername: default
 #I recommend creating a new account for this
 twitchOAuth: default
 #the name of the twitch account to moderate
-twitchChannel: irish_00
-
+twitchChannel: jdbener
 
 #=======================
 #Hitbox Settings
 #=======================
+#Weather or not to connect to a hitbox channel
+connectToHitbox: true
 #The username of the the hitbox account you want the bot to use
 #Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
@@ -52,9 +67,9 @@ hitboxChannel: jdbener
 #Last.fm Settings
 #=======================
 #should last.fm intergation be enabled?
-enableLastfmIntegration: true
+enableLastfmIntegration: false
 #the username to get last.fm data about (please enclose in quotes, for example: "bennerbot")
-lastfmName: "irish_00"
+lastfmName: 
 #the format for how messages are responded to
 #<user>: the user who sent the command
 #<title>: the title of the song thats currently playing
@@ -65,6 +80,8 @@ lastfmName: "irish_00"
 #for example, <1title> would show the title of the previous song
 songCommandMessageFormat: "hay <user> thats, <title> ~ <artist> on <album> <url>"
 #songCommandMessageFormat: "hay <user> thats, <title> ~ <artist> on <album> <url>, the last song was: <1title> ~ <1artist>"
+#The name for the !song command, 
+lastfmCommandName: "!song"
 
 #=======================
 #Output Settings
@@ -73,7 +90,6 @@ songCommandMessageFormat: "hay <user> thats, <title> ~ <artist> on <album> <url>
 enableOutput: true
 #weather or not to shorten usernames, 
 #long names can cause issues and users names longer than 32 characters will be trimed no matter what
-#I recommend leaving this on
 nameShortener: false
 #Write the output to a clean file
 #if output GUI is true this has to be true
@@ -106,14 +122,21 @@ filterCommands: true
 DisplayMessageFormat: "<server> <badge><timestamp> <user>: <message>"
 
 #=======================
-#Display Settings
+#BennerBot Speech Settings
 #=======================
-#weather or not to be able to send messages to your users
-enableUserOutput: true
-#enable the button to resize your GUI display to its original size
-enableResizeButon: true
-#the size of the GUI display in the format: x,y
-defaultGUIDisplaySize: "400,600"
+#Weather or not bennerbot should read messages to you
+enableTTS: false
+#Weather or not to slightly change the pitch of a voice from message to message
+enableVariability: false
+#If this is enabled, only when a user sends a message the first time will the bot say the name of the sender
+#This helps if you don't want the bot to read the name of a user when there is only one person talking
+enableTTSMinimalisticMode: false
+#Measured in words per minute... This determines how fast BennerBot Speaks
+#default sounds best but may be hard to understand
+#1-200 is slow or fast (1 is slow, 200 is super fast)
+TTSSpeed: default
+#how loud you want the bot to be on a scale of 1-10
+TTSVolume: 10
 
 #=======================
 #Chat Moderation Settings
@@ -136,33 +159,6 @@ MaxCapsPercentage: .8
 MaxMessageLength: 150
 
 #=======================
-#API Integration Settings
-#=======================
-#weather or not to display a notification when someone follows
-enableFollowerNotifications: false
-#This allows you to use the !title and !game commands
-enableStatusandGameUpdateing: true
-#Enable this if you want the emoticons loading to be displayed on the console (disable this if submiting a bug report i dont need an extra 20 thousand lines :p)
-ShowEmoticonLoading: true
-#This is used to do things such as change the stream title
-#A very simple tutorial on how to get this value can be found here: http://discuss.dev.twitch.tv/t/how-to-set-title/390/2
-#If left blank you wont be able to change your stream title with the bot
-#Hitbox dosent need an access token because i can generate one
-#kxq56ehskmckkwop1cxlybt9ggjgsm5
-twitchAccessToken: kxq56ehskmckkwop1cxlybt9ggjgsm5
-
-#=======================
-#Level/BBit Settings
-#=======================
-#set this to false if you dont want to use the level/bit system. This will disable many features. (it is recommended to leave this on)
-optoutoftheBennerBitProgram: true
-#weather or not to enable the command that lets you look up your/another persons level
-allowLevelCommand: true
-#weather or not people can look up other users levels/experience
-allowOtherUserLevels: true
-
-
-#=======================
 #Relay Settings
 #=======================
 #weather or not the Chat Relay is activated
@@ -171,14 +167,12 @@ activateRelay: true
 showSource: false
 #weather or not to display the username in the message for messages sent with the GUI
 showSendName: false
-#weather or not to update the color of the bot when a user sends a message
-sendColorInfromtation:true
 
 #======================
 #Auto Message Settings
 #======================
 #weather or not to enable the automessage system
-enableAutoMessages: false
+enableAutoMessages: true
 #the time in seconds between each method (60 seconds in a minute, 3600 seconds in an hour)
 autoMessageInterval: 300
 
@@ -187,11 +181,3 @@ autoMessageInterval: 300
 #======================
 #weather or not to enable the Plugin System
 enablePluginSystem: true
-
-#======================
-#Database Settings
-#======================
-#weather or not to use the public data base or a local one
-useRemoteDatabase: true
-#the url of the data base you want to use (dont change this unless you know what you are doing)
-databaseName: default

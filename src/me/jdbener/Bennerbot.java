@@ -6,6 +6,8 @@
 
 package me.jdbener;
 
+import java.awt.EventQueue;
+import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,7 +15,6 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
@@ -28,14 +29,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import me.jdbener.apis.APIManager;
-import me.jdbener.gui.GUIContainer;
+import me.jdbener.gui.MainGui;
+import me.jdbener.gui.SplashScreen;
 import me.jdbener.levels.LevelManager;
 import me.jdbener.lib.Server;
 import me.jdbener.moderataion.FilterManager;
@@ -61,24 +62,27 @@ import org.pircbotx.hooks.managers.ThreadedListenerManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//TODO roll command, RNG
 public class Bennerbot {
 	//bot infromation
 	public static String name = "BennerBot",												//the name of the bot
-			version = "0.14", 																//the version ID of the bot
+			version = "0.15", 																//the version ID of the bot
 			twitchu = "bennerbot",															//twitch username used to connect
 			twitchpw = "oauth:hrr2wpqq0knt6sb0spzd3d1mugpdezf",								//twitch OAuth used to connect
 			hitboxu = "bennerbot",															//hitbox username used to connect
-			hitboxpw = "bennerbot";															//hitbox password used to connect											
+			hitboxpw = "bennerbot";															//hitbox password used to connect
+		
 	
 	//initialize the variables
 	public static Logger logger = LoggerFactory.getLogger(Bennerbot.class);					//the bot logger, this is used to write messages to the console
 	public static Collection<BennerBotPlugin> plugins;										//the collection of plugins that the bot loads
-	public static Map<String, Object> conf = null;											//all of the input from the configuration file
+	public static Map<String, Object> conf = new HashMap<String, Object>();					//all of the input from the configuration file
 	public static Map<String, String> variableMap = new HashMap<String, String>();			//all of the variables bot, plugin, or custom
-	public static Map<String, String> commandMap = new HashMap<String, String>();
-	public static GUIContainer gui;															//the GUI object
-	public static DateFormat dateFormat;
+	public static Map<String, String> commandMap = new HashMap<String, String>();			//all the custom commands from the file, bot, or plugins
+	public static Map<String, String> messagesMap = new HashMap<String, String>();
+	public static MainGui gui;																//the GUI object
+	public static boolean guiLoaded = false;												//this value stores weather or not the gui has loaded yet or not
+	public static SplashScreen sp = new SplashScreen();										//this variable contains a reference to our splash screen
+	public static DateFormat dateFormat;													//this variable is contains an object that lets you format dates into text..
 	
 	//initialize the servers
 	//bot managaer
@@ -108,7 +112,14 @@ public class Bennerbot {
 	 */
 	public static void main (String[] args){
 		try {
-		    // Try to get LOCK //
+			//set the look and feel
+		    //TODO add a way to change the look and feel
+		    try {
+		    	UIManager.setLookAndFeel("com.jtattoo.plaf.noire.NoireLookAndFeel");
+       		} catch (Exception e) {
+       			e.printStackTrace();
+       		}
+			// Try to get LOCK //
 		    if (!AppLock.setLock("BennerBotLockKey")) {
 		    	try{
 		    		JOptionPane.showMessageDialog(null, "Only one application instance may run at the same time!");
@@ -116,7 +127,17 @@ public class Bennerbot {
 		    		e.printStackTrace();
 		    	}
 		        throw new RuntimeException("Only one application instance may run at the same time!");
-		    }		    
+		    }
+		    //Determine weather or not the nogui argument was passed.
+		    boolean nogui = true;
+			for(int i = 0; i < args.length; i++) {
+	           if(args[i].equalsIgnoreCase("nogui")){
+	        	   nogui = false;
+	           }
+	        }
+			//start the splash screenS
+		    if(!GraphicsEnvironment.isHeadless() && nogui)
+		    	sp.start();
 		    //redirects a copy of the console output to a file
 		    try {
 		    	//creates the date used in the name of the log file
@@ -132,17 +153,53 @@ public class Bennerbot {
         
 		    //set up everything
 		    setupConfig();
-		    Runnable runnable = new Runnable() {
-			    @Override
-				public void run() {
-			    	setupConfig();
-			    }
-			};
-			//add the update to the execution thread
-			ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-			executor.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
-			//set the dat format
+			//set the date format
 			dateFormat = new SimpleDateFormat(conf.get("dateFormat").toString());
+			//set up the GUI or the BOTID depending on if the environment is headless or not
+			if(!GraphicsEnvironment.isHeadless() && nogui){
+				me.jdbener.lib.botId.setupBotIDTable();
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							gui = new MainGui();
+							gui.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			} else {
+				me.jdbener.lib.botId.setupBotIDTable();
+				String hash = configGetString("botID");
+				if(hash.equalsIgnoreCase("default"))
+					hash = new Date().getTime()+"";
+				
+				if(!hash.equalsIgnoreCase(me.jdbener.lib.botId.getHash()))
+					me.jdbener.lib.botId.updateFile(hash);
+				
+				Runnable runnable = new Runnable() {
+					@Override
+					public void run() {
+						setupConfig();
+					}
+				};
+				//add the update to the execution thread
+				Executors.newScheduledThreadPool(1).scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
+				//claim that the gui is loaded
+				guiLoaded = true;
+			}
+			//let the GUI catch up and update its settings
+			logger.warn("Waiting for GUI to load");
+			while(guiLoaded == false)
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e1) {}
+			logger.info("GUI loaded... Continuing with launch sequence");
+			//close the splash screen
+			sp.end();
+			//refresh the GUI so that is on top
+			gui.setAlwaysOnTop(true);
+			gui.setAlwaysOnTop(false);
 		    //create a new instance of the bot
 		    new Bennerbot();
 		    //command line messages
@@ -200,10 +257,7 @@ public class Bennerbot {
 		listener.addListener(new JoinLeaveMessages());
 		listener.addListener(new Countdown());
 		listener.addListener(new LevelManager());
-		
-		//implement the plugin loader
-		if(conf.get("enablePluginSystem").toString().equalsIgnoreCase("true"))
-			pluginLoader();
+		listener.addListener(new AutoMessageHandeler());
 			
 		if(conf.get("enableModeration").toString().equalsIgnoreCase("true"))
 			new FilterManager();
@@ -224,20 +278,15 @@ public class Bennerbot {
 		} catch (MalformedURLException ex) {
 			ex.printStackTrace();
 		}
+
+		//implement the plugin loader
+		if(conf.get("enablePluginSystem").toString().equalsIgnoreCase("true"))
+			pluginLoader();
 		
 		//add the bots to the manager and start them
-		for(Server s: servers.toArray(new Server[0]))
+		for(Server s: servers)
 			manager.addBot(s.getConfiguration());
 		manager.start();
-		
-		//set the look and feal
-		try {
-            UIManager.setLookAndFeel (UIManager.getSystemLookAndFeelClassName ());
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }
-		//set up the GUI class
-		gui = new GUIContainer();
 		
 		try {
 			Thread.sleep(10000);
@@ -289,7 +338,7 @@ public class Bennerbot {
 	}
 	/**
 	 * used to send a message to the server
-	 * @param txt ~ the message to be sent
+	 * @param txt the message to be sent
 	 */
 	public static void sendMessage(String txt){
 		sendMessage(txt, "");
@@ -297,7 +346,7 @@ public class Bennerbot {
 	}
 	/**
 	 * used to send a message to the server that wont be writen to the output file
-	 * @param txt ~ the message to be sent
+	 * @param txt the message to be sent
 	 */
 	public static void sendMessage(String txt, String dontShow){
 		int i=0; while(i < servers.size()){
@@ -311,7 +360,7 @@ public class Bennerbot {
 	}
 	/**
 	 * used to send a message to the server that is from the bot operator
-	 * @param txt ~ the message to be sent
+	 * @param txt the message to be sent
 	 */
 	@SuppressWarnings("unchecked")
 	public static void sendMessage(String txt, boolean fromuser){
@@ -350,8 +399,8 @@ public class Bennerbot {
 	}
 	/**
 	 * used to send a message to a specific bot
-	 * @param txt ~ the message to be sent
-	 * @param bot ~ the id of the bot, 0) twitch 1) hitbox
+	 * @param txt the message to be sent
+	 * @param bot the id of the bot, 0) twitch 1) hitbox
 	 */
 	public static void sendMessage(String txt, int bot){
 		sendMessage(txt, bot, "");
@@ -359,8 +408,8 @@ public class Bennerbot {
 	}
 	/**
 	 * used to send a message to a specific bot
-	 * @param txt ~ the message to be sent
-	 * @param bot ~ the id of the bot, 0) twitch 1) hitbox
+	 * @param txt the message to be sent
+	 * @param bot the id of the bot, 0  twitch 1 hitbox
 	 */
 	public static void sendMessage(String txt, int bot, String dontShow){
 		try{
@@ -372,8 +421,8 @@ public class Bennerbot {
 	}
 	/**
 	 * used to send a message to a specific bot form a bot operator
-	 * @param txt ~ the message to be sent
-	 * @param bot ~ the id of the bot, 0) twitch 1) hitbox
+	 * @param txt the message to be sent
+	 * @param bot the id of the bot, 0) twitch 1) hitbox
 	 */
 	@SuppressWarnings("unchecked")
 	public static void sendMessage(String txt, int bot, boolean fromUser){
@@ -409,8 +458,8 @@ public class Bennerbot {
 	}
 	/**
 	 * A simple function that capitalizes the first letter of the string pasted to it
-	 * @param line ~ the string to be capitalized
-	 * @return ~ the capitalized string
+	 * @param line the string to be capitalized
+	 * @return the capitalized string
 	 */
 	public static String capitalize(String line){
 		if(conf.get("capitalizeNames").toString().equalsIgnoreCase("true"))
@@ -419,16 +468,16 @@ public class Bennerbot {
 	}
 	/**
 	 * A simple function that capitalizes the first letter of the string pasted to it
-	 * @param line ~ the string to be capitalized
-	 * @return ~ the capitalized string
+	 * @param line the string to be capitalized
+	 * @return the capitalized string
 	 */
 	public static String capitalize(String line, boolean ignore){
 		return Character.toUpperCase(line.charAt(0)) + line.substring(1);
 	}
 	/**
 	 * returns the content of the path specified
-	 * @param path ~ the path to the file
-	 * @return ~ the contents of the file
+	 * @param path the path to the file
+	 * @return the contents of the file
 	 */
 	public static String readFile(String path) {
 		try {
@@ -443,8 +492,8 @@ public class Bennerbot {
 	}
 	/**
 	 * returns the content of the file specified
-	 * @param path ~ the file object of the file you want to read
-	 * @return ~ the contents of the file
+	 * @param path the file object of the file you want to read
+	 * @return the contents of the file
 	 */
 	public static String readFile(File f) {
 		try {
@@ -460,8 +509,8 @@ public class Bennerbot {
 	}
 	/**
 	 * returns the path to the file object passed
-	 * @param f ~ the file to be translated
-	 * @return ~ the path to the file
+	 * @param f the file to be translated
+	 * @return the path to the file
 	 */
 	public static String getPath(File f){
 		try {
@@ -473,8 +522,8 @@ public class Bennerbot {
 	}
 	/**
 	 * this function appends a string to a file
-	 * @param out ~ the string to be appended
-	 * @param f ~ the file to append the string to
+	 * @param out the string to be appended
+	 * @param f the file to append the string to
 	 */
 	public static void write(String out, File f){
 		try {
@@ -486,9 +535,17 @@ public class Bennerbot {
 		}
 		
 		if(f.getPath().contains("output.html")){
-			gui.display.update(out);
+			try{
+				gui.writeDisplay(out);
+			} catch (Exception e){e.printStackTrace();}
 		}
 	}
+	/**
+	 * this function appends a string to a file
+	 * @param out the string to be appended
+	 * @param f the file to append the string to
+	 * @param display this makes sure not to display the text your are writing to a file
+	 */
 	public static void write(String out, File f, boolean display){
 		try {
 			FileWriter writer = new FileWriter(f, true);
@@ -500,17 +557,17 @@ public class Bennerbot {
 	}
 	/**
 	 * this function check if a user is a moderator in a specific channel	
-	 * @param u ~ the user
-	 * @param c ~ the channel
-	 * @return ~ weather or not the user is a moderator
+	 * @param u the user
+	 * @param c the channel
+	 * @return weather or not the user is a moderator
 	 */
 	public static boolean isMod(User u, Channel c){
 		return u.getChannelsHalfOpIn().contains(c) || u.getChannelsOpIn().contains(c) || u.getChannelsOwnerIn().contains(c) || u.getChannelsSuperOpIn().contains(c);
 	}
 	/**
 	 * This function will delete files that older than the date specified in the folder specifed
-	 * @param daysBack ~ the date specified
-	 * @param dirWay ~ the folder specified
+	 * @param daysBack the date specified
+	 * @param dirWay the folder specified
 	 */
 	public static void deleteOldFiles(int daysBack, String dirWay) {    
         File directory = new File(dirWay);  
@@ -533,25 +590,25 @@ public class Bennerbot {
     }
 	/**
 	 * Creates a message event for the frame work, this is useful for plugins that want to use the onMessage function to handle user sent messages
-	 * @param txt ~ the message body
-	 * @param bot ~ the bot to get channels and name from
-	 * @return ~ the message event
+	 * @param txt the message body
+	 * @param bot the bot to get channels and name from
+	 * @return the message event
 	 */
 	public static MessageEvent<PircBotX> GenerateMessageEvent(String txt, int bot){
 		return new MessageEvent<PircBotX>(manager.getBotById(bot), manager.getBotById(bot).getUserChannelDao().getAllChannels().toArray(new Channel[0])[0], manager.getBotById(bot).getUserBot(), txt);
 	}
 	/**
 	 * Creates a message event for the frame work, this is useful for plugins that want to use the onMessage function to handle user sent messages, used when the coder dosent care what bot is used
-	 * @param txt ~ the message body
-	 * @return ~ the message event
+	 * @param txt the message body
+	 * @return the message event
 	 */
 	public static MessageEvent<PircBotX> GenerateMessageEvent(String txt){
 		return GenerateMessageEvent(txt, 0);
 	}
 	/**
 	 * returns the bot ID of the server named, returns 0 if name = twitch or name isent found
-	 * @param name ~ the name to search for
-	 * @return ~ the id of the bot found
+	 * @param name the name to search for
+	 * @return the id of the bot found
 	 */
 	public static int getBotIDbyName(String name){
 		int i=0; while(i < servers.size()){
@@ -561,13 +618,18 @@ public class Bennerbot {
 		}
 		return 0;
 	}
+	/**
+	 * Removes the last character from a string
+	 * @param str the string to have the last character removed from
+	 * @return the string with the last character removed
+	 */
 	public static String removeLastChar(String str) {
         return str.substring(0,str.length()-1);
     }
 	/**
 	 * This function will convert an input stream into a string
-	 * @param is ~ the input steam
-	 * @return ~ the string
+	 * @param is the input steam
+	 * @return the string
 	 */
 	public static String StreamToString(java.io.InputStream is) {
 	    @SuppressWarnings("resource")
@@ -576,65 +638,46 @@ public class Bennerbot {
 	}
 	/**
 	 * This function checks if an item in the config has a specific value
-	 * @param item ~ the item
-	 * @param value ~ the value
-	 * @return ~ is that true or not
+	 * @param item the item
+	 * @param value the value
+	 * @return is that true or not
 	 */
 	public static boolean configEqualsString(String item, String value){
 		return conf.get(item).toString().equalsIgnoreCase(value);
 	}
 	/**
 	 * This function checks if an item in the config is true
-	 * @param item ~ the item
-	 * @return ~ is that the case
+	 * @param item the item
+	 * @return is that the case
 	 */
 	public static boolean configBoolean(String item){
 		return configEqualsString(item, "true");
 	}
+	/**
+	 * returns the string if it is in the config file/database
+	 * @param item the item to search for
+	 * @return its value
+	 */
 	public static String configGetString(String item){
 		return conf.get(item).toString();
 	}
-	// convert from UTF-8 -> internal Java String format
-    /*public static String convert2UTF8(String utf) {
-    	// convert the input string to a character array  
-    	char[] chars = utf.toCharArray();  
-    	  
-    	StringBuilder sb = new StringBuilder();  
-    	for (int i = 0; i < chars.length; i++)  
-    	{  
-    	    int unipoint = Character.codePointAt(chars, i);  
-    	    if ((unipoint < 32) || (unipoint > 127))  
-    	    {  
-    	        StringBuilder hexString = new StringBuilder();  
-    	        for (int k = 0; k < 4; k++) // 4 times to build a 4-digit hex  
-    	        {  
-    	            hexString.insert(0, Integer.toHexString(unipoint % 16));  
-    	            unipoint = unipoint / 16;  
-    	        }  
-    	        sb.append("\\u"+hexString);  
-    	        //sb.append("&#"+hexString+";");
-    	    }  
-    	    else  
-    	    {  
-    	        sb.append(chars[i]);  
-    	    }  
-    	}  
-    	return sb.toString();
-    }*/
-	/* public static String convert2UTF8(String utf){
-		return StringEscapeUtils.escapeHtml4(utf);
-		 
-	 }*/
-	public static String convert2UTF8(String utf){
-		try {
-			byte[] ptext = utf.getBytes("ISO-8859-1");
-			return new String(ptext, "UTF-8");  
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 
-		return utf;
+	/**
+	 * This function filters all non English symbols with the specified replacement value
+	 * @param utf the string to have it's values replaced
+	 * @param replacement what to replace them with
+	 * @return the replaced string
+	 */
+	public static String filterUTF8(String utf, String replacement){
+		return utf.replaceAll("[^ -~]", replacement);
 	}
-
+	/**
+	 * This function filters all non English symbols and replaces them with a question mark (?)
+	 * @param utf the string to have its values replaced
+	 * @return the replaced string
+	 */
+	public static String filterUTF8(String utf){
+		return filterUTF8(utf, "?");
+	}
 }
 
 /**

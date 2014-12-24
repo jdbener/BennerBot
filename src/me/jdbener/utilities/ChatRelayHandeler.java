@@ -6,7 +6,6 @@
 package me.jdbener.utilities;
 
 import me.jdbener.Bennerbot;
-import me.jdbener.lib.Server;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
@@ -16,7 +15,7 @@ public class ChatRelayHandeler extends ListenerAdapter<PircBotX> {
 	//The relay code
 	public void onMessage(MessageEvent<PircBotX> e) throws Exception {
 		boolean bot = false;
-		for(Server s: Bennerbot.servers){if(s.getChannel().equalsIgnoreCase(e.getUser().getNick()))bot = true;}
+		if(e.getUser().getNick().toString().contains("bot"))bot = true;
 		//if(!(e.getUser().getNick().equalsIgnoreCase(Bennerbot.twitchu) || e.getUser().toString().equalsIgnoreCase(Bennerbot.hitboxu)))
 		if(!bot)
 			//Determine weather or not it is turned on in the code

@@ -41,14 +41,6 @@ public class Launcher {
 				r.close();
 			}
 			
-			//this code creates the launch script that will be executed by the  to launch the bot
-			if(!new File(".launch").exists()){
-				load = true;
-				FileWriter r = new FileWriter(new File(".launch"));
-				r.write("java -jar bennerbot.jar");
-				r.close();
-			}
-			
 			//load the latest information
 			Map<String, Object> latest = (Map<String, Object>) Yaml.load(new URL("https://raw.githubusercontent.com/jdbener/BennerBot/master/resource/latest.yml").openStream());
 			//load current information

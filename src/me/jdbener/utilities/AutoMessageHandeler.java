@@ -2,8 +2,6 @@ package me.jdbener.utilities;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.Executors;
@@ -17,31 +15,35 @@ import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 
 public class AutoMessageHandeler extends ListenerAdapter<PircBotX>{
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Map<String, String> messages = new HashMap();
 	public int i = 0, posInList = 0;
-	
-	@SuppressWarnings({"unchecked"})
+	@SuppressWarnings("unchecked")
 	public AutoMessageHandeler(){
 		try {
-			messages = (Map<String, String>) Yaml.load(new FileInputStream(new File("config/automessages.yml")));
-		} catch (FileNotFoundException e) {
+			Map<Object, String> temp = (Map<Object, String>) Yaml.load(new FileInputStream(new File("config/automessages.yml")));
+			for (Entry<Object, String> e: temp.entrySet()){
+				Bennerbot.messagesMap.put(e.getKey().toString(), e.getValue());
+			}
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		Runnable runnable = new Runnable() {
 		    @Override
 			public void run() {
-		    	i=0;for(Entry<String, String> entry: messages.entrySet()){
-					if(i == posInList){
-						Bennerbot.sendMessage(entry.getValue(), "");
-						posInList++;
-						break;
-					}
-					i++;
-				}
-		    	if(posInList >= messages.size())
-		    		posInList=0;
+		    	if(Bennerbot.configBoolean("enableAutoMessages")){
+		    		i=0;for(Entry<String, String> entry: Bennerbot.messagesMap.entrySet()){
+		    			if(i == posInList){
+		    				System.out.println(Bennerbot.messagesMap);
+		    				Bennerbot.sendMessage(entry.getValue(), "");
+		    				posInList++;
+		    				break;
+		    			}
+		    			i++;
+		    		}
+		    		if(posInList >= Bennerbot.messagesMap.size())
+		    			posInList=0;
+		    	}
 		    }
 		};
 		

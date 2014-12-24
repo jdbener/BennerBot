@@ -16,12 +16,11 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 public class TwitchStatusGameUpdater extends ListenerAdapter<PircBotX>{
 	public void onMessage(MessageEvent<PircBotX> e){
-		if(!(Bennerbot.conf.get("twitchAccessToken") == null)){
-		boolean ismod = e.getUser().getChannelsHalfOpIn().contains(e.getChannel()) || e.getUser().getChannelsOpIn().contains(e.getChannel()) || e.getUser().getChannelsOwnerIn().contains(e.getChannel()) || e.getUser().getChannelsSuperOpIn().contains(e.getChannel()) || e.getUser().getChannelsVoiceIn().contains(e.getChannel());
+		if(Bennerbot.conf.get("twitchAccessToken") != null){
 			if(e.getMessage().startsWith("!game"))
-				if(ismod){
+				if(Bennerbot.isMod(e.getUser(), e.getChannel())){
 				try {
-					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.conf.get("twitchAccessToken").toString();
+					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.configGetString("twitchAccessToken");
 					URL obj = new URL(url);
 					HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 
@@ -44,7 +43,7 @@ public class TwitchStatusGameUpdater extends ListenerAdapter<PircBotX>{
 					for (Entry<String, List<String>> header : conn.getHeaderFields().entrySet())
 						System.out.println(header.getKey() + "=" + header.getValue());
 			
-					Bennerbot.sendMessage("Stream's game was set to: "+game, 0);
+					Bennerbot.sendMessage("Stream's game was set to: "+game);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -52,10 +51,11 @@ public class TwitchStatusGameUpdater extends ListenerAdapter<PircBotX>{
 					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" has just tried to use a command they dont have permision to", 0);
 					FilterManager.punish(e.getUser().getNick());
 				}
-			if(e.getMessage().startsWith("!title"))
-				if(ismod){
+			if(e.getMessage().startsWith("!title")){
+				if(Bennerbot.isMod(e.getUser(), e.getChannel())){
 				try {
-					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.conf.get("twitchAccessToken").toString();
+					Bennerbot.logger.info("changing title");
+					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.configGetString("twitchAccessToken");
 					URL obj = new URL(url);
 					HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 
@@ -78,14 +78,16 @@ public class TwitchStatusGameUpdater extends ListenerAdapter<PircBotX>{
 					for (Entry<String, List<String>> header : conn.getHeaderFields().entrySet())
 						System.out.println(header.getKey() + "=" + header.getValue());
 				
-					Bennerbot.sendMessage("Stream's title was set to: "+title, 0);
+					Bennerbot.sendMessage("Stream's title was set to: "+title);
 				} catch (IOException e1){
-				e1.printStackTrace();
+					e1.printStackTrace();
 				}
 				} else {
 					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" has just tried to use a command they dont have permision to", 0);
 					FilterManager.punish(e.getUser().getNick());
 				}
+			}
+		}
 	}
-	}
+	
 }

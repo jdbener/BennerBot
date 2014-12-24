@@ -5,6 +5,7 @@
  */
 package me.jdbener.apis;
 
+import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -16,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import me.jdbener.Bennerbot;
 import me.jdbener.apis.hitbox.HitboxFollowerHandeler;
@@ -24,6 +26,14 @@ import me.jdbener.apis.lastfm.LastfmNowPlaying;
 import me.jdbener.apis.twitch.TwitchFollowerHandeler;
 import me.jdbener.apis.twitch.TwitchStatusGameUpdater;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.SWTError;
+import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.browser.LocationEvent;
+import org.eclipse.swt.browser.LocationListener;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -32,16 +42,16 @@ public class APIManager {
 	public static ArrayList<String> followers = new ArrayList<String>();			//This array contains a list of everybody who has followed the bot operator
 	public static JSONParser parser = new JSONParser();								//The parser that parses JSON data
 	
-	private static String dbName = "jdbc:mysql://85.10.205.173:3306/bennerbot?" + "user=bennerbot&password=bennerbot"; 
+	private static String TEMPTWITCHAUTH;
 	
+	private static Browser browser;
+	private static Display display;
+	private static Shell shell;
 	/**
 	 * This function loads all of the APIs
 	 */
-	public APIManager(){
-		if(!Bennerbot.configEqualsString("databaseName", "default"))
-			dbName = Bennerbot.configGetString("databaseName");
-		
-		dbName = "jdbc:mysql://"+dbName.replace("jdbc:mysql://", "");
+	public APIManager(){		
+		setupEmoteTable();
 		
 		//load follower notifications
 		if(Bennerbot.conf.get("enableFollowerNotifications").toString().equalsIgnoreCase("true")){
@@ -58,6 +68,7 @@ public class APIManager {
 		if(Bennerbot.conf.get("enableLastfmIntegration").toString().equalsIgnoreCase("true"))
 			Bennerbot.listener.addListener(new LastfmNowPlaying());
 	}
+	
 	/**
 	 * returns the hitbox auth token used to update the 
 	 */
@@ -84,6 +95,47 @@ public class APIManager {
 		return null;
 		
 	}
+	public static String GetTwitchAuth(){
+		if(!GraphicsEnvironment.isHeadless()){
+			display = new Display();
+	        shell = new Shell(display);
+	        shell.setLayout(new FillLayout());
+	        try {
+	            browser = new Browser(shell, SWT.NONE);
+	        } catch (SWTError e) {
+	            System.out.println("Could not instantiate Browser: " + e.getMessage());
+	            display.dispose();
+	            return TEMPTWITCHAUTH;
+	        }
+	        
+	        browser.setUrl("https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=9qxushp3sdeasixpxajz8pqlxdudfs6&redirect_uri=http://localhost&scope=channel_editor+channel_subscriptions");
+	        shell.setSize(400, 400);
+	        shell.setText("Twitch Authentication ~ "+Bennerbot.name+" "+Bennerbot.version);
+	        shell.open();
+	       
+	        browser.addLocationListener(new LocationListener() {
+	            public void changing(LocationEvent event){
+	                String loc = event.location;
+	            	//System.out.println("Navigating to: " + event.location);
+	                if(!loc.equalsIgnoreCase("https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=9qxushp3sdeasixpxajz8pqlxdudfs6&redirect_uri=http://localhost&scope=channel_editor+channel_subscriptions")){
+	                	//Bennerbot.conf.put("twitchAccessToken", loc.split("#")[1].split("&")[0].split("=")[1]);
+	                	TEMPTWITCHAUTH = loc.split("#")[1].split("&")[0].split("=")[1];
+	                	//System.out.println(Bennerbot.conf);
+	                	display.dispose();
+	                }
+	            }
+
+	            public void changed(LocationEvent event){}
+	        });
+	        
+	        while (!shell.isDisposed()) {
+	            if (!display.readAndDispatch())
+	                display.sleep();
+	        }
+	        display.dispose();	        
+		}
+		return TEMPTWITCHAUTH;
+	}
 	/**
 	 * this function filters all the emoticons in a string
 	 * @param msg ~ the string to filter
@@ -91,47 +143,61 @@ public class APIManager {
 	 */
 	public static String filterEmotes(String msg){
 		try {
-	    	Connection c = getConnection();
-	    	Statement stmt = c.createStatement();
+			Connection c = getConnection();
+		    Statement stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery( "SELECT * FROM EMOTE;" );
-			
+				
+			String search;
+			String code;
+				
 			while(rs.next()){
-				msg = msg.replaceAll(rs.getString("REGEX"), "<img src="+rs.getString("LINK")+">");
+				search = rs.getString("REGEX");
+				code = search;
+		        if (!Pattern.compile("[^\\w]").matcher(code).find()) {
+		        	search = "\\b" + code + "\\b";
+		        }
+		        msg = msg.replaceAll(search, "<img src="+rs.getString("LINK")+">");
+					//msg = msg.replaceAll("(?:^|\\s|\\b)"+rs.getString("REGEX")+"(?:^|\\b)", "<img src="+rs.getString("LINK")+">");
 			}
-			
-			//message overrides
-			msg = msg.replaceAll("<img src=http://static-cdn.jtvnw.net/jtv_user_pictures/chansub-global-emoticon-f8fe8c92a3dea<img src=http://static-cdn.jtvnw.net/jtv_user_pictures/chansub-global-emoticon-f8fe8c92a3dea0bb-23x30.png>bb-23x3<img src=http://static-cdn.jtvnw.net/jtv_user_pictures/chansub-global-emoticon-f8fe8c92a3dea0bb-23x30.png>.png><img src=http://static-cdn.jtvnw.net/jtv_user_pictures/chansub-global-emoticon-f8fe8c92a3dea<img src=http://static-cdn.jtvnw.net/jtv_user_pictures/chansub-global-emoticon-f8fe8c92a3dea0bb-23x30.png>bb-23x3<img src=http://static-cdn.jtvnw.net/jtv_user_pictures/chansub-global-emoticon-f8fe8c92a3dea0bb-23x30.png>.png><img src=http://static-cdn.jtvnw.net/jtv_user_pictures/chansub-global-emoticon-f8fe8c92a3dea<img src=http://static-cdn.jtvnw.net/jtv_user_pictures/chansub-global-emoticon-f8fe8c92a3dea0bb-23x30.png>bb-23x3<img src=http://static-cdn.jtvnw.net/jtv_user_pictures/chansub-global-emoticon-f8fe8c92a3dea0bb-23x30.png>.png>", "000");
-			msg = msg.replaceAll("<img src=http://static-cdn.jtvnw.net/jtv_user_pictures/emoticon-12183-src-5e30313e517ae659-28x28.png>", "eve");
-			msg = msg.replaceAll("<img src=http://static-cdn.jtvnw.net/jtv_user_pictures/chansub-global-emoticon-f8fe8c92a3dea0bb-23x30.png>", "0");
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-	    return msg;
+	    return msg.replaceAll("[^ -~]", "?");
+	}
+	private static void setupEmoteTable(){
+		try {
+			Connection c = getConnection();
+			Statement stmt = c.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS EMOTE " +
+					"(REGEX           TEXT    NOT NULL, " + 
+					"LINK         	 VARCHAR(2083))";
+			stmt.executeUpdate(sql);
+			stmt.close();
+			c.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	public static Connection getConnection(){
 	    Connection c = null;
-	    if(Bennerbot.configBoolean("useRemoteDatabase"))
-	    	try {
-	    		//Class.forName("org.sqlite.JDBC");
-	    		//c = DriverManager.getConnection("jdbc:mysql://bennerbot.pagebit.net:3306/x32ce8ff7x_BB", "x32ce8ff7x_BB", "RCJEQpiESS");
-	    		c = DriverManager.getConnection(dbName);
-	    	} catch ( Exception e ) {
-	    		e.printStackTrace();
-	    		c = getLocalConnection();
-	    	}
-	    else
+	    try {
+	    	c = DriverManager.getConnection("jdbc:mysql://vps34796.vps.ovh.ca/BENNERBOT?user=BENNERBOT&password=BENNERBOT");
+	    } catch ( Exception e ) {
+	    	e.printStackTrace();
+	    	Bennerbot.logger.warn("Connection to remote database failed, trying again with local connection");
 	    	c = getLocalConnection();
+	    }
 	    return c;
 	 }
-	 public static Connection getLocalConnection(){
+	 private static Connection getLocalConnection(){
 	    Connection c = null;
 	    try {
 	      Class.forName("org.sqlite.JDBC");
 	      c = DriverManager.getConnection("jdbc:sqlite:"+new File("resource/bennerbot.db").getAbsolutePath());
 	    } catch ( Exception e ) {
 	      e.printStackTrace();
+	      Bennerbot.logger.warn("Connection to local database failed");
 	    }
 	    return c;
 	 }

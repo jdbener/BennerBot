@@ -31,4 +31,4 @@ dummycommand: "n/a"
 #You can add your commands here:
 thisiscommand: "cmd"
 ~thisisvariable: "var"
-usesvariable: "<thisisvariable>~hi mindy!"
+usesvariable: "<thisisvariable>"

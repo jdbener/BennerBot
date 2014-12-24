@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -26,6 +27,7 @@ import org.slf4j.LoggerFactory;
 public class EmoteServer {
 	private static Logger logger = LoggerFactory.getLogger(EmoteServer.class);
 	private static JSONParser parser = new JSONParser();
+	private static int counter = 0;
 
 	public static void main (String[] args){
 		setupEmoteTable();
@@ -89,7 +91,7 @@ public class EmoteServer {
 	private static Connection getConnection(){
 		Connection c = null;
 		try {
-			c = DriverManager.getConnection("jdbc:mysql://85.10.205.173:3306/bennerbot?" + "user=bennerbot&password=bennerbot");
+			c = DriverManager.getConnection("jdbc:mysql://vps34796.vps.ovh.ca/BENNERBOT?user=BENNERBOT&password=BENNERBOT");
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			c = getLocalConnection();
@@ -110,6 +112,7 @@ public class EmoteServer {
 		try {
 			Connection c = getConnection();
 			Statement stmt = c.createStatement();
+			//stmt.execute("mysqladmin flush-hosts");
 			String sql = "CREATE TABLE IF NOT EXISTS EMOTE " +
 					"(REGEX           TEXT    NOT NULL, " + 
 					"LINK         	 VARCHAR(2083))";
@@ -121,23 +124,28 @@ public class EmoteServer {
 		}
 	}
 	private static void insertEmotes(Map <String, String> in){
-		logger.info(in.size()+" emoticons to load");
 		try{
 			Connection c = getConnection();
 			Statement stmt = c.createStatement();
-			int i = 1;for(Map.Entry<String, String> entry : in.entrySet()){
-				String sql = "DELETE FROM EMOTE WHERE REGEX = '"+entry.getKey()+"'";
-				stmt.executeUpdate(sql);
-				sql = "INSERT INTO EMOTE (REGEX, LINK) " +
+			logger.info(in.size()+" emoticons to load");
+			counter = 1;for(final Map.Entry<String, String> entry : in.entrySet()){
+				ResultSet rs = stmt.executeQuery("SELECT * FROM EMOTE WHERE REGEX = '"+entry.getKey()+"'");
+				rs.last();
+				int row = rs.getRow();
+				if(row == 0){
+					String sql = "INSERT INTO EMOTE (REGEX, LINK) " +
 						"VALUES ('"+entry.getKey()+"','"+entry.getValue()+"');"; 
-				stmt.executeUpdate(sql);
-				logger.info("inserted emoicon #"+i+": "+entry.getKey());
-				i++;
+					stmt.executeUpdate(sql);
+					logger.info("inserted emoicon #"+counter+": "+entry.getKey());
+					counter++;
+				} else {
+					logger.info("emoicon #"+counter+": "+entry.getKey()+" already in database, skiping");
+				}		
 			}
-			stmt.close();
-			c.close();
-		} catch (SQLException e){
+		stmt.close();
+		c.close();
+		} catch(SQLException e){
 			e.printStackTrace();
-		}
+		}	
 	}
 }

@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 import org.ho.yaml.Yaml;
 import org.pircbotx.PircBotX;
@@ -16,8 +18,6 @@ import me.jdbener.moderataion.FilterManager;
 
 @SuppressWarnings("unused")
 public class CustomCommandHandeler extends ListenerAdapter<PircBotX>{
-	
-	
 	public CustomCommandHandeler(){
 		setupReplacementTable();
 		update();
@@ -63,6 +63,24 @@ public class CustomCommandHandeler extends ListenerAdapter<PircBotX>{
 				System.out.println(which);
 				e.getChannel().send().message(replaceVariables(entry.getValue().split("~")[which]).split(":")[0]);
 			}
+		}
+		if(e.getMessage().equalsIgnoreCase("!commands")){
+			Runnable run = new Runnable(){
+				@Override
+				public void run() {
+					String out = "";
+					int i = 0;
+					for(Entry<String, String> entry: Bennerbot.commandMap.entrySet()){
+						if(i != 0){
+							out+=(i+") !"+entry.getKey()+"   ");
+						}
+						i++;
+					}
+					Bennerbot.sendMessage(out);
+				}
+			};
+			
+			Executors.newScheduledThreadPool(2).execute(run);
 		}
 		/*if(e.getMessage().startsWith("!switch")){
 			//if(Bennerbot.isMod(e.getUser(), e.getChannel())){
