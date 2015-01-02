@@ -1,4 +1,4 @@
-ID: 6
-Version: 15.0
-Changelog: "This update adds a confiuration gui as well as alot of quaility of life stuff and proably some bugs... Merry Christmas!"
-link: "https://github.com/jdbener/BennerBot/releases/download/a0.15/BennerBot.Mk15.zip"
+ID: 7
+Version: 16.0
+Changelog: "Reimplements Hitbox (hitbox support is an alpha i need feedback and bug reports)"
+link: "https://github.com/jdbener/BennerBot/releases/download/a0.16/BennerBot.Mk16.zip"
