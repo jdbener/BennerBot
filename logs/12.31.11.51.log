@@ -1,0 +1,117 @@
+11:51:01.492 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+11:51:42.416 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+11:51:47.159 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting Hitbox server IP: ec2-54-162-229-44.compute-1.amazonaws.com
+11:51:47.641 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting connection ID: rox5Z5FEyVDhau2rhiSB
+11:51:47.641 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting your token
+11:51:47.890 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Connecting to hitbox servers...
+11:51:50.105 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Sucessfully Connected... Joined Channel #jdbener
+11:51:50.106 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+11:51:50.176 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+11:51:50.177 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+11:51:50.178 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+11:51:50.179 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+11:51:50.179 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+11:51:50.179 [main] INFO  me.jdbener.Bennerbot - Proceading with Jdbener initiation sequence
+11:51:50.180 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+11:51:50.180 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+11:51:50.182 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.250.239
+11:51:50.194 [botPool0-bot0] ERROR o.p.MultiBotManager$BotFutureCallback - Bot exited with Exception
+java.net.UnknownHostException: socket.hitbox.tv
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:1.7.0_45]
+	at java.net.InetAddress$1.lookupAllHostAddr(Unknown Source) ~[na:1.7.0_45]
+	at java.net.InetAddress.getAddressesFromNameService(Unknown Source) ~[na:1.7.0_45]
+	at java.net.InetAddress.getAllByName0(Unknown Source) ~[na:1.7.0_45]
+	at java.net.InetAddress.getAllByName(Unknown Source) ~[na:1.7.0_45]
+	at java.net.InetAddress.getAllByName(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:191) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) ~[pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+11:51:50.211 [botPool0-bot1] INFO  org.pircbotx.PircBotX - Connected to server.
+11:51:50.216 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - PASS oauth:dnvskkxmcc55d3x0mblzgsyieasntgg
+11:51:50.217 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - NICK jdbener
+11:51:50.217 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - USER Jdbener 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+11:51:50.278 [botPool0-bot1] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 jdbener :Welcome, GLHF!
+11:51:50.287 [botPool0-bot1] DEBUG org.pircbotx.InputParser - Logged onto server.
+11:51:51.218 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - JOIN #jdbener 
+11:51:51.218 [botPool0-bot1] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 002 jdbener :Your host is tmi.twitch.tv
+11:51:51.219 [botPool0-bot1] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 003 jdbener :This server is rather new
+11:51:51.219 [botPool0-bot1] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 004 jdbener :-
+11:51:51.220 [botPool0-bot1] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+11:51:51.220 [botPool0-bot1] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 375 jdbener :-
+11:51:51.220 [botPool0-bot1] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 372 jdbener :You are in a maze of twisty passages, all alike.
+11:51:51.220 [botPool0-bot1] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 376 jdbener :>
+11:51:51.293 [botPool0-bot1] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv JOIN #jdbener
+11:51:52.219 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - WHO #jdbener
+11:51:53.220 [botPool0-bot1] INFO  org.pircbotx.output.OutputRaw - MODE #jdbener
+11:51:53.224 [botPool0-bot1] INFO  org.pircbotx.InputParser - :jdbener.tmi.twitch.tv 353 jdbener = #jdbener :jdbener
+11:51:53.224 [botPool0-bot1] INFO  org.pircbotx.InputParser - :jdbener.tmi.twitch.tv 366 jdbener #jdbener :End of /NAMES list
+11:51:53.224 [botPool0-bot1] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+11:51:53.225 [botPool0-bot1] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG jdbener :HISTORYEND jdbener
+11:51:53.226 [botPool0-bot1] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 421 jdbener WHO :Unknown command
+11:52:40.180 [botPool0-bot1] INFO  org.pircbotx.InputParser - :jtv MODE #jdbener +o jdbener
+11:56:04.050 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+11:56:04.062 [listenerPool0-thread14] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:00:47.836 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:00:47.837 [listenerPool0-thread19] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:05:19.119 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:05:19.120 [listenerPool0-thread25] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:09:52.239 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:09:52.240 [listenerPool0-thread30] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:14:01.163 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:14:01.163 [listenerPool0-thread35] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:18:40.649 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:18:40.650 [listenerPool0-thread40] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:23:03.147 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:23:03.147 [listenerPool0-thread46] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:27:21.815 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:27:21.815 [listenerPool0-thread51] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:31:44.246 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:31:44.247 [listenerPool0-thread56] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:36:09.755 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:36:09.756 [listenerPool0-thread61] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:40:48.415 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:40:48.426 [listenerPool0-thread70] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:44:50.628 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:44:50.628 [listenerPool0-thread78] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:48:54.925 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:48:54.925 [listenerPool0-thread83] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:53:25.819 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:53:25.819 [listenerPool0-thread89] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+12:57:37.096 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+12:57:37.097 [listenerPool0-thread95] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+13:02:04.201 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+13:02:04.202 [listenerPool0-thread101] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+13:06:27.804 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+13:06:27.805 [listenerPool0-thread108] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+13:10:52.296 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+13:10:52.297 [listenerPool0-thread113] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+13:15:50.933 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+13:15:50.933 [listenerPool0-thread118] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+13:20:31.432 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+13:20:31.432 [listenerPool0-thread123] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+13:24:37.473 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+13:24:37.474 [listenerPool0-thread128] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+13:26:38.150 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :Jdbener!Jdbener@hitbox.tv PRIVMSG ##jdbener :send
+1
+13:26:38.156 [listenerPool0-thread139] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #jdbener :Jdbener: send
+13:29:05.365 [botPool0-bot1] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+13:29:05.366 [listenerPool0-thread145] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv

@@ -7,6 +7,7 @@ package me.jdbener.apis;
 
 import java.awt.GraphicsEnvironment;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -17,6 +18,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 import me.jdbener.Bennerbot;
@@ -67,6 +70,23 @@ public class APIManager {
 		
 		if(Bennerbot.conf.get("enableLastfmIntegration").toString().equalsIgnoreCase("true"))
 			Bennerbot.listener.addListener(new LastfmNowPlaying());
+		
+		if(Bennerbot.configBoolean("enableLatestFollowerFile"))
+			Executors.newScheduledThreadPool(1).scheduleAtFixedRate(new Runnable(){
+				@Override
+				public void run() {
+					try {
+						String nowPlaying = followers.get(0);
+						if(!Bennerbot.StreamToString(new File("latestfollower.txt").toURI().toURL().openStream()).equalsIgnoreCase(nowPlaying)){
+							FileWriter f = new FileWriter("latestfollower.txt");
+							f.append(nowPlaying);
+							f.close();
+						}
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}, 0, 5, TimeUnit.SECONDS);
 	}
 	
 	/**
@@ -184,8 +204,8 @@ public class APIManager {
 	    try {
 	    	c = DriverManager.getConnection("jdbc:mysql://vps34796.vps.ovh.ca/BENNERBOT?user=BENNERBOT&password=BENNERBOT");
 	    } catch ( Exception e ) {
-	    	e.printStackTrace();
-	    	Bennerbot.logger.warn("Connection to remote database failed, trying again with local connection");
+//	    	e.printStackTrace();
+//	    	Bennerbot.logger.warn("Connection to remote database failed, trying again with local connection");
 	    	c = getLocalConnection();
 	    }
 	    return c;

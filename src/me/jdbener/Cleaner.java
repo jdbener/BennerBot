@@ -66,7 +66,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 	 */
 	public void onConnect(ConnectEvent<PircBotX> e){
 		//the name of the bot
-		String user = Bennerbot.name;
+		/*String user = Bennerbot.servers.get(e.getBot().getBotId()).getUser();
 		//the bots color
 		Color color = Color.red;
 		//check if the bots name is in the color file 
@@ -80,7 +80,7 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 				color=uc.getColor();
 		}
 		//set the color on the server to the color set in the file
-		Bennerbot.sendMessage("/color "+UserColors.rgb2Hex(color), new String());
+		//Bennerbot.sendMessage("/color "+UserColors.rgb2Hex(color), new String());*/
 		
 		if(e.getBot().getBotId() == Bennerbot.getBotIDbyName("Twitch"))
 			e.getBot().sendRaw().rawLine("TWITCHCLIENT 1");
@@ -100,7 +100,8 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 		Date date = new Date();
 		
 		//set the server text/image
-		Server s = Bennerbot.servers.get(e.getBot().getBotId());
+		int id = e.getBot().getBotId()-1; if(id<0)id=0;if(id>Bennerbot.servers.size())id=Bennerbot.servers.size();
+		Server s = Bennerbot.servers.get(id);
 		server = "<img class='server' src=\'"+s.getLogo()+"\'>";
 		serverd = s.getName();
 		

@@ -1,5 +1,3 @@
-##Hitbox Integration is currently not functional, due to the fact that hitbox's irc server is changing hosts and will be offline for a few days, integration will be back as soon as possible! I appologize for any inconvinience this might cause ![:(](http://www.chatslang.com/images/shortcuts/twitch/sad.png) ##
-
 Hello, my name is Jdbener and today I am going to give you a basic walk through of how to use my twitch/hitbox chatbot, BennerBot! Bennerbot has been designed differently than other chatbots, it is designed by streamers for streamers, it has been designed to manage both twitch and hitbox simultaneously, it has also been written in java so it can be used from anywhere! If you have any bug reports or feature requests feel free to post an issue on the GitHub page and will try my best to include your input.
 
 There are 4 steps to running BennerBot:
@@ -73,6 +71,10 @@ There is a file called BasicCommands.java that file contains a simple example pl
 - MK13: The Bountiful Update! Added Automatic messages, Better Custom messages and A countdown. As well as more quality of life stuff. Removed herobrine
 
 - MK14: The Remote Update! This update changed the database system around a little, so that it is based off of a remote database, or a local database depending on the operator's preference!
+
+- MK15: The GUI Update (MK2)! This update replaces the old gui with a better more butifull one!
+
+- MK16: The Socket.IO Update! This update includes some basic support for socket.io chat servers (aka hitbox)
 
 ##Libraries Used:##
 

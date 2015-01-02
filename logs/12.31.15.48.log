@@ -1,0 +1,856 @@
+15:48:48.689 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+15:48:48.729 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading Beggining Tab Loading Sequence
+15:48:48.745 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "General Configuration Tab"
+15:49:22.903 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Tab"
+15:49:22.941 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Window"
+15:49:22.961 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Moderation Settings Tab"
+15:49:22.983 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Custom Commands Tab"
+15:49:25.241 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "AutoMessage Tab"
+15:49:26.372 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Miscellaneous Settings Tab"
+15:49:26.383 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Info Button"
+15:49:26.383 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Tab Initiation Squence... Loading Backend
+15:49:29.970 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Loading GUI Backend
+15:49:29.993 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+15:49:35.802 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting Hitbox server IP: ec2-54-87-101-9.compute-1.amazonaws.com
+15:49:36.281 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting connection ID: 6Q_y1SgP_aHQ3PY0hRSv
+15:49:36.281 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting your token
+15:49:36.525 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Connecting to hitbox servers...
+15:49:38.717 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Sucessfully Connected... Joined Channel #jdbener
+15:49:38.717 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+15:49:38.787 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+15:49:38.788 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+15:49:38.789 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+15:49:38.791 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+15:49:38.791 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+15:49:38.791 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+15:49:38.792 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+15:49:38.792 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+15:49:38.794 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.249.252
+15:49:38.840 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+15:49:38.846 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS oauth:dnvskkxmcc55d3x0mblzgsyieasntgg
+15:49:38.846 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK jdbener
+15:49:38.847 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+15:49:38.864 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address hitbox.tv/96.45.83.68
+15:49:38.945 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 jdbener :Welcome, GLHF!
+15:49:38.954 [botPool0-bot0] DEBUG org.pircbotx.InputParser - Logged onto server.
+15:49:39.848 [listenerPool0-thread5] INFO  org.pircbotx.output.OutputRaw - TWITCHCLIENT 1
+15:49:40.849 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - JOIN #jdbener 
+15:49:40.849 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 002 jdbener :Your host is tmi.twitch.tv
+15:49:40.850 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 003 jdbener :This server is rather new
+15:49:40.850 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 004 jdbener :-
+15:49:40.855 [botPool0-bot0] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+15:49:40.855 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 375 jdbener :-
+15:49:40.855 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 372 jdbener :You are in a maze of twisty passages, all alike.
+15:49:40.856 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 376 jdbener :>
+15:49:40.925 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv JOIN #jdbener
+15:49:41.850 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - WHO #jdbener
+15:49:42.852 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - MODE #jdbener
+15:49:42.855 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+15:49:42.855 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG jdbener :HISTORYEND jdbener
+15:49:42.856 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener.tmi.twitch.tv 353 jdbener = #jdbener :jdbener
+15:49:42.856 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener.tmi.twitch.tv 366 jdbener #jdbener :End of /NAMES list
+15:49:42.857 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 421 jdbener WHO :Unknown command
+15:49:59.862 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Unable to connect to hitbox.tv using the IP address 96.45.83.68, trying to check another address.
+java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.PlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.SocksSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at javax.net.DefaultSocketFactory.createSocket(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:194) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+15:49:59.862 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address hitbox.tv/96.45.82.154
+15:50:20.862 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Unable to connect to hitbox.tv using the IP address 96.45.82.154, trying to check another address.
+java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.PlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.SocksSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at javax.net.DefaultSocketFactory.createSocket(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:194) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+15:50:20.862 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address hitbox.tv/96.45.82.64
+15:50:23.942 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #jdbener +o jdbener
+15:50:41.871 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Unable to connect to hitbox.tv using the IP address 96.45.82.64, trying to check another address.
+java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.PlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.SocksSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at javax.net.DefaultSocketFactory.createSocket(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:194) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+15:50:41.871 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address hitbox.tv/96.45.83.201
+15:51:02.873 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Unable to connect to hitbox.tv using the IP address 96.45.83.201, trying to check another address.
+java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.PlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.SocksSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at javax.net.DefaultSocketFactory.createSocket(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:194) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+15:51:02.875 [botPool0-bot1] ERROR o.p.MultiBotManager$BotFutureCallback - Bot exited with Exception
+java.io.IOException: Unable to connect to the IRC network hitbox.tv (last connection attempt exception attached)
+	at org.pircbotx.PircBotX.connect(PircBotX.java:206) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) ~[pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.PlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.SocksSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at javax.net.DefaultSocketFactory.createSocket(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:194) ~[pircbotx-2.0.1.jar:na]
+	... 6 common frames omitted
+15:54:28.454 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+15:54:28.455 [listenerPool0-thread16] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+15:58:49.519 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+15:58:49.520 [listenerPool0-thread22] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+16:03:45.654 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+16:03:45.654 [listenerPool0-thread24] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+16:08:29.338 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+16:08:29.338 [listenerPool0-thread29] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+16:12:32.993 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+16:12:32.993 [listenerPool0-thread34] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+16:17:22.922 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+16:17:22.923 [listenerPool0-thread39] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+16:21:42.684 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+16:21:42.685 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #jdbener :test
+0
+0
+1
+16:21:42.798 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: test
+2
+1
+2
+1
+16:21:42.799 [listenerPool0-thread48] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=38997a27-b456-434e-adf3-e547b42c7068, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@5db0ce7d, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=4afdbda9-5951-48b3-8efc-ae5904ecd1d6, output=org.pircbotx.User$1@77c1101e, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:42.897 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:42.898 [listenerPool0-thread54] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=9cc06cb8-eff5-46a5-9d4c-c87f7ff03e7f, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@633b882d, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=241e3d28-09c8-47a9-bfa4-8411c1d3dc74, output=org.pircbotx.User$1@201ab564, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:43.005 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: test
+2
+16:21:43.005 [listenerPool0-thread57] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=2e8940ff-5df5-4071-bedf-3e8f72c09382, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@4b9d29bf, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=0e1f121b-8191-4d25-8e8f-1eb3c1d882ca, output=org.pircbotx.User$1@3b1fe161, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+1
+2
+1
+16:21:43.143 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:43.144 [listenerPool0-thread60] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=87a63170-b3db-4a5c-963c-53ed2554e298, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@7883b48a, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=95dd0957-522e-4ae4-9ebd-b93c0665d744, output=org.pircbotx.User$1@ec20dd6, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:43.251 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:43.253 [listenerPool0-thread52] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=7c3ecb78-9111-4d16-ab82-64caf2eda2e7, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@4f8f1b2f, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=a822fba3-0899-47e1-937c-94676b43cf84, output=org.pircbotx.User$1@3c41d377, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:43.350 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:43.350 [listenerPool0-thread52] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=02a88951-3340-4473-abf2-1c1e5e4c8aa8, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@61481d42, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=318cb2bc-fcc4-4cc0-a065-a5cce9ea45fe, output=org.pircbotx.User$1@457909f3, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:43.449 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:43.450 [listenerPool0-thread58] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=c8043859-d997-4da8-a5d0-0cfe255e7fb6, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@d7c5427, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=ba237087-0425-4143-9d02-1a4a3b287ecf, output=org.pircbotx.User$1@5d78d35b, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:43.557 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:43.558 [listenerPool0-thread60] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=42c3895e-69ac-4a02-83ff-2565b930cdb9, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@28a8dfc1, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=13a615c8-4c36-4c26-87d5-7b487d7f8e7d, output=org.pircbotx.User$1@66fa0cc1, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:43.665 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:43.668 [listenerPool0-thread56] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=2c5c41af-70a0-4cf6-ab05-84fc8ab3214c, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@3aa3c1a8, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=d52e848f-746d-4b3a-af92-727bea90a034, output=org.pircbotx.User$1@54ff1aab, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:43.766 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:43.766 [listenerPool0-thread60] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=e49aacf0-6dd0-466d-8432-6874a73cb895, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@aa0ceaa, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=d9cb4cf3-e2f0-4ef3-a4e2-8cb444bb3955, output=org.pircbotx.User$1@43600059, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:43.873 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:43.874 [listenerPool0-thread64] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=9b98f802-eb88-41b6-b70c-5fe41d0a7ef5, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@341a160c, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=f9d46c22-0bd0-4ed9-974b-7558a9ff1342, output=org.pircbotx.User$1@1c9d888d, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:43.973 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:43.973 [listenerPool0-thread65] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=d8a9ff26-9512-45f0-9519-62ed44400d34, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@c30d75, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=26c46268-57bf-4a78-a786-734abac08a08, output=org.pircbotx.User$1@5a87cb7, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:44.107 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+16:21:44.107 [listenerPool0-thread44] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=20c520dd-6a87-4ef1-a954-a3733f8c604b, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@5126430d, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=f343cc67-e9bf-4737-93dc-60e2dfae8dc2, output=org.pircbotx.User$1@26fc341a, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+2
+1
+2
+1
+16:21:44.206 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:44.207 [listenerPool0-thread68] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=e0e50da4-30b2-4bba-af57-83b0cec8eacd, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@6c09e5bc, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=b6ec03f3-6804-4a2b-802d-958b9df7e013, output=org.pircbotx.User$1@7dc9d10d, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:44.305 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+16:21:44.305 [listenerPool0-thread64] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=cdbc8cb4-1ed2-4d6a-8998-f74bc18b6d2d, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@12cb4632, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=18a3e26e-cf2f-4313-9612-6b07859e9a69, output=org.pircbotx.User$1@5f6d8641, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+2
+1
+2
+1
+16:21:44.421 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:44.424 [listenerPool0-thread63] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=67340154-6c92-47c6-bc2c-8644a91a8c82, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@1bd5f560, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=f57680c0-f9e0-497d-83be-c9fd66728819, output=org.pircbotx.User$1@7be07fe6, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:44.557 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+16:21:44.559 [listenerPool0-thread44] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=039ac12b-a46f-42b3-802d-f7e3471e6b3b, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@404d40b0, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=6643d5cd-30c2-4c1a-8182-27fb37194426, output=org.pircbotx.User$1@fd203cb, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+2
+1
+2
+1
+16:21:44.668 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:44.668 [listenerPool0-thread71] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=d6020264-e6e3-46d4-b2ad-7f305d8508ee, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@1869e4f, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=f6e048f7-282b-413b-8644-cae1d56a6c1d, output=org.pircbotx.User$1@2d035551, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:44.775 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:44.776 [listenerPool0-thread68] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=a5563f83-0c39-464c-8373-7eda06a6d533, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@66d606b4, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=b2473677-e661-48b7-b32c-bfecea407806, output=org.pircbotx.User$1@6d52482a, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:44.879 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:44.880 [listenerPool0-thread73] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=c011bf6c-408f-4663-a7f8-3e394b7b13f1, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@5aa7ff4f, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=e0c535de-41a2-4595-b2bf-dcb3a7064be8, output=org.pircbotx.User$1@4b6aca08, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:44.990 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:44.990 [listenerPool0-thread71] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=f4736cd7-bec1-4d59-a1f1-9c3abcdeb780, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@82c0c5b, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=713a0130-96fd-4051-b3c6-028847784c3e, output=org.pircbotx.User$1@3df2e8e, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:45.092 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+16:21:45.093 [listenerPool0-thread74] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=1508a3cc-474e-4f30-9061-43b947b8e237, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@4073c6c9, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=4845c234-71b3-4695-8cd9-6ab198881307, output=org.pircbotx.User$1@70ffd72d, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+2
+1
+2
+1
+16:21:45.197 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:45.197 [listenerPool0-thread77] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=2cb4dcd6-5e8b-4a37-a532-679927cd560f, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@35f027c5, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=b8c2f9e8-a170-4b59-b780-76be1c6bbe4f, output=org.pircbotx.User$1@29c3122d, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:45.306 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+16:21:45.307 [listenerPool0-thread78] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=deeae76a-03d5-4341-ab42-b216896c7f3d, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@47ca681d, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=50993eee-87c2-466a-91dc-6e4b5e1ad324, output=org.pircbotx.User$1@39796cbd, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+2
+1
+2
+1
+16:21:45.407 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+16:21:45.408 [listenerPool0-thread79] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=3ccd118f-afb4-472e-b9b3-6ee78ec43513, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@6929c572, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=75bed3cc-5b46-4043-ac61-b572fb9683da, output=org.pircbotx.User$1@3561f54e, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+2
+1
+16:21:45.508 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+16:21:45.508 [listenerPool0-thread77] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=a41a7a31-195a-4f82-a2a3-52476dd79bf5, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@2fd477a0, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=324f76a9-10cd-4cee-8855-6230a468a374, output=org.pircbotx.User$1@25f9c1e8, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+2
+1
+16:21:45.614 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:45.615 [listenerPool0-thread58] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=4de4518f-5b19-4d5b-a8aa-525b36772bc6, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@750ecc6b, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=7498dacd-b586-428a-99df-16dae7727a6f, output=org.pircbotx.User$1@1e8ec0d7, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:45.716 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:45.716 [listenerPool0-thread73] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=efe9ffd0-8149-4272-950e-bdf0a9f7c1fd, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@f9ae920, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=53a89efc-d033-4b19-b871-c07e1765240e, output=org.pircbotx.User$1@33f3be1, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:45.816 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:45.818 [listenerPool0-thread68] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=84342fca-8c3e-467b-a093-7560a956cc36, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@544c406b, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=593005e4-ca69-4968-ae97-3ea65eb763ce, output=org.pircbotx.User$1@5a195c09, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:45.923 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+16:21:45.924 [listenerPool0-thread83] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=241aecc5-2d80-4c0c-b0cd-ee018ea199b5, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@5c47f49a, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=01cc6e96-d4ce-46e1-8d49-5b24c6c527ab, output=org.pircbotx.User$1@780bd9ca, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+2
+1
+2
+1
+16:21:46.027 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+16:21:46.028 [listenerPool0-thread68] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=1a4cfabe-f38f-430a-ac82-db958c935d3d, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@5eda54c4, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=b311598d-dd99-4874-b9de-9968309bf637, output=org.pircbotx.User$1@4ff34082, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+2
+1
+2
+1
+16:21:46.137 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test
+2
+1
+2
+1
+16:21:46.138 [listenerPool0-thread87] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=37318166-8c28-4bca-903b-1ab74f586d1c, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@333714af, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=c59ce6a0-55de-4eb2-accd-321e4450c036, output=org.pircbotx.User$1@652f076d, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: test) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:46.239 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: tes
+2
+1
+2
+1
+16:21:46.242 [listenerPool0-thread83] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=012e0d70-53ad-4b0a-96f4-c1a6a57abf64, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@cdeca29, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=6d965057-3e03-4178-9f66-03c40607e47c, output=org.pircbotx.User$1@76aa5058, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: tes) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+16:21:46.366 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdb
+2
+16:21:46.366 [listenerPool0-thread84] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=ca8aa9a5-e970-4486-9772-e62fb778ced6, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@602c5c6b, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=90f43b96-4e38-406a-bb8b-f97e3470a791, output=org.pircbotx.User$1@67a621, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdb) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+1
+2
+1
+16:21:46.469 [Thread-8] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - :jdbener!jdbener@hitbox.tv PRIVMSG ##jdbener :Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdb
+16:21:46.469 [listenerPool0-thread79] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event MessageEvent(channel=Channel(name=#jdbener, channelId=46398a34-6214-4a8f-b164-ef7f81353bf6, dao=org.pircbotx.UserChannelDao@2ce2cbc8, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, output=org.pircbotx.Channel$1@608d3574, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=false, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{socket.hitbox.tv} Port{6667} Password{il0venV!}, dao=org.pircbotx.UserChannelDao@2ce2cbc8, userId=b70b4509-5e7c-4df5-96de-dcc1fbc2a836, output=org.pircbotx.User$1@56b08431, nick=jdbener, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdbener: Jdb) on listener me.jdbener.Cleaner@238df8e2
+java.lang.IndexOutOfBoundsException: Index: 2, Size: 2
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at me.jdbener.Cleaner.onMessage(Cleaner.java:103) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:63) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+2
+1
+2
+1
+16:21:52.164 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+16:21:52.164 [listenerPool0-thread84] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+16:21:52.935 [listenerPool0-thread66] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:52.946 [listenerPool0-thread51] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:52.981 [listenerPool0-thread50] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:52.998 [listenerPool0-thread46] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.077 [listenerPool0-thread55] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.111 [listenerPool0-thread45] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.112 [listenerPool0-thread65] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.159 [listenerPool0-thread63] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.163 [listenerPool0-thread78] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.219 [listenerPool0-thread74] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.254 [listenerPool0-thread56] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.256 [listenerPool0-thread81] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.269 [listenerPool0-thread66] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.287 [listenerPool0-thread62] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.331 [listenerPool0-thread53] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.356 [listenerPool0-thread65] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.360 [listenerPool0-thread64] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.364 [listenerPool0-thread47] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.439 [listenerPool0-thread74] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.448 [listenerPool0-thread80] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.453 [listenerPool0-thread69] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.454 [listenerPool0-thread76] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.474 [listenerPool0-thread61] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.492 [listenerPool0-thread63] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.504 [listenerPool0-thread51] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.516 [listenerPool0-thread62] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.558 [listenerPool0-thread67] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.577 [listenerPool0-thread57] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.582 [listenerPool0-thread64] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.583 [listenerPool0-thread48] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.589 [listenerPool0-thread81] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.594 [listenerPool0-thread54] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.599 [listenerPool0-thread72] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.675 [listenerPool0-thread80] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.679 [listenerPool0-thread76] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.681 [listenerPool0-thread44] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.687 [listenerPool0-thread52] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.707 [listenerPool0-thread56] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.760 [listenerPool0-thread82] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.812 [listenerPool0-thread81] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.900 [listenerPool0-thread58] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.909 [listenerPool0-thread77] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.910 [listenerPool0-thread69] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.917 [listenerPool0-thread73] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.920 [listenerPool0-thread70] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.939 [listenerPool0-thread78] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:53.980 [listenerPool0-thread82] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.017 [listenerPool0-thread60] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.025 [listenerPool0-thread75] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.026 [listenerPool0-thread87] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.028 [listenerPool0-thread67] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.032 [listenerPool0-thread59] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.120 [listenerPool0-thread58] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.128 [listenerPool0-thread44] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.137 [listenerPool0-thread77] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.144 [listenerPool0-thread73] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.157 [listenerPool0-thread72] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.252 [listenerPool0-thread87] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.272 [listenerPool0-thread78] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.477 [listenerPool0-thread70] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:21:54.589 [listenerPool0-thread75] WARN  me.jdbener.Bennerbot - Connection to remote database failed, trying again with local connection
+16:26:11.980 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+16:26:11.980 [listenerPool0-thread91] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv

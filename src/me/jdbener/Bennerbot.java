@@ -34,6 +34,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
+import me.jdbener.PHitboxBotX.HitboxServer;
 import me.jdbener.apis.APIManager;
 import me.jdbener.gui.MainGui;
 import me.jdbener.gui.SplashScreen;
@@ -65,11 +66,11 @@ import org.slf4j.LoggerFactory;
 public class Bennerbot {
 	//bot infromation
 	public static String name = "BennerBot",												//the name of the bot
-			version = "0.15", 																//the version ID of the bot
-			twitchu = "bennerbot",															//twitch username used to connect
-			twitchpw = "oauth:hrr2wpqq0knt6sb0spzd3d1mugpdezf",								//twitch OAuth used to connect
-			hitboxu = "bennerbot",															//hitbox username used to connect
-			hitboxpw = "bennerbot";															//hitbox password used to connect
+			version = "0.16", 																//the version ID of the bot
+			twitchu = "",																	//twitch username used to connect
+			twitchpw = "",																	//twitch OAuth used to connect
+			hitboxu = "",																	//hitbox username used to connect
+			hitboxpw = "";																	//hitbox password used to connect
 		
 	
 	//initialize the variables
@@ -78,7 +79,7 @@ public class Bennerbot {
 	public static Map<String, Object> conf = new HashMap<String, Object>();					//all of the input from the configuration file
 	public static Map<String, String> variableMap = new HashMap<String, String>();			//all of the variables bot, plugin, or custom
 	public static Map<String, String> commandMap = new HashMap<String, String>();			//all the custom commands from the file, bot, or plugins
-	public static Map<String, String> messagesMap = new HashMap<String, String>();
+	public static Map<String, String> messagesMap = new HashMap<String, String>();			//all the automessages
 	public static MainGui gui;																//the GUI object
 	public static boolean guiLoaded = false;												//this value stores weather or not the gui has loaded yet or not
 	public static SplashScreen sp = new SplashScreen();										//this variable contains a reference to our splash screen
@@ -88,8 +89,7 @@ public class Bennerbot {
 	//bot managaer
 	public static MultiBotManager<PircBotX> manager = new MultiBotManager<PircBotX>();
 	//Listener Manager
-	@SuppressWarnings("rawtypes")
-	public static ListenerManager listener = new ThreadedListenerManager();
+	public static ListenerManager<PircBotX> listener = new ThreadedListenerManager<PircBotX>();
 	//Server Manager
 	public static ArrayList<Server> servers = new ArrayList<Server>();
 	
@@ -234,17 +234,13 @@ public class Bennerbot {
 	 */
 	public Bennerbot (){
 		//set the twitch username
-		if(!conf.get("twitchUsername").toString().equalsIgnoreCase("default"))
-			twitchu = conf.get("twitchUsername").toString();
+		twitchu = conf.get("twitchUsername").toString();
 		//set the twitch password
-		if(!conf.get("twitchOAuth").toString().equalsIgnoreCase("default"))
-			twitchpw = conf.get("twitchOAuth").toString();
+		twitchpw = conf.get("twitchOAuth").toString();
 		//set the hitbox username
-		if(!conf.get("hitboxUsername").toString().equalsIgnoreCase("default"))
-			hitboxu = conf.get("hitboxUsername").toString();
+		hitboxu = conf.get("hitboxUsername").toString();
 		//set the hitbox username
-		if(!conf.get("hitboxPassword").toString().equalsIgnoreCase("default"))
-			hitboxpw = conf.get("hitboxPassword").toString();
+		hitboxpw = conf.get("hitboxPassword").toString();
 		
 		//output to a file?
 		if(conf.get("enableOutput").toString().equalsIgnoreCase("true")){
@@ -274,7 +270,7 @@ public class Bennerbot {
 			if(Bennerbot.conf.get("connectToTwitch").toString().equalsIgnoreCase("true"))
 				servers.add(new Server("irc.twitch.tv", "Twitch", twitchu, twitchpw, conf.get("twitchChannel").toString().toLowerCase(), new File("resource/TwitchLogo.png").toURI().toURL()));
 			if(Bennerbot.conf.get("connectToHitbox").toString().equalsIgnoreCase("true"))
-				servers.add(new Server("irc.glados.tv", "Hitbox", hitboxu, hitboxpw, conf.get("hitboxChannel").toString().toLowerCase(), new File("resource/HitboxLogo.png").toURI().toURL()));
+				servers.add(new HitboxServer(hitboxu, hitboxpw, conf.get("hitboxChannel").toString().toLowerCase(), new File("resource/HitboxLogo.png").toURI().toURL()));
 		} catch (MalformedURLException ex) {
 			ex.printStackTrace();
 		}
@@ -285,7 +281,7 @@ public class Bennerbot {
 		
 		//add the bots to the manager and start them
 		for(Server s: servers)
-			manager.addBot(s.getConfiguration());
+			manager.addBot(s.getBot());
 		manager.start();
 		
 		try {
@@ -351,7 +347,7 @@ public class Bennerbot {
 	public static void sendMessage(String txt, String dontShow){
 		int i=0; while(i < servers.size()){
 			try{
-				manager.getBotById(i).sendRaw().rawLine("PRIVMSG "+servers.get(i).getChannel()+" :"+txt);
+				sendMessage(txt, i, dontShow);
 			} catch (Exception e){
 				e.printStackTrace();
 			}
@@ -366,11 +362,11 @@ public class Bennerbot {
 	public static void sendMessage(String txt, boolean fromuser){
 		String server = "", user = "";
 		int i=0; while(i < servers.size()){
+			Server s = servers.get(i);
 			try{
-				Server s = servers.get(i);
 				if(Bennerbot.conf.get("showSource").toString().equalsIgnoreCase("true")){server = " ["+s.getChannel().replace("#", "")+"]";}
 				if(Bennerbot.conf.get("showSendName").toString().equalsIgnoreCase("true")){user = Bennerbot.capitalize(s.getChannel().replace("#", ""))+": ";}
-				manager.getBotById(i).sendRaw().rawLine("PRIVMSG "+s.getChannel()+" :"+user+server+txt);
+				sendMessage(user+server+txt, i);
 			} catch (Exception e){
 				e.printStackTrace();
 			}
@@ -413,11 +409,13 @@ public class Bennerbot {
 	 */
 	public static void sendMessage(String txt, int bot, String dontShow){
 		try{
+			//TODO working here
+			System.out.println(manager.getBots().size());
 			if(bot<0) bot = 0; if(bot>servers.size())bot=servers.size();
-			manager.getBotById(bot).sendRaw().rawLine("PRIVMSG "+servers.get(bot).getChannel()+" :"+txt);
+			servers.get(bot).sendMessage("PRIVMSG "+servers.get(bot).getChannel()+" :"+txt);
 		} catch (Exception e){
 			e.printStackTrace();
-		}
+		}	
 	}
 	/**
 	 * used to send a message to a specific bot form a bot operator
@@ -426,17 +424,15 @@ public class Bennerbot {
 	 */
 	@SuppressWarnings("unchecked")
 	public static void sendMessage(String txt, int bot, boolean fromUser){
+		String server = "", user = "";
 		try{
-			String server = "", user = "";
 			Server s = servers.get(bot);
 			if(Bennerbot.conf.get("showSource").toString().equalsIgnoreCase("true")){server = " ["+s.getChannel().replace("#", "")+"]";}
 			if(Bennerbot.conf.get("showSendName").toString().equalsIgnoreCase("true")){user = Bennerbot.capitalize(s.getChannel().replace("#", ""))+": ";}
-			manager.getBotById(bot).sendRaw().rawLine("PRIVMSG "+s.getChannel()+" :"+user+server+txt);
+			sendMessage(user+server+txt, bot);
 		} catch (Exception e){
 			e.printStackTrace();
 		}
-		//Display the message
-		Cleaner.onOutput(txt, true);
 		//this code deals with message phrasing and responding
 		if(Bennerbot.conf.get("respondToOperatorCommands").toString().equalsIgnoreCase("true")){
 			//creates the event that is sent to the functions

@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
@@ -46,10 +47,10 @@ public class GeneralConfigurationPanel extends JPanel {
 	
 	//random variables
 	private JTextField twitchUsername;
-	private JTextField twitchOAuth;
+	private JPasswordField twitchOAuth;
 	private JTextField twitchChannel;
 	private JTextField hitboxUsername;
-	private JTextField hitboxPassword;
+	private JPasswordField hitboxPassword;
 	private JTextField hitboxChannel;
 	private JTextField txtBotName;
 	private JCheckBox enableTwitch;
@@ -120,7 +121,6 @@ public class GeneralConfigurationPanel extends JPanel {
 		twitchUsername = new JTextField();
 		twitchUsername.setEnabled(false);
 		twitchUsername.setToolTipText("The username of the the twitch account you want the bot to use");
-		twitchUsername.setText("default");
 		twitchUsername.setBounds(72, 30, 193, 20);
 		Twitch.add(twitchUsername);
 		twitchUsername.setColumns(10);
@@ -128,10 +128,9 @@ public class GeneralConfigurationPanel extends JPanel {
 		MainGui.settingsNames.add("twitchUsername");
 		MainGui.settingRestarts.add("twitchUsername");
 		
-		twitchOAuth = new JTextField();
+		twitchOAuth = new JPasswordField();
 		twitchOAuth.setEnabled(false);
 		twitchOAuth.setToolTipText("Enter the OAuth password (for lack of a better word) for your twitch account. This can be found here: http://www.twitchapps.com/tmi/");
-		twitchOAuth.setText("default");
 		twitchOAuth.setBounds(72, 54, 193, 20);
 		Twitch.add(twitchOAuth);
 		twitchOAuth.setColumns(10);
@@ -205,7 +204,6 @@ public class GeneralConfigurationPanel extends JPanel {
 		hitboxUsername = new JTextField();
 		hitboxUsername.setEnabled(false);
 		hitboxUsername.setToolTipText("The username of the the hitbox account you want the bot to use");
-		hitboxUsername.setText("default");
 		hitboxUsername.setColumns(10);
 		hitboxUsername.setBounds(72, 30, 193, 20);
 		Hitbox.add(hitboxUsername);
@@ -213,10 +211,9 @@ public class GeneralConfigurationPanel extends JPanel {
 		MainGui.settingsNames.add("hitboxUsername");
 		MainGui.settingRestarts.add("hitboxUsername");
 		
-		hitboxPassword = new JTextField();
+		hitboxPassword = new JPasswordField();
 		hitboxPassword.setEnabled(false);
 		hitboxPassword.setToolTipText("Enter the password for your hitbox account. Dont worry this wont be scene by anybody but yourself.");
-		hitboxPassword.setText("default");
 		hitboxPassword.setColumns(10);
 		hitboxPassword.setBounds(72, 54, 193, 20);
 		Hitbox.add(hitboxPassword);
@@ -277,6 +274,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		General.add(txtBotName);
 		MainGui.settings.add(txtBotName);
 		MainGui.settingsNames.add("botName");
+		MainGui.settingRestarts.add("botName");
 		
 		JCheckBox incognitoMode = new JCheckBox("Activate Incognito Mode?");
 		incognitoMode.setToolTipText("If this is checked the bot wont send anymessages to the server");
@@ -291,7 +289,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		capitolizeNames.setBounds(10, 55, 188, 23);
 		General.add(capitolizeNames);
 		MainGui.settings.add(capitolizeNames);
-		MainGui.settingsNames.add("capitolizeNames");
+		MainGui.settingsNames.add("capitalizeNames");
 		
 		JCheckBox respondOperatorCommands = new JCheckBox("Respond to Operator Commands?");
 		respondOperatorCommands.setToolTipText("Weather or not commands sent through this GUI should be phrased and responded to");

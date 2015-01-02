@@ -13,7 +13,7 @@ respondToOperatorCommands: true
 #information on what this means can be found here: https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
 dateFormat: "HH:mm"
 #weather or not names should be capitalized
-capitalizeNames: false
+capitalizeNames: true
 #weather or not bennerbot should announce his presence
 incognitoMode: true
 
@@ -121,6 +121,22 @@ filterCommands: true
 #<message>: the message itself
 DisplayMessageFormat: "<server> <badge><timestamp> <user>: <message>"
 
+#======================
+#Output File Settings
+#======================
+#weather or not to write the latest follower to a file
+enableLatestFollowerFile: true
+#weather or not to write the song that is currently being played to a file
+enableCurrentlyPlayingSongFile: true
+#the format for how the currently playing song will be writen to the file
+#<title>: the title of the song thats currently playing
+#<artist>: the artist who performs said song
+#<album>: the album that the song is realised on
+#<url>: a link to find out more information about the song at
+#add a number in front of these to represent previous tracks (number must be between 1 and 20)
+#for example, <1title> would show the title of the previous song
+songFileFormat: "<title> ~ <artist>                   "
+
 #=======================
 #BennerBot Speech Settings
 #=======================
@@ -157,6 +173,7 @@ LengthFilter: true
 MaxCapsPercentage: .8
 #The maximum length of a message
 MaxMessageLength: 150
+
 
 #=======================
 #Relay Settings

@@ -1,2 +1,4 @@
 Welcome to BennerBot
 Version 0.15
+[12:49] Sucessfully Connected to Twitch
+Now hosting irish_00.

@@ -1,0 +1,4 @@
+12:46:59.480 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+12:46:59.517 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading Beggining Tab Loading Sequence
+12:46:59.539 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "General Configuration Tab"
+12:46:59.580 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence

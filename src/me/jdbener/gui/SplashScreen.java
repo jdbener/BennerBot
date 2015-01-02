@@ -15,6 +15,7 @@ public class SplashScreen extends JWindow {
 	public SplashScreen() {
 		setSize(675,420); 
 		setLocationRelativeTo(null);
+		setAlwaysOnTop(true);
 	}
 	public void paint(Graphics g) { 
 		g.drawImage(img,0,0,this); 

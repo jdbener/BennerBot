@@ -28,6 +28,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -96,6 +97,7 @@ public class MainGui extends JFrame {
 		/*
 		 * The tabs
 		 */
+		Bennerbot.logger.info("Loading Beggining Tab Loading Sequence");
 		tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		tabbedPane.setBackground(Color.WHITE);
@@ -105,6 +107,7 @@ public class MainGui extends JFrame {
 		/* ============================
 		 * General Configuration Tab
 		 * ============================*/
+		Bennerbot.logger.info("Loading the \"General Configuration Tab\"");
 		GeneralConfigurationPanel generalConfigPanel = new GeneralConfigurationPanel();
 		generalConfigPanel.setLocation(-250, -162);
 		tabbedPane.addTab("<html><body><center><table width='100'>General Configuration</table></body></html>", null, generalConfigPanel, "General settings, Connections, Databases, ETC...");
@@ -118,6 +121,7 @@ public class MainGui extends JFrame {
 		/* ============================
 		 * Chat Display Tab
 		 * ============================*/
+		Bennerbot.logger.info("Loading the \"Chat Display Tab\"");
 		CDC = new ChatDisplayConfigurationPanel(); 
 		tabbedPane.addTab("<html><body><center><table width='100'>Chat Display</table></body></html>", null, CDC, null);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
@@ -125,6 +129,7 @@ public class MainGui extends JFrame {
 		/* ============================
 		 * Chat Popout Display Frame
 		 * ============================*/
+		Bennerbot.logger.info("Loading the \"Chat Display Window\"");
 		displayFrameDisplay = new DisplayPanel();
 		displayFrame = DisplayPanel.createJFrame(displayFrameDisplay);
 		displayFrame.setBounds(1029, 100, 400, 537);
@@ -142,6 +147,7 @@ public class MainGui extends JFrame {
 		/* ============================
 		 * Moderation Tab
 		 * ============================*/
+		Bennerbot.logger.info("Loading the \"Chat Moderation Settings Tab\"");
 		ModerationSettingsPanel ModerationPanel = new ModerationSettingsPanel(); 
 		tabbedPane.addTab("<html><body><center><table width='100'>Chat Moderation</table></body></html>", null, ModerationPanel, null);
 		tabbedPane.setBackgroundAt(2, Color.BLACK);
@@ -150,6 +156,7 @@ public class MainGui extends JFrame {
 		/* ============================
 		 * Commands Tab
 		 * ============================*/
+		Bennerbot.logger.info("Loading the \"Custom Commands Tab\"");
 		CustomCommandsPanel CommandPanel = new CustomCommandsPanel(); 
 		tabbedPane.addTab("<html><body><center><table width='100'>Commands & Variables</table></body></html>", null, CommandPanel, null);
 		tabbedPane.setForegroundAt(3, Color.WHITE);
@@ -160,6 +167,7 @@ public class MainGui extends JFrame {
 		/* ============================
 		 * AutoMessage Tab
 		 * ============================*/
+		Bennerbot.logger.info("Loading the \"AutoMessage Tab\"");
 		autoMessagePanel = new AutoMessagePanel(); 
 		tabbedPane.addTab("<html><body><center><table width='100'>AutoMessage Settings</table></body></html>", null, autoMessagePanel, null);
 		tabbedPane.setBackgroundAt(4, Color.BLACK);
@@ -171,6 +179,7 @@ public class MainGui extends JFrame {
 		/* ============================
 		 * Miscellaneous Tab
 		 * ============================*/
+		Bennerbot.logger.info("Loading the \"Miscellaneous Settings Tab\"");
 		miscSettingsPanel miscSettings = new miscSettingsPanel(); 
 		tabbedPane.addTab("<html><body><center><table width='100'>Miscellaneous Settings</table></body></html>", null, miscSettings, null);
 		tabbedPane.setBackgroundAt(5, Color.BLACK);
@@ -183,6 +192,7 @@ public class MainGui extends JFrame {
 		/* ============================
 		 * Information Button
 		 * ============================*/
+		Bennerbot.logger.info("Loading the \"Info Button\"");
 		infoButton = new JButton("Close this Window to stop the Bot");
 		infoButton.setEnabled(false);
 		infoButton.setForeground(Color.WHITE);
@@ -213,6 +223,7 @@ public class MainGui extends JFrame {
 								Thread.sleep(3000);
 							} catch (InterruptedException e1) {e1.printStackTrace();}
 							updateMap();
+							//Bennerbot.name = Bennerbot.conf.get("botName").toString().trim();
 						} else {}
 					}
 				}).start();	
@@ -226,6 +237,7 @@ public class MainGui extends JFrame {
 		/* ============================
 		 * Backend Code that Makes it all run!
 		 * ============================*/
+		Bennerbot.logger.info("Finished Tab Initiation Squence... Loading Backend");
 		setupMapTable();		
 		db2Map();
 		for(Entry<String, Object> e: Bennerbot.conf.entrySet()){
@@ -234,6 +246,8 @@ public class MainGui extends JFrame {
 		setValuesfromMap();
 		setupMapListeners();
 		Bennerbot.guiLoaded = true;
+		Bennerbot.logger.info("Finished Loading GUI Backend");
+		//Bennerbot.name = Bennerbot.conf.get("botName").toString().trim();
 	}
 	public void setupGhostText(JTextField component, String default_, String ghostText){
 		Executors.newScheduledThreadPool(22).scheduleAtFixedRate(new GhostText(component, default_, ghostText), 0, 100, TimeUnit.MILLISECONDS);
@@ -254,6 +268,8 @@ public class MainGui extends JFrame {
 				value = (((JCheckBox)j).isSelected())+"";
 			else if(j.getClass().getName().equalsIgnoreCase("javax.swing.JTextField"))
 				value = (((JTextField)j).getText());
+			else if(j.getClass().getName().equalsIgnoreCase("javax.swing.JPasswordField"))
+				value = new String((((JPasswordField)j).getPassword()));
 			
 			Bennerbot.conf.put(settingsNames.get(i), value);
 		}
@@ -279,7 +295,9 @@ public class MainGui extends JFrame {
 							if(settings.get(i2).getClass().getName().equalsIgnoreCase("javax.swing.JCheckBox"))
 								((JCheckBox)settings.get(i2)).setSelected(e.getValue().toString().equalsIgnoreCase("true"));
 							else if(settings.get(i2).getClass().getName().equalsIgnoreCase("javax.swing.JTextField"))
-								((JTextField)settings.get(i2)).setText(e.getValue().toString());;
+								((JTextField)settings.get(i2)).setText(e.getValue().toString());
+							else if(settings.get(i2).getClass().getName().equalsIgnoreCase("javax.swing.JPasswordField"))
+								((JPasswordField)settings.get(i2)).setText(e.getValue().toString());
 				}
 			}
 		}
@@ -293,6 +311,8 @@ public class MainGui extends JFrame {
 				((JCheckBox)settings.get(i)).addActionListener(checkboxActions);
 			else if(j.getClass().getName().equalsIgnoreCase("javax.swing.JTextField"))
 				((JTextField)settings.get(i)).getDocument().addDocumentListener(textareaActions);
+			else if(j.getClass().getName().equalsIgnoreCase("javax.swing.JPasswordField"))
+				((JPasswordField)settings.get(i)).getDocument().addDocumentListener(textareaActions);
 			updateMap();
 		}
 	}
