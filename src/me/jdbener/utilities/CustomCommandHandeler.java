@@ -32,11 +32,7 @@ public class CustomCommandHandeler extends ListenerAdapter<PircBotX>{
 				if(entry.getKey().toString().startsWith("~")){
 					Bennerbot.variableMap.put("<"+entry.getKey().replace("~", "")+">", entry.getValue());
 				} else {
-					if(Bennerbot.commandMap.containsKey(Bennerbot.removeLastChar(entry.getKey()))){
-						Bennerbot.commandMap.put(Bennerbot.removeLastChar(entry.getKey()), Bennerbot.commandMap.get(Bennerbot.removeLastChar(entry.getKey())).split(":")[0]+"~"+entry.getValue()+":"+Bennerbot.commandMap.get(Bennerbot.removeLastChar(entry.getKey())).split(":")[1]);
-					} else {
-						Bennerbot.commandMap.put(entry.getKey(), entry.getValue()+":0");
-					}
+					Bennerbot.commandMap.put(entry.getKey(), entry.getValue());
 				}
 			}
 		} catch (FileNotFoundException e) {
@@ -56,12 +52,7 @@ public class CustomCommandHandeler extends ListenerAdapter<PircBotX>{
 		Bennerbot.variableMap.put("<username>", e.getUser().getNick());
 		for (Entry<String, String> entry : Bennerbot.commandMap.entrySet()){
 			if(e.getMessage().startsWith("!"+entry.getKey())){
-				int which = 0;
-				if(e.getMessage().split(" ").length>1)
-					which = Integer.parseInt(e.getMessage().split(" ")[1]);
-				if(which<0)which=0;if(which>entry.getValue().split("~").length)which=entry.getValue().split("~").length;
-				System.out.println(which);
-				e.getChannel().send().message(replaceVariables(entry.getValue().split("~")[which]).split(":")[0]);
+				Bennerbot.sendMessage(entry.getValue());
 			}
 		}
 		if(e.getMessage().equalsIgnoreCase("!commands")){
@@ -82,53 +73,6 @@ public class CustomCommandHandeler extends ListenerAdapter<PircBotX>{
 			
 			Executors.newScheduledThreadPool(2).execute(run);
 		}
-		/*if(e.getMessage().startsWith("!switch")){
-			//if(Bennerbot.isMod(e.getUser(), e.getChannel())){
-				System.out.println(e.getMessage().split(" ").length);
-				if(e.getMessage().split(" ").length == 2){
-					try{
-						String key = e.getMessage().split(" ")[1];
-						String msg = Bennerbot.commandMap.get(key).split(":")[0];
-						int which = Integer.parseInt(Bennerbot.commandMap.get(key).split(":")[1]);
-						int count = Bennerbot.commandMap.get(key).split("~").length-1;
-						
-						if(which+1>count)which=0;else which++;
-						
-						System.out.println(count);
-						
-						Bennerbot.commandMap.put(key, msg+":"+which);
-						
-						Bennerbot.sendMessage("Command: \""+key+"\" has successfully been updated to entry #"+which);
-						
-						System.out.println(Bennerbot.commandMap.get(key));
-					} catch (Exception ex) {
-						ex.printStackTrace();
-						Bennerbot.sendMessage("It looks like something has gone wrong :(");
-					}
-				} else if(e.getMessage().split(" ").length == 3){
-					try{
-						String key = e.getMessage().split(" ")[1];
-						String msg = Bennerbot.commandMap.get(key).split(":")[0];
-						int which = Integer.parseInt(e.getMessage().split(" ")[2]);
-						int count = Bennerbot.commandMap.get(key).split("~").length-1;
-					
-						if(which>count)which=count;if(which<0)which=0;
-			
-						Bennerbot.commandMap.put(key, msg+":"+which);
-						
-						Bennerbot.sendMessage("Command: \""+key+"\" has successfully been updated to entry #"+which);
-					} catch (Exception ex) {
-						ex.printStackTrace();
-						Bennerbot.sendMessage("It looks like something has gone wrong :(");
-					}
-				} else {
-					Bennerbot.sendMessage("It look like you are using the wrong format for this message, try using !song <command> or !song <command> <entry>");
-				}
-			//} else {
-			//	Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" has tried to use a command they dont have permsision to");
-			//	FilterManager.punish(e.getUser().getNick());
-			//}
-		}*/
 	}
 	/**
 	 * This function will replace any variables in the string that is passed to it, with there appropriate values.

@@ -19,8 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -36,7 +34,6 @@ import javax.swing.event.DocumentListener;
 
 import me.jdbener.Bennerbot;
 import me.jdbener.apis.APIManager;
-import me.jdbener.lib.GhostText;
 
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
@@ -141,8 +138,7 @@ public class MainGui extends JFrame {
 		});
 		displayFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGui.class.getResource("/me/jdbener/gui/Lion.png")));
 		displayFrame.setTitle("Chat ~ "+Bennerbot.name+" v"+Bennerbot.version);
-		displayFrame.setAlwaysOnTop(true);
-		displayFrame.setAlwaysOnTop(true); 
+//		displayFrame.setAlwaysOnTop(true);
 		
 		/* ============================
 		 * Moderation Tab
@@ -249,9 +245,6 @@ public class MainGui extends JFrame {
 		Bennerbot.logger.info("Finished Loading GUI Backend");
 		//Bennerbot.name = Bennerbot.conf.get("botName").toString().trim();
 	}
-	public void setupGhostText(JTextField component, String default_, String ghostText){
-		Executors.newScheduledThreadPool(22).scheduleAtFixedRate(new GhostText(component, default_, ghostText), 0, 100, TimeUnit.MILLISECONDS);
-	}
 	public void writeDisplay(String write){
 		displayFrameDisplay.append(write);
 		CDC.displayPanel.append(write);
@@ -287,7 +280,7 @@ public class MainGui extends JFrame {
 			infoButton.setText("Close This Window to Stop the Bot");
 		}
 	}
-	private void setValuesfromMap(){
+	public void setValuesfromMap(){
 		for(java.util.Map.Entry<String, Object> e: Bennerbot.conf.entrySet()){
 			for(int i2 = 0; i2 < settingsNames.size(); i2++){
 				if(settingsNames.get(i2).equalsIgnoreCase(e.getKey())){

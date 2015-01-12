@@ -53,7 +53,7 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 			BennerBitManager.setBits(e.getUser().getNick(), BennerBitManager.getBits(e.getUser().getNick())+1);
 		} 
 		
-		if(e.getMessage().startsWith("!level")){
+		if(e.getMessage().startsWith("!level") || e.getMessage().startsWith("!lvl")){
 			long old = new Date().getTime();
 			try{
 				old = Long.valueOf(timeMap.get(e.getUser().getNick())).longValue();

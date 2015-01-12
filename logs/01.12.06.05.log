@@ -1,0 +1,132 @@
+06:05:35.666 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+06:05:35.687 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading Beggining Tab Loading Sequence
+06:05:35.703 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "General Configuration Tab"
+06:05:37.189 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Tab"
+06:05:37.222 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Window"
+06:05:37.243 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Moderation Settings Tab"
+06:05:37.267 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Custom Commands Tab"
+06:05:39.249 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "AutoMessage Tab"
+06:05:40.270 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Miscellaneous Settings Tab"
+06:05:40.290 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Info Button"
+06:05:40.291 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Tab Initiation Squence... Loading Backend
+06:05:43.077 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Loading GUI Backend
+06:05:43.168 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+06:05:48.020 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting Hitbox server IP: ec2-54-87-229-245.compute-1.amazonaws.com
+06:05:48.562 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting connection ID: JN6eH-XQKMGbcJH2AMO8
+06:05:48.562 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting your token
+06:05:48.793 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Connecting to hitbox servers...
+06:05:50.984 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Sucessfully Connected... Joined Channel #jdbener
+06:05:50.985 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+06:05:51.056 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+06:05:51.058 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+06:05:51.059 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+06:05:51.061 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+06:05:51.061 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+06:05:51.061 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+06:05:51.061 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+06:05:51.061 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+06:05:51.067 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.250.239
+06:05:51.095 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+06:05:51.101 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS oauth:sccrkekgyzcobf9j7k1kceagfyo7hz4
+06:05:51.101 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK jdbener
+06:05:51.102 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+06:05:51.137 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address hitbox.tv/212.232.25.4
+06:05:51.159 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 jdbener :Welcome, GLHF!
+06:05:51.166 [botPool0-bot0] DEBUG org.pircbotx.InputParser - Logged onto server.
+06:05:52.102 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - JOIN #jdbener 
+06:05:52.102 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 002 jdbener :Your host is tmi.twitch.tv
+06:05:52.103 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 003 jdbener :This server is rather new
+06:05:52.103 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 004 jdbener :-
+06:05:52.108 [botPool0-bot0] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+06:05:52.109 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 375 jdbener :-
+06:05:52.109 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 372 jdbener :You are in a maze of twisty passages, all alike.
+06:05:52.110 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 376 jdbener :>
+06:05:52.195 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv JOIN #jdbener
+06:05:52.677 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Unable to connect to hitbox.tv using the IP address 212.232.25.4, trying to check another address.
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.PlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.SocksSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at javax.net.DefaultSocketFactory.createSocket(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:194) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+06:05:52.678 [botPool0-bot1] ERROR o.p.MultiBotManager$BotFutureCallback - Bot exited with Exception
+java.io.IOException: Unable to connect to the IRC network hitbox.tv (last connection attempt exception attached)
+	at org.pircbotx.PircBotX.connect(PircBotX.java:206) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) ~[pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.PlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.SocksSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at javax.net.DefaultSocketFactory.createSocket(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:194) ~[pircbotx-2.0.1.jar:na]
+	... 6 common frames omitted
+06:05:53.103 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - WHO #jdbener
+06:05:54.104 [listenerPool0-thread6] INFO  org.pircbotx.output.OutputRaw - TWITCHCLIENT 1
+06:05:55.105 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - MODE #jdbener
+06:05:55.108 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener.tmi.twitch.tv 353 jdbener = #jdbener :jdbener
+06:05:55.109 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener.tmi.twitch.tv 366 jdbener #jdbener :End of /NAMES list
+06:05:55.109 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 421 jdbener WHO :Unknown command
+06:06:21.438 [botPool0-bot0] INFO  org.pircbotx.InputParser - :biogenx2b!biogenx2b@biogenx2b.tmi.twitch.tv JOIN #jdbener
+06:06:21.438 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #jdbener +o jdbener
+06:06:21.439 [listenerPool0-thread3] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event JoinEvent(channel=Channel(name=#jdbener, channelId=e1b4d942-cc15-4649-83d3-8cd05603765a, dao=org.pircbotx.UserChannelDao@46a49a5f, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{true} Server{irc.twitch.tv} Port{6667} Password{oauth:sccrkekgyzcobf9j7k1kceagfyo7hz4}, output=org.pircbotx.Channel$1@6092f734, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=true, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{true} Server{irc.twitch.tv} Port{6667} Password{oauth:sccrkekgyzcobf9j7k1kceagfyo7hz4}, dao=org.pircbotx.UserChannelDao@46a49a5f, userId=1915c5e7-cfc0-41e9-8158-b631d8b16fad, output=org.pircbotx.User$1@50a3a874, nick=biogenx2b, realName=, login=biogenx2b, hostmask=biogenx2b.tmi.twitch.tv, awayMessage=null, ircop=false, server=, hops=0)) on listener me.jdbener.Cleaner@28ebe0a7
+java.lang.NullPointerException: null
+	at me.jdbener.Cleaner.onJoin(Cleaner.java:176) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:59) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+06:06:21.439 [listenerPool0-thread1] ERROR o.p.h.m.ThreadedListenerManager - Exception encountered when executing event JoinEvent(channel=Channel(name=#jdbener, channelId=e1b4d942-cc15-4649-83d3-8cd05603765a, dao=org.pircbotx.UserChannelDao@46a49a5f, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{true} Server{irc.twitch.tv} Port{6667} Password{oauth:sccrkekgyzcobf9j7k1kceagfyo7hz4}, output=org.pircbotx.Channel$1@6092f734, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=true, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{true} Server{irc.twitch.tv} Port{6667} Password{oauth:sccrkekgyzcobf9j7k1kceagfyo7hz4}, dao=org.pircbotx.UserChannelDao@46a49a5f, userId=1915c5e7-cfc0-41e9-8158-b631d8b16fad, output=org.pircbotx.User$1@50a3a874, nick=biogenx2b, realName=, login=biogenx2b, hostmask=biogenx2b.tmi.twitch.tv, awayMessage=null, ircop=false, server=, hops=0)) on listener me.jdbener.utilities.JoinLeaveMessages@6e1641c4
+java.lang.NullPointerException: null
+	at me.jdbener.utilities.JoinLeaveMessages.onJoin(JoinLeaveMessages.java:15) ~[bin/:na]
+	at org.pircbotx.hooks.ListenerAdapter.onEvent(ListenerAdapter.java:59) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:119) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.hooks.managers.ThreadedListenerManager$1.call(ThreadedListenerManager.java:115) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]

@@ -27,7 +27,7 @@ public class ChatRelayHandeler extends ListenerAdapter<PircBotX> {
 					int i=0; while(i < Bennerbot.servers.toArray().length){
 						if(e.getBot().getBotId() != i){
 							//Determine weather or not to show the message's source
-							if(Bennerbot.conf.get("showSource").toString().equalsIgnoreCase("true")){server = " ["+Bennerbot.servers.get(i).getName()+"]";}
+							if(Bennerbot.conf.get("showSource").toString().equalsIgnoreCase("true")){server = " ["+Bennerbot.servers.get(e.getBot().getBotId()).getName()+"]";}
 							//send the message
 							Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+server+": "+ e.getMessage().toString(), i, "dont show");
 						}

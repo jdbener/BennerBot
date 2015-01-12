@@ -1,18 +1,27 @@
 package me.jdbener.gui;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -22,6 +31,7 @@ import javax.swing.border.BevelBorder;
 import me.jdbener.Bennerbot;
 import me.jdbener.apis.APIManager;
 
+import org.ho.yaml.Yaml;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -74,6 +84,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		setLayout(null);
 		setBorder(null);
 		
+		//Bennerbot.logger.info("\tLoading Central Tutorial");
 		/*
 		 * Central Tutorial
 		 */
@@ -86,6 +97,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		twitchSettingsLabel.setBounds(10, 13, 275, 14);
 		add(twitchSettingsLabel);
 		
+		//Bennerbot.logger.info("\tLoading Twitch Settings Panel");
 		/*
 		 * Twitch Settings Sub-Panel
 		 */
@@ -157,6 +169,15 @@ public class GeneralConfigurationPanel extends JPanel {
 		JLabel twitchPasswordL = new JLabel("OAuth:");
 		twitchPasswordL.setHorizontalAlignment(SwingConstants.LEFT);
 		twitchPasswordL.setBounds(7, 57, 46, 14);
+		twitchPasswordL.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		twitchPasswordL.setToolTipText("Click this to generate a new Oauth Token, you need to be signed into the account above for this to work");
+		twitchPasswordL.setForeground(Color.red);
+		twitchPasswordL.addMouseListener(new MouseAdapter()   {   
+	        public void mouseClicked(MouseEvent e){   
+	        	twitchOAuth.setText("oauth:"+Bennerbot.getAccessToken());
+	        	JOptionPane.showMessageDialog(null, "Successfully updated your Access/OAuth Token");
+	        }   
+		});
 		Twitch.add(twitchPasswordL);
 		
 		JLabel twitchChannelL = new JLabel("Channel:");
@@ -164,6 +185,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		twitchChannelL.setBounds(7, 81, 56, 14);
 		Twitch.add(twitchChannelL);
 		
+		//Bennerbot.logger.info("\tLoading Hitbox Settings Panel");
 		/*
 		 * Hitbox Settings Sub-Label
 		 */
@@ -247,6 +269,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		hitboxChannelL.setBounds(7, 81, 59, 14);
 		Hitbox.add(hitboxChannelL);
 		
+		//Bennerbot.logger.info("\tLoading General Settings Panel");
 		/*
 		 * General Settings Sub-Panel
 		 */
@@ -300,6 +323,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		MainGui.settings.add(respondOperatorCommands);
 		MainGui.settingsNames.add("respondOperatorCommands");
 		
+		//Bennerbot.logger.info("\tLoading Hitbox Metrics");
 		/*
 		 * Hitbox Metric Sub-Panel
 		 */
@@ -347,6 +371,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		hitboxGameLabel.setBounds(10, 137, 172, 20);
 		HitboxStatusPanel.add(hitboxGameLabel);
 		
+		//Bennerbot.logger.info("\tLoading Twitch Metrics");
 		/*
 		 * Twitch Metrics Sub-Panel
 		 */
@@ -402,6 +427,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		twitchGameLabel.setBounds(10, 137, 172, 20);
 		TwitchStatusPanel.add(twitchGameLabel);
 		
+		//Bennerbot.logger.info("\tLoading Metrcis Backend");
 		/*
 		 * Backend for the metrics code
 		 */
@@ -423,7 +449,7 @@ public class GeneralConfigurationPanel extends JPanel {
 						twitchFollowerLabel.setText("Folowers: "+Integer.parseInt(""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")+"/follows/?limit=1").openStream()))).get("_total")));
 					} catch (Exception e){twitchFollowerLabel.setText("Folowers: 0");}
 					try{
-						twitchSubscriber.setText("Subscribers: "+Integer.parseInt(""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")+"/subscriptions?oauth_token=nkrmqrbqexmply2v8ix6ksdxn1yxdv").openStream()))).get("_total")));
+						twitchSubscriber.setText("Subscribers: "+Integer.parseInt(""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")+"/subscriptions?oauth_token="+Bennerbot.getAccessToken()).openStream()))).get("_total")));
 					} catch (Exception e){twitchSubscriber.setText("Subscribers: 0");}
 					try{
 						String title = Bennerbot.filterUTF8(("Title: "+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("status")).replace(" ", " "));
@@ -503,6 +529,7 @@ public class GeneralConfigurationPanel extends JPanel {
 			}
 		}, 0, 1, TimeUnit.SECONDS);	
 		
+		//Bennerbot.logger.info("\tLoading Last.fm Settings Panel");
 		/*
 		 * Last.fm Sub-Panel
 		 */
@@ -597,6 +624,10 @@ public class GeneralConfigurationPanel extends JPanel {
 		});
 		add(openChatDisplayBTN);
 		
+		//Bennerbot.logger.info("\tLoading BotID Panel");
+		/*
+		 * Bot ID Panel
+		 */
 		JPanel botIDPanel = new JPanel();
 		botIDPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		botIDPanel.setBounds(624, 357, 164, 116);
@@ -605,18 +636,18 @@ public class GeneralConfigurationPanel extends JPanel {
 		
 		botID = new JTextField();
 		botID.setHorizontalAlignment(SwingConstants.CENTER);
-		botID.setBounds(12, 12, 140, 30);
+		botID.setBounds(12, 12, 140, 24);
 		botIDPanel.add(botID);
 		botID.setToolTipText("This determins the ID of the bot, bots using the same ID share settings, set this to something specific to you or write this down somewhere");
 		botID.setColumns(10);
 		botID.setText(me.jdbener.lib.botId.getHash());
-		me.jdbener.lib.botId.updateFile(me.jdbener.lib.botId.getHash());
+		//make sure that the hash is in the database
 		
 		botIDUpdate = new JButton("Update");
 		botIDUpdate.setToolTipText("Update your bot ID");
 		botIDUpdate.setForeground(Color.WHITE);
 		botIDUpdate.setBackground(Color.BLACK);
-		botIDUpdate.setBounds(12, 53, 140, 24);
+		botIDUpdate.setBounds(12, 40, 140, 24);
 		botIDUpdate.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				new Thread(new Runnable(){
@@ -634,10 +665,46 @@ public class GeneralConfigurationPanel extends JPanel {
 		
 		botIDNumLabel = new JLabel("Bot #"+me.jdbener.lib.botId.getBotID(me.jdbener.lib.botId.getHash()));
 		botIDNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		botIDNumLabel.setBounds(12, 88, 140, 16);
+		botIDNumLabel.setBounds(12, 65, 140, 16);
 		botIDPanel.add(botIDNumLabel);
 		
-		JLabel lblBotId = new JLabel("Bot ID");
+		JButton btnConfig = new JButton("Config");
+		btnConfig.setToolTipText("Click this button to reset your settings to those found in the config file");
+		btnConfig.setForeground(Color.WHITE);
+		btnConfig.setBackground(Color.BLACK);
+		btnConfig.setBounds(12, 81, 62, 24);
+		btnConfig.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					@SuppressWarnings("unchecked")
+					Map<String, Object> temp = (Map<String, Object>) Yaml.load(new FileInputStream(new File("config/config.yml")));
+					for(Entry<String, Object> e: temp.entrySet()){
+						Bennerbot.conf.put(e.getKey(), e.getValue());
+					}
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+				Bennerbot.gui.setValuesfromMap();
+			}
+		});
+		botIDPanel.add(btnConfig);
+		
+		JButton btnNewButton = new JButton("Database");
+		btnNewButton.setToolTipText("Click this button to rest your settings to those found in the Database");
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(Color.BLACK);
+		btnNewButton.setBounds(72, 81, 80, 24);
+		btnNewButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Bennerbot.gui.db2Map();
+				Bennerbot.gui.setValuesfromMap();
+			}
+		});
+		botIDPanel.add(btnNewButton);
+		
+		JLabel lblBotId = new JLabel("Bot Settings");
 		lblBotId.setBounds(624, 336, 164, 16);
 		add(lblBotId);
 		lblBotId.setHorizontalAlignment(SwingConstants.CENTER);

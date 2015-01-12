@@ -1,0 +1,135 @@
+14:09:55.126 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+14:09:55.145 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading Beggining Tab Loading Sequence
+14:09:55.161 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "General Configuration Tab"
+14:09:56.475 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Tab"
+14:09:56.507 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Window"
+14:09:56.525 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Moderation Settings Tab"
+14:09:56.548 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Custom Commands Tab"
+14:09:58.562 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "AutoMessage Tab"
+14:09:59.559 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Miscellaneous Settings Tab"
+14:09:59.571 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Info Button"
+14:09:59.572 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Tab Initiation Squence... Loading Backend
+14:10:02.378 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Loading GUI Backend
+14:10:02.432 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+14:10:06.985 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting Hitbox server IP: ec2-54-211-95-56.compute-1.amazonaws.com
+14:10:07.463 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting connection ID: P9ii_bUH0JNi1QmFl2Qp
+14:10:07.463 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting your token
+14:10:07.695 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Connecting to hitbox servers...
+14:10:09.886 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Sucessfully Connected... Joined Channel #pinkandorangeandgold
+14:10:09.887 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+14:10:09.954 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+14:10:09.955 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+14:10:09.956 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+14:10:09.958 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+14:10:09.958 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+14:10:09.958 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+14:10:09.958 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+14:10:09.958 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+14:10:09.964 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.250.239
+14:10:10.012 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+14:10:10.018 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS oauth:pxxb7z0dio3bl7pmldpd5w5oazdmilx
+14:10:10.018 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK pogpink
+14:10:10.018 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+14:10:10.031 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address hitbox.tv/212.232.25.4
+14:10:10.121 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 pogpink :Welcome, GLHF!
+14:10:10.128 [botPool0-bot0] DEBUG org.pircbotx.InputParser - Logged onto server.
+14:10:11.019 [listenerPool0-thread2] INFO  org.pircbotx.output.OutputRaw - TWITCHCLIENT 1
+14:10:11.579 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Unable to connect to hitbox.tv using the IP address 212.232.25.4, trying to check another address.
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.PlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.SocksSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at javax.net.DefaultSocketFactory.createSocket(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:194) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+14:10:11.580 [botPool0-bot1] ERROR o.p.MultiBotManager$BotFutureCallback - Bot exited with Exception
+java.io.IOException: Unable to connect to the IRC network hitbox.tv (last connection attempt exception attached)
+	at org.pircbotx.PircBotX.connect(PircBotX.java:206) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) ~[pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source) ~[na:1.7.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.PlainSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.SocksSocketImpl.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.connect(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at java.net.Socket.<init>(Unknown Source) ~[na:1.7.0_45]
+	at javax.net.DefaultSocketFactory.createSocket(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:194) ~[pircbotx-2.0.1.jar:na]
+	... 6 common frames omitted
+14:10:12.020 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - JOIN #pinkandorangeandgold 
+14:10:12.020 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 002 pogpink :Your host is tmi.twitch.tv
+14:10:12.021 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 003 pogpink :This server is rather new
+14:10:12.021 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 004 pogpink :-
+14:10:12.022 [botPool0-bot0] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+14:10:12.022 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 375 pogpink :-
+14:10:12.022 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 372 pogpink :You are in a maze of twisty passages, all alike.
+14:10:12.022 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 376 pogpink :>
+14:10:12.179 [botPool0-bot0] INFO  org.pircbotx.InputParser - :pogpink!pogpink@pogpink.tmi.twitch.tv JOIN #pinkandorangeandgold
+14:10:13.021 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - WHO #pinkandorangeandgold
+14:10:14.022 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - MODE #pinkandorangeandgold
+14:10:14.025 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG pogpink :HISTORYEND pinkandorangeandgold
+14:10:14.026 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG pogpink :HOSTTARGET kahmul78 -
+14:10:14.026 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG pogpink :Now hosting kahmul78.
+14:10:14.026 [botPool0-bot0] INFO  org.pircbotx.InputParser - :pogpink.tmi.twitch.tv 353 pogpink = #pinkandorangeandgold :pogpink
+14:10:14.027 [botPool0-bot0] INFO  org.pircbotx.InputParser - :pogpink.tmi.twitch.tv 366 pogpink #pinkandorangeandgold :End of /NAMES list
+14:10:14.027 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 421 pogpink WHO :Unknown command
+14:10:30.457 [botPool0-bot0] INFO  org.pircbotx.InputParser - :xitoshi!xitoshi@xitoshi.tmi.twitch.tv JOIN #pinkandorangeandgold
+14:10:30.457 [botPool0-bot0] INFO  org.pircbotx.InputParser - :pinkandorangeandgold!pinkandorangeandgold@pinkandorangeandgold.tmi.twitch.tv JOIN #pinkandorangeandgold
+14:10:30.457 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #pinkandorangeandgold +o pinkandorangeandgold
+14:10:37.115 [bot3-shutdownhook] INFO  org.pircbotx.output.OutputRaw - QUIT :
+14:10:37.121 [bot3-shutdownhook] WARN  org.pircbotx.Channel - Channel #pinkandorangeandgold mode '' is stale
+14:10:37.137 [bot3-shutdownhook] WARN  org.pircbotx.Channel - Channel #pinkandorangeandgold mode '' is stale
+14:10:37.142 [bot3-shutdownhook] INFO  org.pircbotx.dcc.DccHandler - Terminating all transfers waiting to be accepted
+14:10:37.142 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Shutdown has been called, closing InputParser
+14:10:37.143 [botPool0-bot0] DEBUG o.p.MultiBotManager$BotFutureCallback - Bot #0 finished
+14:10:37.143 [bot3-shutdownhook] DEBUG org.pircbotx.PircBotX - Disconnected.
+14:10:37.143 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.Countdown@1e1d8d1 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.Cleaner@31ed2fda to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.CustomCommandHandeler@2a99f941 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.apis.hitbox.HitboxStatusGameUpdater@4ccca363 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.Infromation@29f1298d to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener org.pircbotx.hooks.CoreHooks@3f6d1f4c to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.AutoMessageHandeler@f1397b9 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.JoinLeaveMessages@157106f7 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.levels.BennerBitManager@5d791d43 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.utilities.ChatRelayHandeler@12fa8880 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.apis.twitch.TwitchStatusGameUpdater@49f12d6 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)
+14:10:37.144 [bot3-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.levels.LevelManager@3a7049a6 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@3e1e9fac, disconnectException=null)

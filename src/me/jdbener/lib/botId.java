@@ -125,8 +125,13 @@ public class botId {
 			int r2 = rs.getRow();
 			
 			if(r1 == r2){
-				sql = "INSERT INTO BOTS VALUES ("+id+",'"+encrypt(hash)+"')";
-				stmt.execute(sql);
+				try{
+					sql = "INSERT INTO BOTS VALUES ("+id+",'"+encrypt(hash)+"')";
+					stmt.execute(sql);
+				} catch (SQLException e){
+					sql = "INSERT INTO BOTS VALUES ("+(id+1)+",'"+encrypt(hash)+"')";
+					stmt.execute(sql);
+				}
 			}
 		} catch (SQLException | IOException e){
 			e.printStackTrace();

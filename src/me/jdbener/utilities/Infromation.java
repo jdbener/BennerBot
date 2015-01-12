@@ -1,5 +1,6 @@
 package me.jdbener.utilities;
 
+import java.util.Map;
 import java.util.Random;
 
 import me.jdbener.Bennerbot;
@@ -19,12 +20,15 @@ public class Infromation extends ListenerAdapter<PircBotX> {
 					Bennerbot.sendMessage("Starting test event");
 					Thread.sleep(3000);
 					Bennerbot.sendMessage(Bennerbot.name+" "+Bennerbot.version);
+					//Thread.sleep(3000);
+					//Bennerbot.sendMessage(Bennerbot.manager.getBots().toString());
+					//Thread.sleep(3000);
+					//Bennerbot.sendMessage(Bennerbot.plugins.toString());
 					Thread.sleep(3000);
-					Bennerbot.sendMessage(Bennerbot.manager.getBots().toString());
-					Thread.sleep(3000);
-					Bennerbot.sendMessage(Bennerbot.plugins.toString());
-					Thread.sleep(3000);
-					Bennerbot.sendMessage(Bennerbot.conf.toString());
+					Map<String, Object> temp = Bennerbot.conf;
+					temp.remove("hitboxPassword");
+					temp.remove("twitchOauth");
+					Bennerbot.sendMessage(temp.toString());
 					Thread.sleep(3600);
 					Bennerbot.sendMessage("Twitch: "+Bennerbot.conf.get("twitchChannel").toString()+" Hitbox: "+Bennerbot.conf.get("hitboxChannel").toString());
 				} catch(InterruptedException ex){

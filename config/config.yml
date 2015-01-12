@@ -24,10 +24,6 @@ incognitoMode: true
 enableFollowerNotifications: true
 #This allows you to use the !title and !game commands
 enableStatusandGameUpdateing: true
-#If you are running bennerbot on a server or a headless operating system set this if you want to use twitch api bassed features!
-#this can be gotten here: "https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=9qxushp3sdeasixpxajz8pqlxdudfs6&redirect_uri=http://localhost&scope=channel_editor+channel_subscriptions"
-#when you authorize the bot it will redirect you to a black page, copy and past the access token from the url and paste it here!
-twitchAccessToken: 
 
 #=======================
 #Twitch Settings
@@ -37,12 +33,9 @@ connectToTwitch: true
 #The username of the the twitch account you want the bot to use
 #Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
-twitchUsername: default
-#Enter the OAuth password (for lack of a better word) for your twitch account
-#This can be found here: http://www.twitchapps.com/tmi/
-#Leave this to "default" if you dont want a custom account
-#I recommend creating a new account for this
-twitchOAuth: default
+twitchUsername: 
+#This can be generated at anytime by clicking the button in the gui, or by sending '!regenToken' in the console
+twitchOAuth: 
 #the name of the twitch account to moderate
 twitchChannel: jdbener
 

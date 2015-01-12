@@ -20,7 +20,7 @@ public class TwitchStatusGameUpdater extends ListenerAdapter<PircBotX>{
 			if(e.getMessage().startsWith("!game"))
 				if(Bennerbot.isMod(e.getUser(), e.getChannel())){
 				try {
-					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.configGetString("twitchAccessToken");
+					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.getAccessToken();
 					URL obj = new URL(url);
 					HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 

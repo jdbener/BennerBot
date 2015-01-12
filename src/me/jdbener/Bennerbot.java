@@ -6,8 +6,12 @@
 
 package me.jdbener;
 
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,6 +20,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.file.Files;
@@ -31,6 +36,8 @@ import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -47,6 +54,7 @@ import me.jdbener.utilities.Countdown;
 import me.jdbener.utilities.CustomCommandHandeler;
 import me.jdbener.utilities.Infromation;
 import me.jdbener.utilities.JoinLeaveMessages;
+import me.jdbener.webserver.tokenServer;
 import net.xeoh.plugins.base.PluginManager;
 import net.xeoh.plugins.base.impl.PluginManagerFactory;
 import net.xeoh.plugins.base.util.PluginManagerUtil;
@@ -64,9 +72,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Bennerbot {
-	//bot infromation
+	//bot information
 	public static String name = "BennerBot",												//the name of the bot
-			version = "0.16", 																//the version ID of the bot
+			version = "0.17", 																//the version ID of the bot
 			twitchu = "",																	//twitch username used to connect
 			twitchpw = "",																	//twitch OAuth used to connect
 			hitboxu = "",																	//hitbox username used to connect
@@ -80,10 +88,11 @@ public class Bennerbot {
 	public static Map<String, String> variableMap = new HashMap<String, String>();			//all of the variables bot, plugin, or custom
 	public static Map<String, String> commandMap = new HashMap<String, String>();			//all the custom commands from the file, bot, or plugins
 	public static Map<String, String> messagesMap = new HashMap<String, String>();			//all the automessages
-	public static MainGui gui;																//the GUI object
+	public static MainGui gui = null;														//the GUI object
 	public static boolean guiLoaded = false;												//this value stores weather or not the gui has loaded yet or not
 	public static SplashScreen sp = new SplashScreen();										//this variable contains a reference to our splash screen
 	public static DateFormat dateFormat;													//this variable is contains an object that lets you format dates into text..
+	private static tokenServer webserver = new tokenServer();
 	
 	//initialize the servers
 	//bot managaer
@@ -138,6 +147,11 @@ public class Bennerbot {
 			//start the splash screenS
 		    if(!GraphicsEnvironment.isHeadless() && nogui)
 		    	sp.start();
+		    //ask if they want to use the configuation gui
+		    if(!GraphicsEnvironment.isHeadless())
+		    	if(2 == new StartupDialog().getOption())
+		    		nogui = false;
+		    	
 		    //redirects a copy of the console output to a file
 		    try {
 		    	//creates the date used in the name of the log file
@@ -158,6 +172,7 @@ public class Bennerbot {
 			//set up the GUI or the BOTID depending on if the environment is headless or not
 			if(!GraphicsEnvironment.isHeadless() && nogui){
 				me.jdbener.lib.botId.setupBotIDTable();
+				me.jdbener.lib.botId.updateFile(me.jdbener.lib.botId.getHash());
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -167,16 +182,33 @@ public class Bennerbot {
 							e.printStackTrace();
 						}
 					}
-				});
+				});	
 			} else {
-				me.jdbener.lib.botId.setupBotIDTable();
-				String hash = configGetString("botID");
-				if(hash.equalsIgnoreCase("default"))
-					hash = new Date().getTime()+"";
-				
-				if(!hash.equalsIgnoreCase(me.jdbener.lib.botId.getHash()))
-					me.jdbener.lib.botId.updateFile(hash);
-				
+				//if there is a graphics environment launch in light mode
+				if (!GraphicsEnvironment.isHeadless() && !nogui){
+					JFrame displayFrame = new JFrame();
+					displayFrame.setSize(200, 60);
+					displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					displayFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGui.class.getResource("/me/jdbener/gui/Lion.png")));
+					displayFrame.setTitle(Bennerbot.name+" v"+Bennerbot.version);
+					displayFrame.add(new JLabel("Close this window to stop the bot"));
+					displayFrame.setVisible(true);
+				}
+				//run the code that the gui would have already run
+				//make sure the hash is in place
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						me.jdbener.lib.botId.setupBotIDTable();
+						String hash = configGetString("botID");
+						if(hash.equalsIgnoreCase("default"))
+							hash = new Date().getTime()+"";
+						
+						if(!hash.equalsIgnoreCase(me.jdbener.lib.botId.getHash()))
+							me.jdbener.lib.botId.updateFile(hash);
+					}
+				}).start();
+				//setup the config system (this lets changes to the config file take effect in real time)
 				Runnable runnable = new Runnable() {
 					@Override
 					public void run() {
@@ -186,7 +218,9 @@ public class Bennerbot {
 				//add the update to the execution thread
 				Executors.newScheduledThreadPool(1).scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
 				//claim that the gui is loaded
+				logger.info("Running in NoGUI mode ");
 				guiLoaded = true;
+				
 			}
 			//let the GUI catch up and update its settings
 			logger.warn("Waiting for GUI to load");
@@ -198,8 +232,12 @@ public class Bennerbot {
 			//close the splash screen
 			sp.end();
 			//refresh the GUI so that is on top
-			gui.setAlwaysOnTop(true);
-			gui.setAlwaysOnTop(false);
+			try{
+				gui.setAlwaysOnTop(true);
+				gui.setAlwaysOnTop(false);
+			} catch (Exception e){
+				e.printStackTrace();
+			}
 		    //create a new instance of the bot
 		    new Bennerbot();
 		    //command line messages
@@ -213,6 +251,8 @@ public class Bennerbot {
 						if(out.equalsIgnoreCase("stop")){
 							System.out.println("Stoping Bot");
 							System.exit(0);
+						} else if(out.equals("tokenRegen")){
+							Bennerbot.generateAccessToken();
 						}
 						if(out.startsWith("~"))
 							try{
@@ -409,8 +449,6 @@ public class Bennerbot {
 	 */
 	public static void sendMessage(String txt, int bot, String dontShow){
 		try{
-			//TODO working here
-			System.out.println(manager.getBots().size());
 			if(bot<0) bot = 0; if(bot>servers.size())bot=servers.size();
 			servers.get(bot).sendMessage("PRIVMSG "+servers.get(bot).getChannel()+" :"+txt);
 		} catch (Exception e){
@@ -673,6 +711,40 @@ public class Bennerbot {
 	 */
 	public static String filterUTF8(String utf){
 		return filterUTF8(utf, "?");
+	}
+	/**
+	 * This function returns a twitch access token if one is generated
+	 * @return
+	 */
+	//TODO working here
+	public static String getAccessToken(){
+		String token = webserver.getToken();
+		if(token == ""){
+			if(!GraphicsEnvironment.isHeadless()){
+				JOptionPane.showMessageDialog(null, "<html><body><center>We see you dont have a Twitch Access Token generated.<br/>One will now be generated<center></body></html>", "Generate Token? ~ Bennerbot v0.17", JOptionPane.DEFAULT_OPTION);
+				generateAccessToken();
+				while(webserver.getToken().equalsIgnoreCase("")){try {Thread.sleep(1);} catch (InterruptedException e) {e.printStackTrace();}/*do nothing but do enough to keep the system happy*/}
+				token = webserver.getToken();
+			}
+		}
+		return token;
+	}
+	private static void generateAccessToken(){
+		String url = "https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=9qxushp3sdeasixpxajz8pqlxdudfs6&redirect_uri=http://127.0.0.1:55555/token/&scope=channel_editor+channel_subscriptions+chat_login";
+		try{
+            Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+            if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE))
+                desktop.browse(new URL(url).toURI());
+        } catch (Exception e){
+            e.printStackTrace();
+
+            // Copy URL to the clipboard so the user can paste it into their browser
+            StringSelection stringSelection = new StringSelection(url);
+            Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+            clpbrd.setContents(stringSelection, null);
+            // Notify the user of the failure
+            JOptionPane.showMessageDialog(null, "<html><body>We have unsucessfully tried to open a new page to generate an access token for you, <br>however the URL has been copied to your clipboard, simply paste into your browser to generate one.</body></html>");
+        }
 	}
 }
 

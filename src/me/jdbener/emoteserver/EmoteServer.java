@@ -58,8 +58,6 @@ public class EmoteServer {
 		Map<String, String> temp = new HashMap<String, String>();
 		//TODO implement getting all the hitbox emotions
 		try {
-			//HttpURLConnection conn = (HttpURLConnection) new URL("https://api.twitch.tv/kraken/chat/emoticons").openConnection();
-
 			JSONObject jobj = (JSONObject) parser.parse(StreamToString(new URL("https://api.twitch.tv/kraken/chat/emoticons").openStream()));
 			JSONArray emotes = (JSONArray) jobj.get("emoticons");
 			
@@ -70,6 +68,24 @@ public class EmoteServer {
 			
 				regex = EscapeChars.forRegex(((String) emote.get("regex")).replace("~", ""));
 				url = (String)((JSONObject)((JSONArray)emote.get("images")).get(0)).get("url");
+			
+				logger.info("Adding Emoticon: "+regex+"~"+url);
+				temp.put(regex, url);
+				i++;
+			}	
+		} catch (IOException | ParseException e) {
+			e.printStackTrace();
+		}
+		try {
+			JSONArray jobj = (JSONArray) parser.parse(StreamToString(new URL("https://cdn.betterttv.net/emotes/emotes.json").openStream()));
+		
+			JSONObject emote;
+			String regex, url;
+			int i=0;while(i < jobj.toArray().length){
+				emote = (JSONObject) jobj.get(i);
+			
+				regex = EscapeChars.forRegex(((String) emote.get("regex")).replace("~", ""));
+				url = "http:"+((String) emote.get("url"));
 			
 				logger.info("Adding Emoticon: "+regex+"~"+url);
 				temp.put(regex, url);
