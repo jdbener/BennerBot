@@ -1,4 +1,4 @@
-ID: 7
-Version: 16.0
-Changelog: "Reimplements Hitbox (hitbox support is an alpha i need feedback and bug reports)"
-link: "https://github.com/jdbener/BennerBot/releases/download/a0.16/BennerBot.Mk16.zip"
+ID: 8
+Version: 16.1
+Changelog: "Fixes many of the bugs from Mk15 and Mk16 (i still need those bug reports so keep em comeing!)"
+link: "https://github.com/jdbener/BennerBot/releases/download/a0.16.1/BennerBot.16.1.zip"
