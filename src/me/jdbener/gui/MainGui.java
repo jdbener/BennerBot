@@ -24,6 +24,8 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -38,6 +40,9 @@ import me.jdbener.apis.APIManager;
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 
+import javax.swing.JMenuBar;
+
+@SuppressWarnings("unused")
 public class MainGui extends JFrame {
 	private static final long serialVersionUID = 3242478898346354359L;
 	/**The information/update button, shove random status updates here*/
@@ -50,9 +55,10 @@ public class MainGui extends JFrame {
 	//the tabed pane
 	public JTabbedPane tabbedPane;
 	//settings stuff
-	public static ArrayList<JComponent> settings = new ArrayList<JComponent>();
-	public static ArrayList<String> settingsNames = new ArrayList<String>();
-	public static ArrayList<String> settingRestarts = new ArrayList<String>();
+	//TODO make theis privte to reflect the new API
+	private static ArrayList<JComponent> settings = new ArrayList<JComponent>();
+	private static ArrayList<String> settingsNames = new ArrayList<String>();
+	private static ArrayList<String> settingRestarts = new ArrayList<String>();
 	//configurarion
 	private Map<String, Object> OConf = new HashMap<String, Object>();
 	
@@ -62,6 +68,9 @@ public class MainGui extends JFrame {
 	private AutoMessagePanel autoMessagePanel;
 	private DisplayPanel displayFrameDisplay;
 	public static JFrame displayFrame;
+	
+	int totalModuals = 10;
+	private JMenuBar menuBar;
 
 	/**
 	 * Create the frame.
@@ -69,7 +78,7 @@ public class MainGui extends JFrame {
 	public MainGui() {	
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainGui.class.getResource("/me/jdbener/gui/Lion.png")));
-		setTitle(Bennerbot.name+" v"+Bennerbot.version);
+		setTitle("BennerBot v"+Bennerbot.version);
 		/*
 		 * Define the inclosing frame
 		 */
@@ -86,7 +95,9 @@ public class MainGui extends JFrame {
 				System.exit(0);
 			}
 		});
-		setBounds(100, 100, 929, 537);
+//		setBounds(100, 100, 929, 557);
+		setSize(929, 537);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -100,6 +111,7 @@ public class MainGui extends JFrame {
 		tabbedPane.setBackground(Color.WHITE);
 		tabbedPane.setBorder(null);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		Bennerbot.sp.setProgress((int)(((double)1/totalModuals)*100));
 		
 		/* ============================
 		 * General Configuration Tab
@@ -113,6 +125,7 @@ public class MainGui extends JFrame {
 		tabbedPane.setEnabledAt(0, true);
 		generalConfigPanel.setLayout(null);
 		generalConfigPanel.setBorder(null);
+		Bennerbot.sp.setProgress((int)(((double)2/totalModuals)*100));
 		
 		
 		/* ============================
@@ -122,6 +135,7 @@ public class MainGui extends JFrame {
 		CDC = new ChatDisplayConfigurationPanel(); 
 		tabbedPane.addTab("<html><body><center><table width='100'>Chat Display</table></body></html>", null, CDC, null);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
+		Bennerbot.sp.setProgress((int)(((double)3/totalModuals)*100));
 		
 		/* ============================
 		 * Chat Popout Display Frame
@@ -139,6 +153,7 @@ public class MainGui extends JFrame {
 		displayFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGui.class.getResource("/me/jdbener/gui/Lion.png")));
 		displayFrame.setTitle("Chat ~ "+Bennerbot.name+" v"+Bennerbot.version);
 //		displayFrame.setAlwaysOnTop(true);
+		Bennerbot.sp.setProgress((int)(((double)4/totalModuals)*100));
 		
 		/* ============================
 		 * Moderation Tab
@@ -148,6 +163,7 @@ public class MainGui extends JFrame {
 		tabbedPane.addTab("<html><body><center><table width='100'>Chat Moderation</table></body></html>", null, ModerationPanel, null);
 		tabbedPane.setBackgroundAt(2, Color.BLACK);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
+		Bennerbot.sp.setProgress((int)(((double)5/totalModuals)*100));
 		
 		/* ============================
 		 * Commands Tab
@@ -159,6 +175,7 @@ public class MainGui extends JFrame {
 		tabbedPane.setBackgroundAt(3, Color.BLACK);
 		tabbedPane.setBackgroundAt(2, Color.BLACK);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
+		Bennerbot.sp.setProgress((int)(((double)6/totalModuals)*100));
 		
 		/* ============================
 		 * AutoMessage Tab
@@ -171,11 +188,12 @@ public class MainGui extends JFrame {
 		tabbedPane.setBackgroundAt(3, Color.BLACK);
 		tabbedPane.setBackgroundAt(2, Color.BLACK);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
+		Bennerbot.sp.setProgress((int)(((double)7/totalModuals)*100));
 		
 		/* ============================
 		 * Miscellaneous Tab
 		 * ============================*/
-		Bennerbot.logger.info("Loading the \"Miscellaneous Settings Tab\"");
+		Bennerbot.logger.info("Loading the \"Work in Progress Settings Tab\"");
 		miscSettingsPanel miscSettings = new miscSettingsPanel(); 
 		tabbedPane.addTab("<html><body><center><table width='100'>Miscellaneous Settings</table></body></html>", null, miscSettings, null);
 		tabbedPane.setBackgroundAt(5, Color.BLACK);
@@ -184,6 +202,7 @@ public class MainGui extends JFrame {
 		tabbedPane.setBackgroundAt(3, Color.BLACK);
 		tabbedPane.setBackgroundAt(2, Color.BLACK);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
+		Bennerbot.sp.setProgress((int)(((double)8/totalModuals)*100));
 		
 		/* ============================
 		 * Information Button
@@ -226,9 +245,31 @@ public class MainGui extends JFrame {
 			}
 		});
 		contentPane.add(infoButton, BorderLayout.SOUTH);
+		Bennerbot.sp.setProgress((int)(((double)9/totalModuals)*100));
+		
 		/* ============================
-		 * Bot Settings Window
-		 * ============================*/
+		 * Setup the Menu
+		 * ============================*
+		//TODO menu
+		Bennerbot.logger.info("Loading the \"Bot's Menu\"");
+		menuBar = new JMenuBar();
+		contentPane.add(menuBar, BorderLayout.NORTH);
+		
+		/*
+		 * Bot Settings Menu
+		 *
+		JMenu botMenu = new JMenu("Bot Settings");
+		JMenuItem bm1 = new JMenuItem("Change Stream Title/Game");
+		bm1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println();
+			}
+		});
+		botMenu.add(bm1);
+		menuBar.add(botMenu);
+		
+		Bennerbot.sp.setProgress((int)(((double)10/totalModuals)*100));
 		
 		/* ============================
 		 * Backend Code that Makes it all run!
@@ -244,6 +285,16 @@ public class MainGui extends JFrame {
 		Bennerbot.guiLoaded = true;
 		Bennerbot.logger.info("Finished Loading GUI Backend");
 		//Bennerbot.name = Bennerbot.conf.get("botName").toString().trim();
+		Bennerbot.sp.setProgress((int)(((double)10/totalModuals)*100));
+	}
+	public static void addComponent(JComponent c, String setting, boolean restart){
+		settings.add(c);
+		settingsNames.add(setting);
+		if(restart)
+			settingRestarts.add(setting);
+	}
+	public static void addComponent(JComponent c, String setting){
+		addComponent(c, setting, false);
 	}
 	public void writeDisplay(String write){
 		displayFrameDisplay.append(write);

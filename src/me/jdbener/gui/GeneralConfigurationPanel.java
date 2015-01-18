@@ -12,7 +12,11 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.Executors;
@@ -34,6 +38,7 @@ import me.jdbener.apis.APIManager;
 import org.ho.yaml.Yaml;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
 @SuppressWarnings("serial")
 public class GeneralConfigurationPanel extends JPanel {
@@ -52,6 +57,7 @@ public class GeneralConfigurationPanel extends JPanel {
 	twitchTitleLabel,
 	twitchGameLabel;
 	
+	private String lastGame = "blank", lastTitle = "blank";
 	
 	private JButton botIDUpdate;
 	
@@ -71,6 +77,8 @@ public class GeneralConfigurationPanel extends JPanel {
 	private JTextField lastfmMSGFormat;
 	private JTextField lastfmCommandName;
 	private JTextField botID;
+	private JTextField streamTitle;
+	private JTextField streamGame;
 	/**
 	 * Create the panel.
 	 */
@@ -126,9 +134,7 @@ public class GeneralConfigurationPanel extends JPanel {
 			}
 		});
 		Twitch.add(enableTwitch);
-		MainGui.settings.add(enableTwitch);
-		MainGui.settingsNames.add("connectToTwitch");
-		MainGui.settingRestarts.add("connectToTwitch");
+		MainGui.addComponent(enableTwitch, "connectToTwitch", true);
 		
 		twitchUsername = new JTextField();
 		twitchUsername.setEnabled(false);
@@ -136,9 +142,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		twitchUsername.setBounds(72, 30, 193, 20);
 		Twitch.add(twitchUsername);
 		twitchUsername.setColumns(10);
-		MainGui.settings.add(twitchUsername);
-		MainGui.settingsNames.add("twitchUsername");
-		MainGui.settingRestarts.add("twitchUsername");
+		MainGui.addComponent(twitchUsername, "twitchUsername", true);
 		
 		twitchOAuth = new JPasswordField();
 		twitchOAuth.setEnabled(false);
@@ -146,9 +150,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		twitchOAuth.setBounds(72, 54, 193, 20);
 		Twitch.add(twitchOAuth);
 		twitchOAuth.setColumns(10);
-		MainGui.settings.add(twitchOAuth);
-		MainGui.settingsNames.add("twitchOAuth");
-		MainGui.settingRestarts.add("twitchOAuth");
+		MainGui.addComponent(twitchOAuth, "twitchAccessToken", true);
 		
 		twitchChannel = new JTextField();
 		twitchChannel.setEnabled(false);
@@ -157,9 +159,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		twitchChannel.setBounds(72, 78, 193, 20);
 		Twitch.add(twitchChannel);
 		twitchChannel.setColumns(10);
-		MainGui.settings.add(twitchChannel);
-		MainGui.settingsNames.add("twitchChannel");
-		MainGui.settingRestarts.add("twitchChannel");
+		MainGui.addComponent(twitchChannel, "twitchChannel", true);
 		
 		JLabel twitchUsernameL = new JLabel("Username:");
 		twitchUsernameL.setHorizontalAlignment(SwingConstants.LEFT);
@@ -219,9 +219,7 @@ public class GeneralConfigurationPanel extends JPanel {
 			}
 		});
 		Hitbox.add(enableHitbox);
-		MainGui.settings.add(enableHitbox);
-		MainGui.settingsNames.add("connectToHitbox");
-		MainGui.settingRestarts.add("connectToHitbox");
+		MainGui.addComponent(enableHitbox, "connectToHitbox", true);
 		
 		hitboxUsername = new JTextField();
 		hitboxUsername.setEnabled(false);
@@ -229,9 +227,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		hitboxUsername.setColumns(10);
 		hitboxUsername.setBounds(72, 30, 193, 20);
 		Hitbox.add(hitboxUsername);
-		MainGui.settings.add(hitboxUsername);
-		MainGui.settingsNames.add("hitboxUsername");
-		MainGui.settingRestarts.add("hitboxUsername");
+		MainGui.addComponent(hitboxUsername, "hitboxUsername", true);
 		
 		hitboxPassword = new JPasswordField();
 		hitboxPassword.setEnabled(false);
@@ -239,9 +235,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		hitboxPassword.setColumns(10);
 		hitboxPassword.setBounds(72, 54, 193, 20);
 		Hitbox.add(hitboxPassword);
-		MainGui.settings.add(hitboxPassword);
-		MainGui.settingsNames.add("hitboxPassword");
-		MainGui.settingRestarts.add("hitboxPassword");
+		MainGui.addComponent(hitboxPassword, "hitboxPassword", true);
 		
 		hitboxChannel = new JTextField();
 		hitboxChannel.setEnabled(false);
@@ -250,9 +244,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		hitboxChannel.setColumns(10);
 		hitboxChannel.setBounds(72, 78, 193, 20);
 		Hitbox.add(hitboxChannel);
-		MainGui.settings.add(hitboxChannel);
-		MainGui.settingsNames.add("hitboxChannel");
-		MainGui.settingRestarts.add("hitboxChannel");
+		MainGui.addComponent(hitboxChannel, "hitboxChannel", true);
 		
 		JLabel hitboxUsernameL = new JLabel("Username:");
 		hitboxUsernameL.setHorizontalAlignment(SwingConstants.LEFT);
@@ -280,48 +272,131 @@ public class GeneralConfigurationPanel extends JPanel {
 		
 		JPanel General = new JPanel();
 		General.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		General.setBounds(293, 28, 208, 109);
+		General.setBounds(293, 28, 208, 125);
 		add(General);
 		General.setLayout(null);
 		
 		JLabel lblBotName = new JLabel("Bot name:");
-		lblBotName.setBounds(7, 10, 62, 14);
+		lblBotName.setBounds(5, 10, 62, 14);
 		lblBotName.setHorizontalAlignment(SwingConstants.LEFT);
 		General.add(lblBotName);
 		
 		txtBotName = new JTextField();
-		txtBotName.setBounds(72, 7, 126, 20);
+		txtBotName.setBounds(65, 7, 138, 20);
 		txtBotName.setToolTipText("The aesthetic way that the bot's name is to be displayed.");
 		txtBotName.setText("BennerBot");
 		txtBotName.setColumns(10);
 		General.add(txtBotName);
-		MainGui.settings.add(txtBotName);
-		MainGui.settingsNames.add("botName");
-		MainGui.settingRestarts.add("botName");
+		MainGui.addComponent(txtBotName, "botName");
 		
-		JCheckBox incognitoMode = new JCheckBox("Activate Incognito Mode?");
-		incognitoMode.setToolTipText("If this is checked the bot wont send anymessages to the server");
-		incognitoMode.setBounds(10, 31, 188, 23);
-		General.add(incognitoMode);
-		MainGui.settings.add(incognitoMode);
-		MainGui.settingsNames.add("incognitoMode");
-		
-		JCheckBox capitolizeNames = new JCheckBox("Capitalized Names?");
-		capitolizeNames.setSelected(true);
-		capitolizeNames.setToolTipText("weather or not names should be capitalized");
-		capitolizeNames.setBounds(10, 55, 188, 23);
-		General.add(capitolizeNames);
-		MainGui.settings.add(capitolizeNames);
-		MainGui.settingsNames.add("capitalizeNames");
-		
-		JCheckBox respondOperatorCommands = new JCheckBox("Respond to Operator Commands?");
+		JCheckBox respondOperatorCommands = new JCheckBox("Respond to your Commands?");
+		respondOperatorCommands.setHorizontalAlignment(SwingConstants.CENTER);
 		respondOperatorCommands.setToolTipText("Weather or not commands sent through this GUI should be phrased and responded to");
 		respondOperatorCommands.setSelected(true);
 		respondOperatorCommands.setVerticalAlignment(SwingConstants.TOP);
-		respondOperatorCommands.setBounds(10, 78, 188, 23);
+		respondOperatorCommands.setBounds(0, 100, 210, 23);
 		General.add(respondOperatorCommands);
-		MainGui.settings.add(respondOperatorCommands);
-		MainGui.settingsNames.add("respondOperatorCommands");
+		MainGui.addComponent(respondOperatorCommands, "respondOperatorCommands");
+		
+		/*
+		 * Stream Title/Game section
+		 */
+		JLabel lblStreamTitle = new JLabel("Stream Title:");
+		lblStreamTitle.setBounds(5, 32, 79, 16);
+		General.add(lblStreamTitle);
+		
+		JLabel lblStreamGame = new JLabel("Stream Game:");
+		lblStreamGame.setBounds(5, 54, 89, 16);
+		General.add(lblStreamGame);
+		
+		streamTitle = new JTextField();
+		streamTitle.setBounds(77, 30, 126, 20);
+		General.add(streamTitle);
+		streamTitle.setColumns(10);
+		
+		streamGame = new JTextField();
+		streamGame.setBounds(87, 52, 116, 20);
+		General.add(streamGame);
+		streamGame.setColumns(10);
+		
+		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setToolTipText("This button will update the stream title/game");
+		btnUpdate.setForeground(Color.WHITE);
+		btnUpdate.setBackground(Color.BLACK);
+		btnUpdate.setBounds(10, 74, 92, 24);
+		btnUpdate.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				gui2API();
+			}
+		});
+		General.add(btnUpdate);
+		
+		final Runnable refresh = new Runnable(){
+			@Override
+			public void run(){
+				/*
+				 * Twitch backend
+				 */
+				if(Bennerbot.configBoolean("connectToTwitch"))
+					try {
+						String title = Bennerbot.filterUTF8((""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("status")).replace(" ", " "));
+						String game = Bennerbot.filterUTF8((""+((JSONObject)((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/streams/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("stream")).get("game")).replace(" ", " "));
+						
+						if(!(streamTitle.getText().equalsIgnoreCase(lastTitle) || streamTitle.getText().equalsIgnoreCase(title)) && !streamTitle.isFocusOwner()){
+							streamTitle.setText(title);
+							streamTitle.setToolTipText(title);
+						}
+						if(!(streamGame.getText().equalsIgnoreCase(lastGame) || streamGame.getText().equalsIgnoreCase(game)) && !streamGame.isFocusOwner()){
+							streamGame.setText(game);
+							streamGame.setToolTipText(game);
+						}
+					} catch (ParseException | IOException e) {
+						e.printStackTrace();
+					}
+				else if(Bennerbot.configBoolean("connectToHitbox"))
+					try{
+						JSONArray channels = (JSONArray) ((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+Bennerbot.configGetString("hitboxChannel")+"/list").openStream()))).get("livestream");
+						JSONObject channel = new JSONObject();
+						for(int i = 0; i < channels.size(); i++){
+							if(((JSONObject)channels.get(i)).get("media_file").toString().equalsIgnoreCase(Bennerbot.configGetString("hitboxChannel"))){
+								channel = (JSONObject)channels.get(i);
+							}
+						}
+						String title = Bennerbot.filterUTF8((channel.get("media_status").toString()));
+						String game = Bennerbot.filterUTF8((channel.get("category_name").toString()));
+						
+						if(!(streamTitle.getText().equalsIgnoreCase(lastTitle) || streamTitle.getText().equalsIgnoreCase(title)) && !streamTitle.isFocusOwner()){
+							streamTitle.setText(title);
+							streamTitle.setToolTipText(title);
+						}
+						if(!(streamGame.getText().equalsIgnoreCase(lastGame) || streamGame.getText().equalsIgnoreCase(game)) && !streamGame.isFocusOwner()){
+							streamGame.setText(game);
+							streamGame.setToolTipText(game);
+						}
+					} catch (ParseException | IOException e) {
+						e.printStackTrace();
+					}
+				else {
+					streamTitle.setText("No Connections");
+					streamGame.setText("No Connections");
+				}
+			}
+		};
+		
+		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.setToolTipText("This Button will refresh the stream title/game with what the servers are displaying");
+		btnRefresh.setForeground(Color.WHITE);
+		btnRefresh.setBackground(Color.BLACK);
+		btnRefresh.setBounds(101, 74, 97, 24);
+		btnRefresh.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Thread(refresh).start();
+			}
+		});
+		General.add(btnRefresh);
+		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(refresh, 0, 10, TimeUnit.SECONDS);
 		
 		//Bennerbot.logger.info("\tLoading Hitbox Metrics");
 		/*
@@ -477,7 +552,7 @@ public class GeneralConfigurationPanel extends JPanel {
 				}
 				if(Bennerbot.configBoolean("connectToHitbox")){
 					try{
-						JSONArray channels = (JSONArray) ((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://api.hitbox.tv/media").openStream()))).get("livestream");
+						JSONArray channels = (JSONArray) ((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+Bennerbot.configGetString("hitboxChannel")+"/list").openStream()))).get("livestream");
 						JSONObject channel = new JSONObject();
 						for(int i = 0; i < channels.size(); i++){
 							if(((JSONObject)channels.get(i)).get("media_file").toString().equalsIgnoreCase(Bennerbot.configGetString("hitboxChannel"))){
@@ -557,8 +632,7 @@ public class GeneralConfigurationPanel extends JPanel {
 			}
 		});
 		LastFMConfigPanel.add(enableLastfmIntegration);
-		MainGui.settings.add(enableLastfmIntegration);
-		MainGui.settingsNames.add("enableLastfmIntegration");
+		MainGui.addComponent(enableLastfmIntegration, "enableLastfmIntegration");
 		
 		JLabel lfmUsernameLabel = new JLabel("Last.fm Account Name:");
 		lfmUsernameLabel.setBounds(8, 35, 149, 16);
@@ -570,8 +644,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		lfmUsername.setBounds(165, 35, 422, 20);
 		LastFMConfigPanel.add(lfmUsername);
 		lfmUsername.setColumns(10);
-		MainGui.settings.add(lfmUsername);
-		MainGui.settingsNames.add("lastfmName");
+		MainGui.addComponent(lfmUsername, "lastfmName");
 		
 		JLabel lblLastfmMessageFromat = new JLabel("Last.fm Message Fromat:");
 		lblLastfmMessageFromat.setBounds(8, 65, 149, 16);
@@ -591,7 +664,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		lastfmMSGFormat.setBounds(165, 63, 422, 20);
 		LastFMConfigPanel.add(lastfmMSGFormat);
 		lastfmMSGFormat.setColumns(10);
-		MainGui.settings.add(lastfmMSGFormat);
+		MainGui.addComponent(lastfmMSGFormat, "songCommandMessageFormat");
 		
 		JLabel lblLastfmCommandName = new JLabel("Last.fm Command Name:");
 		lblLastfmCommandName.setBounds(8, 90, 149, 16);
@@ -604,7 +677,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		lastfmCommandName.setBounds(165, 88, 422, 20);
 		LastFMConfigPanel.add(lastfmCommandName);
 		lastfmCommandName.setColumns(10);
-		MainGui.settingsNames.add("songCommandMessageFormat");
+		MainGui.addComponent(lastfmCommandName, "lastfmCommandName");
 		
 		JLabel lblLastfmSettings = new JLabel("Last.fm Settings");
 		lblLastfmSettings.setHorizontalAlignment(SwingConstants.CENTER);
@@ -708,5 +781,81 @@ public class GeneralConfigurationPanel extends JPanel {
 		lblBotId.setBounds(624, 336, 164, 16);
 		add(lblBotId);
 		lblBotId.setHorizontalAlignment(SwingConstants.CENTER);
+	}
+	private void gui2API(){
+		new Thread(new Runnable(){
+			@SuppressWarnings("unchecked")
+			@Override
+			public void run() {
+				boolean success = true;
+				try{
+					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.getAccessToken();
+					URL obj = new URL(url);
+					HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+
+					conn.setRequestProperty("Accept", "application/vnd.twitchtv.v2+json");
+					conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+					conn.setRequestMethod("PUT");
+					conn.setDoOutput(true);
+				
+					String data = "channel[status]="+streamTitle.getText()+"&channel[game]="+streamGame.getText();
+					System.out.println(data);
+
+					OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+					out.write(data);
+					out.flush();
+					
+					for (Entry<String, List<String>> header : conn.getHeaderFields().entrySet())
+						System.out.println(header.getKey() + "=" + header.getValue());
+				} catch (Exception e){
+					e.printStackTrace();
+					success = false;
+				}
+				try{
+					JSONObject obj = (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+Bennerbot.conf.get("hitboxChannel")+"/list").openStream()));
+					System.out.println(obj.toJSONString());
+					String lives = ((JSONArray) obj.get("livestream")).toJSONString();
+					lives = lives.replace("[", "");
+					lives = lives.replace("]", "");
+					
+					JSONObject live = new JSONObject();
+					
+					live.put("media_user_name", Bennerbot.conf.get("hitboxChannel"));
+					live.put("media_status", streamTitle.getText());
+					live.put("category_name", streamGame.getText());
+					
+					lives = "{ \"livestream\":["+live.toJSONString()+"]}";
+					
+					JSONObject add = (JSONObject) APIManager.parser.parse(lives);
+					
+					System.out.println();
+					System.out.println(add.toJSONString());
+					
+					String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.conf.get("hitboxChannel")+"/list?authToken="+APIManager.GetHitboxAuth("jdbener", "il0venV!");
+					URL con = new URL(url);
+					HttpURLConnection conn = (HttpURLConnection) con.openConnection();
+					
+					conn.setRequestMethod("PUT");
+					conn.setDoOutput(true);
+		
+					OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
+					out.write(add.toJSONString());
+					out.flush();
+				} catch (Exception e){
+					e.printStackTrace();
+					success = false;
+				}
+				
+				lastGame = streamGame.getText();
+				lastTitle = streamTitle.getText();
+				//TODO add hitbox updating
+				
+				if(success == true)
+					JOptionPane.showMessageDialog(null, "Successfully updated your Stream's Title and/or Game!");
+				else
+					JOptionPane.showMessageDialog(null, "It apperes something has gone wrong, try again in a few seconds");
+					
+			}
+		}).start();
 	}
 }

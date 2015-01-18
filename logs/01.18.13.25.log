@@ -1,0 +1,35 @@
+13:25:45.882 [main] INFO  me.jdbener.Bennerbot - Doing some database stuff, give me a moment
+13:25:48.672 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+13:25:48.692 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading Beggining Tab Loading Sequence
+13:25:48.715 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "General Configuration Tab"
+13:25:50.676 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Tab"
+13:25:50.720 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Window"
+13:25:50.741 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Moderation Settings Tab"
+13:25:50.771 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Custom Commands Tab"
+13:25:53.671 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "AutoMessage Tab"
+13:25:54.750 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Work in Progress Settings Tab"
+13:25:54.758 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Info Button"
+13:25:54.759 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Tab Initiation Squence... Loading Backend
+13:25:58.742 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Loading GUI Backend
+13:25:58.776 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+13:26:05.146 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting Hitbox server IP: ec2-54-91-252-98.compute-1.amazonaws.com
+13:26:05.751 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting connection ID: pFz4Eecbmau1WisbCLXe
+13:26:05.751 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting your token
+13:26:06.014 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Connecting to hitbox servers...
+13:26:08.208 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Sucessfully Connected... Joined Channel #jdbener
+13:26:08.208 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+13:26:08.291 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+13:26:08.293 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+13:26:08.294 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+13:26:08.296 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+13:26:08.296 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+13:26:08.297 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+13:26:08.297 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+13:26:08.297 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+13:26:08.303 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.253.165
+13:26:08.358 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+13:26:08.373 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS sccrkekgyzcobf9j7k1kceagfyo7hz4
+13:26:08.373 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK jdbener
+13:26:08.373 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+13:26:08.383 [botPool0-bot1] DEBUG org.pircbotx.PircBotX - Trying address hitbox.tv/212.232.25.4
+13:26:08.536 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv NOTICE * :Login unsuccessful

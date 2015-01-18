@@ -1,4 +1,0 @@
-Welcome to BennerBot
-Version 0.13
-[22:15] Sucessfully Connected to Twitch
-Now hosting battlebuddiesgaming.

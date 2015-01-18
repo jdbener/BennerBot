@@ -1,3 +1,3 @@
 Welcome to BennerBot
-Version 0.17
-[06:18] Sucessfully Connected to Twitch
+Version 0.16.5
+[13:26] Rothien, Nebhay, Kennykiller2013, Jerry_the_racecar_driver,  have followed on twitch

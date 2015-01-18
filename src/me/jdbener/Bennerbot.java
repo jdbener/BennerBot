@@ -74,12 +74,11 @@ import org.slf4j.LoggerFactory;
 public class Bennerbot {
 	//bot information
 	public static String name = "BennerBot",												//the name of the bot
-			version = "0.17", 																//the version ID of the bot
+			version = "0.17", 															//the version ID of the bot
 			twitchu = "",																	//twitch username used to connect
 			twitchpw = "",																	//twitch OAuth used to connect
 			hitboxu = "",																	//hitbox username used to connect
 			hitboxpw = "";																	//hitbox password used to connect
-		
 	
 	//initialize the variables
 	public static Logger logger = LoggerFactory.getLogger(Bennerbot.class);					//the bot logger, this is used to write messages to the console
@@ -92,7 +91,8 @@ public class Bennerbot {
 	public static boolean guiLoaded = false;												//this value stores weather or not the gui has loaded yet or not
 	public static SplashScreen sp = new SplashScreen();										//this variable contains a reference to our splash screen
 	public static DateFormat dateFormat;													//this variable is contains an object that lets you format dates into text..
-	private static tokenServer webserver = new tokenServer();
+	public static Map<String, String> lastMessagePrinted = new HashMap<String, String>();	//this is used to prevent message loops in the chat display
+	private static tokenServer webserver = new tokenServer();								//this is used to generate a twitch access token
 	
 	//initialize the servers
 	//bot managaer
@@ -146,12 +146,14 @@ public class Bennerbot {
 	        }
 			//start the splash screenS
 		    if(!GraphicsEnvironment.isHeadless() && nogui)
-		    	sp.start();
+				sp.start();
 		    //ask if they want to use the configuation gui
 		    if(!GraphicsEnvironment.isHeadless())
 		    	if(2 == new StartupDialog().getOption())
 		    		nogui = false;
-		    	
+		    //make refresh the splash screen so that it is ontop
+		    sp.setAlwaysOnTop(false);
+    		sp.setAlwaysOnTop(true);	
 		    //redirects a copy of the console output to a file
 		    try {
 		    	//creates the date used in the name of the log file
@@ -171,6 +173,7 @@ public class Bennerbot {
 			dateFormat = new SimpleDateFormat(conf.get("dateFormat").toString());
 			//set up the GUI or the BOTID depending on if the environment is headless or not
 			if(!GraphicsEnvironment.isHeadless() && nogui){
+				logger.info("Doing some database stuff, give me a moment");
 				me.jdbener.lib.botId.setupBotIDTable();
 				me.jdbener.lib.botId.updateFile(me.jdbener.lib.botId.getHash());
 				EventQueue.invokeLater(new Runnable() {
@@ -191,6 +194,7 @@ public class Bennerbot {
 					displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					displayFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGui.class.getResource("/me/jdbener/gui/Lion.png")));
 					displayFrame.setTitle(Bennerbot.name+" v"+Bennerbot.version);
+					displayFrame.setResizable(false);
 					displayFrame.add(new JLabel("Close this window to stop the bot"));
 					displayFrame.setVisible(true);
 				}
@@ -276,7 +280,8 @@ public class Bennerbot {
 		//set the twitch username
 		twitchu = conf.get("twitchUsername").toString();
 		//set the twitch password
-		twitchpw = conf.get("twitchOAuth").toString();
+		twitchpw = conf.get("twitchOAuth") == null ? Bennerbot.getAccessToken() : conf.get("twitchOAuth").toString();
+		
 		//set the hitbox username
 		hitboxu = conf.get("hitboxUsername").toString();
 		//set the hitbox username
@@ -560,19 +565,22 @@ public class Bennerbot {
 	 * @param f the file to append the string to
 	 */
 	public static void write(String out, File f){
-		try {
-			FileWriter writer = new FileWriter(f, true);
-			writer.append(out);
-			writer.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		if(!out.equalsIgnoreCase(lastMessagePrinted.get(f.getPath()))){
+			try {
+				FileWriter writer = new FileWriter(f, true);
+				writer.append(out);
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		
-		if(f.getPath().contains("output.html")){
-			try{
-				gui.writeDisplay(out);
-			} catch (Exception e){e.printStackTrace();}
+			if(f.getPath().contains("output.html")){
+				try{
+					gui.writeDisplay(out);
+				} catch (Exception e){e.printStackTrace();}
+			}
 		}
+		lastMessagePrinted.put(f.getPath(), out);
 	}
 	/**
 	 * this function appends a string to a file
@@ -716,12 +724,17 @@ public class Bennerbot {
 	 * This function returns a twitch access token if one is generated
 	 * @return
 	 */
-	//TODO working here
 	public static String getAccessToken(){
 		String token = webserver.getToken();
 		if(token == ""){
+			try{
+				token = Bennerbot.configGetString("twitchAccessToken");
+			} catch(Exception e){e.printStackTrace();}
+		}
+		if(token == ""){
 			if(!GraphicsEnvironment.isHeadless()){
-				JOptionPane.showMessageDialog(null, "<html><body><center>We see you dont have a Twitch Access Token generated.<br/>One will now be generated<center></body></html>", "Generate Token? ~ Bennerbot v0.17", JOptionPane.DEFAULT_OPTION);
+				try{JOptionPane.showMessageDialog(null, "<html><body><center>We see you dont have a Twitch Access Token generated.<br/>One will now be generated<center></body></html>", "Generate Token? ~ Bennerbot v0.17", JOptionPane.DEFAULT_OPTION);
+				}catch(Exception e){System.out.println("We see you dont have a Twitch Access Token generated. One will now be generated");}
 				generateAccessToken();
 				while(webserver.getToken().equalsIgnoreCase("")){try {Thread.sleep(1);} catch (InterruptedException e) {e.printStackTrace();}/*do nothing but do enough to keep the system happy*/}
 				token = webserver.getToken();
@@ -743,7 +756,9 @@ public class Bennerbot {
             Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
             clpbrd.setContents(stringSelection, null);
             // Notify the user of the failure
-            JOptionPane.showMessageDialog(null, "<html><body>We have unsucessfully tried to open a new page to generate an access token for you, <br>however the URL has been copied to your clipboard, simply paste into your browser to generate one.</body></html>");
+            try{
+            	JOptionPane.showMessageDialog(null, "<html><body>We have unsucessfully tried to open a new page to generate an access token for you, <br>however the URL has been copied to your clipboard, simply paste into your browser to generate one.</body></html>");
+            } catch(Exception ex){System.out.println("It apperes that the code for you to generate an access token wont work for you, dont worry this just means you will have to do it autonomusly. Please go to this url, \"https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=9qxushp3sdeasixpxajz8pqlxdudfs6&redirect_uri=http://127.0.0.1:55555/token/&scope=channel_editor+channel_subscriptions+chat_login\" and copy the access token it responds into the config file");}
         }
 	}
 }

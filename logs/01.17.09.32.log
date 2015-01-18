@@ -1,0 +1,155 @@
+09:32:13.492 [main] INFO  me.jdbener.Bennerbot - Doing some database stuff, give me a moment
+09:32:16.292 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+09:32:16.314 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading Beggining Tab Loading Sequence
+changing progress to: 10
+09:32:16.338 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 10
+09:32:16.339 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "General Configuration Tab"
+changing progress to: 20
+09:32:17.791 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 20
+09:32:17.792 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Tab"
+changing progress to: 30
+09:32:17.826 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 30
+09:32:17.826 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Window"
+changing progress to: 40
+09:32:17.847 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 40
+09:32:17.848 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Moderation Settings Tab"
+changing progress to: 50
+09:32:17.870 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 50
+09:32:17.870 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Custom Commands Tab"
+changing progress to: 60
+09:32:20.220 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 60
+09:32:20.220 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "AutoMessage Tab"
+changing progress to: 70
+09:32:21.241 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 70
+09:32:21.242 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Work in Progress Settings Tab"
+changing progress to: 80
+09:32:21.261 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 80
+09:32:21.262 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Info Button"
+changing progress to: 90
+09:32:21.262 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 90
+09:32:21.263 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Tab Initiation Squence... Loading Backend
+09:32:24.429 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Loading GUI Backend
+changing progress to: 100
+09:32:24.430 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 100
+09:32:24.499 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+09:32:28.767 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+09:32:28.865 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+09:32:28.866 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+09:32:28.868 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+09:32:28.869 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+09:32:28.870 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+09:32:28.870 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+09:32:28.870 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+09:32:28.874 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.250.229
+09:32:28.902 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+09:32:28.909 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS oauth:sccrkekgyzcobf9j7k1kceagfyo7hz4
+09:32:28.909 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK jdbener
+09:32:28.909 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+09:32:28.968 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 jdbener :Welcome, GLHF!
+09:32:28.977 [botPool0-bot0] DEBUG org.pircbotx.InputParser - Logged onto server.
+09:32:29.910 [listenerPool0-thread3] INFO  org.pircbotx.output.OutputRaw - TWITCHCLIENT 1
+09:32:30.911 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - JOIN #biogenx2b 
+09:32:30.912 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 002 jdbener :Your host is tmi.twitch.tv
+09:32:30.912 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 003 jdbener :This server is rather new
+09:32:30.913 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 004 jdbener :-
+09:32:30.919 [botPool0-bot0] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+09:32:30.919 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 375 jdbener :-
+09:32:30.919 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 372 jdbener :You are in a maze of twisty passages, all alike.
+09:32:30.920 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 376 jdbener :>
+09:32:31.000 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv JOIN #biogenx2b
+09:32:31.912 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - WHO #biogenx2b
+09:32:32.913 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - MODE #biogenx2b
+09:32:32.917 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener.tmi.twitch.tv 353 jdbener = #biogenx2b :biogenx2bot john_pope moobot synlenia scorned_ biogenx2b demacia1212 gwydo jdbener thescribe83
+09:32:32.917 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener.tmi.twitch.tv 366 jdbener #biogenx2b :End of /NAMES list
+09:32:32.918 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #biogenx2b +o jdbener
+09:32:32.923 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #biogenx2b +o synlenia
+09:32:32.924 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #biogenx2b +o biogenx2b
+09:32:32.925 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #biogenx2b +o biogenx2bot
+09:32:32.926 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #biogenx2b +o moobot
+09:32:32.927 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #biogenx2b +o gwydo
+09:32:32.929 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:32:32.932 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG jdbener :HISTORYEND biogenx2b
+09:32:32.933 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 421 jdbener WHO :Unknown command
+09:32:46.712 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:32:46.718 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :hay scorned do you wana level?
+09:32:51.686 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:32:51.689 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :im a level 904
+09:32:55.981 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:32:55.983 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :FailFish
+09:32:58.063 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:32:58.067 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :94*
+09:33:00.536 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR john_pope #8A2BE2
+09:33:00.541 [botPool0-bot0] INFO  org.pircbotx.InputParser - :john_pope!john_pope@john_pope.tmi.twitch.tv PRIVMSG #biogenx2b :back
+09:33:01.632 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR scorned_ #8A2BE2
+09:33:01.647 [botPool0-bot0] INFO  org.pircbotx.InputParser - :scorned_!scorned_@scorned_.tmi.twitch.tv PRIVMSG #biogenx2b :lol
+09:33:05.693 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR scorned_ #8A2BE2
+09:33:05.694 [botPool0-bot0] INFO  org.pircbotx.InputParser - :scorned_!scorned_@scorned_.tmi.twitch.tv PRIVMSG #biogenx2b :my druid is still 90
+09:33:09.795 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR synlenia #B22222
+09:33:09.812 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :EMOTESET synlenia [775]
+09:33:09.835 [botPool0-bot0] INFO  org.pircbotx.InputParser - :synlenia!synlenia@synlenia.tmi.twitch.tv PRIVMSG #biogenx2b :I mean I am just about there for being level 100... I just don't have the patience to level it
+09:33:18.404 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:33:18.406 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :wb john
+09:33:26.054 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR john_pope #8A2BE2
+09:33:26.065 [botPool0-bot0] INFO  org.pircbotx.InputParser - :john_pope!john_pope@john_pope.tmi.twitch.tv PRIVMSG #biogenx2b :<3
+09:33:38.513 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR john_pope #8A2BE2
+09:33:38.514 [botPool0-bot0] INFO  org.pircbotx.InputParser - :john_pope!john_pope@john_pope.tmi.twitch.tv PRIVMSG #biogenx2b :i am debating should i come back to Rift
+09:33:47.943 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR john_pope #8A2BE2
+09:33:47.948 [botPool0-bot0] INFO  org.pircbotx.InputParser - :john_pope!john_pope@john_pope.tmi.twitch.tv PRIVMSG #biogenx2b :played mid level healer
+09:33:51.561 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:33:51.563 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :no
+09:33:56.559 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:33:56.561 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :you shouldnt
+09:34:12.047 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR john_pope #8A2BE2
+09:34:12.059 [botPool0-bot0] INFO  org.pircbotx.InputParser - :john_pope!john_pope@john_pope.tmi.twitch.tv PRIVMSG #biogenx2b :i was kinda put off that " pay for superior classes "
+09:34:19.839 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR scorned_ #8A2BE2
+09:34:19.848 [botPool0-bot0] INFO  org.pircbotx.InputParser - :scorned_!scorned_@scorned_.tmi.twitch.tv PRIVMSG #biogenx2b :i got garrison on all my characters except the druid
+09:34:21.923 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:34:21.942 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :ya :(
+09:34:28.218 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR scorned_ #8A2BE2
+09:34:28.229 [botPool0-bot0] INFO  org.pircbotx.InputParser - :scorned_!scorned_@scorned_.tmi.twitch.tv PRIVMSG #biogenx2b :because it only has healer items x)
+09:34:38.660 [Thread-16] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #biogenx2b :thats kind of why i stoped playing firefall
+09:34:38.813 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:34:58.618 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR john_pope #8A2BE2
+09:34:58.621 [botPool0-bot0] INFO  org.pircbotx.InputParser - :john_pope!john_pope@john_pope.tmi.twitch.tv PRIVMSG #biogenx2b :and not because it actually sucks ?:D
+09:35:10.156 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:35:10.157 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :its a fun gmae
+09:35:10.303 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR moobot #FF69B4
+09:35:10.305 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :EMOTESET moobot [5,27,46,74,105,1083,3911,6144,7080,9161,10164]
+09:35:10.311 [botPool0-bot0] INFO  org.pircbotx.InputParser - :moobot!moobot@moobot.tmi.twitch.tv PRIVMSG #biogenx2b :- Save BIG on Borderlands: The Pre-Sequel: http://g2a.com/r/BLTPS25 •• Far Cry 4: http://g2a.com/r/fcfour •• Warlords of Draenor: http://g2a.com/r/wod40 •• The Sims Medieval: http://g2a.com/r/thesimsmedieval •• Dragon Age: Inquisition http://g2a.com/r/da3discount •• AND MUCH MORE at the G2A store! Use !gs for more info.
+09:35:14.321 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:35:14.325 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :game*
+09:35:29.085 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR john_pope #8A2BE2
+09:35:29.088 [botPool0-bot0] INFO  org.pircbotx.InputParser - :john_pope!john_pope@john_pope.tmi.twitch.tv PRIVMSG #biogenx2b :naw
+09:35:55.287 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+09:35:55.289 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :you can let me decide what i think is fun, thank you very much
+09:36:14.293 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR scorned_ #8A2BE2
+09:36:14.295 [botPool0-bot0] INFO  org.pircbotx.InputParser - :scorned_!scorned_@scorned_.tmi.twitch.tv PRIVMSG #biogenx2b :lol
+09:36:21.909 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR john_pope #8A2BE2
+09:36:21.912 [botPool0-bot0] INFO  org.pircbotx.InputParser - :john_pope!john_pope@john_pope.tmi.twitch.tv PRIVMSG #biogenx2b :you have classes that are obviously better ... and you get them if you buy the " dlc "
+09:36:27.695 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR john_pope #8A2BE2
+09:36:27.702 [botPool0-bot0] INFO  org.pircbotx.InputParser - :john_pope!john_pope@john_pope.tmi.twitch.tv PRIVMSG #biogenx2b :or expansion whatever
+09:36:31.126 [botPool0-bot0] INFO  org.pircbotx.InputParser - PING :tmi.twitch.tv
+09:36:31.127 [listenerPool0-thread11] INFO  org.pircbotx.output.OutputRaw - PONG tmi.twitch.tv
+09:36:36.080 [bot1-shutdownhook] INFO  org.pircbotx.output.OutputRaw - QUIT :
+09:36:36.087 [bot1-shutdownhook] WARN  org.pircbotx.Channel - Channel #biogenx2b mode '' is stale
+09:36:36.111 [bot1-shutdownhook] WARN  org.pircbotx.Channel - Channel #biogenx2b mode '' is stale
+09:36:36.116 [bot1-shutdownhook] INFO  org.pircbotx.dcc.DccHandler - Terminating all transfers waiting to be accepted
+09:36:36.116 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Shutdown has been called, closing InputParser
+09:36:36.117 [bot1-shutdownhook] DEBUG org.pircbotx.PircBotX - Disconnected.
+09:36:36.117 [bot1-shutdownhook] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.levels.LevelManager@395e81c0 to execute event MessageEvent(channel=Channel(name=#biogenx2b, channelId=f6736fef-b81c-4d09-95b1-39c599ad5499, dao=org.pircbotx.UserChannelDao@7277073c, bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{irc.twitch.tv} Port{6667} Password{oauth:sccrkekgyzcobf9j7k1kceagfyo7hz4}, output=org.pircbotx.Channel$1@647c2ed9, mode=, topic=, topicTimestamp=0, createTimestamp=0, topicSetter=, moderated=false, noExternalMessages=false, inviteOnly=false, secret=false, channelPrivate=false, topicProtection=false, channelLimit=-1, channelKey=null, modeStale=true, modeLatch=null), user=User(bot=Version{PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com} Connected{false} Server{irc.twitch.tv} Port{6667} Password{oauth:sccrkekgyzcobf9j7k1kceagfyo7hz4}, dao=org.pircbotx.UserChannelDao@7277073c, userId=3167c7ef-096f-4ea5-9da3-d5f39499da16, output=org.pircbotx.User$1@14e7dc19, nick=john_pope, realName=, login=, hostmask=, awayMessage=null, ircop=false, server=, hops=0), message=or expansion whatever)
+09:36:36.117 [botPool0-bot0] DEBUG o.p.MultiBotManager$BotFutureCallback - Bot #0 finished

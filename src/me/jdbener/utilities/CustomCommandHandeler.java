@@ -45,14 +45,19 @@ public class CustomCommandHandeler extends ListenerAdapter<PircBotX>{
 		Bennerbot.variableMap.put("<botversion>", Bennerbot.version);
 		Bennerbot.variableMap.put("<twitchhost>", Bennerbot.conf.get("twitchChannel").toString().toLowerCase().trim());
 		Bennerbot.variableMap.put("<hitboxhost>", Bennerbot.conf.get("hitboxChannel").toString().toLowerCase().trim());
+		Bennerbot.variableMap.put("<user>", "The username of the person who sent the message");
+		Bennerbot.variableMap.put("<User>", "The username of the person who sent the message, capitalized");
 	}
 
 	public void onMessage(MessageEvent<PircBotX> e) throws Exception {
 		update();
 		Bennerbot.variableMap.put("<username>", e.getUser().getNick());
+		Bennerbot.variableMap.put("<Username>", Bennerbot.capitalize(e.getUser().getNick()));
+		Bennerbot.variableMap.put("<user>", e.getUser().getNick());
+		Bennerbot.variableMap.put("<User>", Bennerbot.capitalize(e.getUser().getNick()));
 		for (Entry<String, String> entry : Bennerbot.commandMap.entrySet()){
 			if(e.getMessage().startsWith("!"+entry.getKey())){
-				Bennerbot.sendMessage(entry.getValue());
+				Bennerbot.sendMessage(replaceVariables(entry.getValue()));
 			}
 		}
 		if(e.getMessage().equalsIgnoreCase("!commands")){

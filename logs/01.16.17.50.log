@@ -1,0 +1,105 @@
+17:50:51.994 [main] INFO  me.jdbener.Bennerbot - Doing some database stuff, give me a moment
+17:50:55.144 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+17:50:55.165 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading Beggining Tab Loading Sequence
+changing progress to: 10
+17:50:55.191 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 10
+17:50:55.191 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "General Configuration Tab"
+changing progress to: 20
+17:50:56.951 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 20
+17:50:56.951 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Tab"
+changing progress to: 30
+17:50:56.985 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 30
+17:50:56.985 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Window"
+changing progress to: 40
+17:50:57.006 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 40
+17:50:57.007 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Moderation Settings Tab"
+changing progress to: 50
+17:50:57.029 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 50
+17:50:57.029 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Custom Commands Tab"
+changing progress to: 60
+17:50:59.932 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 60
+17:50:59.932 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "AutoMessage Tab"
+changing progress to: 70
+17:51:01.388 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 70
+17:51:01.389 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Work in Progress Settings Tab"
+changing progress to: 80
+17:51:01.410 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 80
+17:51:01.410 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Info Button"
+changing progress to: 90
+17:51:01.411 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 90
+17:51:01.411 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Tab Initiation Squence... Loading Backend
+17:51:05.565 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Loading GUI Backend
+changing progress to: 100
+17:51:05.565 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 100
+17:51:05.648 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+17:51:12.757 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+17:51:12.846 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+17:51:12.848 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+17:51:12.850 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+17:51:12.852 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+17:51:12.852 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+17:51:12.852 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+17:51:12.853 [main] DEBUG org.pircbotx.MultiBotManager - Not started yet, add to queue
+17:51:12.868 [botPool0-bot0] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/199.9.252.28
+17:51:12.923 [botPool0-bot0] INFO  org.pircbotx.PircBotX - Connected to server.
+17:51:12.929 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - PASS oauth:sccrkekgyzcobf9j7k1kceagfyo7hz4
+17:51:12.929 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - NICK jdbener
+17:51:12.929 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+17:51:13.049 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 001 jdbener :Welcome, GLHF!
+17:51:13.059 [botPool0-bot0] DEBUG org.pircbotx.InputParser - Logged onto server.
+17:51:13.930 [listenerPool0-thread5] INFO  org.pircbotx.output.OutputRaw - TWITCHCLIENT 1
+17:51:14.931 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - JOIN #biogenx2b 
+17:51:14.931 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 002 jdbener :Your host is tmi.twitch.tv
+17:51:14.932 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 003 jdbener :This server is rather new
+17:51:14.932 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 004 jdbener :-
+17:51:14.940 [botPool0-bot0] ERROR org.pircbotx.PircBotX - Exception encountered when parsing line
+java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.util.ArrayList.rangeCheck(Unknown Source) ~[na:1.7.0_45]
+	at java.util.ArrayList.get(Unknown Source) ~[na:1.7.0_45]
+	at org.pircbotx.ServerInfo.parse004(ServerInfo.java:113) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.ServerInfo.parse(ServerInfo.java:106) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.processServerResponse(InputParser.java:709) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.InputParser.handleLine(InputParser.java:323) ~[pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.startLineProcessing(PircBotX.java:275) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.PircBotX.connect(PircBotX.java:236) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:219) [pircbotx-2.0.1.jar:na]
+	at org.pircbotx.MultiBotManager$BotRunner.call(MultiBotManager.java:212) [pircbotx-2.0.1.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_45]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_45]
+17:51:14.940 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 375 jdbener :-
+17:51:14.941 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 372 jdbener :You are in a maze of twisty passages, all alike.
+17:51:14.941 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 376 jdbener :>
+17:51:15.026 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv JOIN #biogenx2b
+17:51:15.932 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - WHO #biogenx2b
+17:51:16.933 [botPool0-bot0] INFO  org.pircbotx.output.OutputRaw - MODE #biogenx2b
+17:51:16.936 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener.tmi.twitch.tv 353 jdbener = #biogenx2b :jdbener
+17:51:16.937 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener.tmi.twitch.tv 366 jdbener #biogenx2b :End of /NAMES list
+17:51:16.937 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+17:51:16.938 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv!jtv@jtv.tmi.twitch.tv PRIVMSG jdbener :HISTORYEND biogenx2b
+17:51:16.940 [botPool0-bot0] INFO  org.pircbotx.InputParser - :tmi.twitch.tv 421 jdbener WHO :Unknown command
+17:51:24.653 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+17:51:24.653 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :im curious as to why my progress bar isn't being displayed
+17:51:50.775 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+17:51:50.776 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :!usesvariable
+17:51:50.780 [listenerPool0-thread16] INFO  org.pircbotx.output.OutputRaw - PRIVMSG #biogenx2b :<thisisvariable>
+17:52:10.706 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+17:52:10.707 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :ok
+17:52:22.047 [botPool0-bot0] INFO  org.pircbotx.InputParser - :vonblack!vonblack@vonblack.tmi.twitch.tv JOIN #biogenx2b
+17:52:22.048 [botPool0-bot0] INFO  org.pircbotx.InputParser - :xanbot!xanbot@xanbot.tmi.twitch.tv JOIN #biogenx2b
+17:52:22.048 [botPool0-bot0] INFO  org.pircbotx.InputParser - :moobot!moobot@moobot.tmi.twitch.tv JOIN #biogenx2b
+17:52:22.049 [botPool0-bot0] INFO  org.pircbotx.InputParser - :gwydo!gwydo@gwydo.tmi.twitch.tv JOIN #biogenx2b
+17:52:22.050 [botPool0-bot0] INFO  org.pircbotx.InputParser - :biogenx2b!biogenx2b@biogenx2b.tmi.twitch.tv JOIN #biogenx2b
+17:52:22.052 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #biogenx2b +o moobot
+17:52:22.056 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #biogenx2b +o gwydo
+17:52:22.058 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #biogenx2b +o biogenx2b
+17:52:22.059 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv MODE #biogenx2b +o jdbener
+17:52:25.325 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+17:52:25.326 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :acording to this
+17:52:38.178 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+17:52:38.186 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :the variable isent getting praised
+17:52:55.127 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+17:52:55.135 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :and then im gussing twitch is filtering html or something along those lines
+17:53:01.816 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jtv PRIVMSG jdbener :USERCOLOR jdbener #1E90FF
+17:53:01.817 [botPool0-bot0] INFO  org.pircbotx.InputParser - :jdbener!jdbener@jdbener.tmi.twitch.tv PRIVMSG #biogenx2b :hmm

@@ -71,7 +71,7 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 			
 			if(e.getMessage().split(" ").length == 1){
 				try{
-					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" your level infromation is: "+format(getXP(e.getUser().getNick())));
+					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" your level information is: "+format(getXP(e.getUser().getNick())));
 				} catch (Exception ex){
 					ex.printStackTrace();
 					Bennerbot.sendMessage("Sorry something went wrong");

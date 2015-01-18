@@ -334,14 +334,6 @@ class PHitboxBotX extends PircBotX{
 				//create event
 				log.info(":"+name+"!"+name+"@hitbox.tv PRIVMSG #"+channel+" :"+text);
 				newMessageEvent(text, name);
-			//output message
-			}else if(in.startsWith("5::") && in.contains("\"method\":\"chatMsg\"") && in.contains("\"extra-info\":\"from-bot\"")){
-				int text1 = in.indexOf("text\\\":\\\"");
-				int starttext = text1 + 9;
-				int endtext = in.indexOf("\\\"", starttext);
-				String text = in.substring(starttext, endtext);
-				
-				log.info("PRIVMSG "+channel+" :"+text);
 			//Connection
 			} else if(in.startsWith("6::")){
 				log.info("Successfully connected to a Hitbox Server");

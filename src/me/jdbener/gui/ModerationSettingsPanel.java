@@ -72,8 +72,7 @@ public class ModerationSettingsPanel extends JPanel {
 			}
 		});
 		add(enableModeration);
-		MainGui.settings.add(enableModeration);
-		MainGui.settingsNames.add("enableModeration");
+		MainGui.addComponent(enableModeration, "enableModeration");
 		
 		kickSettingsPanel = new JPanel();
 		kickSettingsPanel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -106,8 +105,7 @@ public class ModerationSettingsPanel extends JPanel {
 			}
 		});
 		kickSettingsPanel.add(warnings2BanLabel);
-		MainGui.settings.add(warnings2BanLabel);
-		MainGui.settingsNames.add("banWarnings");
+		MainGui.addComponent(warnings2BanLabel, "banWarnings");
 		
 		warnings2TimeoutSlider = new JSlider();
 		warnings2TimeoutSlider.setMinimum(1);
@@ -136,8 +134,7 @@ public class ModerationSettingsPanel extends JPanel {
 			}
 		});
 		kickSettingsPanel.add(warnings2TimeoutLabel);
-		MainGui.settings.add(warnings2TimeoutLabel);
-		MainGui.settingsNames.add("kickWarnings");
+		MainGui.addComponent(warnings2TimeoutLabel, "kickWarnings");
 		
 		JLabel lblWarningsTillBan = new JLabel("Warnings till Ban:");
 		lblWarningsTillBan.setBounds(12, 15, 138, 16);
@@ -176,8 +173,7 @@ public class ModerationSettingsPanel extends JPanel {
 			}
 		});
 		panel.add(chckbxEnableCapsFilter);
-		MainGui.settings.add(chckbxEnableCapsFilter);
-		MainGui.settingsNames.add("CapsFilter");
+		MainGui.addComponent(chckbxEnableCapsFilter, "CapsFilter");
 		
 		maxCapsSlider = new JSlider();
 		maxCapsSlider.setMinorTickSpacing(1);
@@ -207,9 +203,7 @@ public class ModerationSettingsPanel extends JPanel {
 			}
 		});
 		panel.add(maxCapsLabel);
-		//TODO look at this interaction
-		MainGui.settings.add(maxCapsLabel);
-		MainGui.settingsNames.add("MaxCapsPercentage");
+		MainGui.addComponent(maxCapsLabel, "MaxCapsPercentage");
 		
 		lblNewLabel = new JLabel("Capitalazation Filter Settings");
 		lblNewLabel.setBounds(8, 148, 161, 16);
@@ -240,8 +234,7 @@ public class ModerationSettingsPanel extends JPanel {
 			}
 		});
 		panel_1.add(chckbxEnable);
-		MainGui.settings.add(chckbxEnable);
-		MainGui.settingsNames.add("LengthFilter");
+		MainGui.addComponent(chckbxEnable, "LengthFilter");
 		
 		maxLengthLabel = new JTextField("200");
 		maxLengthLabel.setEnabled(false);
@@ -253,6 +246,7 @@ public class ModerationSettingsPanel extends JPanel {
 			}
 		});
 		panel_1.add(maxLengthLabel);
+		MainGui.addComponent(maxLengthLabel, "MaxMessageLength");
 		
 		maxLengthSlider = new JSlider();
 		maxLengthSlider.setEnabled(false);
@@ -275,9 +269,6 @@ public class ModerationSettingsPanel extends JPanel {
 		lblMessageLengthFilter = new JLabel("Message Length Filter Settings");
 		lblMessageLengthFilter.setBounds(8, 236, 161, 16);
 		add(lblMessageLengthFilter);
-		MainGui.settings.add(lblMessageLengthFilter);
-		MainGui.settingsNames.add("MaxMessageLength");
-		
 		/*=====================
 		 * Backend Code
 		 =====================*/

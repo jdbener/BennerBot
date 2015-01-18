@@ -1,7 +1,6 @@
 package me.jdbener.utilities;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
+import java.util.ArrayList;
 
 import me.jdbener.Bennerbot;
 
@@ -12,11 +11,13 @@ import org.pircbotx.hooks.events.MessageEvent;
 public class Countdown extends ListenerAdapter<PircBotX> {
 	private MessageEvent<PircBotX> ev;
 	private static int running = 0;
+	ArrayList<Thread> activeCountdowns = new ArrayList<Thread>();
+	@SuppressWarnings("deprecation")
 	public void onMessage(MessageEvent<PircBotX> e){
 		if(e.getMessage().startsWith("!countdown")){
 			if(e.getMessage().split(" ").length == 2){
 				ev = e;
-				Runnable runnable = new Runnable() {
+				Thread t = new Thread(new Runnable() {
 				    public void run() {
 				    	int length = Integer.parseInt(ev.getMessage().split(" ")[1]);
 						int time = length/5;
@@ -35,13 +36,12 @@ public class Countdown extends ListenerAdapter<PircBotX> {
 						Bennerbot.sendMessage("DONE!");
 						running--;
 				    }
-				};
-
-				ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
-				executor.execute(runnable);
+				});
+				t.start();
+				activeCountdowns.add(t);
 			} else if(e.getMessage().split(" ").length == 3){
 				ev = e;
-				Runnable runnable = new Runnable() {
+				Thread t = new Thread(new Runnable() {
 				    public void run() {
 				    	int length = Integer.parseInt(ev.getMessage().split(" ")[1]);
 				    	int interval = Integer.parseInt(ev.getMessage().split(" ")[2]);
@@ -63,13 +63,13 @@ public class Countdown extends ListenerAdapter<PircBotX> {
 						Bennerbot.sendMessage("DONE!");
 						running--;
 				    }
-				};
+				});
 
-				ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
-				executor.execute(runnable);
+				t.start();
+				activeCountdowns.add(t);
 			} else if(e.getMessage().split(" ").length >= 4){
 				ev = e;
-				Runnable runnable = new Runnable() {
+				Thread t = new Thread(new Runnable() {
 				    public void run() {
 				    	int length = Integer.parseInt(ev.getMessage().split(" ")[1]);
 				    	int interval = Integer.parseInt(ev.getMessage().split(" ")[2]);
@@ -94,10 +94,25 @@ public class Countdown extends ListenerAdapter<PircBotX> {
 						Bennerbot.sendMessage("DONE!");
 						running--;
 				    }
-				};
+				});
 
-				ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
-				executor.execute(runnable);
+				t.start();
+				activeCountdowns.add(t);
+			}
+		}
+		if(e.getMessage().startsWith("!stopcountdown")){
+			if(e.getMessage().split(" ").length == 2){
+				try{
+					int cid = Integer.parseInt(e.getMessage().split(" ")[1]) - 1;
+					activeCountdowns.get(cid).stop();
+					activeCountdowns.remove(cid);
+					Bennerbot.sendMessage("Successfully stopped the countdown!", "");
+				} catch (Exception ex){
+					ex.printStackTrace();
+					Bennerbot.sendMessage("An error has occurred", "");
+				}
+			} else {
+				Bennerbot.sendMessage("Please use the correct format, !stopcountdown <countdown id>", "");
 			}
 		}
 	}

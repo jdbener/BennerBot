@@ -3,8 +3,6 @@ package me.jdbener.lib;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,20 +14,8 @@ import me.jdbener.apis.APIManager;
 
 public class botId {
 	private static File f = new File("../.botid");
-	/*public static void main (String[] args){
-		setupBotIDTable();
-		System.out.println(getBotID("jdbener"));
-	}*/
 	public botId(){
 		setupBotIDTable();
-	}
-	private static String encrypt(String s){
-		try {
-			return new String(MessageDigest.getInstance("MD5").digest(s.getBytes()));
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		return s;
 	}
 	public static void setupBotIDTable(){
 		 try {
@@ -60,14 +46,14 @@ public class botId {
 				fw.append(hash);
 				fw.close();
 				
-				sql = "INSERT INTO BOTS VALUES ("+(rs.getRow()+1)+",'"+encrypt(hash)+"')";
+				sql = "INSERT INTO BOTS VALUES ("+(rs.getRow()+1)+",'"+hash+"')";
 				stmt.execute(sql);
 			}
 	
 			String sql = "SELECT * FROM BOTS;"; 
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
-				if(rs.getString("HASH").equalsIgnoreCase(encrypt(hash))){
+				if(rs.getString("HASH").equalsIgnoreCase(hash)){
 					return rs.getInt("ID");
 				}
 			}
@@ -94,7 +80,7 @@ public class botId {
 				fw.append(hash);
 				fw.close();
 							
-				sql = "INSERT INTO BOTS VALUES ("+(rs.getRow()+1)+",'"+encrypt(hash)+"')";
+				sql = "INSERT INTO BOTS VALUES ("+(rs.getRow()+1)+",'"+hash+"')";
 				stmt.execute(sql);
 			} 
 			
@@ -105,7 +91,7 @@ public class botId {
 			
 			int id = 0;
 			while(rs.next()){
-				if(rs.getString("HASH").equalsIgnoreCase(encoder.encode("@"+oldhash, 10000, 1))){
+				if(rs.getString("HASH").equalsIgnoreCase(oldhash)){
 					id = rs.getInt("ID")+1;
 				}
 			}
@@ -113,23 +99,29 @@ public class botId {
 				id = rs.getRow()+1;
 			}
 			
+			sql = "SELECT * FROM BOTS;"; 
+			rs = stmt.executeQuery(sql);
+			rs.last();
+			int backupID = rs.getRow()+1;
+			
 			f.delete();
 			
 			FileWriter fw = new FileWriter(f);
 			fw.append(hash);
 			fw.close();
 			
-			rs = stmt.executeQuery("SELECT * FROM BOTS WHERE HASH = '"+encrypt(hash)+"'");
+			rs = stmt.executeQuery("SELECT * FROM BOTS WHERE HASH = '"+hash+"'");
 			int r1 = rs.getRow();
 			rs.last();
 			int r2 = rs.getRow();
 			
 			if(r1 == r2){
 				try{
-					sql = "INSERT INTO BOTS VALUES ("+id+",'"+encrypt(hash)+"')";
+					sql = "INSERT INTO BOTS VALUES ("+id+",'"+hash+"')";
 					stmt.execute(sql);
 				} catch (SQLException e){
-					sql = "INSERT INTO BOTS VALUES ("+(id+1)+",'"+encrypt(hash)+"')";
+					e.printStackTrace();
+					sql = "INSERT INTO BOTS VALUES ("+(backupID)+",'"+hash+"')";
 					stmt.execute(sql);
 				}
 			}

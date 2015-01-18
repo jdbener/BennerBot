@@ -1,0 +1,34 @@
+10:08:55.416 [main] INFO  me.jdbener.Bennerbot - Doing some database stuff, give me a moment
+10:08:58.578 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+10:08:58.598 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading Beggining Tab Loading Sequence
+10:08:58.615 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 10
+10:08:58.615 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "General Configuration Tab"
+10:09:00.267 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 20
+10:09:00.267 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Tab"
+10:09:00.303 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 30
+10:09:00.303 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Window"
+10:09:00.324 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 40
+10:09:00.346 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Moderation Settings Tab"
+10:09:00.370 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 50
+10:09:00.370 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Custom Commands Tab"
+10:09:03.580 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 60
+10:09:03.580 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "AutoMessage Tab"
+10:09:04.939 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 70
+10:09:04.940 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Work in Progress Settings Tab"
+10:09:04.957 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 80
+10:09:04.958 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Info Button"
+10:09:04.958 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 90
+10:09:04.958 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Tab Initiation Squence... Loading Backend
+10:09:09.258 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Loading GUI Backend
+10:09:09.258 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - 100
+10:09:09.279 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+dummycommand:  n/a
+usesvariable:  <thisisvariable>
+thisiscommand:  cmd
+dummycommand:  n/a
+usesvariable:  <thisisvariable>
+thisiscommand:  cmd
+10:09:15.321 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting Hitbox server IP: ec2-54-87-101-9.compute-1.amazonaws.com
+10:09:15.805 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting connection ID: MU0zSWDGGSgzm5NhnWFQ
+10:09:15.805 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting your token
+10:09:16.224 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Connecting to hitbox servers...

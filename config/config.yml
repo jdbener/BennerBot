@@ -31,11 +31,10 @@ enableStatusandGameUpdateing: true
 #Weather or not to connect to a twitch channel
 connectToTwitch: true
 #The username of the the twitch account you want the bot to use
-#Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
-twitchUsername: 
+twitchUsername: jdbener
 #This can be generated at anytime by clicking the button in the gui, or by sending '!regenToken' in the console
-twitchOAuth: 
+twitchAccessToken: 
 #the name of the twitch account to moderate
 twitchChannel: jdbener
 
@@ -45,14 +44,12 @@ twitchChannel: jdbener
 #Weather or not to connect to a hitbox channel
 connectToHitbox: true
 #The username of the the hitbox account you want the bot to use
-#Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
-hitboxUsername: default
+hitboxUsername: bennerbot
 #Enter the password for your hitbox account
 #Dont worry this wont be scene by anybody but yourself
-#Leave this to "default" if you dont want a custom account
 #I recommend creating a new account for this
-hitboxPassword: default
+hitboxPassword: bennerbot
 #the name of the hitbox account to moderate
 hitboxChannel: jdbener
 
@@ -165,8 +162,7 @@ LengthFilter: true
 #This is a decimal number where 1 = 100%
 MaxCapsPercentage: .8
 #The maximum length of a message
-MaxMessageLength: 150
-
+MaxMessageLength: 200
 
 #=======================
 #Relay Settings

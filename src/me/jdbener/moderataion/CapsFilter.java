@@ -10,7 +10,7 @@ public class CapsFilter extends ListenerAdapter<PircBotX>{
 	
 	float capsCap = (float) 0.6;
 	public void onMessage(MessageEvent<PircBotX> e){
-		capsCap = (float)((double) Bennerbot.conf.get("MaxCapsPercentage"));
+		capsCap = (float)(Double.parseDouble(Bennerbot.conf.get("MaxCapsPercentage").toString()));
 		String msg = e.getMessage();
 		boolean filter = false;
 		

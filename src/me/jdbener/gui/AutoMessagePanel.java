@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
@@ -36,7 +37,7 @@ public class AutoMessagePanel extends JPanel {
 	private DefaultListModel<String> model;
 	private JList<String> list;
 	private JPanel Panel;
-	private JTextField Field;
+	private JTextArea Field;
 	private JTextField textField;
 	private JSlider slider;
 	/**
@@ -86,7 +87,8 @@ public class AutoMessagePanel extends JPanel {
 		});
 		add(addButton);
 		
-		Field = new JTextField(20);
+		Field = new JTextArea(5, 20);
+		Field.setLineWrap(true);
 		Field.setToolTipText("The message you want the bot to send");
 
 	    Panel = new JPanel();
@@ -162,8 +164,7 @@ public class AutoMessagePanel extends JPanel {
 			}	
 		});
 		add(chckbxEnableAutoMessages);
-		MainGui.settings.add(chckbxEnableAutoMessages);
-		MainGui.settingsNames.add("enableAutoMessages");
+		MainGui.addComponent(chckbxEnableAutoMessages, "enableAutoMessages");
 		
 		JLabel lblTimeBetweenMessages = new JLabel("Time Between Messages:");
 		lblTimeBetweenMessages.setToolTipText("");
@@ -197,9 +198,7 @@ public class AutoMessagePanel extends JPanel {
 			}
 		});
 		add(textField);
-		MainGui.settings.add(textField);
-		MainGui.settingsNames.add("autoMessageInterval");
-		MainGui.settingRestarts.add("autoMessageInterval");
+		MainGui.addComponent(textField, "autoMessageInterval", true);
 		
 		/*=====================================
 		 * Backend Code
@@ -224,11 +223,9 @@ public class AutoMessagePanel extends JPanel {
 
 	}
 	public void setValuesFromMap(){
+		model.clear();
 		for(Entry<String, String> e: Bennerbot.messagesMap.entrySet()){
 			try{
-				for(int i = 0; i < model.size(); i++)
-					model.removeElement(e.getValue());
-			
 				String value = e.getValue().trim();
 				value = value.startsWith(" ") ? value.substring(1) : value;
 				if(!model.contains(value))
