@@ -1,4 +1,4 @@
-ID: 10
-Version: 16.2
-Changelog: "Fixes many of the bugs from Mk15 and Mk16 (i still need those bug reports so keep em comeing!)"
-link: "https://github.com/jdbener/BennerBot/releases/download/a0.16.1/BennerBot.16.2.zip"
+ID: 11
+Version: 0.17.0
+Changelog: "This update involves more bug fixes, and some work in progress features have been finished (hopefully)"
+link: "https://github.com/jdbener/BennerBot/releases/download/a0.17/BennerBot.0.17.zip"
