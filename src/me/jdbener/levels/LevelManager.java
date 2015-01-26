@@ -17,13 +17,16 @@ import org.pircbotx.hooks.events.PartEvent;
 
 import me.jdbener.Bennerbot;
 import me.jdbener.apis.APIManager;
-import me.jdbener.lib.botId;
+import me.jdbener.utill.botId;
 
 public class LevelManager extends ListenerAdapter<PircBotX>{
 	public static Map<String, String> timeMap = new HashMap<String, String>();
+	private static double modifer = 1.0; 
 	
 	public LevelManager(){
 		setupUserLevelsTable();
+		modifer = Double.parseDouble(Bennerbot.configGetString("levelModifer"));
+		if(modifer < 0.1) modifer = 0.1;
 		
 		Bennerbot.listener.addListener(new BennerBitManager());
 	}
@@ -39,53 +42,45 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 		}
 		long now = new Date().getTime();
 		long dif = now - old;
-		int xp = (int) ((dif / 1000)/30);
+		int xp = (int) ((dif / 1000)/Integer.parseInt(Bennerbot.configGetString("oneXpEveryXSecond")));
 		
 		setXP(e.getUser().getNick(), getXP(e.getUser().getNick())+xp);
-		
-		BennerBitManager.setBits(e.getUser().getNick(), BennerBitManager.getBits(e.getUser().getNick())+(double)((int)(xp/10)));
+		BennerBitManager.setBits(e.getUser().getNick(), BennerBitManager.getBits(e.getUser().getNick())+(double)((int)(xp/(Integer.parseInt(Bennerbot.configGetString("xpPerMessaged"))/Integer.parseInt(Bennerbot.configGetString("currencyPerMessage"))))));
 		
 		timeMap.remove(e.getUser().getNick());
 	}
 	public void onMessage(MessageEvent<PircBotX> e){
 		if(!e.getMessage().startsWith("!")){
-			setXP(e.getUser().getNick(), getXP(e.getUser().getNick())+10);
-			BennerBitManager.setBits(e.getUser().getNick(), BennerBitManager.getBits(e.getUser().getNick())+1);
-		} 
-		
-		if(e.getMessage().startsWith("!level") || e.getMessage().startsWith("!lvl")){
-			long old = new Date().getTime();
 			try{
-				old = Long.valueOf(timeMap.get(e.getUser().getNick())).longValue();
+				setXP(e.getUser().getNick(), getXP(e.getUser().getNick())+Integer.parseInt(Bennerbot.configGetString("xpPerMessage")));
+				BennerBitManager.setBits(e.getUser().getNick(), BennerBitManager.getBits(e.getUser().getNick())+Integer.parseInt(Bennerbot.configGetString("currencyPerMessage")));
 			} catch (Exception ex){
 				ex.printStackTrace();
-				timeMap.put(e.getUser().getNick(), new Date().getTime()+"");
 			}
-			long now = new Date().getTime();
-			long dif = now - old;
-			int xp = (int) ((dif / 1000)/30);
-			
-			setXP(e.getUser().getNick(), getXP(e.getUser().getNick())+xp);
-			
-			timeMap.put(e.getUser().getNick(), new Date().getTime()+"");
-			
+		} 		
+		if(e.getMessage().startsWith("!level") || e.getMessage().startsWith("!lvl")){
 			if(e.getMessage().split(" ").length == 1){
 				try{
-					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" your level information is: "+format(getXP(e.getUser().getNick())));
+					updateUser(e.getUser().getNick());
+					Bennerbot.sendMessage(format(getXP(e.getUser().getNick())).replaceAll("<user>", Bennerbot.capitalize(e.getUser().getNick())));
 				} catch (Exception ex){
 					ex.printStackTrace();
 					Bennerbot.sendMessage("Sorry something went wrong");
 				}
 			} else if(e.getMessage().split(" ").length == 2){
+				if(Bennerbot.configBoolean("levelCommandAllowOtherUserLookup"))
 					try{
 						String name = e.getMessage().split(" ")[1];
-						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(name)+"'s level infromation is: "+format(getXP(name)));
+						updateUser(name);
+						Bennerbot.sendMessage(format(getXP(name)).replaceAll("<user>", Bennerbot.capitalize(name)));
 					} catch (Exception ex) {
 						ex.printStackTrace();
 						Bennerbot.sendMessage("Sorry something went wrong");
 					}
+				else
+					Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.configGetString("levelCommandName")+" <username>");
 			} else {
-				Bennerbot.sendMessage("Sorry wrong format, try: !level <username>");
+				Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.configGetString("levelCommandName")+" <username>");
 			}
 		}
 	}
@@ -150,10 +145,10 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 	}
 	public static int xp2Level(int xp){
 		//(25 + (
-		return (int) ((25 + Math.sqrt(625 + 100 * xp) ) / 50);
+		return (int) ((25 + Math.sqrt(625 + 100 * (xp * modifer))) / 50);
 	}
 	public static int level2XP(int level){
-		return (int) (25 * Math.pow(level, 2)-25*level);
+		return (int) ((25 * Math.pow(level, 2)-25*level)*modifer);
 	}
 	public static int xp2Percentage(int xp){
 		int level = xp2Level(xp);
@@ -162,7 +157,7 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 		int nextxp = level2XP(nextlevel);
 		return (int)(((double)(xp-levelxp)/(nextxp-levelxp))*100);
 	}
-	public static double xp2Percentage(int xp, boolean noFormat){
+	public static double xp2Decimal(int xp){
 		int level = xp2Level(xp);
 		int levelxp = level2XP(level);
 		int nextlevel = level + 1;
@@ -173,7 +168,40 @@ public class LevelManager extends ListenerAdapter<PircBotX>{
 		int level = xp2Level(xp);
 		int nextlevel = level + 1;
 		int nextxp = level2XP(nextlevel);
+		int percentage = xp2Percentage(xp);
+		double decimal = xp2Decimal(xp);
 		
-		return level+" ("+(xp)+"\\"+(nextxp)+") "+nextlevel;
+		String out = Bennerbot.configGetString("levelCommandFormat")
+				.replaceAll("<level>", level+"")
+				.replaceAll("<currentxp>", xp+"")
+				.replaceAll("<nextlevelxp>", nextxp+"")
+				.replaceAll("<xptillnextlevel>", (nextxp-xp)+"")
+				.replaceAll("<nextlevel>", nextlevel+"")
+				.replaceAll("<percentage>", percentage+"")
+				.replaceAll("<percentagenoformat>", decimal+"");
+		
+		return out;
+	}
+	private void updateUser(final String user){
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				long old = new Date().getTime();
+				try{
+					old = Long.valueOf(timeMap.get(user)).longValue();
+				} catch (Exception ex){
+					ex.printStackTrace();
+					timeMap.put(user, new Date().getTime()+"");
+				}
+				long now = new Date().getTime();
+				long dif = now - old;
+				int xp = (int) ((dif / 1000)/Integer.parseInt(Bennerbot.configGetString("oneXpEveryXSecond")));
+				
+				setXP(user, getXP(user)+xp);
+				
+				timeMap.put(user, new Date().getTime()+"");
+			}
+			
+		}).start();
 	}
 }

@@ -14,40 +14,44 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 import me.jdbener.Bennerbot;
 import me.jdbener.apis.APIManager;
-import me.jdbener.lib.botId;
 import me.jdbener.moderataion.FilterManager;
+import me.jdbener.utill.botId;
 
 public class BennerBitManager extends ListenerAdapter<PircBotX>{
 	public BennerBitManager(){
 		setupUserBitsTable();
+		
 	}
 	public void onMessage(MessageEvent<PircBotX> e){
-		if(e.getMessage().startsWith("!bits")){
+		if(e.getMessage().startsWith(Bennerbot.configGetString("currencyLookupCommandName"))){
 			if(e.getMessage().split(" ").length == 1){
 				try{
-					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" you have \u0E3F"+(int)getBits(e.getUser().getNick())+" BennerBits");
+					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" you have "+(int)getBits(e.getUser().getNick())+" "+Bennerbot.configGetString("currencyName"));
 				} catch (Exception ex){
 					ex.printStackTrace();
 					Bennerbot.sendMessage("Sorry but it seams that something has gone wrong");
 				}
 			} else if(e.getMessage().split(" ").length == 2){
-				try{
-					if(Bennerbot.isMod(e.getUser(), e.getChannel())){
-						String user = e.getMessage().split(" ")[1];
-						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" has \u0E3F"+(int)getBits(user)+" BennerBits");
-					} else {
-						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" has tried to use a command they dont have permision to");
-						FilterManager.punish(e.getUser().getNick());
+				if(Bennerbot.configBoolean("currencyLookupCommandAllowOtherUserLookup"))
+					try{
+						if(Bennerbot.isMod(e.getUser(), e.getChannel())){
+							String user = e.getMessage().split(" ")[1];
+							Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" has "+(int)getBits(user)+" "+Bennerbot.configGetString("currencyName"));
+						} else {
+							Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" has tried to use a command they dont have permision to");
+							FilterManager.punish(e.getUser().getNick());
+						}
+					} catch(Exception ex){
+						ex.printStackTrace();
+						Bennerbot.sendMessage("Sorry but it seams that something has gone wrong");
 					}
-				} catch(Exception ex){
-					ex.printStackTrace();
-					Bennerbot.sendMessage("Sorry but it seams that something has gone wrong");
-				}
+				else
+					Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.configGetString("currencyLookupCommandName"));
 			} else {
-				Bennerbot.sendMessage("Sorry wrong format, try: !bits <username>");
+				Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.configGetString("currencyLookupCommandName")+" <username>");
 			}
 		}
-		if(e.getMessage().startsWith("!givebits")){
+		if(e.getMessage().startsWith(Bennerbot.configGetString("currencyGiveCommandName"))){
 			if(e.getMessage().split(" ").length == 3){
 				try{
 					String user = e.getMessage().split(" ")[1].toLowerCase();
@@ -56,19 +60,19 @@ public class BennerBitManager extends ListenerAdapter<PircBotX>{
 					if(!(getBits(e.getUser().getNick()) < bits)){
 						setBits(e.getUser().getNick(), -1*bits);
 						setBits(user, bits);
-						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you have successfully transfered \u0E3F"+bits+" BennerBits to: "+Bennerbot.capitalize(user));
+						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you have successfully transfered "+bits+" "+Bennerbot.configGetString("currencyName")+" to: "+Bennerbot.capitalize(user));
 					} else {
-						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you dont have enouph bits to compleat this transaction");
+						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you dont have enouph "+Bennerbot.configGetString("currencyName")+" to compleat this transaction");
 					}
 					
 					
-					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" now has \u0E3F"+(int)getBits(user)+" BennerBits");
+					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" now has "+(int)getBits(user)+" "+Bennerbot.configGetString("currencyName"));
 				} catch(Exception ex){
 					ex.printStackTrace();
 					Bennerbot.sendMessage("Sorry but it seams that something has gone wrong");
 				}
 			} else {
-				Bennerbot.sendMessage("Sorry wrong format, try: !bits <username> <bits>");
+				Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.configGetString("currencyGiveCommandName")+" <username> <"+Bennerbot.configGetString("currencyName")+">");
 			}
 		}
 	}

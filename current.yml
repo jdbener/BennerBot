@@ -1,4 +1,4 @@
-ID: 1
-Version: 12.0
-Changelog: "Update to the generated html to make it more customizable"
-link: "https://github.com/jdbener/BennerBot/releases/download/a0.12/BennerBot.MK12.zip"
+ID: 11
+Version: 0.17.0
+Changelog: "This update involves more bug fixes, and some work in progress features have been finished (hopefully)"
+link: "https://github.com/jdbener/BennerBot/releases/download/a0.17/BennerBot.0.17.zip"

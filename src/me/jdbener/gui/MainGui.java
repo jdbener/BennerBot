@@ -3,6 +3,7 @@ package me.jdbener.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -55,11 +56,10 @@ public class MainGui extends JFrame {
 	//the tabed pane
 	public JTabbedPane tabbedPane;
 	//settings stuff
-	//TODO make theis privte to reflect the new API
 	private static ArrayList<JComponent> settings = new ArrayList<JComponent>();
 	private static ArrayList<String> settingsNames = new ArrayList<String>();
 	private static ArrayList<String> settingRestarts = new ArrayList<String>();
-	//configurarion
+	//configuration
 	private Map<String, Object> OConf = new HashMap<String, Object>();
 	
 	//random variables
@@ -111,7 +111,6 @@ public class MainGui extends JFrame {
 		tabbedPane.setBackground(Color.WHITE);
 		tabbedPane.setBorder(null);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
-		Bennerbot.sp.setProgress((int)(((double)1/totalModuals)*100));
 		
 		/* ============================
 		 * General Configuration Tab
@@ -125,8 +124,6 @@ public class MainGui extends JFrame {
 		tabbedPane.setEnabledAt(0, true);
 		generalConfigPanel.setLayout(null);
 		generalConfigPanel.setBorder(null);
-		Bennerbot.sp.setProgress((int)(((double)2/totalModuals)*100));
-		
 		
 		/* ============================
 		 * Chat Display Tab
@@ -135,7 +132,6 @@ public class MainGui extends JFrame {
 		CDC = new ChatDisplayConfigurationPanel(); 
 		tabbedPane.addTab("<html><body><center><table width='100'>Chat Display</table></body></html>", null, CDC, null);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
-		Bennerbot.sp.setProgress((int)(((double)3/totalModuals)*100));
 		
 		/* ============================
 		 * Chat Popout Display Frame
@@ -153,7 +149,6 @@ public class MainGui extends JFrame {
 		displayFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainGui.class.getResource("/me/jdbener/gui/Lion.png")));
 		displayFrame.setTitle("Chat ~ "+Bennerbot.name+" v"+Bennerbot.version);
 //		displayFrame.setAlwaysOnTop(true);
-		Bennerbot.sp.setProgress((int)(((double)4/totalModuals)*100));
 		
 		/* ============================
 		 * Moderation Tab
@@ -163,7 +158,6 @@ public class MainGui extends JFrame {
 		tabbedPane.addTab("<html><body><center><table width='100'>Chat Moderation</table></body></html>", null, ModerationPanel, null);
 		tabbedPane.setBackgroundAt(2, Color.BLACK);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
-		Bennerbot.sp.setProgress((int)(((double)5/totalModuals)*100));
 		
 		/* ============================
 		 * Commands Tab
@@ -175,7 +169,6 @@ public class MainGui extends JFrame {
 		tabbedPane.setBackgroundAt(3, Color.BLACK);
 		tabbedPane.setBackgroundAt(2, Color.BLACK);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
-		Bennerbot.sp.setProgress((int)(((double)6/totalModuals)*100));
 		
 		/* ============================
 		 * AutoMessage Tab
@@ -188,7 +181,6 @@ public class MainGui extends JFrame {
 		tabbedPane.setBackgroundAt(3, Color.BLACK);
 		tabbedPane.setBackgroundAt(2, Color.BLACK);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
-		Bennerbot.sp.setProgress((int)(((double)7/totalModuals)*100));
 		
 		/* ============================
 		 * Miscellaneous Tab
@@ -202,7 +194,6 @@ public class MainGui extends JFrame {
 		tabbedPane.setBackgroundAt(3, Color.BLACK);
 		tabbedPane.setBackgroundAt(2, Color.BLACK);
 		tabbedPane.setBackgroundAt(1, Color.BLACK);
-		Bennerbot.sp.setProgress((int)(((double)8/totalModuals)*100));
 		
 		/* ============================
 		 * Information Button
@@ -227,7 +218,7 @@ public class MainGui extends JFrame {
 								map2DB(true);
 								try {
 									Restart.restartApplication(null);
-								} catch (IOException e) {e.printStackTrace();}
+								} catch (IOException e1) {e1.printStackTrace();}
 							} else {
 								map2DB();
 							}
@@ -245,31 +236,6 @@ public class MainGui extends JFrame {
 			}
 		});
 		contentPane.add(infoButton, BorderLayout.SOUTH);
-		Bennerbot.sp.setProgress((int)(((double)9/totalModuals)*100));
-		
-		/* ============================
-		 * Setup the Menu
-		 * ============================*
-		//TODO menu
-		Bennerbot.logger.info("Loading the \"Bot's Menu\"");
-		menuBar = new JMenuBar();
-		contentPane.add(menuBar, BorderLayout.NORTH);
-		
-		/*
-		 * Bot Settings Menu
-		 *
-		JMenu botMenu = new JMenu("Bot Settings");
-		JMenuItem bm1 = new JMenuItem("Change Stream Title/Game");
-		bm1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println();
-			}
-		});
-		botMenu.add(bm1);
-		menuBar.add(botMenu);
-		
-		Bennerbot.sp.setProgress((int)(((double)10/totalModuals)*100));
 		
 		/* ============================
 		 * Backend Code that Makes it all run!
@@ -285,7 +251,6 @@ public class MainGui extends JFrame {
 		Bennerbot.guiLoaded = true;
 		Bennerbot.logger.info("Finished Loading GUI Backend");
 		//Bennerbot.name = Bennerbot.conf.get("botName").toString().trim();
-		Bennerbot.sp.setProgress((int)(((double)10/totalModuals)*100));
 	}
 	public static void addComponent(JComponent c, String setting, boolean restart){
 		settings.add(c);
@@ -392,7 +357,7 @@ public class MainGui extends JFrame {
 		try{
 			Connection c = APIManager.getConnection();
 			Statement stmt = c.createStatement();
-			stmt.execute("DELETE FROM SETTINGS WHERE BID = "+me.jdbener.lib.botId.getBotID());
+			stmt.execute("DELETE FROM SETTINGS WHERE BID = "+me.jdbener.utill.botId.getBotID());
 			thingsAdded = filterMap(convertMapToString(Bennerbot.conf), settingsNames).size();
 			for(final Entry<String, String> e: filterMap(convertMapToString(Bennerbot.conf), settingsNames).entrySet()){
 				new Thread(new Runnable(){
@@ -401,7 +366,7 @@ public class MainGui extends JFrame {
 						try {
 							Connection c = APIManager.getConnection();
 							Statement stmt = c.createStatement();
-							stmt.execute("INSERT INTO SETTINGS VALUES ("+me.jdbener.lib.botId.getBotID()+", '"+e.getKey()+"', '"+e.getValue()+"')");
+							stmt.execute("INSERT INTO SETTINGS VALUES ("+me.jdbener.utill.botId.getBotID()+", '"+e.getKey()+"', '"+e.getValue()+"')");
 							stmt.close();
 							c.close();
 						} catch (SQLException e1) {
@@ -420,7 +385,7 @@ public class MainGui extends JFrame {
 	}
 	private void map2DB(boolean shouldWait){
 		map2DB();
-		while(thingsAdded != 0){System.out.print(thingsAdded);}System.out.println("");
+		while(thingsAdded != 0){System.out.print(thingsAdded);}
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
@@ -431,7 +396,7 @@ public class MainGui extends JFrame {
 		try{
 			Connection c = APIManager.getConnection();
 			Statement stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM SETTINGS WHERE BID = "+me.jdbener.lib.botId.getBotID());
+			ResultSet rs = stmt.executeQuery("SELECT * FROM SETTINGS WHERE BID = "+me.jdbener.utill.botId.getBotID());
 			while(rs.next()){
 				Bennerbot.conf.put(rs.getString("FIELD"), rs.getString("VALUE"));
 			}
@@ -466,6 +431,7 @@ public class MainGui extends JFrame {
 	}
 }
 class Restart {
+	//TODO create a better restart script
 	/** 
 	 * Sun property pointing the main class and its arguments. 
 	 * Might not be defined on non Hotspot VM implementations.

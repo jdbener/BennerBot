@@ -174,7 +174,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		twitchPasswordL.setForeground(Color.red);
 		twitchPasswordL.addMouseListener(new MouseAdapter()   {   
 	        public void mouseClicked(MouseEvent e){   
-	        	twitchOAuth.setText("oauth:"+Bennerbot.getAccessToken());
+	        	twitchOAuth.setText(Bennerbot.getAccessToken().replace("oauth:", ""));
 	        	JOptionPane.showMessageDialog(null, "Successfully updated your Access/OAuth Token");
 	        }   
 		});
@@ -341,7 +341,7 @@ public class GeneralConfigurationPanel extends JPanel {
 				if(Bennerbot.configBoolean("connectToTwitch"))
 					try {
 						String title = Bennerbot.filterUTF8((""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("status")).replace(" ", " "));
-						String game = Bennerbot.filterUTF8((""+((JSONObject)((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/streams/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("stream")).get("game")).replace(" ", " "));
+						String game = Bennerbot.filterUTF8((""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("game")).replace(" ", " "));
 						
 						if(!(streamTitle.getText().equalsIgnoreCase(lastTitle) || streamTitle.getText().equalsIgnoreCase(title)) && !streamTitle.isFocusOwner()){
 							streamTitle.setText(title);
@@ -532,7 +532,7 @@ public class GeneralConfigurationPanel extends JPanel {
 						twitchTitleLabel.setToolTipText(title);
 					} catch (Exception e){twitchTitleLabel.setText("<html><body>Title: <span style='color:red'>Offline</span></body></html>");twitchTitleLabel.setToolTipText("");}
 					try{
-						String game = Bennerbot.filterUTF8(("Game: "+((JSONObject)((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/streams/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("stream")).get("game")).replace(" ", " "));
+						String game = Bennerbot.filterUTF8((""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("game")).replace(" ", " "));
 						twitchGameLabel.setText(game);
 						twitchGameLabel.setToolTipText(game);
 					} catch (Exception e){twitchGameLabel.setText("<html><body>Game: <span style='color:red'>Offline</span></body></html>");twitchGameLabel.setToolTipText("");}
@@ -713,7 +713,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		botIDPanel.add(botID);
 		botID.setToolTipText("This determins the ID of the bot, bots using the same ID share settings, set this to something specific to you or write this down somewhere");
 		botID.setColumns(10);
-		botID.setText(me.jdbener.lib.botId.getHash());
+		botID.setText(me.jdbener.utill.botId.getHash());
 		//make sure that the hash is in the database
 		
 		botIDUpdate = new JButton("Update");
@@ -727,8 +727,8 @@ public class GeneralConfigurationPanel extends JPanel {
 					@Override
 					public void run() {
 						botIDUpdate.setText("Working...");
-						me.jdbener.lib.botId.updateFile(botID.getText());
-						botIDNumLabel.setText("Bot #"+me.jdbener.lib.botId.getBotID(me.jdbener.lib.botId.getHash()));
+						me.jdbener.utill.botId.updateFile(botID.getText());
+						botIDNumLabel.setText("Bot #"+me.jdbener.utill.botId.getBotID(me.jdbener.utill.botId.getHash()));
 						botIDUpdate.setText("Update");
 					}
 				}).start();
@@ -736,7 +736,7 @@ public class GeneralConfigurationPanel extends JPanel {
 		});
 		botIDPanel.add(botIDUpdate);
 		
-		botIDNumLabel = new JLabel("Bot #"+me.jdbener.lib.botId.getBotID(me.jdbener.lib.botId.getHash()));
+		botIDNumLabel = new JLabel("Bot #"+me.jdbener.utill.botId.getBotID(me.jdbener.utill.botId.getHash()));
 		botIDNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		botIDNumLabel.setBounds(12, 65, 140, 16);
 		botIDPanel.add(botIDNumLabel);

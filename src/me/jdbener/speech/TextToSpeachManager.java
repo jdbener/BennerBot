@@ -12,8 +12,8 @@ import com.sun.speech.freetts.audio.*;
 import javax.sound.sampled.AudioFormat;
 
 import me.jdbener.Bennerbot;
-import me.jdbener.lib.UserColors;
-import me.jdbener.lib.user;
+import me.jdbener.utill.UserColors;
+import me.jdbener.utill.user;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;

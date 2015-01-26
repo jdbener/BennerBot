@@ -26,7 +26,7 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
 import me.jdbener.Bennerbot;
-import me.jdbener.lib.SmartScroller;
+import me.jdbener.utill.SmartScroller;
 
 public class DisplayPanel extends JPanel {
 	/**

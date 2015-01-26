@@ -1,5 +1,7 @@
 package me.jdbener.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -7,6 +9,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.JButton;
+
+import me.jdbener.Bennerbot;
+
+import java.awt.Color;
 
 public class miscSettingsPanel extends JPanel {
 	private static final long serialVersionUID = 3270562443564784442L;
@@ -58,5 +65,17 @@ public class miscSettingsPanel extends JPanel {
 		chckbxEnableCheckBox.setBounds(6, 17, 270, 24);
 		apiPanel.add(chckbxEnableCheckBox);
 		MainGui.addComponent(chckbxEnableCheckBox, "enableFollowerNotifications", false);
+		
+		JButton btnResetTwitchAccess = new JButton("Reset Twitch Access Token");
+		btnResetTwitchAccess.setForeground(Color.WHITE);
+		btnResetTwitchAccess.setBackground(Color.BLACK);
+		btnResetTwitchAccess.setBounds(12, 64, 290, 23);
+		btnResetTwitchAccess.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Bennerbot.regenerateAccessToken();
+			}
+		});
+		add(btnResetTwitchAccess);
 	}
 }

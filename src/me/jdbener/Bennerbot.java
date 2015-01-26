@@ -3,7 +3,6 @@
  * Author: Jdbener (Joshua Dahl)
  * Date: 11/8/14
  **/
-
 package me.jdbener;
 
 import java.awt.Desktop;
@@ -43,17 +42,18 @@ import javax.swing.UIManager;
 
 import me.jdbener.PHitboxBotX.HitboxServer;
 import me.jdbener.apis.APIManager;
+import me.jdbener.events.AutoMessageHandeler;
+import me.jdbener.events.ChatRelayHandeler;
+import me.jdbener.events.Countdown;
+import me.jdbener.events.CustomCommandHandeler;
+import me.jdbener.events.Infromation;
+import me.jdbener.events.JoinLeaveMessages;
 import me.jdbener.gui.MainGui;
 import me.jdbener.gui.SplashScreen;
+import me.jdbener.gui.StartupDialog;
 import me.jdbener.levels.LevelManager;
-import me.jdbener.lib.Server;
 import me.jdbener.moderataion.FilterManager;
-import me.jdbener.utilities.AutoMessageHandeler;
-import me.jdbener.utilities.ChatRelayHandeler;
-import me.jdbener.utilities.Countdown;
-import me.jdbener.utilities.CustomCommandHandeler;
-import me.jdbener.utilities.Infromation;
-import me.jdbener.utilities.JoinLeaveMessages;
+import me.jdbener.utill.Server;
 import me.jdbener.webserver.tokenServer;
 import net.xeoh.plugins.base.PluginManager;
 import net.xeoh.plugins.base.impl.PluginManagerFactory;
@@ -61,9 +61,9 @@ import net.xeoh.plugins.base.util.PluginManagerUtil;
 
 import org.ho.yaml.Yaml;
 import org.pircbotx.Channel;
-import org.pircbotx.MultiBotManager;
 import org.pircbotx.PircBotX;
 import org.pircbotx.User;
+import org.pircbotx.exception.IrcException;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.managers.ListenerManager;
@@ -74,7 +74,7 @@ import org.slf4j.LoggerFactory;
 public class Bennerbot {
 	//bot information
 	public static String name = "BennerBot",												//the name of the bot
-			version = "0.17", 															//the version ID of the bot
+			version = "0.18", 																//the version ID of the bot
 			twitchu = "",																	//twitch username used to connect
 			twitchpw = "",																	//twitch OAuth used to connect
 			hitboxu = "",																	//hitbox username used to connect
@@ -89,14 +89,13 @@ public class Bennerbot {
 	public static Map<String, String> messagesMap = new HashMap<String, String>();			//all the automessages
 	public static MainGui gui = null;														//the GUI object
 	public static boolean guiLoaded = false;												//this value stores weather or not the gui has loaded yet or not
-	public static SplashScreen sp = new SplashScreen();										//this variable contains a reference to our splash screen
+	private static boolean nogui = true;
+	private static SplashScreen sp = new SplashScreen();									//this variable contains a reference to our splash screen
 	public static DateFormat dateFormat;													//this variable is contains an object that lets you format dates into text..
-	public static Map<String, String> lastMessagePrinted = new HashMap<String, String>();	//this is used to prevent message loops in the chat display
+	private static Map<String, String> lastMessagePrinted = new HashMap<String, String>();	//this is used to prevent message loops in the chat display
 	private static tokenServer webserver = new tokenServer();								//this is used to generate a twitch access token
 	
 	//initialize the servers
-	//bot managaer
-	public static MultiBotManager<PircBotX> manager = new MultiBotManager<PircBotX>();
 	//Listener Manager
 	public static ListenerManager<PircBotX> listener = new ThreadedListenerManager<PircBotX>();
 	//Server Manager
@@ -122,7 +121,6 @@ public class Bennerbot {
 	public static void main (String[] args){
 		try {
 			//set the look and feel
-		    //TODO add a way to change the look and feel
 		    try {
 		    	UIManager.setLookAndFeel("com.jtattoo.plaf.noire.NoireLookAndFeel");
        		} catch (Exception e) {
@@ -138,7 +136,6 @@ public class Bennerbot {
 		        throw new RuntimeException("Only one application instance may run at the same time!");
 		    }
 		    //Determine weather or not the nogui argument was passed.
-		    boolean nogui = true;
 			for(int i = 0; i < args.length; i++) {
 	           if(args[i].equalsIgnoreCase("nogui")){
 	        	   nogui = false;
@@ -174,8 +171,8 @@ public class Bennerbot {
 			//set up the GUI or the BOTID depending on if the environment is headless or not
 			if(!GraphicsEnvironment.isHeadless() && nogui){
 				logger.info("Doing some database stuff, give me a moment");
-				me.jdbener.lib.botId.setupBotIDTable();
-				me.jdbener.lib.botId.updateFile(me.jdbener.lib.botId.getHash());
+				me.jdbener.utill.botId.setupBotIDTable();
+				me.jdbener.utill.botId.updateFile(me.jdbener.utill.botId.getHash());
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -203,13 +200,13 @@ public class Bennerbot {
 				new Thread(new Runnable(){
 					@Override
 					public void run() {
-						me.jdbener.lib.botId.setupBotIDTable();
+						me.jdbener.utill.botId.setupBotIDTable();
 						String hash = configGetString("botID");
 						if(hash.equalsIgnoreCase("default"))
 							hash = new Date().getTime()+"";
 						
-						if(!hash.equalsIgnoreCase(me.jdbener.lib.botId.getHash()))
-							me.jdbener.lib.botId.updateFile(hash);
+						if(!hash.equalsIgnoreCase(me.jdbener.utill.botId.getHash()))
+							me.jdbener.utill.botId.updateFile(hash);
 					}
 				}).start();
 				//setup the config system (this lets changes to the config file take effect in real time)
@@ -255,8 +252,8 @@ public class Bennerbot {
 						if(out.equalsIgnoreCase("stop")){
 							System.out.println("Stoping Bot");
 							System.exit(0);
-						} else if(out.equals("tokenRegen")){
-							Bennerbot.generateAccessToken();
+						} else if(out.equalsIgnoreCase("tokenRegen")){
+							Bennerbot.regenerateAccessToken();
 						}
 						if(out.startsWith("~"))
 							try{
@@ -280,18 +277,14 @@ public class Bennerbot {
 		//set the twitch username
 		twitchu = conf.get("twitchUsername").toString();
 		//set the twitch password
-		twitchpw = conf.get("twitchOAuth") == null ? Bennerbot.getAccessToken() : conf.get("twitchOAuth").toString();
+		twitchpw = "oauth:"+getAccessToken().replace("oauth:", "");
 		
 		//set the hitbox username
 		hitboxu = conf.get("hitboxUsername").toString();
 		//set the hitbox username
 		hitboxpw = conf.get("hitboxPassword").toString();
 		
-		//output to a file?
-		if(conf.get("enableOutput").toString().equalsIgnoreCase("true")){
-			listener.addListener(new Cleaner());
-		}
-		
+		listener.addListener(new Cleaner());
 		listener.addListener(new ChatRelayHandeler());
 		listener.addListener(new CustomCommandHandeler());
 		listener.addListener(new Infromation());
@@ -326,8 +319,9 @@ public class Bennerbot {
 		
 		//add the bots to the manager and start them
 		for(Server s: servers)
-			manager.addBot(s.getBot());
-		manager.start();
+			try {
+				s.getBot().startBot();
+			} catch (IOException | IrcException ex) {ex.printStackTrace();}
 		
 		try {
 			Thread.sleep(10000);
@@ -407,15 +401,13 @@ public class Bennerbot {
 	public static void sendMessage(String txt, boolean fromuser){
 		String server = "", user = "";
 		int i=0; while(i < servers.size()){
-			Server s = servers.get(i);
 			try{
-				if(Bennerbot.conf.get("showSource").toString().equalsIgnoreCase("true")){server = " ["+s.getChannel().replace("#", "")+"]";}
-				if(Bennerbot.conf.get("showSendName").toString().equalsIgnoreCase("true")){user = Bennerbot.capitalize(s.getChannel().replace("#", ""))+": ";}
-				sendMessage(user+server+txt, i);
+				if(Bennerbot.conf.get("showSource").toString().equalsIgnoreCase("true")){server = " ["+Bennerbot.servers.get(i).getChannel().replace("#", "")+"]";}
+				if(Bennerbot.conf.get("showSendName").toString().equalsIgnoreCase("true")){user = Bennerbot.capitalize(Bennerbot.servers.get(i).getChannel().replace("#", ""))+": ";}
+				sendMessage(user+server+txt, i, "no show");
 			} catch (Exception e){
 				e.printStackTrace();
 			}
-			i++;
 		}
 		//Display the message
 		Cleaner.onOutput(txt, true);
@@ -472,7 +464,7 @@ public class Bennerbot {
 			Server s = servers.get(bot);
 			if(Bennerbot.conf.get("showSource").toString().equalsIgnoreCase("true")){server = " ["+s.getChannel().replace("#", "")+"]";}
 			if(Bennerbot.conf.get("showSendName").toString().equalsIgnoreCase("true")){user = Bennerbot.capitalize(s.getChannel().replace("#", ""))+": ";}
-			sendMessage(user+server+txt, bot);
+			sendMessage(user+server+txt, bot, "no show");
 		} catch (Exception e){
 			e.printStackTrace();
 		}
@@ -637,7 +629,7 @@ public class Bennerbot {
 	 * @return the message event
 	 */
 	public static MessageEvent<PircBotX> GenerateMessageEvent(String txt, int bot){
-		return new MessageEvent<PircBotX>(manager.getBotById(bot), manager.getBotById(bot).getUserChannelDao().getAllChannels().toArray(new Channel[0])[0], manager.getBotById(bot).getUserBot(), txt);
+		return new MessageEvent<PircBotX>(servers.get(bot).getBot(), servers.get(bot).getBot().getUserChannelDao().getAllChannels().toArray(new Channel[0])[0], servers.get(bot).getBot().getUserBot(), txt);
 	}
 	/**
 	 * Creates a message event for the frame work, this is useful for plugins that want to use the onMessage function to handle user sent messages, used when the coder dosent care what bot is used
@@ -653,11 +645,31 @@ public class Bennerbot {
 	 * @return the id of the bot found
 	 */
 	public static int getBotIDbyName(String name){
-		int i=0; while(i < servers.size()){
-			if(servers.get(i).getName().equalsIgnoreCase(name))
-				return i;
-			i++;
-		}
+		for(Server s: Bennerbot.servers)
+			if(s.getName().equalsIgnoreCase(name))
+				return s.getID()-1;
+		return 0;
+	}
+	/**
+	 * returns the bot ID of the server named, returns 0 if name = twitch or name isent found
+	 * @param user the username to search for
+	 * @return the id of the bot found
+	 */
+	public static int getBotIDbyUser(String user){
+		for(Server s: Bennerbot.servers)
+			if(s.getUser().equalsIgnoreCase(user))
+				return s.getID()-1;
+		return 0;
+	}
+	/**
+	 * returns the bot ID of the server named, based on its url, returns 0 if name = twitch or name isent found
+	 * @param url the url to search for
+	 * @return the id of the bot found
+	 */
+	public static int getBotIDbyURL(String url){
+		for(Server s: Bennerbot.servers)
+			if(s.getURL().equalsIgnoreCase(url))
+				return s.getID()-1;
 		return 0;
 	}
 	/**
@@ -725,11 +737,15 @@ public class Bennerbot {
 	 * @return
 	 */
 	public static String getAccessToken(){
-		String token = webserver.getToken();
-		if(token == ""){
+		String token = "";
+		//try to get it from the file
+		if(!isRunningInGuiMode())
 			try{
 				token = Bennerbot.configGetString("twitchAccessToken");
 			} catch(Exception e){e.printStackTrace();}
+		//if its not in the file get it from the server
+		if(token == ""){
+			token = webserver.getToken();
 		}
 		if(token == ""){
 			if(!GraphicsEnvironment.isHeadless()){
@@ -741,6 +757,10 @@ public class Bennerbot {
 			}
 		}
 		return token;
+	}
+	public static void regenerateAccessToken(){
+		new File("../.token").delete();
+		Bennerbot.generateAccessToken();
 	}
 	private static void generateAccessToken(){
 		String url = "https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=9qxushp3sdeasixpxajz8pqlxdudfs6&redirect_uri=http://127.0.0.1:55555/token/&scope=channel_editor+channel_subscriptions+chat_login";
@@ -760,6 +780,9 @@ public class Bennerbot {
             	JOptionPane.showMessageDialog(null, "<html><body>We have unsucessfully tried to open a new page to generate an access token for you, <br>however the URL has been copied to your clipboard, simply paste into your browser to generate one.</body></html>");
             } catch(Exception ex){System.out.println("It apperes that the code for you to generate an access token wont work for you, dont worry this just means you will have to do it autonomusly. Please go to this url, \"https://api.twitch.tv/kraken/oauth2/authorize?response_type=token&client_id=9qxushp3sdeasixpxajz8pqlxdudfs6&redirect_uri=http://127.0.0.1:55555/token/&scope=channel_editor+channel_subscriptions+chat_login\" and copy the access token it responds into the config file");}
         }
+	}
+	public static boolean isRunningInGuiMode(){
+		return nogui;
 	}
 }
 

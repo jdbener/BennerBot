@@ -276,9 +276,9 @@ public class AutoMessagePanel extends JPanel {
 		try{
 			Connection c = APIManager.getConnection();
 			Statement stmt = c.createStatement();
-			stmt.execute("DELETE FROM MESSAGES WHERE BID = "+me.jdbener.lib.botId.getBotID());
+			stmt.execute("DELETE FROM MESSAGES WHERE BID = "+me.jdbener.utill.botId.getBotID());
 			for(Entry<String, String> e: Bennerbot.messagesMap.entrySet()){
-				stmt.execute("INSERT INTO MESSAGES VALUES ("+me.jdbener.lib.botId.getBotID()+", '"+e.getKey()+"', '"+e.getValue()+"')");
+				stmt.execute("INSERT INTO MESSAGES VALUES ("+me.jdbener.utill.botId.getBotID()+", '"+e.getKey()+"', '"+e.getValue()+"')");
 			}
 			stmt.close();
 			c.close();
@@ -290,7 +290,7 @@ public class AutoMessagePanel extends JPanel {
 		try{
 			Connection c = APIManager.getConnection();
 			Statement stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM MESSAGES WHERE BID = "+me.jdbener.lib.botId.getBotID());
+			ResultSet rs = stmt.executeQuery("SELECT * FROM MESSAGES WHERE BID = "+me.jdbener.utill.botId.getBotID());
 			while(rs.next()){
 				Bennerbot.messagesMap.put(rs.getString("FIELD"), rs.getString("VALUE"));
 			}

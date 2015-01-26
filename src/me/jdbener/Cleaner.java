@@ -1,10 +1,10 @@
+package me.jdbener;
 /**
  * This class is what creates the output files
  * Author: Jdbener (Joshua Dahl)
  * Date: 11/8/14
  */
 
-package me.jdbener;
 
 //TODO add pretty scrolling to the output file
 //TODO change the TTS system so that the speak method is called when a message is displayed, so that there isent a delay between when the message is spoken and when it is displayed.
@@ -17,10 +17,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import me.jdbener.apis.APIManager;
-import me.jdbener.lib.Server;
-import me.jdbener.lib.UserColors;
-import me.jdbener.lib.user;
 import me.jdbener.speech.TextToSpeachManager;
+import me.jdbener.utill.Server;
+import me.jdbener.utill.UserColors;
+import me.jdbener.utill.user;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;

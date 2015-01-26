@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import me.jdbener.lib.EscapeChars;
+import me.jdbener.utill.EscapeChars;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

@@ -18,7 +18,6 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
@@ -34,9 +33,11 @@ public class CustomCommandsPanel extends JPanel {
 	private JList<String> CommandsList,
 						  VariableList;
 	private JTextField commandKeyField, variableKeyField;
-	private JTextArea commandValueField, variableValueField;
+	private JTextField commandValueField, variableValueField;
 	private JPanel commandPanel,
 				   variablePanel;
+	
+	private JButton commandRefresh, variableRefresh;
 	
 	/**
 	 * Create the panel.
@@ -65,7 +66,7 @@ public class CustomCommandsPanel extends JPanel {
 		JButton addCommandButton = new JButton("Add");
 		addCommandButton.setForeground(Color.WHITE);
 		addCommandButton.setBackground(Color.BLACK);
-		addCommandButton.setBounds(517, 23, 52, 23);
+		addCommandButton.setBounds(595, 23, 52, 23);
 		addCommandButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -90,8 +91,7 @@ public class CustomCommandsPanel extends JPanel {
 		
 		commandKeyField = new JTextField(20);
 		commandKeyField.setToolTipText("The name of the command that you want people to put an exlamation point in front of to use");
-	    commandValueField = new JTextArea(5, 20);
-	    commandValueField.setLineWrap(true);
+	    commandValueField = new JTextField(20);
 	    commandValueField.setToolTipText("What the bot will return after the command is sent");
 
 	    commandPanel = new JPanel();
@@ -107,7 +107,7 @@ public class CustomCommandsPanel extends JPanel {
 		JButton removeCommandButton = new JButton("Remove");
 		removeCommandButton.setForeground(Color.WHITE);
 		removeCommandButton.setBackground(Color.BLACK);
-		removeCommandButton.setBounds(616, 23, 92, 23);
+		removeCommandButton.setBounds(694, 23, 92, 23);
 		removeCommandButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -129,7 +129,7 @@ public class CustomCommandsPanel extends JPanel {
 		JButton button = new JButton("Edit");
 		button.setForeground(Color.WHITE);
 		button.setBackground(Color.BLACK);
-		button.setBounds(566, 23, 52, 23);
+		button.setBounds(644, 23, 52, 23);
 		button.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -174,7 +174,7 @@ public class CustomCommandsPanel extends JPanel {
 		JButton addVariableButton = new JButton("Add");
 		addVariableButton.setForeground(Color.WHITE);
 		addVariableButton.setBackground(Color.BLACK);
-		addVariableButton.setBounds(517, 254, 52, 23);
+		addVariableButton.setBounds(595, 254, 52, 23);
 		addVariableButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -199,8 +199,7 @@ public class CustomCommandsPanel extends JPanel {
 		
 		variableKeyField = new JTextField(20);
 		variableKeyField.setToolTipText("The name of the command that you want people to put an exlamation point in front of to use");
-	    variableValueField = new JTextArea(5, 20);
-	    variableValueField.setLineWrap(true);
+	    variableValueField = new JTextField(20);
 	    variableValueField.setToolTipText("What the bot will return after the command is sent");
 
 	    variablePanel = new JPanel();
@@ -215,7 +214,7 @@ public class CustomCommandsPanel extends JPanel {
 		JButton removeVaribleButton = new JButton("Remove");
 		removeVaribleButton.setForeground(Color.WHITE);
 		removeVaribleButton.setBackground(Color.BLACK);
-		removeVaribleButton.setBounds(616, 254, 92, 23);
+		removeVaribleButton.setBounds(694, 254, 92, 23);
 		removeVaribleButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -245,7 +244,7 @@ public class CustomCommandsPanel extends JPanel {
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.setForeground(Color.WHITE);
 		btnEdit.setBackground(Color.BLACK);
-		btnEdit.setBounds(566, 254, 52, 23);
+		btnEdit.setBounds(644, 254, 52, 23);
 		btnEdit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -274,54 +273,41 @@ public class CustomCommandsPanel extends JPanel {
 		lblThisWindowAlso.setBounds(153, 230, 385, 47);
 		add(lblThisWindowAlso);
 		
-		JButton commandRefresh = new JButton("Refresh");
+		/*=====================================
+		 * Refresh Buttons
+		 *=====================================*/
+		commandRefresh = new JButton("Refresh");
 		commandRefresh.setForeground(Color.WHITE);
 		commandRefresh.setBackground(Color.BLACK);
 		commandRefresh.setBounds(706, 23, 80, 23);
+		commandRefresh.setVisible(false);
 		commandRefresh.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				new Thread(new Runnable(){
 					@Override
 					public void run() {
-						while(commandModel.size() == 0){
-							commandsSetValuesFromMap();
-							try {
-								Thread.sleep(1000);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
 						commandsDB2Map();
 						commandsSetValuesFromMap();
-						return;
 					}
 				}).start();
 			}
 		});
 		add(commandRefresh);
 		
-		JButton variableRefresh = new JButton("Refresh");
+		variableRefresh = new JButton("Refresh");
 		variableRefresh.setForeground(Color.WHITE);
 		variableRefresh.setBackground(Color.BLACK);
 		variableRefresh.setBounds(706, 254, 80, 23);
+		variableRefresh.setVisible(false);
 		variableRefresh.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new Thread(new Runnable(){
 					@Override
 					public void run() {
-						while(variableModel.size() == 0){
-							variablesSetValuesFromMap();
-							try {
-								Thread.sleep(1000);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
 						variableDB2Map();
 						variablesSetValuesFromMap();
-						return;
 					}
 				}).start();
 			}
@@ -367,6 +353,15 @@ public class CustomCommandsPanel extends JPanel {
 				variableDB2Map();
 				variablesSetValuesFromMap();
 				return;
+			}
+		}).start();
+		
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}
+				commandRefresh.getActionListeners()[0].actionPerformed(null);
+				variableRefresh.getActionListeners()[0].actionPerformed(null);
 			}
 		}).start();
 	}
@@ -421,9 +416,9 @@ public class CustomCommandsPanel extends JPanel {
 		try{
 			Connection c = APIManager.getConnection();
 			Statement stmt = c.createStatement();
-			stmt.execute("DELETE FROM COMMANDS WHERE BID = "+me.jdbener.lib.botId.getBotID());
+			stmt.execute("DELETE FROM COMMANDS WHERE BID = "+me.jdbener.utill.botId.getBotID());
 			for(Entry<String, String> e: Bennerbot.commandMap.entrySet()){
-				stmt.execute("INSERT INTO COMMANDS VALUES ("+me.jdbener.lib.botId.getBotID()+", '"+e.getKey()+"', '"+e.getValue()+"')");
+				stmt.execute("INSERT INTO COMMANDS VALUES ("+me.jdbener.utill.botId.getBotID()+", '"+e.getKey()+"', '"+e.getValue()+"')");
 			}
 			stmt.close();
 			c.close();
@@ -435,7 +430,7 @@ public class CustomCommandsPanel extends JPanel {
 		try{
 			Connection c = APIManager.getConnection();
 			Statement stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM COMMANDS WHERE BID = "+me.jdbener.lib.botId.getBotID());
+			ResultSet rs = stmt.executeQuery("SELECT * FROM COMMANDS WHERE BID = "+me.jdbener.utill.botId.getBotID());
 			while(rs.next()){
 				Bennerbot.commandMap.put(rs.getString("FIELD"), rs.getString("VALUE"));
 			}
@@ -502,9 +497,9 @@ public class CustomCommandsPanel extends JPanel {
 		try{
 			Connection c = APIManager.getConnection();
 			Statement stmt = c.createStatement();
-			stmt.execute("DELETE FROM VARIABLES WHERE BID = "+me.jdbener.lib.botId.getBotID());
+			stmt.execute("DELETE FROM VARIABLES WHERE BID = "+me.jdbener.utill.botId.getBotID());
 			for(Entry<String, String> e: Bennerbot.variableMap.entrySet()){
-				stmt.execute("INSERT INTO VARIABLES VALUES ("+me.jdbener.lib.botId.getBotID()+", '"+e.getKey()+"', '"+e.getValue()+"')");
+				stmt.execute("INSERT INTO VARIABLES VALUES ("+me.jdbener.utill.botId.getBotID()+", '"+e.getKey()+"', '"+e.getValue()+"')");
 			}
 			stmt.close();
 			c.close();
@@ -516,7 +511,7 @@ public class CustomCommandsPanel extends JPanel {
 		try{
 			Connection c = APIManager.getConnection();
 			Statement stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM VARIABLES WHERE BID = "+me.jdbener.lib.botId.getBotID());
+			ResultSet rs = stmt.executeQuery("SELECT * FROM VARIABLES WHERE BID = "+me.jdbener.utill.botId.getBotID());
 			while(rs.next()){
 				Bennerbot.variableMap.put(rs.getString("FIELD"), rs.getString("VALUE"));
 			}

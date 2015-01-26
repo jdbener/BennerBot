@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import me.jdbener.Bennerbot;
-import me.jdbener.lib.Server;
+import me.jdbener.utill.Server;
 
 public class HitboxServer extends Server{
 	PHitboxBotX server;
@@ -44,6 +44,7 @@ class HitboxListener extends WebSocketClient {
 	private String user,pass,channel;
 	private static String token;
 	public static String botName;
+	private String lastMessage = ".";
 	private static boolean connected;
 	private static boolean joiningChannel = false;
 	private static ArrayList<WebSocketOutput> outputs = new ArrayList<WebSocketOutput>();
@@ -276,8 +277,11 @@ class HitboxListener extends WebSocketClient {
 	}
 	
 	public void sendMessage(String message){
-		sendOutput("5:::{\"name\":\"message\",\"args\":[{\"method\":\"chatMsg\",\"params\":{\"channel\":\""+channel.replace("#", "")+"\",\"name\":\""+botName+"\",\"nameColor\":\"FA5858\",\"text\":\""+message+"\"}}], \"extra-info\":\"from-bot\"}");
-		this.send("5:::{\"name\":\"message\",\"args\":[{\"method\":\"chatMsg\",\"params\":{\"channel\":\""+channel.replace("#", "")+"\",\"name\":\""+botName+"\",\"nameColor\":\"FA5858\",\"text\":\""+message+"\"}}], \"extra-info\":\"from-bot\"}");
+		if(!lastMessage.contains(message) && !message.contains("[Hitbox]")){
+			sendOutput("5:::{\"name\":\"message\",\"args\":[{\"method\":\"chatMsg\",\"params\":{\"channel\":\""+channel.replace("#", "")+"\",\"name\":\""+botName+"\",\"nameColor\":\"FA5858\",\"text\":\""+message+"\"}}], \"extra-info\":\"from-bot\"}");
+			this.send("5:::{\"name\":\"message\",\"args\":[{\"method\":\"chatMsg\",\"params\":{\"channel\":\""+channel.replace("#", "")+"\",\"name\":\""+botName+"\",\"nameColor\":\"FA5858\",\"text\":\""+message+"\"}}], \"extra-info\":\"from-bot\"}");
+		}
+		lastMessage = message;
 	}
 	/**
 	 * connection method Calls necessary methods to launch the websocket
@@ -295,9 +299,10 @@ class HitboxListener extends WebSocketClient {
 		}
 	}
 	private void sendOutput(String out){
-		for(WebSocketOutput o: outputs){
-			o.write(out);
-		}
+		
+			for(WebSocketOutput o: outputs)
+				o.write(out);
+		
 	}
 	public void addOutput(WebSocketOutput... o){
 		for(WebSocketOutput out: o)
@@ -320,7 +325,7 @@ class PHitboxBotX extends PircBotX{
 		@Override
 		public void write(String in) {
 			//chat message
-			if(in.startsWith("5::") && in.contains("\\\"method\\\":\\\"chatMsg\\\"") && !in.contains("\"extra-info\":\"from-bot\"")){
+			if(in.startsWith("5::") && in.contains("\\\"method\\\":\\\"chatMsg\\\"") && !in.contains("from-bot")){
 				//sender's name
 				int name1 = in.indexOf("name\\\":\\\"");
 				int startname = name1 + 9;
@@ -332,7 +337,7 @@ class PHitboxBotX extends PircBotX{
 				int endtext = in.indexOf("\\\"", starttext);
 				String text = in.substring(starttext, endtext);
 				//create event
-				log.info(":"+name+"!"+name+"@hitbox.tv PRIVMSG #"+channel+" :"+text);
+				log.info(":"+name+"!"+name+"@hitbox.tv PRIVMSG "+channel+" :"+text);
 				newMessageEvent(text, name);
 			//Connection
 			} else if(in.startsWith("6::")){
@@ -365,7 +370,7 @@ class PHitboxBotX extends PircBotX{
 				.setName(username)
 				.setLogin(username)
 				.setServerPassword(password)
-				.setServerHostname("socket.hitbox.tv")
+				.setServerHostname("hitbox.tv")
 				.addAutoJoinChannel("#"+channel_)
 				.setListenerManager(manager)
 				.buildConfiguration());

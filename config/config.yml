@@ -33,7 +33,7 @@ connectToTwitch: true
 #The username of the the twitch account you want the bot to use
 #I recommend creating a new account for this
 twitchUsername: jdbener
-#This can be generated at anytime by clicking the button in the gui, or by sending '!regenToken' in the console
+#This can be generated at anytime by clicking the button in the gui, or by sending 'regenToken' in the console
 twitchAccessToken: 
 #the name of the twitch account to moderate
 twitchChannel: jdbener
@@ -127,8 +127,33 @@ enableCurrentlyPlayingSongFile: true
 #for example, <1title> would show the title of the previous song
 songFileFormat: "<title> ~ <artist>                   "
 
+#======================
+#Loyalty Bot Settings
+#======================
+#The format used by the level command when returning values
+levelCommandFormat: "<user> is level: <level> with <currentxp> xp, <xptillnextlevel> xp until next level <percentage>%"
+#weather or not the level command should allow users to lookup other users
+levelCommandAllowOtherUserLookup: true
+#this modifies the amount of xp people have to earn to level up.
+#1.0 is the default
+levelModifer: 1.0
+#how much experience to give every time a message is sent
+xpPerMessage: 10
+#this says how often a user will get xp (in seconds)
+oneXpEveryXSeconds: 30
+#how many channel specific currency to give a user every message
+currencyPerMessage: 1
+#the name of your channel specific currency
+currencyName: "Benner Bits"
+#the command used to check how many of the currency you have
+currencyLookupCommandName: "!bits"
+#weather or not you want users to see how many bits other users have
+currencyLookupCommandAllowOtherUserLookup: true
+#the command used to give bits to another user
+currencyGiveCommandName: "!givebits"
+
 #=======================
-#BennerBot Speech Settings
+#BennerBot Speech Settings EXPERIMENTAL USE AT YOUR OWN RISK
 #=======================
 #Weather or not bennerbot should read messages to you
 enableTTS: false
@@ -169,8 +194,6 @@ MaxMessageLength: 200
 #=======================
 #weather or not the Chat Relay is activated
 activateRelay: true
-#weather or not to display the source of a message in the relay
-showSource: false
 #weather or not to display the username in the message for messages sent with the GUI
 showSendName: false
 
