@@ -1,4 +1,0 @@
-Welcome to BennerBot
-Version 0.18.1
-[05:57] Sucessfully Connected to Twitch
-1 /host commands remaining this half hour.Now hosting pinkandorangeandgold.Already hosting pinkandorangeandgold.

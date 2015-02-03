@@ -1,4 +1,4 @@
-ID: 12
-Version: 0.18.0
-Changelog: "This update involves more bug fixes, and more custimization for the loyalty bot"
-link: "https://github.com/jdbener/BennerBot/releases/download/a0.18/BennerBot.0.18.zip"
+ID: 7
+Version: 16.0
+Changelog: "Reimplements Hitbox (hitbox support is an alpha i need feedback and bug reports)"
+link: "https://github.com/jdbener/BennerBot/releases/download/a0.16/BennerBot.Mk16.zip"
