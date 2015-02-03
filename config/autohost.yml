@@ -1,0 +1,26 @@
+#=========================================================================
+# ABOUT THIS FILE
+#=========================================================================
+# This file is where you can put a list of people who you want to
+# automaticly host when your channel is offline. Right now this has only
+# basic functionality but that functionality will grow as the realises go by.
+# Put the name of the channel you want to be on the host list, followed by
+# what service they are on. Exampe: jdbener: "twitch"
+# If you want to host someone on both twitch and hitbox you can add -1 to
+# the end of their name, Example:
+# jdbener: "twitch"
+# jdbener-1: "hitbox"
+#=========================================================================
+#LEAVE THIS ENTRY
+dummy: "n/a"
+# An example host list:
+# test_user_1: "twitch"
+# test_user_2: "twitch"
+# test_user_3: "hitbox"
+irish_00: "twitch"
+pinkandorangeandgold: "twitch"
+biogenx2b: "twitch"
+cherrytree5: "twitch"
+raziadastra: "twitch"
+fleebster: "twitch"
+seproth56: "twitch"

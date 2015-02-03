@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>BennerBot v0.7 ~ Chat</title>
+        <link rel="stylesheet" type="text/css" href="resource/layout.css" media="screen" />
+        <style>
+            html body{
+                margin: 0px;
+                min-height: 100%;
+                height: 100%;
+                width: 100%;
+                overflow:hidden
+            }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+        <script type="text/javascript">
+            $(window).load(function () {
+                setInterval( "$( '.scroll' ).load( 'output.html' ); window.scrollTo(0,document.body.scrollHeight);", 1000 );
+            });
+        </script>
+    </head>
+    <body>
+        <div class="scroll">
+            <a href="output.html">Im sorry but it appearers that an error has occurred!</a>
+        </div>
+    </body>
+</html>
