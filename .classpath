@@ -28,5 +28,12 @@
 	<classpathentry kind="lib" path="JTattoo-1.6.11.jar"/>
 	<classpathentry kind="lib" path="DJNativeSwing-SWT.jar"/>
 	<classpathentry kind="lib" path="DJNativeSwing.jar"/>
+	<classpathentry kind="lib" path="jaad-0.8.4.jar"/>
+	<classpathentry kind="lib" path="JFM/customizer.jar"/>
+	<classpathentry kind="lib" path="JFM/jmf.jar"/>
+	<classpathentry kind="lib" path="JFM/mediaplayer.jar"/>
+	<classpathentry kind="lib" path="JFM/multiplayer.jar"/>
+	<classpathentry kind="lib" path="JFM/jffmpeg-1.1.0.jar"/>
+	<classpathentry kind="lib" path="JFM/vget.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

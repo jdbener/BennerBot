@@ -156,7 +156,7 @@ currencyGiveCommandName: "!givebits"
 #AutoHoster Settings
 #======================
 #weather or not to enable the autohoster.
-enableAuotHoster: true
+enableAutoHoster: true
 
 #=======================
 #BennerBot Speech Settings EXPERIMENTAL USE AT YOUR OWN RISK

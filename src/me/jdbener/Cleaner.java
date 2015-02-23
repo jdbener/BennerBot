@@ -280,7 +280,8 @@ public class Cleaner extends ListenerAdapter<PircBotX>{
 							e.getMessage().contains("USERCOLOR") || 
 							e.getMessage().contains("Your color has been changed") || 
 							e.getMessage().contains("HOSTTARGET")||
-							e.getMessage().contains("EMOTESET"));
+							e.getMessage().contains("EMOTESET") ||
+							e.getMessage().contains("No channel is currently being hosted."));
 			if(!trash){
 				//Initialize variables
 				String clean, dirty;

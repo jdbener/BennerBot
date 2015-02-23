@@ -15,6 +15,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
@@ -44,6 +45,7 @@ import org.json.simple.parser.ParseException;
 public class APIManager {
 	public static ArrayList<String> followers = new ArrayList<String>();			//This array contains a list of everybody who has followed the bot operator
 	public static JSONParser parser = new JSONParser();								//The parser that parses JSON data
+	public static Map<String, Object> hosttargets;
 	
 	private static String TEMPTWITCHAUTH;
 	

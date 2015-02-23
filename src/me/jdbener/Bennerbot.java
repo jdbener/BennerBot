@@ -74,7 +74,7 @@ import org.slf4j.LoggerFactory;
 public class Bennerbot {
 	//bot information
 	public static String name = "BennerBot",												//the name of the bot
-			version = "0.19", 																//the version ID of the bot
+			version = "0.20", 																//the version ID of the bot
 			twitchu = "",																	//twitch username used to connect
 			twitchpw = "",																	//twitch OAuth used to connect
 			hitboxu = "",																	//hitbox username used to connect

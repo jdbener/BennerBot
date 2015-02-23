@@ -146,6 +146,28 @@ public class BennerCore {
 		return null;
 	}
 	/**
+	 * returns the contents of the url specified
+	 * @param u the url
+	 * @return a string representation of the url's contents
+	 */
+	public static String readURL(URL u){
+		try {
+			return StreamToString(u.openStream());
+		} catch (IOException e) {e.printStackTrace();}
+		return null;
+	}
+	/**
+	 * returns the contents of the url specified
+	 * @param u the url
+	 * @return a string representation of the url's contents
+	 */
+	public static String readURL(String u){
+		try {
+			return StreamToString(new URL(u).openStream());
+		} catch (IOException e) {e.printStackTrace();}
+		return null;
+	}
+	/**
 	 * This class acts as a normal output stream, however it redirects to several different output streams
 	 * @Author unknown
 	 */

@@ -1,0 +1,8 @@
+07:42:45.256 [main] INFO  me.jdbener.Bennerbot - Doing some database stuff, give me a moment
+07:42:48.181 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+07:42:48.199 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading Beggining Tab Loading Sequence
+07:42:48.216 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "General Configuration Tab"
+07:42:50.000 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Tab"
+07:42:50.031 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Window"
+07:42:50.051 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Moderation Settings Tab"
+07:42:50.071 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Custom Commands Tab"

@@ -1,0 +1,17 @@
+public static String getYTVideoURL(String id, int format){
+		if(format < 1) format = 1; if(format > 6) format = 6; if(format == 3)format = 1;
+		ArrayList<String> l = new ArrayList<String>(Arrays.asList(BennerCore.readURL("http://youtube.com/get_video_info?video_id="+id).split("&")));
+		int counter = 1;
+		for(String s: l){
+			if(s.contains("url_encoded_fmt_stream_map"))
+				try {
+					for(String st: new ArrayList<String>(Arrays.asList(java.net.URLDecoder.decode(s, "UTF-8").split("&"))))
+						if(st.contains("url=http")){
+							if(counter == format)
+								return java.net.URLDecoder.decode(st.split("=")[1], "UTF-8");
+							counter++;
+						}
+				} catch (UnsupportedEncodingException e) {e.printStackTrace();}
+		}
+		return "";
+	}

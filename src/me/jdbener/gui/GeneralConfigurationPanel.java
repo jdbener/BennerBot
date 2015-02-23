@@ -831,7 +831,7 @@ public class GeneralConfigurationPanel extends JPanel {
 					System.out.println();
 					System.out.println(add.toJSONString());
 					
-					String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.conf.get("hitboxChannel")+"/list?authToken="+APIManager.GetHitboxAuth("jdbener", "il0venV!");
+					String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.conf.get("hitboxChannel")+"/list?authToken="+APIManager.GetHitboxAuth(Bennerbot.hitboxu, Bennerbot.hitboxpw);
 					URL con = new URL(url);
 					HttpURLConnection conn = (HttpURLConnection) con.openConnection();
 					

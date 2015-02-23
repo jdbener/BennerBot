@@ -18,30 +18,27 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 public class TwitchAutoHostingManager {
-	Map<String, Object> hosttargets;
 	String currentlyHosting = null;
 	
-	public static void main(String[] args){
-		System.out.println(new TwitchAutoHostingManager().hosttargets);
-	}
 	@SuppressWarnings("unchecked")
 	public TwitchAutoHostingManager(){
 		try{
-			hosttargets = (Map<String, Object>) Yaml.load(new FileInputStream(new File("config/autohost.yml")));
-			hosttargets.remove("dummy");
+			APIManager.hosttargets = (Map<String, Object>) Yaml.load(new FileInputStream(new File("config/autohost.yml")));
+			APIManager.hosttargets.remove("dummy");
 		} catch (FileNotFoundException e){
 			e.printStackTrace();
 		}
 		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(new Runnable(){
 			@Override
 			public void run() {
-				if(Bennerbot.configBoolean("enableAuotHoster"))
+				if(Bennerbot.configBoolean("enableAutoHoster"))
 				try {
 					//Stream is online
 					if(((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/streams/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("stream") != null){
 						Bennerbot.sendMessage("/unhost", Bennerbot.getBotIDbyName("twitch"), "");
 						currentlyHosting=null;
 					}
+					//Override for user selected hosts
 					else if(!((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://chatdepot.twitch.tv/rooms/"+Bennerbot.configGetString("twitchChannel")+"/host_target").openStream()))).get("host_target").toString().equalsIgnoreCase("") && !((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://chatdepot.twitch.tv/rooms/"+Bennerbot.configGetString("twitchChannel")+"/host_target").openStream()))).get("host_target").toString().equalsIgnoreCase(currentlyHosting)){
 						currentlyHosting=((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://chatdepot.twitch.tv/rooms/"+Bennerbot.configGetString("twitchChannel")+"/host_target").openStream()))).get("host_target").toString();
 					}
@@ -51,7 +48,7 @@ public class TwitchAutoHostingManager {
 							Bennerbot.logger.info("Still Hosting "+currentlyHosting);
 							//Bennerbot.sendMessage("/host "+currentlyHosting, Bennerbot.getBotIDbyName("twitch"), "");
 						else
-							for(Entry<String, Object> e: hosttargets.entrySet())
+							for(Entry<String, Object> e: APIManager.hosttargets.entrySet())
 								if(e.getValue().toString().equalsIgnoreCase("twitch"))
 									if(((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/streams/"+e.getKey()).openStream()))).get("stream") != null){
 										currentlyHosting=e.getKey();
