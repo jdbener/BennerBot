@@ -16,11 +16,11 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 public class TwitchStatusGameUpdater extends ListenerAdapter<PircBotX>{
 	public void onMessage(MessageEvent<PircBotX> e){
-		if(Bennerbot.conf.get("twitchAccessToken") != null){
+		if(Bennerbot.getConfigString("twitchAccessToken") != null){
 			if(e.getMessage().startsWith("!game"))
 				if(Bennerbot.isMod(e.getUser(), e.getChannel())){
 				try {
-					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.getAccessToken();
+					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.getConfigString("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.getAccessToken();
 					URL obj = new URL(url);
 					HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 
@@ -55,7 +55,7 @@ public class TwitchStatusGameUpdater extends ListenerAdapter<PircBotX>{
 				if(Bennerbot.isMod(e.getUser(), e.getChannel())){
 				try {
 					Bennerbot.logger.info("changing title");
-					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.configGetString("twitchAccessToken");
+					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.getConfigString("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.getConfigString("twitchAccessToken");
 					URL obj = new URL(url);
 					HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 

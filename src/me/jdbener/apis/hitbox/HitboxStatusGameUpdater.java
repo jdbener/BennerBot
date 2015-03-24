@@ -36,7 +36,7 @@ public class HitboxStatusGameUpdater extends ListenerAdapter<PircBotX> {
 					for(int i = 1; i<e.getMessage().split(" ").length; i++)
 						title+=e.getMessage().split(" ")[i]+" ";
 					
-					live.put("media_user_name", Bennerbot.conf.get("hitboxChannel"));
+					live.put("media_user_name", Bennerbot.getConfigString("hitboxChannel"));
 					live.put("media_status", title);
 					
 					
@@ -47,7 +47,7 @@ public class HitboxStatusGameUpdater extends ListenerAdapter<PircBotX> {
 					System.out.println();
 					System.out.println(add.toJSONString());
 					
-					String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.conf.get("hitboxChannel")+"/list?authToken="+APIManager.GetHitboxAuth("jdbener", "il0venV!");
+					String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.getConfigString("hitboxChannel")+"/list?authToken="+APIManager.GetHitboxAuth("jdbener", "il0venV!");
 					URL con = new URL(url);
 					HttpURLConnection conn = (HttpURLConnection) con.openConnection();
 					
@@ -89,7 +89,7 @@ public class HitboxStatusGameUpdater extends ListenerAdapter<PircBotX> {
 					for(int i = 1; i<e.getMessage().split(" ").length; i++)
 						game+=e.getMessage().split(" ")[i]+" ";
 					
-					live.put("media_user_name", Bennerbot.conf.get("hitboxChannel"));
+					live.put("media_user_name", Bennerbot.getConfigString("hitboxChannel"));
 					live.put("category_name", game);
 					
 					
@@ -100,7 +100,7 @@ public class HitboxStatusGameUpdater extends ListenerAdapter<PircBotX> {
 					System.out.println();
 					System.out.println(add.toJSONString());
 					
-					String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.conf.get("hitboxChannel")+"/list?authToken="+APIManager.GetHitboxAuth(Bennerbot.hitboxu, Bennerbot.hitboxpw);
+					String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.getConfigString("hitboxChannel")+"/list?authToken="+APIManager.GetHitboxAuth(Bennerbot.hitboxu, Bennerbot.hitboxpw);
 					URL con = new URL(url);
 					HttpURLConnection conn = (HttpURLConnection) con.openConnection();
 					
@@ -130,7 +130,7 @@ public class HitboxStatusGameUpdater extends ListenerAdapter<PircBotX> {
 	
 	public static JSONObject getJSON(){
 		try{
-			String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.conf.get("hitboxChannel")+"/list";
+			String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.getConfigString("hitboxChannel")+"/list";
 			URL obj = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 		

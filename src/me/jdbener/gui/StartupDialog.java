@@ -26,7 +26,7 @@ public class StartupDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public int getOption(){
-		setTitle(Bennerbot.name+" v"+Bennerbot.version);
+		setTitle(Bennerbot.name+" "+Bennerbot.version);
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e){
@@ -80,6 +80,7 @@ public class StartupDialog extends JDialog {
 		setAlwaysOnTop(false);
 		setAlwaysOnTop(true);
 		while(clicked == 0){try {
+			setAlwaysOnTop(true);
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

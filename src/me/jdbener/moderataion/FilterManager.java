@@ -15,11 +15,11 @@ public class FilterManager extends ListenerAdapter<PircBotX>{
 	
 	@SuppressWarnings("unused")
 	public FilterManager(){
-		warnings = Integer.parseInt(Bennerbot.conf.get("kickWarnings").toString());
-		maxWarnings = Integer.parseInt(Bennerbot.conf.get("banWarnings").toString());
+		warnings = Integer.parseInt(Bennerbot.getConfigString("kickWarnings"));
+		maxWarnings = Integer.parseInt(Bennerbot.getConfigString("banWarnings"));
 		
 		//caps filter
-		if(Bennerbot.conf.get("CapsFilter").toString().equalsIgnoreCase("true")){
+		if(Bennerbot.getConfigBoolean("CapsFilter")){
 			Bennerbot.listener.addListener(new CapsFilter());
 		}
 		

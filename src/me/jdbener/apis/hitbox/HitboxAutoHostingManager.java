@@ -34,16 +34,16 @@ public class HitboxAutoHostingManager {
 		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(new Runnable(){
 			@Override
 			public void run() {
-				if(Bennerbot.configBoolean("enableAutoHoster"))
+				if(Bennerbot.getConfigBoolean("enableAutoHoster"))
 				try {
 					//Stream is online
-					if(checkStreamOnline(Bennerbot.configGetString("hitboxChannel"))){
-						unhost(Bennerbot.configGetString("hitboxChannel"));
+					if(checkStreamOnline(Bennerbot.getConfigString("hitboxChannel"))){
+						unhost(Bennerbot.getConfigString("hitboxChannel"));
 						currentlyHosting=null;
 					}
 					//Override for user selected hosts
-					else if(!getHostTarget(Bennerbot.configGetString("hitboxChannel")).equalsIgnoreCase("") && !getHostTarget(Bennerbot.configGetString("hitboxChannel")).equalsIgnoreCase(currentlyHosting)){
-						currentlyHosting=getHostTarget(Bennerbot.configGetString("hitboxChannel"));
+					else if(!getHostTarget(Bennerbot.getConfigString("hitboxChannel")).equalsIgnoreCase("") && !getHostTarget(Bennerbot.getConfigString("hitboxChannel")).equalsIgnoreCase(currentlyHosting)){
+						currentlyHosting=getHostTarget(Bennerbot.getConfigString("hitboxChannel"));
 					}
 					//Otherwise host someone from the list
 					else {
@@ -55,7 +55,7 @@ public class HitboxAutoHostingManager {
 								if(e.getValue().toString().equalsIgnoreCase("hitbox"))
 									if(checkStreamOnline(e.getKey())){
 										currentlyHosting=e.getKey();
-										host(Bennerbot.configGetString("hitboxChannel"), currentlyHosting);
+										host(Bennerbot.getConfigString("hitboxChannel"), currentlyHosting);
 									}
 								
 					}
@@ -70,7 +70,7 @@ public class HitboxAutoHostingManager {
 			JSONArray channels = (JSONArray) ((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+stream+"/list").openStream()))).get("livestream");
 			JSONObject channel = new JSONObject();
 			for(int i = 0; i < channels.size(); i++){
-				if(((JSONObject)channels.get(i)).get("media_file").toString().equalsIgnoreCase(Bennerbot.configGetString("stream"))){
+				if(((JSONObject)channels.get(i)).get("media_file").toString().equalsIgnoreCase(Bennerbot.getConfigString("stream"))){
 					channel = (JSONObject)channels.get(i);
 				}
 			}
@@ -83,7 +83,7 @@ public class HitboxAutoHostingManager {
 			JSONArray channels = (JSONArray) ((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+stream+"/list").openStream()))).get("livestream");
 			JSONObject channel = new JSONObject();
 			for(int i = 0; i < channels.size(); i++){
-				if(((JSONObject)channels.get(i)).get("media_file").toString().equalsIgnoreCase(Bennerbot.configGetString("stream"))){
+				if(((JSONObject)channels.get(i)).get("media_file").toString().equalsIgnoreCase(Bennerbot.getConfigString("stream"))){
 					channel = (JSONObject)channels.get(i);
 				}
 			}

@@ -338,10 +338,10 @@ public class GeneralConfigurationPanel extends JPanel {
 				/*
 				 * Twitch backend
 				 */
-				if(Bennerbot.configBoolean("connectToTwitch"))
+				if(Bennerbot.getConfigBoolean("connectToTwitch"))
 					try {
-						String title = Bennerbot.filterUTF8((""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("status")).replace(" ", " "));
-						String game = Bennerbot.filterUTF8((""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("game")).replace(" ", " "));
+						String title = Bennerbot.filterUTF8((""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.getConfigString("twitchChannel")).openStream()))).get("status")).replace(" ", " "));
+						String game = Bennerbot.filterUTF8((""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.getConfigString("twitchChannel")).openStream()))).get("game")).replace(" ", " "));
 						
 						if(!(streamTitle.getText().equalsIgnoreCase(lastTitle) || streamTitle.getText().equalsIgnoreCase(title)) && !streamTitle.isFocusOwner()){
 							streamTitle.setText(title);
@@ -354,12 +354,12 @@ public class GeneralConfigurationPanel extends JPanel {
 					} catch (ParseException | IOException e) {
 						e.printStackTrace();
 					}
-				else if(Bennerbot.configBoolean("connectToHitbox"))
+				else if(Bennerbot.getConfigBoolean("connectToHitbox"))
 					try{
-						JSONArray channels = (JSONArray) ((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+Bennerbot.configGetString("hitboxChannel")+"/list").openStream()))).get("livestream");
+						JSONArray channels = (JSONArray) ((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+Bennerbot.getConfigString("hitboxChannel")+"/list").openStream()))).get("livestream");
 						JSONObject channel = new JSONObject();
 						for(int i = 0; i < channels.size(); i++){
-							if(((JSONObject)channels.get(i)).get("media_file").toString().equalsIgnoreCase(Bennerbot.configGetString("hitboxChannel"))){
+							if(((JSONObject)channels.get(i)).get("media_file").toString().equalsIgnoreCase(Bennerbot.getConfigString("hitboxChannel"))){
 								channel = (JSONObject)channels.get(i);
 							}
 						}
@@ -510,29 +510,29 @@ public class GeneralConfigurationPanel extends JPanel {
 		Executors.newScheduledThreadPool(22).scheduleAtFixedRate(new Runnable(){
 			@Override
 			public void run() {
-				if(Bennerbot.configBoolean("connectToTwitch")){
+				if(Bennerbot.getConfigBoolean("connectToTwitch")){
 					try{
-						if(((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/streams/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("stream") != null)
+						if(((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/streams/"+Bennerbot.getConfigString("twitchChannel")).openStream()))).get("stream") != null)
 							twitchStatusLabel.setText("<html><body>Status: <span style='color:green'>Online</span></body></html>");
 						else
 							twitchStatusLabel.setText("<html><body>Status: <span style='color:red'>Offline</span></body></html>");
 					} catch (Exception e){twitchStatusLabel.setText("<html><body>Status: <span style='color:red'>Unknown</span></body></html>");}
 					try{
-						twitchViewerLabel.setText("Viewers: "+Integer.parseInt(""+((JSONObject)((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/streams/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("stream")).get("viewers")));
+						twitchViewerLabel.setText("Viewers: "+Integer.parseInt(""+((JSONObject)((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/streams/"+Bennerbot.getConfigString("twitchChannel")).openStream()))).get("stream")).get("viewers")));
 					} catch (Exception e){twitchViewerLabel.setText("<html><body>Viewers: <span style='color:red'>Offline</span></body></html>");}
 					try{
-						twitchFollowerLabel.setText("Folowers: "+Integer.parseInt(""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")+"/follows/?limit=1").openStream()))).get("_total")));
+						twitchFollowerLabel.setText("Folowers: "+Integer.parseInt(""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.getConfigString("twitchChannel")+"/follows/?limit=1").openStream()))).get("_total")));
 					} catch (Exception e){twitchFollowerLabel.setText("Folowers: 0");}
 					try{
-						twitchSubscriber.setText("Subscribers: "+Integer.parseInt(""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")+"/subscriptions?oauth_token="+Bennerbot.getAccessToken()).openStream()))).get("_total")));
+						twitchSubscriber.setText("Subscribers: "+Integer.parseInt(""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.getConfigString("twitchChannel")+"/subscriptions?oauth_token="+Bennerbot.getAccessToken()).openStream()))).get("_total")));
 					} catch (Exception e){twitchSubscriber.setText("Subscribers: 0");}
 					try{
-						String title = Bennerbot.filterUTF8(("Title: "+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("status")).replace(" ", " "));
+						String title = Bennerbot.filterUTF8(("Title: "+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.getConfigString("twitchChannel")).openStream()))).get("status")).replace(" ", " "));
 						twitchTitleLabel.setText(title);
 						twitchTitleLabel.setToolTipText(title);
 					} catch (Exception e){twitchTitleLabel.setText("<html><body>Title: <span style='color:red'>Offline</span></body></html>");twitchTitleLabel.setToolTipText("");}
 					try{
-						String game = Bennerbot.filterUTF8((""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.configGetString("twitchChannel")).openStream()))).get("game")).replace(" ", " "));
+						String game = Bennerbot.filterUTF8((""+((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.getConfigString("twitchChannel")).openStream()))).get("game")).replace(" ", " "));
 						twitchGameLabel.setText(game);
 						twitchGameLabel.setToolTipText(game);
 					} catch (Exception e){twitchGameLabel.setText("<html><body>Game: <span style='color:red'>Offline</span></body></html>");twitchGameLabel.setToolTipText("");}
@@ -550,12 +550,12 @@ public class GeneralConfigurationPanel extends JPanel {
 					twitchGameLabel.setText("<html><body>Game:&nbsp;<span style='color:yellow'>Connection</span></body></html>");
 					twitchGameLabel.setToolTipText("");
 				}
-				if(Bennerbot.configBoolean("connectToHitbox")){
+				if(Bennerbot.getConfigBoolean("connectToHitbox")){
 					try{
-						JSONArray channels = (JSONArray) ((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+Bennerbot.configGetString("hitboxChannel")+"/list").openStream()))).get("livestream");
+						JSONArray channels = (JSONArray) ((JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+Bennerbot.getConfigString("hitboxChannel")+"/list").openStream()))).get("livestream");
 						JSONObject channel = new JSONObject();
 						for(int i = 0; i < channels.size(); i++){
-							if(((JSONObject)channels.get(i)).get("media_file").toString().equalsIgnoreCase(Bennerbot.configGetString("hitboxChannel"))){
+							if(((JSONObject)channels.get(i)).get("media_file").toString().equalsIgnoreCase(Bennerbot.getConfigString("hitboxChannel"))){
 								channel = (JSONObject)channels.get(i);
 							}
 						}
@@ -753,7 +753,7 @@ public class GeneralConfigurationPanel extends JPanel {
 					@SuppressWarnings("unchecked")
 					Map<String, Object> temp = (Map<String, Object>) Yaml.load(new FileInputStream(new File("config/config.yml")));
 					for(Entry<String, Object> e: temp.entrySet()){
-						Bennerbot.conf.put(e.getKey(), e.getValue());
+						Bennerbot.updateConfigEntry(e.getKey(), e.getValue().toString());
 					}
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
@@ -789,7 +789,7 @@ public class GeneralConfigurationPanel extends JPanel {
 			public void run() {
 				boolean success = true;
 				try{
-					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel").toString().toLowerCase()+"?oauth_token="+Bennerbot.getAccessToken();
+					String url = "https://api.twitch.tv/kraken/channels/"+Bennerbot.getConfigString("twitchChannel").toLowerCase()+"?oauth_token="+Bennerbot.getAccessToken();
 					URL obj = new URL(url);
 					HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 
@@ -812,7 +812,7 @@ public class GeneralConfigurationPanel extends JPanel {
 					success = false;
 				}
 				try{
-					JSONObject obj = (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+Bennerbot.conf.get("hitboxChannel")+"/list").openStream()));
+					JSONObject obj = (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(new URL("http://www.hitbox.tv/api/media/live/"+Bennerbot.getConfigString("hitboxChannel")+"/list").openStream()));
 					System.out.println(obj.toJSONString());
 					String lives = ((JSONArray) obj.get("livestream")).toJSONString();
 					lives = lives.replace("[", "");
@@ -820,7 +820,7 @@ public class GeneralConfigurationPanel extends JPanel {
 					
 					JSONObject live = new JSONObject();
 					
-					live.put("media_user_name", Bennerbot.conf.get("hitboxChannel"));
+					live.put("media_user_name", Bennerbot.getConfigString("hitboxChannel"));
 					live.put("media_status", streamTitle.getText());
 					live.put("category_name", streamGame.getText());
 					
@@ -831,7 +831,7 @@ public class GeneralConfigurationPanel extends JPanel {
 					System.out.println();
 					System.out.println(add.toJSONString());
 					
-					String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.conf.get("hitboxChannel")+"/list?authToken="+APIManager.GetHitboxAuth(Bennerbot.hitboxu, Bennerbot.hitboxpw);
+					String url = "http://www.hitbox.tv/api/media/live/"+Bennerbot.getConfigString("hitboxChannel")+"/list?authToken="+APIManager.GetHitboxAuth(Bennerbot.hitboxu, Bennerbot.hitboxpw);
 					URL con = new URL(url);
 					HttpURLConnection conn = (HttpURLConnection) con.openConnection();
 					

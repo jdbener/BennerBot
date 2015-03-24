@@ -57,21 +57,21 @@ public class APIManagerOld {
 		setupEmoteTable();
 		
 		//load follower notifications
-		if(Bennerbot.conf.get("enableFollowerNotifications").toString().equalsIgnoreCase("true")){
+		if(Bennerbot.getConfigBoolean("enableFollowerNotifications")){
 			new TwitchFollowerHandeler();
 			new HitboxFollowerHandeler();
 		}
 		
 		//load the !title and !game commands
-		if(Bennerbot.conf.get("enableStatusandGameUpdateing").toString().equalsIgnoreCase("true")){
+		if(Bennerbot.getConfigBoolean("enableStatusandGameUpdateing")){
 			Bennerbot.listener.addListener(new TwitchStatusGameUpdater());
 			Bennerbot.listener.addListener(new HitboxStatusGameUpdater());
 		}
 		
-		if(Bennerbot.conf.get("enableLastfmIntegration").toString().equalsIgnoreCase("true"))
+		if(Bennerbot.getConfigBoolean("enableLastfmIntegration"))
 			Bennerbot.listener.addListener(new LastfmNowPlaying());
 		
-		if(Bennerbot.configBoolean("enableLatestFollowerFile"))
+		if(Bennerbot.getConfigBoolean("enableLatestFollowerFile"))
 			Executors.newScheduledThreadPool(1).scheduleAtFixedRate(new Runnable(){
 				@Override
 				public void run() {

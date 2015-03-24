@@ -31,7 +31,7 @@ public class AutoMessageHandeler extends ListenerAdapter<PircBotX>{
 		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(new Runnable() {
 		    @Override
 			public void run() {
-		    	if(Bennerbot.configBoolean("enableAutoMessages")){
+		    	if(Bennerbot.getConfigBoolean("enableAutoMessages")){
 		    		i=0;for(Entry<String, String> entry: Bennerbot.messagesMap.entrySet()){
 		    			if(i == posInList){
 		    				System.out.println(Bennerbot.messagesMap);
@@ -45,7 +45,7 @@ public class AutoMessageHandeler extends ListenerAdapter<PircBotX>{
 		    			posInList=0;
 		    	}
 		    }
-		}, 0, Integer.parseInt(Bennerbot.conf.get("autoMessageInterval").toString()), TimeUnit.SECONDS);
+		}, 0, Integer.parseInt(Bennerbot.getConfigString("autoMessageInterval")), TimeUnit.SECONDS);
 	}
 	
 }

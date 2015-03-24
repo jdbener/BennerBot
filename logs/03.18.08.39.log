@@ -1,0 +1,59 @@
+08:39:54.547 [main] INFO  me.jdbener.Bennerbot - Doing some database stuff, give me a moment
+08:39:57.203 [main] WARN  me.jdbener.Bennerbot - Waiting for GUI to load
+08:39:57.246 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading Beggining Tab Loading Sequence
+08:39:57.266 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "General Configuration Tab"
+08:39:58.875 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Tab"
+08:39:58.924 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Display Window"
+08:39:58.946 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Chat Moderation Settings Tab"
+08:39:58.991 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Custom Commands Tab"
+08:40:01.749 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "AutoMessage Tab"
+08:40:03.194 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Work in Progress Settings Tab"
+08:40:03.206 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Loading the "Info Button"
+08:40:03.209 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Tab Initiation Squence... Loading Backend
+08:40:07.718 [AWT-EventQueue-0] INFO  me.jdbener.Bennerbot - Finished Loading GUI Backend
+08:40:07.719 [main] INFO  me.jdbener.Bennerbot - GUI loaded... Continuing with launch sequence
+08:40:12.715 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting Hitbox server IP: ec2-54-144-8-200.compute-1.amazonaws.com
+08:40:13.198 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting connection ID: yQ8hH9ReKSwQIuFbzXk-
+08:40:13.198 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Getting your token
+08:40:13.613 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Connecting to hitbox servers...
+08:40:15.836 [main] INFO  me.jdbener.PHitboxBotX.PHitboxBotX - Sucessfully Connected... Joined Channel #bennerbot
+08:40:15.837 [main] INFO  me.jdbener.Bennerbot - Begining plugin loading
+08:40:15.919 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins
+08:40:15.920 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/BasicCommands
+08:40:15.921 [main] INFO  me.jdbener.Bennerbot - Finished looking for plugins in: plugins/dissabled
+08:40:15.923 [main] INFO  me.jdbener.Bennerbot - Beggining pluging loading sequence
+08:40:15.923 [main] INFO  me.jdbener.Bennerbot - Finished pluging loading sequence
+08:40:15.924 [main] INFO  me.jdbener.Bennerbot - Proceading with BennerBot initiation sequence
+08:40:15.924 [main] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/192.16.64.144
+08:40:15.977 [main] INFO  org.pircbotx.PircBotX - Connected to server.
+08:40:15.985 [main] INFO  org.pircbotx.output.OutputRaw - PASS oauth:99az436qhap7kh4osj1d4y76kt5959
+08:40:15.985 [main] INFO  org.pircbotx.output.OutputRaw - NICK Bennerbot
+08:40:15.985 [main] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+08:40:16.097 [main] INFO  org.pircbotx.InputParser - :tmi.twitch.tv NOTICE * :Login unsuccessful
+08:40:26.114 [main] INFO  org.pircbotx.dcc.DccHandler - Terminating all transfers waiting to be accepted
+08:40:26.114 [main] DEBUG org.pircbotx.PircBotX - Disconnected.
+08:40:26.114 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.apis.hitbox.HitboxStatusGameUpdater@8117683 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@4dca1399, disconnectException=null)
+08:40:26.115 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.levels.LevelManager@3eed9837 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@4dca1399, disconnectException=null)
+08:40:26.115 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.levels.BennerBitManager@587c2723 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@4dca1399, disconnectException=null)
+08:40:26.115 [main] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/192.16.64.144
+08:40:26.166 [main] INFO  org.pircbotx.PircBotX - Connected to server.
+08:40:26.167 [main] INFO  org.pircbotx.output.OutputRaw - PASS oauth:99az436qhap7kh4osj1d4y76kt5959
+08:40:26.167 [main] INFO  org.pircbotx.output.OutputRaw - NICK Bennerbot
+08:40:26.167 [main] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+08:40:26.273 [main] INFO  org.pircbotx.InputParser - :tmi.twitch.tv NOTICE * :Login unsuccessful
+08:40:36.275 [main] INFO  org.pircbotx.dcc.DccHandler - Terminating all transfers waiting to be accepted
+08:40:36.275 [main] DEBUG org.pircbotx.PircBotX - Disconnected.
+08:40:36.275 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.events.AutoMessageHandeler@234f18c8 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@6d4d589c, disconnectException=null)
+08:40:36.275 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.apis.twitch.TwitchStatusGameUpdater@5b76b0ad to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@6d4d589c, disconnectException=null)
+08:40:36.275 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.events.Countdown@e45a028 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@6d4d589c, disconnectException=null)
+08:40:36.276 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.events.JoinLeaveMessages@1a5c091f to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@6d4d589c, disconnectException=null)
+08:40:36.276 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.events.ChatRelayHandeler@6d348a50 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@6d4d589c, disconnectException=null)
+08:40:36.276 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.levels.LevelManager@3eed9837 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@6d4d589c, disconnectException=null)
+08:40:36.276 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.levels.BennerBitManager@587c2723 to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@6d4d589c, disconnectException=null)
+08:40:36.276 [main] DEBUG o.p.h.m.ThreadedListenerManager - Waiting for listener me.jdbener.Cleaner@4a814c0d to execute event DisconnectEvent(daoSnapshot=org.pircbotx.snapshot.UserChannelDaoSnapshot@6d4d589c, disconnectException=null)
+08:40:36.276 [main] DEBUG org.pircbotx.PircBotX - Trying address irc.twitch.tv/192.16.64.144
+08:40:36.329 [main] INFO  org.pircbotx.PircBotX - Connected to server.
+08:40:36.329 [main] INFO  org.pircbotx.output.OutputRaw - PASS oauth:99az436qhap7kh4osj1d4y76kt5959
+08:40:36.329 [main] INFO  org.pircbotx.output.OutputRaw - NICK Bennerbot
+08:40:36.329 [main] INFO  org.pircbotx.output.OutputRaw - USER BennerBot 8 * :PircBotX 2.0.1, a fork of PircBot, the Java IRC bot - pircbotx.googlecode.com
+08:40:36.441 [main] INFO  org.pircbotx.InputParser - :tmi.twitch.tv NOTICE * :Login unsuccessful

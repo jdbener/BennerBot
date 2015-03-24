@@ -44,8 +44,8 @@ public class CustomCommandHandeler extends ListenerAdapter<PircBotX>{
 	private void setupReplacementTable(){
 		Bennerbot.variableMap.put("<botname>", Bennerbot.name);
 		Bennerbot.variableMap.put("<botversion>", Bennerbot.version);
-		Bennerbot.variableMap.put("<twitchhost>", Bennerbot.conf.get("twitchChannel").toString().toLowerCase().trim());
-		Bennerbot.variableMap.put("<hitboxhost>", Bennerbot.conf.get("hitboxChannel").toString().toLowerCase().trim());
+		Bennerbot.variableMap.put("<twitchhost>", Bennerbot.getConfigString("twitchChannel").toLowerCase().trim());
+		Bennerbot.variableMap.put("<hitboxhost>", Bennerbot.getConfigString("hitboxChannel").toString().toLowerCase().trim());
 		Bennerbot.variableMap.put("<user>", "The username of the person who sent the message");
 	}
 

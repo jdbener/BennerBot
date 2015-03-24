@@ -12,8 +12,6 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -30,10 +28,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,23 +40,23 @@ import javax.swing.UIManager;
 import me.jdbener.PHitboxBotX.HitboxServer;
 import me.jdbener.apis.APIManager;
 import me.jdbener.events.AutoMessageHandeler;
+import me.jdbener.events.BackendCommands;
 import me.jdbener.events.ChatRelayHandeler;
 import me.jdbener.events.Countdown;
 import me.jdbener.events.CustomCommandHandeler;
-import me.jdbener.events.Infromation;
 import me.jdbener.events.JoinLeaveMessages;
 import me.jdbener.gui.MainGui;
 import me.jdbener.gui.SplashScreen;
 import me.jdbener.gui.StartupDialog;
 import me.jdbener.levels.LevelManager;
 import me.jdbener.moderataion.FilterManager;
+import me.jdbener.utill.ConfigEntry;
 import me.jdbener.utill.Server;
 import me.jdbener.webserver.tokenServer;
 import net.xeoh.plugins.base.PluginManager;
 import net.xeoh.plugins.base.impl.PluginManagerFactory;
 import net.xeoh.plugins.base.util.PluginManagerUtil;
 
-import org.ho.yaml.Yaml;
 import org.pircbotx.Channel;
 import org.pircbotx.PircBotX;
 import org.pircbotx.User;
@@ -74,7 +71,7 @@ import org.slf4j.LoggerFactory;
 public class Bennerbot {
 	//bot information
 	public static String name = "BennerBot",												//the name of the bot
-			version = "0.20", 																//the version ID of the bot
+			version = "a0.21", 																//the version ID of the bot
 			twitchu = "",																	//twitch username used to connect
 			twitchpw = "",																	//twitch OAuth used to connect
 			hitboxu = "",																	//hitbox username used to connect
@@ -83,7 +80,8 @@ public class Bennerbot {
 	//initialize the variables
 	public static Logger logger = LoggerFactory.getLogger(Bennerbot.class);					//the bot logger, this is used to write messages to the console
 	public static Collection<BennerBotPlugin> plugins;										//the collection of plugins that the bot loads
-	public static Map<String, Object> conf = new HashMap<String, Object>();					//all of the input from the configuration file
+	private static List<ConfigEntry> conf = new ArrayList<ConfigEntry>();					//all of the input from the configuration database
+	public static Map<String, Object> perms = new HashMap<String, Object>();
 	public static Map<String, String> variableMap = new HashMap<String, String>();			//all of the variables bot, plugin, or custom
 	public static Map<String, String> commandMap = new HashMap<String, String>();			//all the custom commands from the file, bot, or plugins
 	public static Map<String, String> messagesMap = new HashMap<String, String>();			//all the automessages
@@ -102,20 +100,6 @@ public class Bennerbot {
 	public static ArrayList<Server> servers = new ArrayList<Server>();
 	
 	/**
-	 * This function will setup all of the required components for the configuration file.
-	 * As well as the custom command file
-	 */
-	@SuppressWarnings("unchecked")
-	private static void setupConfig(){
-		try{
-			//Initializes the configuration component
-			conf = (Map<String, Object>) Yaml.load(new FileInputStream(new File("config/config.yml")));
-		} catch (FileNotFoundException e){
-			e.printStackTrace();
-		}
-		name = conf.get("botName").toString().trim();
-	}	
-	/**
 	 * This function will run whenever the bot is started
 	 */
 	public static void main (String[] args){
@@ -127,7 +111,7 @@ public class Bennerbot {
        			e.printStackTrace();
        		}
 			// Try to get LOCK //
-		    if (!AppLock.setLock("BennerBotLockKey")) {
+		    if (!AppLock.setLock("3key2bot1benner")) {
 		    	try{
 		    		JOptionPane.showMessageDialog(null, "Only one application instance may run at the same time!");
 		    	} catch (Exception e){
@@ -165,9 +149,9 @@ public class Bennerbot {
 		    }
         
 		    //set up everything
-		    setupConfig();
+		    new DefaultConfigValues();
 			//set the date format
-			dateFormat = new SimpleDateFormat(conf.get("dateFormat").toString());
+			dateFormat = new SimpleDateFormat(getConfigString("dateFormat"));
 			//set up the GUI or the BOTID depending on if the environment is headless or not
 			if(!GraphicsEnvironment.isHeadless() && nogui){
 				logger.info("Doing some database stuff, give me a moment");
@@ -201,7 +185,7 @@ public class Bennerbot {
 					@Override
 					public void run() {
 						me.jdbener.utill.botId.setupBotIDTable();
-						String hash = configGetString("botID");
+						String hash = getConfigString("botID");
 						if(hash.equalsIgnoreCase("default"))
 							hash = new Date().getTime()+"";
 						
@@ -209,17 +193,8 @@ public class Bennerbot {
 							me.jdbener.utill.botId.updateFile(hash);
 					}
 				}).start();
-				//setup the config system (this lets changes to the config file take effect in real time)
-				Runnable runnable = new Runnable() {
-					@Override
-					public void run() {
-						setupConfig();
-					}
-				};
-				//add the update to the execution thread
-				Executors.newScheduledThreadPool(1).scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
 				//claim that the gui is loaded
-				logger.info("Running in NoGUI mode ");
+				logger.info("Running in LITE/NoGUI mode ");
 				guiLoaded = true;
 				
 			}
@@ -242,7 +217,7 @@ public class Bennerbot {
 		    //create a new instance of the bot
 		    new Bennerbot();
 		    //command line messages
-			if(Bennerbot.conf.get("enableOutput").toString().equalsIgnoreCase("true")){
+			if(getConfigBoolean("enableOutput")){
 				@SuppressWarnings("resource")
 				Scanner scan = new Scanner(System.in);
 				String out;
@@ -275,25 +250,25 @@ public class Bennerbot {
 	 */
 	public Bennerbot (){
 		//set the twitch username
-		twitchu = conf.get("twitchUsername").toString();
+		twitchu = getConfigString("twitchUsername");
 		//set the twitch password
 		twitchpw = "oauth:"+getAccessToken().replace("oauth:", "");
 		
 		//set the hitbox username
-		hitboxu = conf.get("hitboxUsername").toString();
+		hitboxu = getConfigString("hitboxUsername");
 		//set the hitbox username
-		hitboxpw = conf.get("hitboxPassword").toString();
+		hitboxpw = getConfigString("hitboxPassword");
 		
 		listener.addListener(new Cleaner());
 		listener.addListener(new ChatRelayHandeler());
 		listener.addListener(new CustomCommandHandeler());
-		listener.addListener(new Infromation());
 		listener.addListener(new JoinLeaveMessages());
 		listener.addListener(new Countdown());
 		listener.addListener(new LevelManager());
 		listener.addListener(new AutoMessageHandeler());
+		listener.addListener(new BackendCommands());
 			
-		if(conf.get("enableModeration").toString().equalsIgnoreCase("true"))
+		if(getConfigBoolean("enableModeration"))
 			new FilterManager();
 				
 		//this activates !title and !game commands, as well as follower notifications
@@ -305,16 +280,16 @@ public class Bennerbot {
 		
 		//Initializes all of the settings for the bots!
 		try {
-			if(Bennerbot.conf.get("connectToTwitch").toString().equalsIgnoreCase("true"))
-				servers.add(new Server("irc.twitch.tv", "Twitch", twitchu, twitchpw, conf.get("twitchChannel").toString().toLowerCase(), new File("resource/TwitchLogo.png").toURI().toURL()));
-			if(Bennerbot.conf.get("connectToHitbox").toString().equalsIgnoreCase("true"))
-				servers.add(new HitboxServer(hitboxu, hitboxpw, conf.get("hitboxChannel").toString().toLowerCase(), new File("resource/HitboxLogo.png").toURI().toURL()));
+			if(getConfigBoolean("connectToTwitch"))
+				servers.add(new Server("irc.twitch.tv", "Twitch", twitchu, twitchpw, getConfigString("twitchChannel").toLowerCase(), new File("resource/TwitchLogo.png").toURI().toURL()));
+			if(getConfigBoolean("connectToHitbox"))
+				servers.add(new HitboxServer(hitboxu, hitboxpw, getConfigString("hitboxChannel").toLowerCase(), new File("resource/HitboxLogo.png").toURI().toURL()));
 		} catch (MalformedURLException ex) {
 			ex.printStackTrace();
 		}
 
 		//implement the plugin loader
-		if(conf.get("enablePluginSystem").toString().equalsIgnoreCase("true"))
+		if(getConfigBoolean("enablePluginSystem"))
 			pluginLoader();
 		
 		//add the bots to the manager and start them
@@ -329,7 +304,7 @@ public class Bennerbot {
 			e.printStackTrace();
 		}
 		
-		if(conf.get("enableAutoMessages").toString().equalsIgnoreCase("true"))
+		if(getConfigBoolean("enableAutoMessages"))
 			new AutoMessageHandeler();
 	}
 	
@@ -402,8 +377,8 @@ public class Bennerbot {
 		String server = "", user = "";
 		int i=0; while(i < servers.size()){
 			try{
-				if(Bennerbot.conf.get("showSource").toString().equalsIgnoreCase("true")){server = " ["+Bennerbot.servers.get(i).getChannel().replace("#", "")+"]";}
-				if(Bennerbot.conf.get("showSendName").toString().equalsIgnoreCase("true")){user = Bennerbot.capitalize(Bennerbot.servers.get(i).getChannel().replace("#", ""))+": ";}
+				if(getConfigBoolean("showSource")){server = " ["+Bennerbot.servers.get(i).getChannel().replace("#", "")+"]";}
+				if(getConfigBoolean("showSendName")){user = Bennerbot.capitalize(Bennerbot.servers.get(i).getChannel().replace("#", ""))+": ";}
 				sendMessage(user+server+txt, i, "no show");
 			} catch (Exception e){
 				e.printStackTrace();
@@ -412,7 +387,7 @@ public class Bennerbot {
 		//Display the message
 		Cleaner.onOutput(txt, true);
 		//this code deals with message phrasing and responding
-		if(Bennerbot.conf.get("respondToOperatorCommands").toString().equalsIgnoreCase("true")){
+		if(getConfigBoolean("respondToOperatorCommands")){
 			//creates the event that is sent to the functions
 			MessageEvent<PircBotX> e = GenerateMessageEvent(txt);
 			//this code will cycle through the plugins and run the OnMessage function if it exists
@@ -462,14 +437,14 @@ public class Bennerbot {
 		String server = "", user = "";
 		try{
 			Server s = servers.get(bot);
-			if(Bennerbot.conf.get("showSource").toString().equalsIgnoreCase("true")){server = " ["+s.getChannel().replace("#", "")+"]";}
-			if(Bennerbot.conf.get("showSendName").toString().equalsIgnoreCase("true")){user = Bennerbot.capitalize(s.getChannel().replace("#", ""))+": ";}
+			if(getConfigBoolean("showSource")){server = " ["+s.getChannel().replace("#", "")+"]";}
+			if(getConfigBoolean("showSendName")){user = Bennerbot.capitalize(s.getChannel().replace("#", ""))+": ";}
 			sendMessage(user+server+txt, bot, "no show");
 		} catch (Exception e){
 			e.printStackTrace();
 		}
 		//this code deals with message phrasing and responding
-		if(Bennerbot.conf.get("respondToOperatorCommands").toString().equalsIgnoreCase("true")){
+		if(getConfigBoolean("respondToOperatorCommands")){
 			//creates the event that is sent to the functions
 			MessageEvent<PircBotX> e = GenerateMessageEvent(txt);
 			//this code will cycle through the plugins and run the OnMessage function if it exists
@@ -493,7 +468,7 @@ public class Bennerbot {
 	 * @return the capitalized string
 	 */
 	public static String capitalize(String line){
-		if(conf.get("capitalizeNames").toString().equalsIgnoreCase("true"))
+		if(getConfigBoolean("capitalizeNames"))
 			return capitalize(line, true);
 		return line;
 	}
@@ -697,23 +672,140 @@ public class Bennerbot {
 	 * @return is that true or not
 	 */
 	public static boolean configEqualsString(String item, String value){
-		return conf.get(item).toString().equalsIgnoreCase(value);
+		return getConfigString(item).equalsIgnoreCase(value);
 	}
 	/**
 	 * This function checks if an item in the config is true
 	 * @param item the item
 	 * @return is that the case
 	 */
-	public static boolean configBoolean(String item){
+	public static boolean getConfigBoolean(String item){
 		return configEqualsString(item, "true");
 	}
 	/**
-	 * returns the string if it is in the config file/database
-	 * @param item the item to search for
-	 * @return its value
+	 * Updates an entry in the config database
+	 * @param item the name of the entry to update/add
+	 * @param value the value to add
 	 */
-	public static String configGetString(String item){
-		return conf.get(item).toString();
+	public static void updateConfigEntry(String item, String value){
+		String help = "";
+		for(int i = 0; i < conf.size(); i++){
+			if(conf.get(i).getName().equalsIgnoreCase(item)){
+				help = conf.get(i).getHelp();
+				conf.remove(i);
+			}
+		}
+		conf.add(new ConfigEntry(item, value, help));
+	}
+	/**
+	 * Updates an entry in the config database
+	 * @param item the name of the entry to update/add
+	 * @param help the help value to add
+	 */
+	public static void updateConfigHelp(String item, String help){
+		String value = "";
+		for(int i = 0; i < conf.size(); i++){
+			if(conf.get(i).getName().equalsIgnoreCase(item)){
+				value = conf.get(i).getValue();
+				conf.remove(i);
+			}
+		}
+		conf.add(new ConfigEntry(item, value, help));
+	}
+	/**
+	 * Updates an entry in the config database
+	 * @param item the name of the entry to update/add
+	 * @param value the value to add
+	 * @param help the help value to add
+	 */
+	public static void updateConfig(String item, String value, String help){
+		conf.add(new ConfigEntry(item, value, help));
+	}
+	/**
+	 * Gets a a complete configuration database entry based on its index
+	 * @param item the index of the item in question
+	 * @return the items entry
+	 */
+	public static ConfigEntry getConfigEntry(String item){
+		for(ConfigEntry e: conf)
+			if(e.getName().equalsIgnoreCase(item))
+				return e;
+		return null;
+	}
+	/**
+	 * Gets a a complete configuration database entry based on its index
+	 * @param ID the index of the item in question
+	 * @return the items entry
+	 */
+	public static ConfigEntry getConfigEntry(int ID){
+		return conf.get(ID);
+	}
+	/**
+	 * Gets a specific config item's help value based on its index
+	 * @param item the index of the item in question
+	 * @return the items help value
+	 */
+	public static String getConfigHelp(String item){
+		return getConfigEntry(item).getHelp();
+	}
+	/**
+	 * Gets a specific config item's value based on its index
+	 * @param item the index of the item in question
+	 * @return the items value
+	 */
+	public static String getConfigString(String item){
+		return getConfigEntry(item).getValue();
+	}
+	/**
+	 * Gets a specific config item's help value based on its index
+	 * @param item the index of the item in question
+	 * @return the items help value
+	 */
+	public static String getConfigHelp(int item){
+		return getConfigEntry(item).getHelp();
+	}
+	/**
+	 * Gets a specific config item's value based on its index
+	 * @param item the index of the item in question
+	 * @return the items value
+	 */
+	public static String getConfigString(int item){
+		return getConfigEntry(item).getValue();
+	}
+	/**
+	 * @return an unmodifiable map, containing all the entrys in the config database
+	 */
+	public static Map<String, String> getConfigMap(){
+		Map<String, String> temp = new HashMap<String, String>();
+		for(ConfigEntry e: conf)
+			temp.put(e.getName(), e.getValue());
+		return temp;
+	}
+	/**
+	 * @return an unmodifiable list of all the entrys in the config database
+	 */
+	public static ArrayList<ConfigEntry> getConfigEntrys(){
+		ArrayList<ConfigEntry> temp = new ArrayList<ConfigEntry>();
+		for(ConfigEntry e: conf)
+			temp.add(e);
+		return temp;
+	}
+	/**
+	 * Gets the number of configuration items
+	 * @return the number of items in the config database
+	 */
+	public static int getConfigSize(){
+		return getConfigSize(false);
+	}
+	/**
+	 * Gets the number of configuration items
+	 * @param literal true filter all duplicates, false dont
+	 * @return the number of items in the config database
+	 */
+	public static int getConfigSize(boolean literal){
+		if(literal == true)
+			return getConfigMap().size();
+		return getConfigEntrys().size();
 	}
 	/**
 	 * This function filters all non English symbols with the specified replacement value
@@ -741,7 +833,7 @@ public class Bennerbot {
 		//try to get it from the file
 		if(!isRunningInGuiMode())
 			try{
-				token = Bennerbot.configGetString("twitchAccessToken");
+				token = Bennerbot.getConfigString("twitchAccessToken");
 			} catch(Exception e){e.printStackTrace();}
 		//if its not in the file get it from the server
 		if(token == ""){

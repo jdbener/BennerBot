@@ -23,20 +23,20 @@ public class BennerBitManager extends ListenerAdapter<PircBotX>{
 		
 	}
 	public void onMessage(MessageEvent<PircBotX> e){
-		if(e.getMessage().startsWith(Bennerbot.configGetString("currencyLookupCommandName"))){
+		if(e.getMessage().startsWith(Bennerbot.getConfigString("currencyLookupCommandName"))){
 			if(e.getMessage().split(" ").length == 1){
 				try{
-					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" you have "+(int)getBits(e.getUser().getNick())+" "+Bennerbot.configGetString("currencyName"));
+					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" you have "+(int)getBits(e.getUser().getNick())+" "+Bennerbot.getConfigString("currencyName"));
 				} catch (Exception ex){
 					ex.printStackTrace();
 					Bennerbot.sendMessage("Sorry but it seams that something has gone wrong");
 				}
 			} else if(e.getMessage().split(" ").length == 2){
-				if(Bennerbot.configBoolean("currencyLookupCommandAllowOtherUserLookup"))
+				if(Bennerbot.getConfigBoolean("currencyLookupCommandAllowOtherUserLookup"))
 					try{
 						if(Bennerbot.isMod(e.getUser(), e.getChannel())){
 							String user = e.getMessage().split(" ")[1];
-							Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" has "+(int)getBits(user)+" "+Bennerbot.configGetString("currencyName"));
+							Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" has "+(int)getBits(user)+" "+Bennerbot.getConfigString("currencyName"));
 						} else {
 							Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" has tried to use a command they dont have permision to");
 							FilterManager.punish(e.getUser().getNick());
@@ -46,12 +46,12 @@ public class BennerBitManager extends ListenerAdapter<PircBotX>{
 						Bennerbot.sendMessage("Sorry but it seams that something has gone wrong");
 					}
 				else
-					Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.configGetString("currencyLookupCommandName"));
+					Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.getConfigString("currencyLookupCommandName"));
 			} else {
-				Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.configGetString("currencyLookupCommandName")+" <username>");
+				Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.getConfigString("currencyLookupCommandName")+" <username>");
 			}
 		}
-		if(e.getMessage().startsWith(Bennerbot.configGetString("currencyGiveCommandName"))){
+		if(e.getMessage().startsWith(Bennerbot.getConfigString("currencyGiveCommandName"))){
 			if(e.getMessage().split(" ").length == 3){
 				try{
 					String user = e.getMessage().split(" ")[1].toLowerCase();
@@ -60,19 +60,19 @@ public class BennerBitManager extends ListenerAdapter<PircBotX>{
 					if(!(getBits(e.getUser().getNick()) < bits)){
 						setBits(e.getUser().getNick(), -1*bits);
 						setBits(user, bits);
-						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you have successfully transfered "+bits+" "+Bennerbot.configGetString("currencyName")+" to: "+Bennerbot.capitalize(user));
+						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you have successfully transfered "+bits+" "+Bennerbot.getConfigString("currencyName")+" to: "+Bennerbot.capitalize(user));
 					} else {
-						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you dont have enouph "+Bennerbot.configGetString("currencyName")+" to compleat this transaction");
+						Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+", you dont have enouph "+Bennerbot.getConfigString("currencyName")+" to compleat this transaction");
 					}
 					
 					
-					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" now has "+(int)getBits(user)+" "+Bennerbot.configGetString("currencyName"));
+					Bennerbot.sendMessage(Bennerbot.capitalize(e.getUser().getNick())+" "+Bennerbot.capitalize(user)+" now has "+(int)getBits(user)+" "+Bennerbot.getConfigString("currencyName"));
 				} catch(Exception ex){
 					ex.printStackTrace();
 					Bennerbot.sendMessage("Sorry but it seams that something has gone wrong");
 				}
 			} else {
-				Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.configGetString("currencyGiveCommandName")+" <username> <"+Bennerbot.configGetString("currencyName")+">");
+				Bennerbot.sendMessage("Sorry wrong format, try: "+Bennerbot.getConfigString("currencyGiveCommandName")+" <username> <"+Bennerbot.getConfigString("currencyName")+">");
 			}
 		}
 	}

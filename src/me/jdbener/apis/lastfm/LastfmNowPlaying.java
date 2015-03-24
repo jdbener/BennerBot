@@ -20,7 +20,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 public class LastfmNowPlaying extends ListenerAdapter<PircBotX>{
 	public static JSONParser parser;	
 	public LastfmNowPlaying(){
-		if(Bennerbot.configBoolean("enableCurrentlyPlayingSongFile"))
+		if(Bennerbot.getConfigBoolean("enableCurrentlyPlayingSongFile"))
 			Executors.newScheduledThreadPool(1).scheduleAtFixedRate(new Runnable(){
 				@Override
 				public void run() {
@@ -44,12 +44,12 @@ public class LastfmNowPlaying extends ListenerAdapter<PircBotX>{
 	}
 	private String getCurrentlyPlayingSong(String user){
 		try{
-			JSONObject obj = (JSONObject) new JSONParser().parse(Bennerbot.StreamToString(new URL("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=20&user="+Bennerbot.conf.get("lastfmName")+"&api_key=f3237219f4b0a18670d59ad9458acb91&format=json").openStream()));
+			JSONObject obj = (JSONObject) new JSONParser().parse(Bennerbot.StreamToString(new URL("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=20&user="+Bennerbot.getConfigString("lastfmName")+"&api_key=f3237219f4b0a18670d59ad9458acb91&format=json").openStream()));
 			
 			JSONObject recent = (JSONObject) obj.get("recenttracks");
 			JSONObject track = (JSONObject)((JSONArray) recent.get("track")).get(0);
 			
-			String out = Bennerbot.conf.get("songCommandMessageFormat").toString()
+			String out = Bennerbot.getConfigString("songCommandMessageFormat").toString()
 				.replace("<user>", Bennerbot.capitalize(user))
 				.replace("<title>", (String) track.get("name"))
 				.replace("<url>", (String) track.get("url"))
@@ -73,12 +73,12 @@ public class LastfmNowPlaying extends ListenerAdapter<PircBotX>{
 	}
 	private String getCurrentlyPlayingSong(){
 		try{
-			JSONObject obj = (JSONObject) new JSONParser().parse(Bennerbot.StreamToString(new URL("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=20&user="+Bennerbot.conf.get("lastfmName")+"&api_key=f3237219f4b0a18670d59ad9458acb91&format=json").openStream()));
+			JSONObject obj = (JSONObject) new JSONParser().parse(Bennerbot.StreamToString(new URL("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=20&user="+Bennerbot.getConfigString("lastfmName")+"&api_key=f3237219f4b0a18670d59ad9458acb91&format=json").openStream()));
 			
 			JSONObject recent = (JSONObject) obj.get("recenttracks");
 			JSONObject track = (JSONObject)((JSONArray) recent.get("track")).get(0);
 			
-			String out = Bennerbot.conf.get("songFileFormat").toString();
+			String out = Bennerbot.getConfigString("songFileFormat").toString();
 				try{out = out.replace("<title>", (String) track.get("name"));}catch(Exception e){e.printStackTrace();}
 				try{out = out.replace("<url>", (String) track.get("url"));}catch(Exception e){e.printStackTrace();}
 				try{out = out.replace("<artist>", (String)((JSONObject) track.get("artist")).get("#text"));}catch(Exception e){e.printStackTrace();}

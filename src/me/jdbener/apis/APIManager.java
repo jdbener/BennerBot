@@ -57,7 +57,7 @@ public class APIManager {
 	 */
 	public APIManager(){		
 		//load follower notifications
-		if(Bennerbot.conf.get("enableFollowerNotifications").toString().equalsIgnoreCase("true")){
+		if(Bennerbot.getConfigBoolean("enableFollowerNotifications")){
 			new TwitchFollowerHandeler();
 			new HitboxFollowerHandeler();
 		}
@@ -65,15 +65,15 @@ public class APIManager {
 		new TwitchAutoHostingManager();
 		
 		//load the !title and !game commands
-		if(Bennerbot.conf.get("enableStatusandGameUpdateing").toString().equalsIgnoreCase("true")){
+		if(Bennerbot.getConfigBoolean("enableStatusandGameUpdateing")){
 			Bennerbot.listener.addListener(new TwitchStatusGameUpdater());
 			Bennerbot.listener.addListener(new HitboxStatusGameUpdater());
 		}
 		
-		if(Bennerbot.conf.get("enableLastfmIntegration").toString().equalsIgnoreCase("true"))
+		if(Bennerbot.getConfigBoolean("enableLastfmIntegration"))
 			Bennerbot.listener.addListener(new LastfmNowPlaying());
 		
-		if(Bennerbot.configBoolean("enableLatestFollowerFile"))
+		if(Bennerbot.getConfigBoolean("enableLatestFollowerFile"))
 			Executors.newScheduledThreadPool(1).scheduleAtFixedRate(new Runnable(){
 				@Override
 				public void run() {
@@ -228,13 +228,16 @@ public class APIManager {
 	}
 	public static Connection getConnection(){
 	    Connection c = null;
-	    try {
-	    	c = DriverManager.getConnection("jdbc:mysql://vps34796.vps.ovh.ca/BENNERBOT?user=BENNERBOT&password=BENNERBOT");
-	    } catch ( Exception e ) {
-	    	e.printStackTrace();
-//	    	Bennerbot.logger.warn("Connection to remote database failed, trying again with local connection");
+	    if(!Bennerbot.getConfigBoolean("useLocalDatabase"))
+		    try {
+		    	c = DriverManager.getConnection("jdbc:mysql://vps34796.vps.ovh.ca/BENNERBOT?user=BENNERBOT&password=BENNERBOT");
+		    } catch ( Exception e ) {
+		    	e.printStackTrace();
+	//	    	Bennerbot.logger.warn("Connection to remote database failed, trying again with local connection");
+		    	c = getLocalConnection();
+		    }
+		else
 	    	c = getLocalConnection();
-	    }
 	    return c;
 	 }
 	 private static Connection getLocalConnection(){

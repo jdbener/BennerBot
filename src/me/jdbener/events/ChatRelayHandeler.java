@@ -18,11 +18,11 @@ public class ChatRelayHandeler extends ListenerAdapter<PircBotX> {
 		if(e.getUser().getNick().toString().contains("bot"))bot = true;
 		if(!bot)
 			//Determine weather or not it is turned on in the code
-			if(Bennerbot.conf.get("activateRelay").toString().equalsIgnoreCase("true") /*&& Bennerbot.servers.size() > 1*/){
+			if(Bennerbot.getConfigBoolean("activateRelay") /*&& Bennerbot.servers.size() > 1*/){
 				//check which server is the opposite server to the one that is sending the code
 				String server = "";
 				int i=0; while(i < Bennerbot.servers.toArray().length){
-					if(e.getBot().getBotId() != i || i == Bennerbot.getBotIDbyName("Hitbox")){
+					if(i != Bennerbot.getBotIDbyURL(e.getBot().getConfiguration().getServerHostname())){
 						//Determine weather or not to show the message's source
 						System.out.println(e.getBot().getConfiguration().getServerHostname());
 						server = " ["+Bennerbot.servers.get(Bennerbot.getBotIDbyURL(e.getBot().getConfiguration().getServerHostname())).getName()+"]";

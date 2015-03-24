@@ -40,23 +40,23 @@ public class TextToSpeachManager{
         
         double variablity = 1;
         
-        if(Bennerbot.conf.get("enableVariability").toString().equalsIgnoreCase("true")){
+        if(Bennerbot.getConfigBoolean("enableVariability")){
         	variablity = getVaribilityForUser(user);
         }
         
         voice.setPitch(getPitchForUser(user, variablity));
         int speed = getTempoForUser(user);
         if(!Bennerbot.configEqualsString("TTSSpeed", "default")){
-        	speed = Integer.parseInt(Bennerbot.configGetString("TTSSpeed"));
+        	speed = Integer.parseInt(Bennerbot.getConfigString("TTSSpeed"));
         }
         voice.setRate(speed);
-        voice.setVolume(Integer.parseInt(Bennerbot.configGetString("TTSVolume")));
+        voice.setVolume(Integer.parseInt(Bennerbot.getConfigString("TTSVolume")));
         
         voice.allocate();
 
         message = replaceEmotes(message).trim().replaceAll("[^ -~]", "?");
         
-        if(!user.equalsIgnoreCase(lastuser) || !Bennerbot.conf.get("enableTTSMinimalisticMode").toString().equalsIgnoreCase("true")){
+        if(!user.equalsIgnoreCase(lastuser) || !Bennerbot.getConfigBoolean("enableTTSMinimalisticMode")){
         	message = (user + " says: " + message).trim();
         	lastuser = user;
         }

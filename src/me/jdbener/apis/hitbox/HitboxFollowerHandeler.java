@@ -27,7 +27,7 @@ class HFollowerTimer extends TimerTask {
 	
 	public HFollowerTimer(){
 		try {
-			path = new URL("http://api.hitbox.tv/followers/user/"+Bennerbot.conf.get("hitboxChannel")+"/?limit=10000000000000000000000");
+			path = new URL("http://api.hitbox.tv/followers/user/"+Bennerbot.getConfigString("hitboxChannel")+"/?limit=10000000000000000000000");
 			
 			JSONObject obj = (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(path.openStream()));
 			JSONArray followers = (JSONArray) obj.get("followers");
@@ -39,9 +39,7 @@ class HFollowerTimer extends TimerTask {
 					APIManager.followers.add(name);
 				
 			}
-		} catch (ParseException | IOException e) {
-			e.printStackTrace();
-		}
+		} catch (ParseException | IOException e) {}
 		
 	}
 	public void run(){
@@ -64,8 +62,6 @@ class HFollowerTimer extends TimerTask {
 				else
 					Bennerbot.sendMessage(list+" has followed on hitbox");
 			}
-		} catch (IOException | ParseException e1) {
-			e1.printStackTrace();
-		}
+		} catch (IOException | ParseException e1){}
 	}
 }

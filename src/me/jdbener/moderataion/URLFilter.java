@@ -13,7 +13,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 public class URLFilter extends ListenerAdapter<PircBotX>{
 	int whiteorblacklist = -1;
 	public void onMessage(MessageEvent<PircBotX> e){
-		whiteorblacklist = Integer.parseInt(Bennerbot.conf.get("URLWhiteORBlackList").toString());
+		whiteorblacklist = Integer.parseInt(Bennerbot.getConfigString("URLWhiteORBlackList"));
 		if(whiteorblacklist != -1 || whiteorblacklist != 1)
 			whiteorblacklist = -1;
 			

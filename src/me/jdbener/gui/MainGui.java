@@ -37,6 +37,7 @@ import javax.swing.event.DocumentListener;
 
 import me.jdbener.Bennerbot;
 import me.jdbener.apis.APIManager;
+import me.jdbener.utill.ConfigEntry;
 
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
@@ -78,7 +79,7 @@ public class MainGui extends JFrame {
 	public MainGui() {	
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainGui.class.getResource("/me/jdbener/gui/Lion.png")));
-		setTitle("BennerBot v"+Bennerbot.version);
+		setTitle("BennerBot "+Bennerbot.version);
 		/*
 		 * Define the inclosing frame
 		 */
@@ -222,8 +223,8 @@ public class MainGui extends JFrame {
 							} else {
 								map2DB();
 							}
-							for(Entry<String, Object> e: Bennerbot.conf.entrySet())
-								OConf.put(e.getKey(), e.getValue());
+							for(ConfigEntry e: Bennerbot.getConfigEntrys())
+								OConf.put(e.getName(), e.getValue());
 							infoButton.setText("Done!");
 							try {
 								Thread.sleep(3000);
@@ -243,8 +244,8 @@ public class MainGui extends JFrame {
 		Bennerbot.logger.info("Finished Tab Initiation Squence... Loading Backend");
 		setupMapTable();		
 		db2Map();
-		for(Entry<String, Object> e: Bennerbot.conf.entrySet()){
-			OConf.put(e.getKey(), e.getValue());
+		for(ConfigEntry e: Bennerbot.getConfigEntrys()){
+			OConf.put(e.getName(), e.getValue());
 		}
 		setValuesfromMap();
 		setupMapListeners();
@@ -280,7 +281,7 @@ public class MainGui extends JFrame {
 			else if(j.getClass().getName().equalsIgnoreCase("javax.swing.JPasswordField"))
 				value = new String((((JPasswordField)j).getPassword()));
 			
-			Bennerbot.conf.put(settingsNames.get(i), value);
+			Bennerbot.updateConfigEntry(settingsNames.get(i), value);
 		}
 		updated = updated();
 		restart = shouldRestart();
@@ -297,9 +298,9 @@ public class MainGui extends JFrame {
 		}
 	}
 	public void setValuesfromMap(){
-		for(java.util.Map.Entry<String, Object> e: Bennerbot.conf.entrySet()){
+		for(ConfigEntry e: Bennerbot.getConfigEntrys()){
 			for(int i2 = 0; i2 < settingsNames.size(); i2++){
-				if(settingsNames.get(i2).equalsIgnoreCase(e.getKey())){
+				if(settingsNames.get(i2).equalsIgnoreCase(e.getName())){
 						if(e.getValue() != null)
 							if(settings.get(i2).getClass().getName().equalsIgnoreCase("javax.swing.JCheckBox"))
 								((JCheckBox)settings.get(i2)).setSelected(e.getValue().toString().equalsIgnoreCase("true"));
@@ -326,7 +327,7 @@ public class MainGui extends JFrame {
 		}
 	}
 	private boolean updated(){
-		MapDifference<String, String> diff = Maps.difference(convertMapToString(OConf), convertMapToString(Bennerbot.conf));
+		MapDifference<String, String> diff = Maps.difference(convertMapToString(OConf), Bennerbot.getConfigMap());
 		boolean update = false;
 		if(!diff.entriesDiffering().toString().equalsIgnoreCase("{}")){
 			update = true;
@@ -334,7 +335,7 @@ public class MainGui extends JFrame {
 		return update;
 	}
 	private boolean shouldRestart(){
-		MapDifference<String, String> diff = Maps.difference(convertMapToString(OConf), convertMapToString(Bennerbot.conf));
+		MapDifference<String, String> diff = Maps.difference(convertMapToString(OConf), Bennerbot.getConfigMap());
 		boolean restart = false;
 		for(String s: settingRestarts)
 			if(diff.entriesDiffering().containsKey(s))
@@ -358,8 +359,8 @@ public class MainGui extends JFrame {
 			Connection c = APIManager.getConnection();
 			Statement stmt = c.createStatement();
 			stmt.execute("DELETE FROM SETTINGS WHERE BID = "+me.jdbener.utill.botId.getBotID());
-			thingsAdded = filterMap(convertMapToString(Bennerbot.conf), settingsNames).size();
-			for(final Entry<String, String> e: filterMap(convertMapToString(Bennerbot.conf), settingsNames).entrySet()){
+			thingsAdded = filterMap(Bennerbot.getConfigMap(), settingsNames).size();
+			for(final Entry<String, String> e: filterMap(Bennerbot.getConfigMap(), settingsNames).entrySet()){
 				new Thread(new Runnable(){
 					@Override
 					public void run() {
@@ -398,7 +399,7 @@ public class MainGui extends JFrame {
 			Statement stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM SETTINGS WHERE BID = "+me.jdbener.utill.botId.getBotID());
 			while(rs.next()){
-				Bennerbot.conf.put(rs.getString("FIELD"), rs.getString("VALUE"));
+				Bennerbot.updateConfigEntry(rs.getString("FIELD"), rs.getString("VALUE"));
 			}
 			stmt.close();
 			c.close();

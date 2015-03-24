@@ -13,9 +13,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 public class TwitchFollowerHandeler{
-	TFollowerTimer f = new TFollowerTimer();
 	public TwitchFollowerHandeler(){
-		
+		TFollowerTimer f = new TFollowerTimer();
 		TimerTask t = (TimerTask) f;
 		new Timer().schedule(t, 0, 5000);
 	}
@@ -27,7 +26,7 @@ class TFollowerTimer extends TimerTask {
 	
 	public TFollowerTimer(){
 		try {
-			path = new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.conf.get("twitchChannel")+"/follows/?limit=10000000000000000000000");
+			path = new URL("https://api.twitch.tv/kraken/channels/"+Bennerbot.getConfigString("twitchChannel")+"/follows/?limit=1000000");
 			
 			JSONObject obj = (JSONObject) APIManager.parser.parse(Bennerbot.StreamToString(path.openStream()));
 			JSONArray followers = (JSONArray) obj.get("follows");
@@ -39,9 +38,7 @@ class TFollowerTimer extends TimerTask {
 					APIManager.followers.add((String) user.get("name"));
 				
 			}
-		} catch (ParseException | IOException e) {
-			e.printStackTrace();
-		}
+		} catch (ParseException | IOException e) {}
 		
 	}
 	public void run(){
@@ -65,8 +62,6 @@ class TFollowerTimer extends TimerTask {
 				else
 					Bennerbot.sendMessage(list+" has followed on twitch");
 			}
-		} catch (IOException | ParseException e1) {
-			e1.printStackTrace();
-		}
+		} catch (IOException | ParseException e1) {}
 	}
 }
