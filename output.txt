@@ -1,0 +1,3 @@
+Welcome to BennerBot
+Version a0.21
+[08:57] Sucessfully Connected to Twitch

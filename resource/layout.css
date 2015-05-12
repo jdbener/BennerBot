@@ -1,0 +1,45 @@
+body {
+    background: #222222;
+    padding: 1em;
+    margin: 0;
+    font-size: 16px;
+    color: #777777;
+    word-wrap: break-word;
+    overflow-y: shown;
+    overflow-x: hidden;
+}
+    body * {
+        font-family: helvetica, sans-serif;
+    }
+    a {
+        color:#ff0000;
+    }
+    img {
+        height:20px;
+        width:auto;
+    }
+    /*Highlighted Messages*/
+    #highlight {
+        background:#B10000;
+        color: white;
+    }
+    /*when something gose wrong*/
+    .error{
+    
+    }
+    /*server image*/
+    .server {
+    
+    }
+    /*timestamp*/
+    .timestamp {
+    
+    }
+    /*the message senders nickname*/
+    .username{
+    
+    }
+    /*the message body*/
+    .message{
+    
+    }
