@@ -6,13 +6,14 @@ import java.util.Arrays;
 import org.BennerIndustries.BennerBot.api.datatypes.MessageReference;
 import org.BennerIndustries.BennerBot.api.datatypes.PluginReference;
 import org.BennerIndustries.BennerBot.api.datatypes.PluginReference.PluginTags;
+import org.BennerIndustries.BennerBot.api.datatypes.UserReference;
 import org.BennerIndustries.BennerBot.core.BennerBot;
 
 public abstract class PluginBase {
 	private PluginReference ref;
 	
-	public PluginBase(String name, String description, PluginTags[] tags){
-		ref = new PluginReference(Integer.toHexString(this.hashCode()), name, description, tags);
+	public PluginBase(String name, String identifier, String description, PluginTags[] tags){
+		ref = new PluginReference(identifier, name, description, tags);
 	}
 	
 	/**
@@ -39,9 +40,9 @@ public abstract class PluginBase {
 	 * @param channel the channel the message is sent too
 	 * @return weather or not the message was successfully sent.
 	 */
-	public boolean reciveMessage(String message, String user, String channel){
-		if(BennerBot.manager.hasListener(getPluginIdentifier())){
-			BennerBot.manager.receiveMessage(getPluginIdentifier(), new MessageReference(message, user, channel, getPluginIdentifier()));
+	public boolean reciveMessage(String message, UserReference user){
+		if(BennerBot.listener.hasListener(getPluginIdentifier())){
+			BennerBot.listener.receiveMessage(getPluginIdentifier(), new MessageReference(message, user, getPluginIdentifier()));
 			return true;
 		}
 		return false;
@@ -54,9 +55,9 @@ public abstract class PluginBase {
 	 * @param channel the channel the message is sent too
 	 * @return weather or not the message was successfully sent.
 	 */
-	public boolean reciveTargetedMessage(PluginTags[] target, String message, String user, String channel){
-		if(BennerBot.manager.hasListener(getPluginIdentifier()))
-			BennerBot.manager.reciveTargetedMessage(target, getPluginIdentifier(), new MessageReference(message, user, channel, getPluginIdentifier()));
+	public boolean reciveTargetedMessage(PluginTags[] target, String message, UserReference user){
+		if(BennerBot.listener.hasListener(getPluginIdentifier()))
+			BennerBot.listener.reciveTargetedMessage(target, getPluginIdentifier(), new MessageReference(message, user, getPluginIdentifier()));
 		return false;
 	}
 	/**
@@ -67,9 +68,9 @@ public abstract class PluginBase {
 	 * @param channel the channel the message is sent too
 	 * @return weather or not the message was successfully sent.
 	 */
-	public boolean reciveTargetedMessage(PluginTags target, String message, String user, String channel){
-		if(BennerBot.manager.hasListener(getPluginIdentifier()))
-			BennerBot.manager.reciveTargetedMessage(new PluginTags[] {target}, getPluginIdentifier(), new MessageReference(message, user, channel, getPluginIdentifier()));
+	public boolean reciveTargetedMessage(PluginTags target, String message, UserReference user){
+		if(BennerBot.listener.hasListener(getPluginIdentifier()))
+			BennerBot.listener.reciveTargetedMessage(new PluginTags[] {target}, getPluginIdentifier(), new MessageReference(message, user, getPluginIdentifier()));
 		return false;
 	}
 	/**

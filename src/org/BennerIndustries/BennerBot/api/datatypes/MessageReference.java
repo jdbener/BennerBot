@@ -1,27 +1,23 @@
 package org.BennerIndustries.BennerBot.api.datatypes;
 
 public class MessageReference {
-	String message, user, channel, source = "";
+	String message, source = "";
+	UserReference user;
 	
-	public MessageReference(String message, String user, String channel, String source){
+	public MessageReference(String message, UserReference user, String source){
 		this.message = message;
 		this.user = user;
-		this.channel = channel;
 		this.source = source;
 	}
-	public MessageReference(String message, String user, String channel){
+	public MessageReference(String message, UserReference user){
 		this.message = message;
 		this.user = user;
-		this.channel = channel;
 	}
 	public String getMessage(){
 		return message;
 	}
-	public String getUser(){
+	public UserReference getUser(){
 		return user;
-	}
-	public String getSourceChannel(){
-		return channel;
 	}
 	public String getSourcePlugin(){
 		return source;
