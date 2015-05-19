@@ -1,5 +1,6 @@
 package org.BennerIndustries.BennerBot.utility;
 
+import java.awt.Color;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.FileWriter;
@@ -12,7 +13,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 /**
  * All of the utility functions i have accumulated over the years
- * @author Jdbener
+ * @author Joshua Dahl (Jdbener)
  */
 public class BennerCore {
 	
@@ -258,5 +259,18 @@ public class BennerCore {
 		else
 			return gcd(num2, num1%num2);
 	}
-	
+	//converts a color object into a string hexadecimal
+	public final static String rgb2Hex(Color colour) throws NullPointerException {
+		String hexColour = Integer.toHexString(colour.getRGB() & 0xffffff);
+		if (hexColour.length() < 6) {
+			hexColour = "000000".substring(0, 6 - hexColour.length()) + hexColour;
+		}
+		return "#" + hexColour;
+	}
+	//converts a string hexadecimal into a color object
+	public static Color hex2Rgb(String colorStr) {
+	return new Color(Integer.valueOf( colorStr.substring( 1, 3 ), 16 ),
+		    		 Integer.valueOf( colorStr.substring( 3, 5 ), 16 ),
+		    		 Integer.valueOf( colorStr.substring( 5, 7 ), 16 ) );
+	}
 }

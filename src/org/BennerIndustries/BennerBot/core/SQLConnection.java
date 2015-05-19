@@ -5,8 +5,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * This class provides a connection to the database file
+ * @author Joshua Dahl (Jdbener)
+ */
 public class SQLConnection {
+
+	/**
+	 * Creates a connection to the database file
+	 * @return the established connection
+	 */
 	public static Connection createConnection(){
 		try {
 		      Class.forName("org.sqlite.JDBC");
@@ -16,6 +24,10 @@ public class SQLConnection {
 		}
 		return null;
 	}
+	/**
+	 * Creates a statement that classes can use to interact with the database file
+	 * @return the statement
+	 */
 	public static Statement createStatement(){
 		try {
 			return createConnection().createStatement();

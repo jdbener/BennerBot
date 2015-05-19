@@ -2,6 +2,11 @@ package org.BennerIndustries.BennerBot.api.datatypes;
 
 import java.awt.Color;
 
+import org.BennerIndustries.BennerBot.utility.BennerCore;
+/**
+ * A reference to a specific user
+ * @author Joshua Dahl (Jdbener)
+ */
 public class UserReference {
 	/** A set of values that define the possible permission levels for users */
 	public enum PermissionLevels {base, regular, regularPlus, moderator, admin;
@@ -21,26 +26,54 @@ public class UserReference {
 		}
 	};
 	
+	/** the default colors for a reference that dosent have its color specified */
+	private Color[] defaultColors = new Color[]{
+		BennerCore.hex2Rgb("#FF0000"),	//Red
+		BennerCore.hex2Rgb("#0000FF"),	//Blue
+		BennerCore.hex2Rgb("#00FF00"),	//Green
+		BennerCore.hex2Rgb("#B22222"),	//Fire Brick
+		BennerCore.hex2Rgb("#FF7F50"),	//Coral
+		BennerCore.hex2Rgb("#9ACD32"),	//Yellow Green
+		BennerCore.hex2Rgb("#FF4500"),	//Orange Red
+		BennerCore.hex2Rgb("#2E8B57"),	//Sea Green
+		BennerCore.hex2Rgb("#DAA520"),	//Golden Rod
+		BennerCore.hex2Rgb("#D2691E"),	//Chocolate
+		BennerCore.hex2Rgb("#5F9EA0"),	//Cadet Blue
+		BennerCore.hex2Rgb("#1E90FF"),	//Dodger Blue
+		BennerCore.hex2Rgb("#FF69B4"),	//HotPink
+		BennerCore.hex2Rgb("#8A2BE2"),	//Blue Violet
+		BennerCore.hex2Rgb("#00FF7F")	//Spring Green
+	};
+	
 	private PermissionLevels permLevel;
-	private String name, channel, pIdent;
-	private Boolean banned;
+	private String name, pIdent;
+	private int banned;
 	private Color color;
 	
-	public UserReference(String name, Color color, String channel, PermissionLevels level, String pIdent){
+	/**
+	 * @param name the name of the user
+	 * @param color the color that this user will have in GUI based chat displays
+	 * @param level the permission level of the user according to the bot
+	 * @param pIdent the source plugin that this user is from
+	 */
+	public UserReference(String name, Color color, PermissionLevels level, String pIdent){
 		this.name = name;
-		this.channel = channel;
 		this.color = color;
 		this.pIdent = pIdent;
 		permLevel = level;
-		banned = false;
+		banned = 0;
 	}
-	public UserReference(String name, Color color, String channel, PermissionLevels level, String pIdent, boolean banned){
+	/**
+	 * @param name the name of the user
+	 * @param level the permission level of the user according to the bot
+	 * @param pIdent the source plugin that this user is from
+	 */
+	public UserReference(String name, PermissionLevels level, String pIdent){
 		this.name = name;
-		this.channel = channel;
-		this.color = color;
 		this.pIdent = pIdent;
 		permLevel = level;
-		this.banned = banned;
+		this.banned = 0;
+        color = defaultColors[(name.charAt(0) + name.charAt(name.length() - 1)) % defaultColors.length];
 	}
 	/**
 	 * @return the name of the user that this object represents
@@ -49,11 +82,8 @@ public class UserReference {
 		return name;
 	}
 	/**
-	 * @return the channel that this user is from
+	 * @return the Plugin Identifier of the plugin to which the user is associated
 	 */
-	public String getChannel(){
-		return channel;
-	}
 	public String getSourceIdentifier(){
 		return pIdent;
 	}
@@ -78,7 +108,7 @@ public class UserReference {
 	/**
 	 * @return weather or not this user is banned
 	 */
-	public boolean isBanned(){
+	public Integer isBanned(){
 		return banned;
 	}
 	/**
@@ -98,21 +128,11 @@ public class UserReference {
 		return true;
 	}
 	/**
-	 * Toggles the banned status of a user
-	 */
-	public boolean toggleBanned(){
-		if(banned == false)
-			banned = true;
-		else
-			banned = false;
-		return true;
-	}
-	/**
 	 * Sets the banned status of a user
 	 * @param banned the new banned status
 	 */
-	public boolean toggleBanned(boolean banned){
-		this.banned = banned;
+	public boolean setBannedTime(int milli){
+		this.banned = milli;
 		return true;
 	}
 }

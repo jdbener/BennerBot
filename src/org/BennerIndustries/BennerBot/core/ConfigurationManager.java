@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 import org.BennerIndustries.BennerBot.api.datatypes.SettingReference;
 
+/**
+ * This class manages the setting system. It keeps the local storage and database in sync so that settings can be used across runs.
+ * @author Joshua Dahl (Jdbener)
+ */
 public class ConfigurationManager {
 	
 	/** A List of the settings that are to be actively managed*/
