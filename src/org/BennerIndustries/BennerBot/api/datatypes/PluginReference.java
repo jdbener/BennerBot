@@ -68,7 +68,7 @@ public class PluginReference {
 	 * @param ref a reference to the user object to add
 	 */
 	public boolean addUser(UserReference ref){
-		return users.add(new UserReference(ref.getName(), ref.getChatColor(), ref.getPermissionLevel(), getIdentifier()));
+		return users.add(new UserReference(ref.getName(), ref.getPermissionLevel(), ref.getIdentifierColorPairs()));
 	}
 	/**
 	 * Removes a user from the reference list

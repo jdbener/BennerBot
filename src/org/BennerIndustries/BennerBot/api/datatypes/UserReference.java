@@ -1,10 +1,13 @@
 package org.BennerIndustries.BennerBot.api.datatypes;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.BennerIndustries.BennerBot.utility.BennerCore;
 /**
- * A reference to a specific user
+ * A reference to a specific user with data for multiple plugin sources
  * @author Joshua Dahl (Jdbener)
  */
 public class UserReference {
@@ -27,7 +30,7 @@ public class UserReference {
 	};
 	
 	/** the default colors for a reference that dosent have its color specified */
-	private Color[] defaultColors = new Color[]{
+	private static Color[] defaultColors = new Color[]{
 		BennerCore.hex2Rgb("#FF0000"),	//Red
 		BennerCore.hex2Rgb("#0000FF"),	//Blue
 		BennerCore.hex2Rgb("#00FF00"),	//Green
@@ -46,9 +49,9 @@ public class UserReference {
 	};
 	
 	private PermissionLevels permLevel;
-	private String name, pIdent;
+	private String name;
 	private int banned;
-	private Color color;
+	private Map<String, Color> IC = new HashMap<String, Color>();
 	
 	/**
 	 * @param name the name of the user
@@ -58,8 +61,7 @@ public class UserReference {
 	 */
 	public UserReference(String name, Color color, PermissionLevels level, String pIdent){
 		this.name = name;
-		this.color = color;
-		this.pIdent = pIdent;
+		IC.put(pIdent, color);
 		permLevel = level;
 		banned = 0;
 	}
@@ -70,10 +72,19 @@ public class UserReference {
 	 */
 	public UserReference(String name, PermissionLevels level, String pIdent){
 		this.name = name;
-		this.pIdent = pIdent;
 		permLevel = level;
 		this.banned = 0;
-        color = defaultColors[(name.charAt(0) + name.charAt(name.length() - 1)) % defaultColors.length];
+		IC.put(pIdent, defaultColors[(name.charAt(0) + name.charAt(name.length() - 1)) % defaultColors.length]);
+	}
+	/**
+	 * @param name the name of the user
+	 * @param level the permission level of the user according to the bot
+	 * @param identifierColorPairs a list of already established Plugin Identifier, Color Pairs
+	 */
+	public UserReference(String name, PermissionLevels level, Map<String, Color> identifierColorPairs){
+		this.name = name;
+		this.permLevel = level;
+		IC = identifierColorPairs;
 	}
 	/**
 	 * @return the name of the user that this object represents
@@ -82,10 +93,10 @@ public class UserReference {
 		return name;
 	}
 	/**
-	 * @return the Plugin Identifier of the plugin to which the user is associated
+	 * @return a list of all the identifiers that are associated with this user
 	 */
-	public String getSourceIdentifier(){
-		return pIdent;
+	public ArrayList<String> getSourceIdentifiers(){
+		return new ArrayList<String>(IC.keySet());
 	}
 	/**
 	 * @return the permission level that this user has
@@ -100,10 +111,20 @@ public class UserReference {
 		return PermissionLevels.toString(permLevel);
 	}
 	/**
-	 * @return the color that this user will show up in chats
+	 * @return a list of all the chat colors that are associated with this user
 	 */
-	public Color getChatColor(){
-		return color;
+	public ArrayList<Color> getChatColors(){
+		return new ArrayList<Color>(IC.values());
+	}
+	public Map<String, Color> getIdentifierColorPairs(){
+		return IC;
+	}
+	/**
+	 * Returns the chat color that is specified with the give plugin identifier (if any)
+	 * @param pIdent the plugin identifier to search for
+	 */
+	public Color getChatColor(String pIdent){
+		return IC.get(pIdent);
 	}
 	/**
 	 * @return weather or not this user is banned
@@ -120,11 +141,11 @@ public class UserReference {
 		return true;
 	}
 	/**
-	 * Changes the chat color of this user
+	 * Adds or Updates a plugin specific reference for this user, to represent a new chat color
 	 * @param color the new color
 	 */
-	public boolean setChatColor(Color color){
-		this.color = color;
+	public boolean setIdentiferColorPair(String pIdent, Color color){
+		IC.put(pIdent, color);
 		return true;
 	}
 	/**

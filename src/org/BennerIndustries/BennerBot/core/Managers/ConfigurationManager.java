@@ -1,4 +1,4 @@
-package org.BennerIndustries.BennerBot.core;
+package org.BennerIndustries.BennerBot.core.Managers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import org.BennerIndustries.BennerBot.api.datatypes.SettingReference;
+import org.BennerIndustries.BennerBot.core.SQLConnection;
 
 /**
  * This class manages the setting system. It keeps the local storage and database in sync so that settings can be used across runs.
@@ -51,15 +52,38 @@ public class ConfigurationManager {
 		try{
 			s.execute("DELETE FROM 'Configuration' WHERE name='"+name+"'");
 			s.execute("INSERT INTO 'Configuration' VALUES ('"+name+"', '"+value+"')");
+			refresh();
 			return true;
 		} catch(SQLException e){e.printStackTrace();}
 		return false;
+	}
+	/**
+	 * Stops managing a setting
+	 * @param ref the setting reference to stop managing
+	 */
+	public boolean removeSetting(SettingReference ref){
+		for(int i = 0; i < settings.size(); i++){
+			if(settings.get(i).equals(ref)){
+				settings.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	/**
+	 * Stops managing a setting
+	 * @param i the index entry to stop manageing
+	 */
+	public boolean removeSetting(int i){
+		settings.remove(i);
+		return true;
 	}
 	/**
 	 * Weather or not a setting is being managed
 	 * @param name the setting to check for
 	 */
 	public boolean hasSetting(String name){
+		refresh();
 		for(SettingReference ref: settings){
 			if(ref.getName().equalsIgnoreCase(name)){
 				return true;

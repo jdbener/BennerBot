@@ -15,6 +15,7 @@ import org.BennerIndustries.BennerBot.core.BennerBot;
  */
 public abstract class PluginBase {
 	private PluginReference ref;
+	private boolean loaded = false;
 	
 	/**
 	 * This must be included in every plugin as it provides the basic information that the bot needs to process this plugin correctly
@@ -61,6 +62,12 @@ public abstract class PluginBase {
 	 */
 	public ArrayList<PluginTags> getPluginTags(Boolean useless){
 		return new ArrayList<PluginTags>(Arrays.asList(ref.getTags()));
+	}
+	/**
+	 * @return wheather or not the plugin is currently loaded
+	 */
+	public boolean isLoaded(){
+		return loaded;
 	}
 	
 	/*
@@ -143,11 +150,19 @@ public abstract class PluginBase {
 	 * @return this should return weather or not the call was successful
 	 */
 	public abstract boolean sendMessage(MessageReference message);
+	public void trueLoad(){
+		loaded = true;
+		loadPlugin();
+	}
 	/**
 	 * This function will be called whenever the bot wants to load this plugin,
 	 * this should do things like setup the Settings to be used and any other code that needs to be run on bot load.
 	 */
 	public abstract void loadPlugin();
+	public void trueUnload(){
+		loaded = false;
+		unloadPlugin();
+	}
 	/**
 	 * This function will be called whenever the bot want to unload the plugin,
 	 * this will happen when the plugin is disabled or when the bot is shutting down and should remove anything that was added to other storage mechanisms

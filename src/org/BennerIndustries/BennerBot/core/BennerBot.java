@@ -1,16 +1,24 @@
 package org.BennerIndustries.BennerBot.core;
 
+import java.awt.Color;
+import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import org.bennerbot;
+import org.BennerIndustries.BennerBot.api.datatypes.UserReference;
+import org.BennerIndustries.BennerBot.api.datatypes.UserReference.PermissionLevels;
 import org.BennerIndustries.BennerBot.core.CorePlugins.DebugLogger;
+import org.BennerIndustries.BennerBot.core.Managers.ConfigurationManager;
+import org.BennerIndustries.BennerBot.core.Managers.ListenerManager;
+import org.BennerIndustries.BennerBot.core.Managers.UserManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class BennerBot {
 	
-	private static Logger logger = LoggerFactory.getLogger(bennerbot.class);	
+	private static Logger logger = LoggerFactory.getLogger(bennerbot.class);
+	private static DebugLogger dl = new DebugLogger();
 	
 	/**
 	 * Starts the bot
@@ -23,12 +31,13 @@ public class BennerBot {
 	
 	public static ListenerManager listener = new ListenerManager();
 	public static ConfigurationManager configuration = new ConfigurationManager();
+	public static UserManager users = new UserManager();
 	
 	public BennerBot(String[] args){
-		listener.addListener(new DebugLogger());
-		
-		
-		
+		/* Defines the bot user and adds it to the index */
+		users.addUser(new UserReference("BennerBot", PermissionLevels.base, new HashMap<String, Color>()));
+		listener.addListener(dl);
+
 		Executors.newScheduledThreadPool(0).scheduleAtFixedRate(new Runnable(){
 			@Override
 			public void run() {

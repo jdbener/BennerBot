@@ -1,4 +1,4 @@
-package org.BennerIndustries.BennerBot.core;
+package org.BennerIndustries.BennerBot.core.Managers;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class ListenerManager {
 	 * @param listener the plugin/listener to be added
 	 */
 	public boolean addListener(PluginBase listener) {
-		listener.loadPlugin();
+		listener.trueLoad();
 		return listeners.add(listener);
 	}
 	/**
@@ -28,7 +28,7 @@ public class ListenerManager {
 	public boolean removeListener(String lIdent){
 		for(int i = 0; i < listeners.size(); i++){
 			if(listeners.get(i).getPluginIdentifier().equals(lIdent)){
-				listeners.get(i).unloadPlugin();
+				listeners.get(i).trueUnload();
 				listeners.remove(i);
 				return true;
 			}
@@ -45,7 +45,7 @@ public class ListenerManager {
 		if(lIdent < 0)
 			return false;
 		
-		listeners.get(lIdent).unloadPlugin();
+		listeners.get(lIdent).trueUnload();
 		listeners.remove(lIdent);
 		return true;
 	}
