@@ -24,6 +24,8 @@ This is the development branch of BennerBot where I keep all of my source code a
 
 - [SQLite-JDBC](https://bitbucket.org/xerial/sqlite-jdbc) ~ [License](http://www.apache.org/licenses/)
 
+- [WebLookandFeel](http://weblookandfeel.com/) ~[License](http://weblookandfeel.com/licensing/)
+
 ##Licence:##
 Copyright © 2014 Joshua Dahl (jdbener@gmail.com)
 
