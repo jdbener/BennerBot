@@ -9,7 +9,6 @@
 	<classpathentry kind="lib" path="include/commons-codec-1.9.jar"/>
 	<classpathentry kind="lib" path="include/commons-lang3-3.3.2.jar"/>
 	<classpathentry kind="lib" path="include/guava-18.0.jar"/>
-	<classpathentry kind="lib" path="include/irc/pircbotx-2.0.1.jar"/>
 	<classpathentry kind="lib" path="include/gui/weblaf-complete-1.28.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

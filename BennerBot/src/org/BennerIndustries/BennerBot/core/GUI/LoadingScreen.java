@@ -41,9 +41,9 @@ public class LoadingScreen extends WebFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(677,423); 
 		setContentPane(contentPane);
-		this.setUndecorated(true);
+		setUndecorated(true);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		contentPane.setLayout(null);
 		
 		//Sets up the progress bar and then hides it
