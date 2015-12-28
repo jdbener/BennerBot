@@ -1,5 +1,7 @@
 Hello, my name is Jdbener and today I am going to give you a basic walk through of how to use my twitch/hitbox chatbot, BennerBot! Bennerbot has been designed differently than other chatbots, it is designed by streamers for streamers, it has been designed to manage both twitch and hitbox simultaneously, it has also been written in java so it can be used from anywhere! If you have any bug reports or feature requests feel free to post an issue on the GitHub page and will try my best to include your input.
 
+Java was proving too slow for what I was trying to do, so I am refactoring my code into C++. I should be able to maintain the same amount of cross platform compatability with greatly improved performance and efficency.
+
 **If you ever find a bug or have and idea for a feature please post a comment [here](https://github.com/jdbener/BennerBot/issues)**
 
 **A link to the latest download will be available once I feel like I have gotten to a point where it is acceptable. Feel free to try out some of the older versions or try to compile the bot yourself or check out the current development builds [here](https://github.com/jdbener/BennerBot/tree/Development/BennerBot)**
