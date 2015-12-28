@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{a2c28bd8-db89-4eea-9be7-c32163f3ccb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\API">
+      <UniqueIdentifier>{ddb2d4df-1d4d-4375-8daf-51fc44efa8ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\API\Datatypes">
+      <UniqueIdentifier>{7f6a2ace-774d-44dc-be6a-e59a49940b3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\API">
+      <UniqueIdentifier>{51a3cffb-f573-418d-b026-8fee70281527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\API\Datatypes">
+      <UniqueIdentifier>{d4cfa379-697a-433a-ab93-2f8752a28dd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Lib">
+      <UniqueIdentifier>{e8e6d295-f723-4b27-9b89-7db1d16ae22b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\lib">
+      <UniqueIdentifier>{911c0850-164b-403d-be77-b93f4dff3e6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{6eeca543-cf90-4675-a2a0-2bfa81092daa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserReference.h">
+      <Filter>Header Files\API\Datatypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageReference.h">
+      <Filter>Header Files\API\Datatypes</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginReference.h">
+      <Filter>Header Files\API\Datatypes</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginBase.h">
+      <Filter>Header Files\API</Filter>
+    </ClInclude>
+    <ClInclude Include="ListenerManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="UserManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BennerBot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserReference.cpp">
+      <Filter>Source Files\API\Datatypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Source Files\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageReference.cpp">
+      <Filter>Source Files\API\Datatypes</Filter>
+    </ClCompile>
+    <ClCompile Include="PluginReference.cpp">
+      <Filter>Source Files\API\Datatypes</Filter>
+    </ClCompile>
+    <ClCompile Include="PluginBase.cpp">
+      <Filter>Source Files\API</Filter>
+    </ClCompile>
+    <ClCompile Include="ListenerManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="UserManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
