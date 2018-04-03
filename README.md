@@ -4,8 +4,6 @@ Hello, my name is Jdbener and today I am going to give you a basic walk through 
 
 **A link to the latest download will be available once I feel like I have gotten to a point where it is acceptable. Feel free to try out some of the older versions or try to compile the bot yourself or check out the current development builds [here](https://github.com/jdbener/BennerBot/tree/Development/BennerBot)**
 
-**If you like what im doing feel free to: [![alt text](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "Title")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XF5ZN3N5ULFAE)**
-
 (Post an Issue if i should add anything else to this file)
 
 ##Features:##
