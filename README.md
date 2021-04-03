@@ -2,4 +2,6 @@ Hello, my name is Jdbener and today I am going to give you a basic walk through 
 
 The last working version of the code can be found [here](https://github.com/jdbener/BennerBot/tree/99a61de16bc1712fd392c8e9ab6fce06185fd28f).
 
+The project hasn't been develeoped in nearly five years and it is unlikely that it ever will be picked up again.
+
 Java was proving too slow for what I was trying to do, so I am refactoring my code into C++. I should be able to maintain the same amount of cross platform compatability with greatly improved performance and efficency. The new code can be found [here](https://github.com/jdbener/BennerBot/tree/C%2B%2B).
